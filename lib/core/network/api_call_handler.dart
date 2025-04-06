@@ -1,4 +1,4 @@
-import 'package:dio/dio.dart';
+/* import 'package:dio/dio.dart';
 import 'package:frip_trading/core/error/exceptions.dart';
 import 'package:frip_trading/src/data/data_source/auth_remote_data_source.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
@@ -55,3 +55,4 @@ class ApiCallHandler {
     }
   }
 }
+ */

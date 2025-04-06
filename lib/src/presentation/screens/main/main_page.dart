@@ -44,35 +44,48 @@ SizedBox(height: 10,),
               Row(children: [
                 
           Expanded(
-            child: TextField(
-  decoration: InputDecoration(
-    contentPadding: EdgeInsets.symmetric(vertical: 2, horizontal: 2),
-    hintText: 'Search...',
-    hintStyle: TextStyle(color: Color(0xFFBDC1C8)), // تغيير لون النص هنا
-    prefixIcon: const Icon(Icons.search ,color: Color(0xFFBDC1C8),),
-    filled: true,
+            child:
+TextField(
+                  
+                                style: const TextStyle(fontSize: 14),
+                                textAlignVertical: TextAlignVertical.center,
+                              
+                              decoration: InputDecoration(
+                                hintText: 'Search...',
+                                filled: true,
     
     fillColor: Color(0xFFF5F6FA),
-    border: OutlineInputBorder(
-      borderRadius: BorderRadius.circular(12),
-      borderSide: BorderSide.none,
-    ),
-  ),
-)
+                                hintStyle: const TextStyle(color: Colors.grey,fontSize: 13),
+                               prefixIcon: const Icon(Icons.search ,color: Color(0xFFBDC1C8),),
+                                      prefixIconConstraints: const BoxConstraints(
+                        minWidth: 30,
+                        minHeight: 40,
+                      ),
+                              
+                           
+                                focusedBorder: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(30),
+                                 
+                                ),
+                                contentPadding: const EdgeInsets.symmetric(
+                                    horizontal: 10, vertical: 3),
+                                    isDense: true
+                              ),
+                            ),
 
           ),
               const SizedBox(width: 8),
-              // هنا الصورة اللي تبيها
+            
             Container(
   width: 50,
   height: 40,
   decoration: BoxDecoration(
-    color: Color(0xFF70b9be), // لون الخلفية (تقدر تغيره أو تشيله)
-    borderRadius: BorderRadius.circular(10), // زوايا دائرية
+    color: Color(0xFF70b9be),
+    borderRadius: BorderRadius.circular(10),
   ),
   child: Center(
     child: Image.asset(
-      'images/FontAwesomeIcons.png', // غيّر المسار حسب صورتك
+      'images/FontAwesomeIcons.png',
       width: 25,
       height: 25,
       fit: BoxFit.contain,
@@ -84,6 +97,7 @@ SizedBox(height: 10,),
     
             
               const SizedBox(height: 16),
+        
               const Align(
                 alignment: Alignment.centerLeft,
                 child: Text(
@@ -93,37 +107,55 @@ SizedBox(height: 10,),
               ),
               const SizedBox(height: 8),
               Expanded(
-                child: GridView.builder(
-                  itemCount: 4,
-                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 2,
-                    childAspectRatio: 0.7,
-                    mainAxisSpacing: 12,
-                    crossAxisSpacing: 12,
-                  ),
-                  itemBuilder: (context, index) {
-                    return Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Expanded(
-                          child: ClipRRect(
-                            borderRadius: BorderRadius.circular(12),
-                            child: Image.asset(
-  'images/Rectangle569.png',
-  height: 150,
-  width: 150,
-  fit: BoxFit.cover,
-),
+                child: SingleChildScrollView(
+                  child: Center(
+                    child: Wrap(
+                       spacing: 10,
+                              runSpacing: 5,
+                      children: List.generate(   10,(i)
+                      {
+                               return SizedBox(
+                                 width: MediaQuery.of(context).size.width > 971
+                                        ? MediaQuery.of(context).size.width * 0.31
+                                        : MediaQuery.of(context).size.width > 800
+                                            ? MediaQuery.of(context).size.width *
+                                                0.47
+                                            : MediaQuery.of(context).size.width >
+                                                    621
+                                                ? MediaQuery.of(context)
+                                                        .size
+                                                        .width *
+                                                    0.30
+                                                : MediaQuery.of(context)
+                                                        .size
+                                                        .width *
+                                                    0.43,
+                                 child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              ClipRRect(
+                                
+                                borderRadius: BorderRadius.circular(12),
+                                child: Image.asset(
+                                 'images/Rectangle569.png',
+                              
+                                 fit: BoxFit.cover,
+                               ),
+                              ),
+                              const SizedBox(height: 6),
+                              Text(
+                                maxLines: 2,
+                                overflow: TextOverflow.ellipsis,
+                               'Product Name sample data',
+                                style: const TextStyle(fontSize: 14),
+                              ),
+                            ],
                           ),
-                        ),
-                        const SizedBox(height: 6),
-                        Text(
-                         'Product Name',
-                          style: const TextStyle(fontSize: 14),
-                        ),
-                      ],
-                    );
-                  },
+                               );
+                      }
+                      ),
+                    ),
+                  ),
                 ),
               )
             ],
