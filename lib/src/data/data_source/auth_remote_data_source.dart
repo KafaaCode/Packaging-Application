@@ -151,13 +151,13 @@ class AuthRemoteDataSource extends BaseAuthRemoteDataSource {
   Future<Auth> register({required User user}) async {
     try {
       final requestBody = FormData.fromMap({
-        // 'name': user.name,
-        // 'email': user.email,
-        // 'password': user.password,
-        // 'password_confirmation': user.password,
-        // 'region_id': user.region,
-        // 'gander': user.gander,
-        // 'phoneNumber': user.phoneNumber,
+        'name': user.name,
+        'email': user.email,
+        'password': user.password,
+        'password_confirmation': user.password,
+        'region_id': user.region,
+        'gander': user.gander,
+        'phoneNumber': user.phoneNumber,
       });
       print(requestBody);
       final response = await Dio().post(
@@ -204,13 +204,13 @@ class AuthRemoteDataSource extends BaseAuthRemoteDataSource {
   @override
   Future<UpdateData> update({required User user}) async {
     final requestBody = FormData.fromMap({
-      // 'name': user.name,
-      // // 'email': user.email,
-      // 'password': user.password,
-      // // 'password_confirmation': user.password,
-      // // 'region_id': user.region,
-      // 'gander': user.gander,
-      // 'phoneNumber': user.phoneNumber,
+      'name': user.name,
+      'email': user.email,
+      'password': user.password,
+      // 'password_confirmation': user.password,
+      // 'region_id': user.region,
+      'gander': user.gander,
+      'phoneNumber': user.phoneNumber,
     });
     print(requestBody);
     return sl.get<ApiCallHandler>().handler(

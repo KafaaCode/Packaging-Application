@@ -26,8 +26,7 @@ class User with _$User {
     String? phoneNumber,
     String? region,
     String? password,
-    DateTime? created_at,
-    DateTime? updated_at,
+    @JsonKey(name: 'created_at') DateTime? createdAt,
   }) = _User;
 
   factory User.fromJson(Map<String, dynamic> json) => _$UserFromJson(json);
