@@ -1,0 +1,78 @@
+name: frip_trading
+description: "A new Flutter project."
+publish_to: "none"
+version: 0.1.0
+
+environment:
+  sdk: ^3.5.4
+
+dependencies:
+  dio: ^5.7.0
+  equatable: ^2.0.5
+  get_it: ^8.0.1
+  intl: any
+  intl_utils: ^2.8.7
+  dartz: ^0.10.1
+  fluro: ^2.0.5
+  flutter_bloc: ^9.0.0
+  flutter_localization: any
+  toastification: any
+  image_picker: any
+  flutter_screenutil: ^5.8.4
+  bloc_concurrency: ^0.3.0
+  freezed: any
+  hydrated_bloc: ^10.0.0
+  flutter_animate: ^4.5.2
+  animations: ^2.0.11
+  path_provider: ^2.1.5
+  lottie: ^3.1.3
+  json_annotation: ^4.8.1
+  freezed_annotation: ^2.4.4
+  internet_connection_checker: ^1.0.0+1
+  shimmer: ^3.0.0
+  flutter:
+    sdk: flutter
+
+dev_dependencies:
+  build_runner: ^2.4.13
+  flutter_launcher_icons: ^0.14.3
+  json_serializable: ^6.7.1
+  freezed: any
+  
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^4.0.0
+
+flutter:
+  uses-material-design: true
+  generate: true
+  assets:
+    - assets/lottie/
+    - assets/images/
+    - assets/fonts/
+    - assets/SVG/
+  # fonts:
+  #   - family: Bahij_TheSansArabic
+  #     fonts:
+  #       - asset: assets/fonts/Bahij_TheSansArabic-Bold.ttf
+  #         weight: 500
+  #   - family: Cairo
+  #     fonts:
+  #       - asset: assets/fonts/Cairo-Regular.ttf
+  #       - asset: assets/fonts/Cairo-Bold.ttf
+  #         weight: 700
+  #       - asset: assets/fonts/Cairo-Light.ttf
+  #         weight: 300
+  #       - asset: assets/fonts/Cairo-Black.ttf
+  #         weight: 900
+  #       - asset: assets/fonts/Cairo-ExtraBold.ttf
+  #       - asset: assets/fonts/Cairo-ExtraLight.ttf
+  #       - asset: assets/fonts/Cairo-Medium.ttf
+  #       - asset: assets/fonts/Cairo-SemiBold.ttf
+
+flutter_intl:
+  enabled: true
+  class_name: Lang
+  main_locale: en_US
+  arb_dir: lib/core/localization/l10n
+  output_dir: lib/core/localization/generated
