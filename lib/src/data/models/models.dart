@@ -1,4 +1,4 @@
-import 'package:freezed_annotation/freezed_annotation.dart';
+/* import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'models.freezed.dart';
 part 'models.g.dart';
@@ -54,3 +54,4 @@ class UpdateData with _$UpdateData {
   factory UpdateData.fromJson(Map<String, dynamic> json) =>
       _$UpdateDataFromJson(json);
 }
+ */
