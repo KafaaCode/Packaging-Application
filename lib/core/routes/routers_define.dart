@@ -16,7 +16,7 @@ void configureRoutes(FluroRouter router) {
     RoutesNames.mainRoute,
     handler: Handler(
       handlerFunc: (context, parameters) {
-        return const FilterPage();
+        return  ProductDetailsPage();
       },
     ),
   );
