@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
 class AppColors {
-  static const primaryGreen = Color.fromRGBO(88, 135, 96, 1);
+  static const primaryGreen = Color.fromRGBO(112, 185, 190, 1);
   static const backgroundColor = Color(0xFFFFF9E9);
   static const darkBackgroundColor = Color(0xFF121212);
-  static const darkPrimaryGreen = Color.fromRGBO(66, 104, 74, 1);
+  static const darkPrimaryGreen = Color.fromRGBO(112, 185, 190, 1);
   static const shadowColor = Colors.grey;
   static const darkShadowColor = Colors.black;
   static const accentColor = Color.fromRGBO(223, 181, 71, 1);
