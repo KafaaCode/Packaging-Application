@@ -21,5 +21,17 @@ class MainRepository extends BaseMainRepository {
       return Left(
           ServerFailure.fromResponse(statusCode: failure.statusCode ?? 404));
     }
+  }
+  
+  @override
+  ResultFuture<List<Product>> getProducts({required int categoryId}) async {
+    try {
+      final response =
+          await mainRemoteDataSource.getProducts(categoryId: categoryId);
+      return Right(response);
+    } on AuthException catch (failure) {
+      return Left(
+          ServerFailure.fromResponse(statusCode: failure.statusCode ?? 404));
+    }
   }  
 }

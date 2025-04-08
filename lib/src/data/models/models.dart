@@ -1,3 +1,4 @@
+
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'models.freezed.dart';
@@ -65,4 +66,21 @@ class Category with _$Category {
 
   factory Category.fromJson(Map<String, dynamic> json) =>
       _$CategoryFromJson(json);
+}
+@freezed
+class Product with _$Product {
+  const factory Product({
+    required int id,
+    required String name,
+    String? image,
+    required String serial_numbe,
+   String?  description,
+   required Category cateogry,
+    required int request_number,
+   required double  price,
+    required bool intactive,  
+  }) =_Product;
+
+  factory Product.fromJson(Map<String, dynamic> json) =>
+      _$ProductFromJson(json);
 }
