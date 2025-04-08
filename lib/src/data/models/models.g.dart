@@ -31,9 +31,6 @@ _$UserImpl _$$UserImplFromJson(Map<String, dynamic> json) => _$UserImpl(
       createdAt: json['created_at'] == null
           ? null
           : DateTime.parse(json['created_at'] as String),
-      updated_at: json['updated_at'] == null
-          ? null
-          : DateTime.parse(json['updated_at'] as String),
     );
 
 Map<String, dynamic> _$$UserImplToJson(_$UserImpl instance) =>
@@ -48,7 +45,6 @@ Map<String, dynamic> _$$UserImplToJson(_$UserImpl instance) =>
       'region': instance.region,
       'password': instance.password,
       'created_at': instance.createdAt?.toIso8601String(),
-      'updated_at': instance.updated_at?.toIso8601String(),
     };
 
 _$AuthImpl _$$AuthImplFromJson(Map<String, dynamic> json) => _$AuthImpl(
@@ -74,4 +70,18 @@ Map<String, dynamic> _$$UpdateDataImplToJson(_$UpdateDataImpl instance) =>
     <String, dynamic>{
       'user': instance.user,
       'message': instance.message,
+    };
+
+_$CategoryImpl _$$CategoryImplFromJson(Map<String, dynamic> json) =>
+    _$CategoryImpl(
+      id: (json['id'] as num).toInt(),
+      name: json['name'] as String,
+      image: json['image'] as String,
+    );
+
+Map<String, dynamic> _$$CategoryImplToJson(_$CategoryImpl instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'name': instance.name,
+      'image': instance.image,
     };

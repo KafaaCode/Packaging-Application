@@ -28,6 +28,7 @@ class ApiConstances {
   static const String refreshTokenUrl = "$_baseUrl/auth/refreshToken";
   static const String getRegionUrl = "$_baseUrl/Region";
   // Main
+    static const String getcategoriesUrl = "$_baseUrl/categories";
 
   // Tools
   static String getToken() {

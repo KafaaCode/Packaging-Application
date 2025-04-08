@@ -9,4 +9,5 @@ abstract class BaseAuthRepository {
   ResultFuture<Auth> login({required String email, required String password});
   ResultFuture<Auth> refreshToken();
   ResultFuture<bool> logout();
+  
 }
