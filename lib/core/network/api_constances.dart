@@ -28,7 +28,9 @@ class ApiConstances {
   static const String refreshTokenUrl = "$_baseUrl/auth/refreshToken";
   static const String getRegionUrl = "$_baseUrl/Region";
   // Main
-
+    static const String getcategoriesUrl = "$_baseUrl/categories";
+  static String getproductsUrl({required int categoryId}) =>
+      "$_baseUrl/Catogry/$categoryId";
   // Tools
   static String getToken() {
     print(HydratedBloc.storage.read('token').toString());
