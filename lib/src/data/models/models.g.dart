@@ -24,10 +24,13 @@ _$UserImpl _$$UserImplFromJson(Map<String, dynamic> json) => _$UserImpl(
       email: json['email'] as String,
       role: json['role'] as String,
       gander: json['gander'] as String?,
+      company: json['company'] as String?,
+      specialization: json['specialization'] as String?,
+      country: json['country'] as String?,
       image: json['image'] as String?,
       phoneNumber: json['phoneNumber'] as String?,
-      region: json['region'] as String?,
       password: json['password'] as String?,
+      checkIsTerms: json['checkIsTerms'] as bool? ?? false,
       createdAt: json['created_at'] == null
           ? null
           : DateTime.parse(json['created_at'] as String),
@@ -40,10 +43,13 @@ Map<String, dynamic> _$$UserImplToJson(_$UserImpl instance) =>
       'email': instance.email,
       'role': instance.role,
       'gander': instance.gander,
+      'company': instance.company,
+      'specialization': instance.specialization,
+      'country': instance.country,
       'image': instance.image,
       'phoneNumber': instance.phoneNumber,
-      'region': instance.region,
       'password': instance.password,
+      'checkIsTerms': instance.checkIsTerms,
       'created_at': instance.createdAt?.toIso8601String(),
     };
 
