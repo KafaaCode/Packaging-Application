@@ -179,7 +179,7 @@ TextField(
 }
 
  */
-import 'package:flutter/material.dart';
+/* import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:readmore/readmore.dart';
 
@@ -413,6 +413,202 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
             ),
           ),
         ],
+      ),
+    );
+  }
+}
+ */
+import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
+
+
+
+
+class MyOrdersPage extends StatelessWidget {
+  final List<Map<String, String>> orders = [
+    {"id": "Bp001717343401", "date": "Wed, 24,Jun,2024, 8:00AM", "status": "Completed"},
+    {"id": "Bp001717343401", "date": "Wed, 24,Jun,2024, 8:00AM", "status": "Delivered"},
+    {"id": "Bp001717343401", "date": "Wed, 24,Jun,2024, 8:00AM", "status": "Pending"},
+
+  ];
+
+  Color getStatusColor(String status) {
+    switch (status) {
+      case 'Completed':
+        return Colors.purple.shade200;
+      case 'Delivered':
+        return Colors.green.shade200;
+      case 'Pending':
+        return Colors.orange.shade200;
+      default:
+        return Colors.grey;
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Colors.white,
+    
+      body: Container(
+        child: Column(
+          children: [
+            Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Column(
+                children: [
+                  // Search + Filter
+                  Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                             Text('My Orders',style: TextStyle(color: Color(0xFF70b9be),fontWeight: FontWeight.bold,fontSize: 24
+            ),),
+                    SvgPicture.asset(
+              'images/Group940.svg',
+              height: 40,
+            ),
+              
+                    ],),
+                    const SizedBox(height: 30),
+                    Row(children: [
+                      
+                Expanded(
+                  child:
+            TextField(
+                        
+                                      style: const TextStyle(fontSize: 14),
+                                      textAlignVertical: TextAlignVertical.center,
+                                    
+                                    decoration: InputDecoration(
+                                      hintText: 'Search...',
+                                      filled: true,
+                
+                fillColor: Color(0xFFF5F6FA),
+                                      hintStyle: const TextStyle(color: Colors.grey,fontSize: 13),
+                                     prefixIcon: const Icon(Icons.search ,color: Color(0xFFBDC1C8),),
+                                            prefixIconConstraints: const BoxConstraints(
+                              minWidth: 30,
+                              minHeight: 40,
+                            ),
+                                    
+                                 
+                                      focusedBorder: OutlineInputBorder(
+                                        borderRadius: BorderRadius.circular(30),
+                                       
+                                      ),
+                                      contentPadding: const EdgeInsets.symmetric(
+                                          horizontal: 10, vertical: 3),
+                                          isDense: true
+                                    ),
+                                  ),
+            
+                ),
+                    const SizedBox(width: 8),
+                  
+                  Container(
+              width: 50,
+              height: 40,
+              decoration: BoxDecoration(
+                color: Color(0xFF70b9be),
+                borderRadius: BorderRadius.circular(10),
+              ),
+              child: Center(
+                child: Image.asset(
+            'images/FontAwesomeIcons.png',
+            width: 25,
+            height: 25,
+            fit: BoxFit.contain,
+                ),
+              ),
+            )
+            ,
+                    ],),
+                
+                  
+               
+                  // Orders list
+                        
+                ],
+              ),
+            ),
+             Expanded(
+            child: Container(
+              color: Colors.white, // <-- لون الخلفية بين الكروت
+              child: ListView.builder(
+                itemCount: orders.length,
+                itemBuilder: (context, index) {
+                  final order = orders[index];
+                  return Container(
+                      color: Colors.white,
+                   margin: EdgeInsets.only(
+  top: index == 0 ? 0 : 10,
+  bottom: index == orders.length - 1 ? 0 : 10,
+),
+
+                  
+                    child: Column(
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.all(16.0),
+                          child: Column(
+                            children: [
+                              ListTile(
+                                contentPadding: EdgeInsets.zero,
+                                title: Text(
+                                  order['id']!,
+                                  style: TextStyle(fontWeight: FontWeight.bold),
+                                ),
+                                subtitle: Padding(
+                                  padding: const EdgeInsets.only(top: 4.0),
+                                  child: Text(order['date']!),
+                                ),
+                                trailing: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.end,
+                                  children: [
+                                    Container(
+                                      padding: EdgeInsets.symmetric(horizontal: 12, vertical: 4),
+                                      decoration: BoxDecoration(
+                                        color: getStatusColor(order['status']!),
+                                        borderRadius: BorderRadius.circular(20),
+                                      ),
+                                      child: Text(
+                                        order['status']!,
+                                        style: TextStyle(fontSize: 12),
+                                      ),
+                                    ),
+                                    Spacer(),
+                                    ElevatedButton(
+                                      onPressed: () {},
+                                      style: ElevatedButton.styleFrom(
+                                        backgroundColor: Colors.teal,
+                                        shape: StadiumBorder(),
+                                  
+                                      ),
+                                      child: Text("Details Order"),
+                                    )
+                                  ],
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                                                if (index != orders.length - 1)
+        SizedBox(
+          height: 30,
+          width: double.infinity,
+          child: Container(
+            color: Color(0xFFf4f4f4),
+            child: Padding(padding: EdgeInsets.all(20)),
+          ),)
+                      ],
+                    ),
+                  );
+                },
+              ),
+            ),
+          )
+          ],
+        ),
       ),
     );
   }
