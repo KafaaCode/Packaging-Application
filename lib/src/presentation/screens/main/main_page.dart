@@ -435,13 +435,25 @@ class MyOrdersPage extends StatelessWidget {
   Color getStatusColor(String status) {
     switch (status) {
       case 'Completed':
-        return Colors.purple.shade200;
+        return Color(0xFFc9d0e3);
       case 'Delivered':
-        return Colors.green.shade200;
+        return Color(0xFFbaffc8);
       case 'Pending':
-        return Colors.orange.shade200;
+        return Color(0xFFffe8ab);
       default:
         return Colors.grey;
+    }
+  }
+   Color getStatusTextColor(String status) {
+    switch (status) {
+      case 'Completed':
+        return Color(0xFF667dc0);
+      case 'Delivered':
+        return Color(0xFF2cdd50);
+      case 'Pending':
+        return Color(0xFFf68f18);
+      default:
+        return Color(0xFF667dc0);;
     }
   }
 
@@ -457,7 +469,7 @@ class MyOrdersPage extends StatelessWidget {
               padding: const EdgeInsets.all(16.0),
               child: Column(
                 children: [
-                  // Search + Filter
+                 
                   Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
@@ -526,72 +538,89 @@ class MyOrdersPage extends StatelessWidget {
                 
                   
                
-                  // Orders list
+            
                         
                 ],
               ),
             ),
              Expanded(
             child: Container(
-              color: Colors.white, // <-- لون الخلفية بين الكروت
+              color: Colors.white,
               child: ListView.builder(
                 itemCount: orders.length,
                 itemBuilder: (context, index) {
                   final order = orders[index];
                   return Container(
                       color: Colors.white,
-                   margin: EdgeInsets.only(
-  top: index == 0 ? 0 : 10,
-  bottom: index == orders.length - 1 ? 0 : 10,
-),
+             
 
                   
                     child: Column(
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.all(16.0),
-                          child: Column(
-                            children: [
-                              ListTile(
-                                contentPadding: EdgeInsets.zero,
-                                title: Text(
-                                  order['id']!,
-                                  style: TextStyle(fontWeight: FontWeight.bold),
-                                ),
-                                subtitle: Padding(
-                                  padding: const EdgeInsets.only(top: 4.0),
-                                  child: Text(order['date']!),
-                                ),
-                                trailing: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.end,
-                                  children: [
-                                    Container(
-                                      padding: EdgeInsets.symmetric(horizontal: 12, vertical: 4),
-                                      decoration: BoxDecoration(
-                                        color: getStatusColor(order['status']!),
-                                        borderRadius: BorderRadius.circular(20),
-                                      ),
-                                      child: Text(
-                                        order['status']!,
-                                        style: TextStyle(fontSize: 12),
-                                      ),
-                                    ),
-                                    Spacer(),
-                                    ElevatedButton(
-                                      onPressed: () {},
-                                      style: ElevatedButton.styleFrom(
-                                        backgroundColor: Colors.teal,
-                                        shape: StadiumBorder(),
-                                  
-                                      ),
-                                      child: Text("Details Order"),
-                                    )
-                                  ],
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                                            children: [
+                       Padding(
+  padding: const EdgeInsets.only(
+    left: 10.0, right: 10.0, top: 16.0, bottom: 10.0),
+  
+  child: Column(
+    mainAxisAlignment: MainAxisAlignment.center,
+    crossAxisAlignment: CrossAxisAlignment.start,
+    children: [
+      Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+        
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                order['id']!,
+                style: TextStyle(fontWeight: FontWeight.w900 ,color: Color(0xFF726c6c),fontSize: 14),
+              ),
+              SizedBox(height: 2),
+              Text(order['date']!,
+                  style: TextStyle(color: Color(0xFF726c6c), fontSize: 12,fontWeight: FontWeight.w600 )),
+            ],
+          ),
+
+        
+          Container(
+            padding: EdgeInsets.symmetric(horizontal: 15, vertical: 3),
+            decoration: BoxDecoration(
+              color: getStatusColor(order['status']!),
+              borderRadius: BorderRadius.circular(20),
+            ),
+            child: Text(
+
+              order['status']!,
+              style: TextStyle(fontSize: 12, color:getStatusTextColor(order['status']!),fontWeight: FontWeight.bold ),
+            ),
+          ),
+        ],
+      ),
+      SizedBox(height: 10),
+    InkWell(
+  onTap: () {
+   
+  },
+  child: Container(
+    padding: EdgeInsets.symmetric(horizontal: 15, vertical: 4), 
+    decoration: BoxDecoration(
+      color: Color(0xFF70b9be), 
+      borderRadius: BorderRadius.circular(30),
+    ),
+    child: Text(
+      "Details Order",
+      style: TextStyle(fontSize: 11, color: Colors.white,fontWeight: FontWeight.bold),
+    ),
+  ),
+),
+
+    ],
+  ),
+),
+
                                                 if (index != orders.length - 1)
         SizedBox(
           height: 30,
