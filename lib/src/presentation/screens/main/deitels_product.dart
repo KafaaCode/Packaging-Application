@@ -37,7 +37,9 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
       textDirection: TextDirection.ltr,
     );
 
-    tp.layout(maxWidth: MediaQuery.of(context).size.width - 32); // 16 left + 16 right padding
+    tp.layout(
+        maxWidth: MediaQuery.of(context).size.width -
+            32); // 16 left + 16 right padding
 
     setState(() {
       showReadMore = tp.didExceedMaxLines;
@@ -66,7 +68,10 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                   child: CircleAvatar(
                     backgroundColor: Colors.white,
                     child: IconButton(
-                      icon: const Icon(Icons.arrow_back ,color: Color(0xFF70b9be),),
+                      icon: const Icon(
+                        Icons.arrow_back,
+                        color: Color(0xFF70b9be),
+                      ),
                       onPressed: () {
                         Navigator.pop(context);
                       },
@@ -76,11 +81,10 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                 Positioned(
                   top: 10,
                   right: 10,
-                  child:     SvgPicture.asset(
-  'images/Group940.svg',
-  height: 50,
-),
-   
+                  child: SvgPicture.asset(
+                    'images/Group940.svg',
+                    height: 50,
+                  ),
                 ),
               ],
             ),
@@ -130,8 +134,7 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                                   trimMode: TrimMode.Line,
                                   trimCollapsedText: ' Read more',
                                   trimExpandedText: ' Read less',
-                                  style:
-                                      const TextStyle(color: Colors.grey),
+                                  style: const TextStyle(color: Colors.grey),
                                   moreStyle: const TextStyle(
                                     fontSize: 14,
                                     color: Colors.teal,
@@ -145,8 +148,7 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                                 )
                               : Text(
                                   fullDescription,
-                                  style:
-                                      const TextStyle(color: Colors.grey),
+                                  style: const TextStyle(color: Colors.grey),
                                 ),
                         ],
                       ),
@@ -172,8 +174,8 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                               ),
                               Text(
                                 "product is: $minQuantity",
-                                style:
-                                    const TextStyle(fontWeight: FontWeight.bold),
+                                style: const TextStyle(
+                                    fontWeight: FontWeight.bold),
                               ),
                             ],
                           ),

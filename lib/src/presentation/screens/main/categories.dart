@@ -6,10 +6,7 @@ class FilterPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    
-
     return Scaffold(
-    
       body: Container(
         color: Colors.white,
         child: Padding(
@@ -20,19 +17,24 @@ class FilterPage extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                       Text('User Name',style: TextStyle(color: Color(0xFF70b9be),fontWeight: FontWeight.bold,fontSize: 30
-),),
-              SvgPicture.asset(
-  'images/Group940.svg',
-  height: 50,
-),
-        
-              ],),
-
-SizedBox(height: 10,),
-
-              Center(
-                child: const Text(
+                  const Text(
+                    'User Name',
+                    style: TextStyle(
+                        color: Color(0xFF70b9be),
+                        fontWeight: FontWeight.bold,
+                        fontSize: 30),
+                  ),
+                  SvgPicture.asset(
+                    'images/Group940.svg',
+                    height: 50,
+                  ),
+                ],
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+              const Center(
+                child: Text(
                   'Welcome to Frip Trading',
                   style: TextStyle(
                     color: Color(0xFF70b9be),
@@ -41,63 +43,54 @@ SizedBox(height: 10,),
                 ),
               ),
               const SizedBox(height: 16),
-              Row(children: [
-                
-          Expanded(
-            child:
-TextField(
-                  
-                                style: const TextStyle(fontSize: 14),
-                                textAlignVertical: TextAlignVertical.center,
-                              
-                              decoration: InputDecoration(
-                                hintText: 'Search...',
-                                filled: true,
-    
-    fillColor: Color(0xFFF5F6FA),
-                                hintStyle: const TextStyle(color: Colors.grey,fontSize: 13),
-                               prefixIcon: const Icon(Icons.search ,color: Color(0xFFBDC1C8),),
-                                      prefixIconConstraints: const BoxConstraints(
-                        minWidth: 30,
-                        minHeight: 40,
+              Row(
+                children: [
+                  Expanded(
+                    child: TextField(
+                      style: const TextStyle(fontSize: 14),
+                      textAlignVertical: TextAlignVertical.center,
+                      decoration: InputDecoration(
+                          hintText: 'Search...',
+                          filled: true,
+                          fillColor: const Color(0xFFF5F6FA),
+                          hintStyle:
+                              const TextStyle(color: Colors.grey, fontSize: 13),
+                          prefixIcon: const Icon(
+                            Icons.search,
+                            color: Color(0xFFBDC1C8),
+                          ),
+                          prefixIconConstraints: const BoxConstraints(
+                            minWidth: 30,
+                            minHeight: 40,
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(30),
+                          ),
+                          contentPadding: const EdgeInsets.symmetric(
+                              horizontal: 10, vertical: 3),
+                          isDense: true),
+                    ),
+                  ),
+                  const SizedBox(width: 8),
+                  Container(
+                    width: 50,
+                    height: 40,
+                    decoration: BoxDecoration(
+                      color: const Color(0xFF70b9be),
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    child: Center(
+                      child: Image.asset(
+                        'images/FontAwesomeIcons.png',
+                        width: 25,
+                        height: 25,
+                        fit: BoxFit.contain,
                       ),
-                              
-                           
-                                focusedBorder: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(30),
-                                 
-                                ),
-                                contentPadding: const EdgeInsets.symmetric(
-                                    horizontal: 10, vertical: 3),
-                                    isDense: true
-                              ),
-                            ),
-
-          ),
-              const SizedBox(width: 8),
-            
-            Container(
-  width: 50,
-  height: 40,
-  decoration: BoxDecoration(
-    color: Color(0xFF70b9be),
-    borderRadius: BorderRadius.circular(10),
-  ),
-  child: Center(
-    child: Image.asset(
-      'images/FontAwesomeIcons.png',
-      width: 25,
-      height: 25,
-      fit: BoxFit.contain,
-    ),
-  ),
-)
-,
-              ],),
-    
-            
+                    ),
+                  ),
+                ],
+              ),
               const SizedBox(height: 16),
-        
               const Align(
                 alignment: Alignment.centerLeft,
                 child: Text(
@@ -110,50 +103,39 @@ TextField(
                 child: SingleChildScrollView(
                   child: Center(
                     child: Wrap(
-                       spacing: 10,
-                              runSpacing: 5,
-                      children: List.generate(   10,(i)
-                      {
-                               return SizedBox(
-                                 width: MediaQuery.of(context).size.width > 971
-                                        ? MediaQuery.of(context).size.width * 0.31
-                                        : MediaQuery.of(context).size.width > 800
-                                            ? MediaQuery.of(context).size.width *
-                                                0.47
-                                            : MediaQuery.of(context).size.width >
-                                                    621
-                                                ? MediaQuery.of(context)
-                                                        .size
-                                                        .width *
-                                                    0.30
-                                                : MediaQuery.of(context)
-                                                        .size
-                                                        .width *
-                                                    0.43,
-                                 child: Column(
+                      spacing: 10,
+                      runSpacing: 5,
+                      children: List.generate(10, (i) {
+                        return SizedBox(
+                          width: MediaQuery.of(context).size.width > 971
+                              ? MediaQuery.of(context).size.width * 0.31
+                              : MediaQuery.of(context).size.width > 800
+                                  ? MediaQuery.of(context).size.width * 0.47
+                                  : MediaQuery.of(context).size.width > 621
+                                      ? MediaQuery.of(context).size.width * 0.30
+                                      : MediaQuery.of(context).size.width *
+                                          0.43,
+                          child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               ClipRRect(
-                                
                                 borderRadius: BorderRadius.circular(12),
                                 child: Image.asset(
-                                 'images/Rectangle569.png',
-                              
-                                 fit: BoxFit.cover,
-                               ),
+                                  'images/Rectangle569.png',
+                                  fit: BoxFit.cover,
+                                ),
                               ),
                               const SizedBox(height: 6),
-                              Text(
+                              const Text(
                                 maxLines: 2,
                                 overflow: TextOverflow.ellipsis,
-                               'Product Name sample data',
-                                style: const TextStyle(fontSize: 14),
+                                'Product Name sample data',
+                                style: TextStyle(fontSize: 14),
                               ),
                             ],
                           ),
-                               );
-                      }
-                      ),
+                        );
+                      }),
                     ),
                   ),
                 ),
@@ -177,5 +159,3 @@ TextField(
     );
   }
 }
-
- 
