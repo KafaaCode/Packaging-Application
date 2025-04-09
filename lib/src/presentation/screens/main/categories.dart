@@ -6,155 +6,158 @@ class FilterPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Container(
-        color: Colors.white,
-        child: Padding(
-          padding: const EdgeInsets.all(16),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  const Text(
-                    'User Name',
-                    style: TextStyle(
-                        color: Color(0xFF70b9be),
-                        fontWeight: FontWeight.bold,
-                        fontSize: 30),
-                  ),
-                  SvgPicture.asset(
-                    'images/Group940.svg',
-                    height: 50,
-                  ),
-                ],
-              ),
-              const SizedBox(
-                height: 10,
-              ),
-              const Center(
-                child: Text(
-                  'Welcome to Frip Trading',
+    return Container(
+      color: Colors.white,
+      child: Padding(
+        padding: const EdgeInsets.all(16),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                const Text(
+                  'User Name',
                   style: TextStyle(
-                    color: Color(0xFF70b9be),
-                    fontSize: 18,
-                  ),
+                      color: Color(0xFF70b9be),
+                      fontWeight: FontWeight.bold,
+                      fontSize: 30),
+                ),
+                SvgPicture.asset(
+                  'assets/images/Group940.svg',
+                  height: 50,
+                  errorBuilder: (context, error, stackTrace) {
+                    return const SizedBox(
+                      width: 25,
+                      height: 50,
+                    );
+                  },
+                ),
+              ],
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            const Center(
+              child: Text(
+                'Welcome to Frip Trading',
+                style: TextStyle(
+                  color: Color(0xFF70b9be),
+                  fontSize: 18,
                 ),
               ),
-              const SizedBox(height: 16),
-              Row(
-                children: [
-                  Expanded(
-                    child: TextField(
-                      style: const TextStyle(fontSize: 14),
-                      textAlignVertical: TextAlignVertical.center,
-                      decoration: InputDecoration(
-                          hintText: 'Search...',
-                          filled: true,
-                          fillColor: const Color(0xFFF5F6FA),
-                          hintStyle:
-                              const TextStyle(color: Colors.grey, fontSize: 13),
-                          prefixIcon: const Icon(
-                            Icons.search,
-                            color: Color(0xFFBDC1C8),
-                          ),
-                          prefixIconConstraints: const BoxConstraints(
-                            minWidth: 30,
-                            minHeight: 40,
-                          ),
-                          focusedBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(30),
-                          ),
-                          contentPadding: const EdgeInsets.symmetric(
-                              horizontal: 10, vertical: 3),
-                          isDense: true),
-                    ),
+            ),
+            const SizedBox(height: 16),
+            Row(
+              children: [
+                Expanded(
+                  child: TextField(
+                    style: const TextStyle(fontSize: 14),
+                    textAlignVertical: TextAlignVertical.center,
+                    decoration: InputDecoration(
+                        hintText: 'Search...',
+                        filled: true,
+                        fillColor: const Color(0xFFF5F6FA),
+                        hintStyle:
+                            const TextStyle(color: Colors.grey, fontSize: 13),
+                        prefixIcon: const Icon(
+                          Icons.search,
+                          color: Color(0xFFBDC1C8),
+                        ),
+                        prefixIconConstraints: const BoxConstraints(
+                          minWidth: 30,
+                          minHeight: 40,
+                        ),
+                        focusedBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(30),
+                        ),
+                        contentPadding: const EdgeInsets.symmetric(
+                            horizontal: 10, vertical: 3),
+                        isDense: true),
                   ),
-                  const SizedBox(width: 8),
-                  Container(
-                    width: 50,
-                    height: 40,
-                    decoration: BoxDecoration(
-                      color: const Color(0xFF70b9be),
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    child: Center(
-                      child: Image.asset(
-                        'images/FontAwesomeIcons.png',
-                        width: 25,
-                        height: 25,
-                        fit: BoxFit.contain,
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-              const SizedBox(height: 16),
-              const Align(
-                alignment: Alignment.centerLeft,
-                child: Text(
-                  'Product categories',
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
                 ),
-              ),
-              const SizedBox(height: 8),
-              Expanded(
-                child: SingleChildScrollView(
+                const SizedBox(width: 8),
+                Container(
+                  width: 50,
+                  height: 40,
+                  decoration: BoxDecoration(
+                    color: const Color(0xFF70b9be),
+                    borderRadius: BorderRadius.circular(10),
+                  ),
                   child: Center(
-                    child: Wrap(
-                      spacing: 10,
-                      runSpacing: 5,
-                      children: List.generate(10, (i) {
-                        return SizedBox(
-                          width: MediaQuery.of(context).size.width > 971
-                              ? MediaQuery.of(context).size.width * 0.31
-                              : MediaQuery.of(context).size.width > 800
-                                  ? MediaQuery.of(context).size.width * 0.47
-                                  : MediaQuery.of(context).size.width > 621
-                                      ? MediaQuery.of(context).size.width * 0.30
-                                      : MediaQuery.of(context).size.width *
-                                          0.43,
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              ClipRRect(
-                                borderRadius: BorderRadius.circular(12),
-                                child: Image.asset(
-                                  'images/Rectangle569.png',
-                                  fit: BoxFit.cover,
-                                ),
-                              ),
-                              const SizedBox(height: 6),
-                              const Text(
-                                maxLines: 2,
-                                overflow: TextOverflow.ellipsis,
-                                'Product Name sample data',
-                                style: TextStyle(fontSize: 14),
-                              ),
-                            ],
-                          ),
+                    child: Image.asset(
+                      'assets/images/FontAwesomeIcons.png',
+                      width: 25,
+                      height: 25,
+                      fit: BoxFit.contain,
+                      errorBuilder: (context, error, stackTrace) {
+                        return const SizedBox(
+                          width: 25,
+                          height: 25,
                         );
-                      }),
+                      },
                     ),
                   ),
                 ),
-              )
-            ],
-          ),
+              ],
+            ),
+            const SizedBox(height: 16),
+            const Align(
+              alignment: Alignment.centerLeft,
+              child: Text(
+                'Product categories',
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+              ),
+            ),
+            const SizedBox(height: 8),
+            Expanded(
+              child: SingleChildScrollView(
+                child: Center(
+                  child: Wrap(
+                    spacing: 10,
+                    runSpacing: 5,
+                    children: List.generate(10, (i) {
+                      return SizedBox(
+                        width: MediaQuery.of(context).size.width > 971
+                            ? MediaQuery.of(context).size.width * 0.31
+                            : MediaQuery.of(context).size.width > 800
+                                ? MediaQuery.of(context).size.width * 0.47
+                                : MediaQuery.of(context).size.width > 621
+                                    ? MediaQuery.of(context).size.width * 0.30
+                                    : MediaQuery.of(context).size.width * 0.43,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            ClipRRect(
+                              borderRadius: BorderRadius.circular(12),
+                              child: Image.asset(
+                                'assets/images/Rectangle569.png',
+                                fit: BoxFit.cover,
+                                errorBuilder: (context, error, stackTrace) {
+                                  return const SizedBox(
+                                    width: 25,
+                                    height: 25,
+                                  );
+                                },
+                              ),
+                            ),
+                            const SizedBox(height: 6),
+                            const Text(
+                              maxLines: 2,
+                              overflow: TextOverflow.ellipsis,
+                              'Product Name sample data',
+                              style: TextStyle(fontSize: 14),
+                            ),
+                          ],
+                        ),
+                      );
+                    }),
+                  ),
+                ),
+              ),
+            )
+          ],
         ),
-      ),
-      bottomNavigationBar: BottomNavigationBar(
-        currentIndex: 0,
-        selectedItemColor: Colors.teal,
-        unselectedItemColor: Colors.grey,
-        items: const [
-          BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.shopping_cart), label: 'Cart'),
-          BottomNavigationBarItem(icon: Icon(Icons.support), label: 'Support'),
-          BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Profile'),
-        ],
       ),
     );
   }
