@@ -6,16 +6,18 @@ class TextFieldAuth extends StatefulWidget {
   final String? hintText;
   final TextEditingController? controller;
   final bool? isPassword;
-  final String svgIcon; // تم تغيير نوع الأيقونة لاستقبال مسار SVG
-
-  const TextFieldAuth({
-    super.key,
-    this.labelText,
-    this.hintText,
-    this.controller,
-    this.isPassword,
-    required this.svgIcon, // أصبحت إلزامية
-  });
+  final void Function(String)? onChanged;
+  final String svgIcon;
+  final Color? colorIcon;
+  const TextFieldAuth(
+      {super.key,
+      this.labelText,
+      this.hintText,
+      this.controller,
+      this.isPassword,
+      required this.svgIcon,
+      this.colorIcon = const Color.fromRGBO(194, 194, 194, 1),
+      this.onChanged});
 
   @override
   State<TextFieldAuth> createState() => _TextFieldAuthState();
@@ -34,25 +36,28 @@ class _TextFieldAuthState extends State<TextFieldAuth> {
   Widget build(BuildContext context) {
     ThemeData theme = Theme.of(context);
     return TextField(
+      onChanged: widget.onChanged,
       controller: widget.controller,
+      
       obscureText: widget.isPassword == true ? _obscureText : false,
       decoration: InputDecoration(
+        
         contentPadding:
             const EdgeInsets.symmetric(vertical: 16, horizontal: 20),
         labelText: widget.labelText,
         hintText: widget.hintText,
         hintStyle: theme.textTheme.bodyMedium?.copyWith(
-          color: Colors.grey[600],
+          color: const Color.fromRGBO(0, 0, 0, 0.5),
         ),
         labelStyle: theme.textTheme.bodyMedium?.copyWith(
-          color: Colors.grey[600],
+          color: const Color.fromRGBO(0, 0, 0, 0.5),
         ),
         suffixIcon: Padding(
           padding: const EdgeInsets.all(15.0),
           child: SvgPicture.asset(
             widget.svgIcon,
             colorFilter: ColorFilter.mode(
-              Colors.black.withOpacity(0.5),
+              widget.colorIcon ?? theme.primaryColor,
               BlendMode.srcIn,
             ),
           ),

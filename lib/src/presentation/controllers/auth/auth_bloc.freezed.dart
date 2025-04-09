@@ -19,24 +19,27 @@ mixin _$AuthState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
+    required TResult Function(User user) create,
     required TResult Function() loadInProgress,
-    required TResult Function() loaded,
+    required TResult Function(User user) loaded,
     required TResult Function(String message) error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
+    TResult? Function(User user)? create,
     TResult? Function()? loadInProgress,
-    TResult? Function()? loaded,
+    TResult? Function(User user)? loaded,
     TResult? Function(String message)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
+    TResult Function(User user)? create,
     TResult Function()? loadInProgress,
-    TResult Function()? loaded,
+    TResult Function(User user)? loaded,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) =>
@@ -44,6 +47,7 @@ mixin _$AuthState {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
+    required TResult Function(_Create value) create,
     required TResult Function(_LoadInProgress value) loadInProgress,
     required TResult Function(_Loaded value) loaded,
     required TResult Function(_Error value) error,
@@ -52,6 +56,7 @@ mixin _$AuthState {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
+    TResult? Function(_Create value)? create,
     TResult? Function(_LoadInProgress value)? loadInProgress,
     TResult? Function(_Loaded value)? loaded,
     TResult? Function(_Error value)? error,
@@ -60,6 +65,7 @@ mixin _$AuthState {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
+    TResult Function(_Create value)? create,
     TResult Function(_LoadInProgress value)? loadInProgress,
     TResult Function(_Loaded value)? loaded,
     TResult Function(_Error value)? error,
@@ -130,8 +136,9 @@ class _$InitialImpl implements _Initial {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
+    required TResult Function(User user) create,
     required TResult Function() loadInProgress,
-    required TResult Function() loaded,
+    required TResult Function(User user) loaded,
     required TResult Function(String message) error,
   }) {
     return initial();
@@ -141,8 +148,9 @@ class _$InitialImpl implements _Initial {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
+    TResult? Function(User user)? create,
     TResult? Function()? loadInProgress,
-    TResult? Function()? loaded,
+    TResult? Function(User user)? loaded,
     TResult? Function(String message)? error,
   }) {
     return initial?.call();
@@ -152,8 +160,9 @@ class _$InitialImpl implements _Initial {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
+    TResult Function(User user)? create,
     TResult Function()? loadInProgress,
-    TResult Function()? loaded,
+    TResult Function(User user)? loaded,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) {
@@ -167,6 +176,7 @@ class _$InitialImpl implements _Initial {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
+    required TResult Function(_Create value) create,
     required TResult Function(_LoadInProgress value) loadInProgress,
     required TResult Function(_Loaded value) loaded,
     required TResult Function(_Error value) error,
@@ -178,6 +188,7 @@ class _$InitialImpl implements _Initial {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
+    TResult? Function(_Create value)? create,
     TResult? Function(_LoadInProgress value)? loadInProgress,
     TResult? Function(_Loaded value)? loaded,
     TResult? Function(_Error value)? error,
@@ -189,6 +200,7 @@ class _$InitialImpl implements _Initial {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
+    TResult Function(_Create value)? create,
     TResult Function(_LoadInProgress value)? loadInProgress,
     TResult Function(_Loaded value)? loaded,
     TResult Function(_Error value)? error,
@@ -203,6 +215,176 @@ class _$InitialImpl implements _Initial {
 
 abstract class _Initial implements AuthState {
   const factory _Initial() = _$InitialImpl;
+}
+
+/// @nodoc
+abstract class _$$CreateImplCopyWith<$Res> {
+  factory _$$CreateImplCopyWith(
+          _$CreateImpl value, $Res Function(_$CreateImpl) then) =
+      __$$CreateImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({User user});
+
+  $UserCopyWith<$Res> get user;
+}
+
+/// @nodoc
+class __$$CreateImplCopyWithImpl<$Res>
+    extends _$AuthStateCopyWithImpl<$Res, _$CreateImpl>
+    implements _$$CreateImplCopyWith<$Res> {
+  __$$CreateImplCopyWithImpl(
+      _$CreateImpl _value, $Res Function(_$CreateImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of AuthState
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? user = null,
+  }) {
+    return _then(_$CreateImpl(
+      user: null == user
+          ? _value.user
+          : user // ignore: cast_nullable_to_non_nullable
+              as User,
+    ));
+  }
+
+  /// Create a copy of AuthState
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $UserCopyWith<$Res> get user {
+    return $UserCopyWith<$Res>(_value.user, (value) {
+      return _then(_value.copyWith(user: value));
+    });
+  }
+}
+
+/// @nodoc
+
+class _$CreateImpl implements _Create {
+  const _$CreateImpl({required this.user});
+
+  @override
+  final User user;
+
+  @override
+  String toString() {
+    return 'AuthState.create(user: $user)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$CreateImpl &&
+            (identical(other.user, user) || other.user == user));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, user);
+
+  /// Create a copy of AuthState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$CreateImplCopyWith<_$CreateImpl> get copyWith =>
+      __$$CreateImplCopyWithImpl<_$CreateImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function(User user) create,
+    required TResult Function() loadInProgress,
+    required TResult Function(User user) loaded,
+    required TResult Function(String message) error,
+  }) {
+    return create(user);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function(User user)? create,
+    TResult? Function()? loadInProgress,
+    TResult? Function(User user)? loaded,
+    TResult? Function(String message)? error,
+  }) {
+    return create?.call(user);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function(User user)? create,
+    TResult Function()? loadInProgress,
+    TResult Function(User user)? loaded,
+    TResult Function(String message)? error,
+    required TResult orElse(),
+  }) {
+    if (create != null) {
+      return create(user);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_Create value) create,
+    required TResult Function(_LoadInProgress value) loadInProgress,
+    required TResult Function(_Loaded value) loaded,
+    required TResult Function(_Error value) error,
+  }) {
+    return create(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Create value)? create,
+    TResult? Function(_LoadInProgress value)? loadInProgress,
+    TResult? Function(_Loaded value)? loaded,
+    TResult? Function(_Error value)? error,
+  }) {
+    return create?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_Create value)? create,
+    TResult Function(_LoadInProgress value)? loadInProgress,
+    TResult Function(_Loaded value)? loaded,
+    TResult Function(_Error value)? error,
+    required TResult orElse(),
+  }) {
+    if (create != null) {
+      return create(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _Create implements AuthState {
+  const factory _Create({required final User user}) = _$CreateImpl;
+
+  User get user;
+
+  /// Create a copy of AuthState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$CreateImplCopyWith<_$CreateImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -247,8 +429,9 @@ class _$LoadInProgressImpl implements _LoadInProgress {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
+    required TResult Function(User user) create,
     required TResult Function() loadInProgress,
-    required TResult Function() loaded,
+    required TResult Function(User user) loaded,
     required TResult Function(String message) error,
   }) {
     return loadInProgress();
@@ -258,8 +441,9 @@ class _$LoadInProgressImpl implements _LoadInProgress {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
+    TResult? Function(User user)? create,
     TResult? Function()? loadInProgress,
-    TResult? Function()? loaded,
+    TResult? Function(User user)? loaded,
     TResult? Function(String message)? error,
   }) {
     return loadInProgress?.call();
@@ -269,8 +453,9 @@ class _$LoadInProgressImpl implements _LoadInProgress {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
+    TResult Function(User user)? create,
     TResult Function()? loadInProgress,
-    TResult Function()? loaded,
+    TResult Function(User user)? loaded,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) {
@@ -284,6 +469,7 @@ class _$LoadInProgressImpl implements _LoadInProgress {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
+    required TResult Function(_Create value) create,
     required TResult Function(_LoadInProgress value) loadInProgress,
     required TResult Function(_Loaded value) loaded,
     required TResult Function(_Error value) error,
@@ -295,6 +481,7 @@ class _$LoadInProgressImpl implements _LoadInProgress {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
+    TResult? Function(_Create value)? create,
     TResult? Function(_LoadInProgress value)? loadInProgress,
     TResult? Function(_Loaded value)? loaded,
     TResult? Function(_Error value)? error,
@@ -306,6 +493,7 @@ class _$LoadInProgressImpl implements _LoadInProgress {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
+    TResult Function(_Create value)? create,
     TResult Function(_LoadInProgress value)? loadInProgress,
     TResult Function(_Loaded value)? loaded,
     TResult Function(_Error value)? error,
@@ -327,6 +515,10 @@ abstract class _$$LoadedImplCopyWith<$Res> {
   factory _$$LoadedImplCopyWith(
           _$LoadedImpl value, $Res Function(_$LoadedImpl) then) =
       __$$LoadedImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({User user});
+
+  $UserCopyWith<$Res> get user;
 }
 
 /// @nodoc
@@ -339,60 +531,98 @@ class __$$LoadedImplCopyWithImpl<$Res>
 
   /// Create a copy of AuthState
   /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? user = null,
+  }) {
+    return _then(_$LoadedImpl(
+      user: null == user
+          ? _value.user
+          : user // ignore: cast_nullable_to_non_nullable
+              as User,
+    ));
+  }
+
+  /// Create a copy of AuthState
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $UserCopyWith<$Res> get user {
+    return $UserCopyWith<$Res>(_value.user, (value) {
+      return _then(_value.copyWith(user: value));
+    });
+  }
 }
 
 /// @nodoc
 
 class _$LoadedImpl implements _Loaded {
-  const _$LoadedImpl();
+  const _$LoadedImpl({required this.user});
+
+  @override
+  final User user;
 
   @override
   String toString() {
-    return 'AuthState.loaded()';
+    return 'AuthState.loaded(user: $user)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$LoadedImpl);
+        (other.runtimeType == runtimeType &&
+            other is _$LoadedImpl &&
+            (identical(other.user, user) || other.user == user));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, user);
+
+  /// Create a copy of AuthState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$LoadedImplCopyWith<_$LoadedImpl> get copyWith =>
+      __$$LoadedImplCopyWithImpl<_$LoadedImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
+    required TResult Function(User user) create,
     required TResult Function() loadInProgress,
-    required TResult Function() loaded,
+    required TResult Function(User user) loaded,
     required TResult Function(String message) error,
   }) {
-    return loaded();
+    return loaded(user);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
+    TResult? Function(User user)? create,
     TResult? Function()? loadInProgress,
-    TResult? Function()? loaded,
+    TResult? Function(User user)? loaded,
     TResult? Function(String message)? error,
   }) {
-    return loaded?.call();
+    return loaded?.call(user);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
+    TResult Function(User user)? create,
     TResult Function()? loadInProgress,
-    TResult Function()? loaded,
+    TResult Function(User user)? loaded,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) {
     if (loaded != null) {
-      return loaded();
+      return loaded(user);
     }
     return orElse();
   }
@@ -401,6 +631,7 @@ class _$LoadedImpl implements _Loaded {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
+    required TResult Function(_Create value) create,
     required TResult Function(_LoadInProgress value) loadInProgress,
     required TResult Function(_Loaded value) loaded,
     required TResult Function(_Error value) error,
@@ -412,6 +643,7 @@ class _$LoadedImpl implements _Loaded {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
+    TResult? Function(_Create value)? create,
     TResult? Function(_LoadInProgress value)? loadInProgress,
     TResult? Function(_Loaded value)? loaded,
     TResult? Function(_Error value)? error,
@@ -423,6 +655,7 @@ class _$LoadedImpl implements _Loaded {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
+    TResult Function(_Create value)? create,
     TResult Function(_LoadInProgress value)? loadInProgress,
     TResult Function(_Loaded value)? loaded,
     TResult Function(_Error value)? error,
@@ -436,7 +669,15 @@ class _$LoadedImpl implements _Loaded {
 }
 
 abstract class _Loaded implements AuthState {
-  const factory _Loaded() = _$LoadedImpl;
+  const factory _Loaded({required final User user}) = _$LoadedImpl;
+
+  User get user;
+
+  /// Create a copy of AuthState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$LoadedImplCopyWith<_$LoadedImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -508,8 +749,9 @@ class _$ErrorImpl implements _Error {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
+    required TResult Function(User user) create,
     required TResult Function() loadInProgress,
-    required TResult Function() loaded,
+    required TResult Function(User user) loaded,
     required TResult Function(String message) error,
   }) {
     return error(message);
@@ -519,8 +761,9 @@ class _$ErrorImpl implements _Error {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
+    TResult? Function(User user)? create,
     TResult? Function()? loadInProgress,
-    TResult? Function()? loaded,
+    TResult? Function(User user)? loaded,
     TResult? Function(String message)? error,
   }) {
     return error?.call(message);
@@ -530,8 +773,9 @@ class _$ErrorImpl implements _Error {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
+    TResult Function(User user)? create,
     TResult Function()? loadInProgress,
-    TResult Function()? loaded,
+    TResult Function(User user)? loaded,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) {
@@ -545,6 +789,7 @@ class _$ErrorImpl implements _Error {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
+    required TResult Function(_Create value) create,
     required TResult Function(_LoadInProgress value) loadInProgress,
     required TResult Function(_Loaded value) loaded,
     required TResult Function(_Error value) error,
@@ -556,6 +801,7 @@ class _$ErrorImpl implements _Error {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
+    TResult? Function(_Create value)? create,
     TResult? Function(_LoadInProgress value)? loadInProgress,
     TResult? Function(_Loaded value)? loaded,
     TResult? Function(_Error value)? error,
@@ -567,6 +813,7 @@ class _$ErrorImpl implements _Error {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
+    TResult Function(_Create value)? create,
     TResult Function(_LoadInProgress value)? loadInProgress,
     TResult Function(_Loaded value)? loaded,
     TResult Function(_Error value)? error,
@@ -596,10 +843,9 @@ mixin _$AuthEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() checkAuth,
-    required TResult Function(String email, String password) login,
-    required TResult Function(String name, String email, String password,
-            String gander, String phoneNumber, String region)
-        register,
+    required TResult Function(User user) createEvent,
+    required TResult Function(User user) login,
+    required TResult Function(User user) register,
     required TResult Function() logout,
     required TResult Function(String name, String email, String gander,
             String phoneNumber, String region)
@@ -611,10 +857,9 @@ mixin _$AuthEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? checkAuth,
-    TResult? Function(String email, String password)? login,
-    TResult? Function(String name, String email, String password, String gander,
-            String phoneNumber, String region)?
-        register,
+    TResult? Function(User user)? createEvent,
+    TResult? Function(User user)? login,
+    TResult? Function(User user)? register,
     TResult? Function()? logout,
     TResult? Function(String name, String email, String gander,
             String phoneNumber, String region)?
@@ -625,10 +870,9 @@ mixin _$AuthEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? checkAuth,
-    TResult Function(String email, String password)? login,
-    TResult Function(String name, String email, String password, String gander,
-            String phoneNumber, String region)?
-        register,
+    TResult Function(User user)? createEvent,
+    TResult Function(User user)? login,
+    TResult Function(User user)? register,
     TResult Function()? logout,
     TResult Function(String name, String email, String gander,
             String phoneNumber, String region)?
@@ -640,6 +884,7 @@ mixin _$AuthEvent {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_CheckAuth value) checkAuth,
+    required TResult Function(_CreateEvent value) createEvent,
     required TResult Function(_Login value) login,
     required TResult Function(_Register value) register,
     required TResult Function(_Logout value) logout,
@@ -650,6 +895,7 @@ mixin _$AuthEvent {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_CheckAuth value)? checkAuth,
+    TResult? Function(_CreateEvent value)? createEvent,
     TResult? Function(_Login value)? login,
     TResult? Function(_Register value)? register,
     TResult? Function(_Logout value)? logout,
@@ -660,6 +906,7 @@ mixin _$AuthEvent {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_CheckAuth value)? checkAuth,
+    TResult Function(_CreateEvent value)? createEvent,
     TResult Function(_Login value)? login,
     TResult Function(_Register value)? register,
     TResult Function(_Logout value)? logout,
@@ -732,10 +979,9 @@ class _$CheckAuthImpl implements _CheckAuth {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() checkAuth,
-    required TResult Function(String email, String password) login,
-    required TResult Function(String name, String email, String password,
-            String gander, String phoneNumber, String region)
-        register,
+    required TResult Function(User user) createEvent,
+    required TResult Function(User user) login,
+    required TResult Function(User user) register,
     required TResult Function() logout,
     required TResult Function(String name, String email, String gander,
             String phoneNumber, String region)
@@ -750,10 +996,9 @@ class _$CheckAuthImpl implements _CheckAuth {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? checkAuth,
-    TResult? Function(String email, String password)? login,
-    TResult? Function(String name, String email, String password, String gander,
-            String phoneNumber, String region)?
-        register,
+    TResult? Function(User user)? createEvent,
+    TResult? Function(User user)? login,
+    TResult? Function(User user)? register,
     TResult? Function()? logout,
     TResult? Function(String name, String email, String gander,
             String phoneNumber, String region)?
@@ -767,10 +1012,9 @@ class _$CheckAuthImpl implements _CheckAuth {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? checkAuth,
-    TResult Function(String email, String password)? login,
-    TResult Function(String name, String email, String password, String gander,
-            String phoneNumber, String region)?
-        register,
+    TResult Function(User user)? createEvent,
+    TResult Function(User user)? login,
+    TResult Function(User user)? register,
     TResult Function()? logout,
     TResult Function(String name, String email, String gander,
             String phoneNumber, String region)?
@@ -788,6 +1032,7 @@ class _$CheckAuthImpl implements _CheckAuth {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_CheckAuth value) checkAuth,
+    required TResult Function(_CreateEvent value) createEvent,
     required TResult Function(_Login value) login,
     required TResult Function(_Register value) register,
     required TResult Function(_Logout value) logout,
@@ -801,6 +1046,7 @@ class _$CheckAuthImpl implements _CheckAuth {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_CheckAuth value)? checkAuth,
+    TResult? Function(_CreateEvent value)? createEvent,
     TResult? Function(_Login value)? login,
     TResult? Function(_Register value)? register,
     TResult? Function(_Logout value)? logout,
@@ -814,6 +1060,7 @@ class _$CheckAuthImpl implements _CheckAuth {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_CheckAuth value)? checkAuth,
+    TResult Function(_CreateEvent value)? createEvent,
     TResult Function(_Login value)? login,
     TResult Function(_Register value)? register,
     TResult Function(_Logout value)? logout,
@@ -833,12 +1080,203 @@ abstract class _CheckAuth implements AuthEvent {
 }
 
 /// @nodoc
+abstract class _$$CreateEventImplCopyWith<$Res> {
+  factory _$$CreateEventImplCopyWith(
+          _$CreateEventImpl value, $Res Function(_$CreateEventImpl) then) =
+      __$$CreateEventImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({User user});
+
+  $UserCopyWith<$Res> get user;
+}
+
+/// @nodoc
+class __$$CreateEventImplCopyWithImpl<$Res>
+    extends _$AuthEventCopyWithImpl<$Res, _$CreateEventImpl>
+    implements _$$CreateEventImplCopyWith<$Res> {
+  __$$CreateEventImplCopyWithImpl(
+      _$CreateEventImpl _value, $Res Function(_$CreateEventImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of AuthEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? user = null,
+  }) {
+    return _then(_$CreateEventImpl(
+      user: null == user
+          ? _value.user
+          : user // ignore: cast_nullable_to_non_nullable
+              as User,
+    ));
+  }
+
+  /// Create a copy of AuthEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $UserCopyWith<$Res> get user {
+    return $UserCopyWith<$Res>(_value.user, (value) {
+      return _then(_value.copyWith(user: value));
+    });
+  }
+}
+
+/// @nodoc
+
+class _$CreateEventImpl implements _CreateEvent {
+  const _$CreateEventImpl({required this.user});
+
+  @override
+  final User user;
+
+  @override
+  String toString() {
+    return 'AuthEvent.createEvent(user: $user)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$CreateEventImpl &&
+            (identical(other.user, user) || other.user == user));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, user);
+
+  /// Create a copy of AuthEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$CreateEventImplCopyWith<_$CreateEventImpl> get copyWith =>
+      __$$CreateEventImplCopyWithImpl<_$CreateEventImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() checkAuth,
+    required TResult Function(User user) createEvent,
+    required TResult Function(User user) login,
+    required TResult Function(User user) register,
+    required TResult Function() logout,
+    required TResult Function(String name, String email, String gander,
+            String phoneNumber, String region)
+        updateProfile,
+    required TResult Function(String oldPassword, String newPassword)
+        updatePassword,
+  }) {
+    return createEvent(user);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? checkAuth,
+    TResult? Function(User user)? createEvent,
+    TResult? Function(User user)? login,
+    TResult? Function(User user)? register,
+    TResult? Function()? logout,
+    TResult? Function(String name, String email, String gander,
+            String phoneNumber, String region)?
+        updateProfile,
+    TResult? Function(String oldPassword, String newPassword)? updatePassword,
+  }) {
+    return createEvent?.call(user);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? checkAuth,
+    TResult Function(User user)? createEvent,
+    TResult Function(User user)? login,
+    TResult Function(User user)? register,
+    TResult Function()? logout,
+    TResult Function(String name, String email, String gander,
+            String phoneNumber, String region)?
+        updateProfile,
+    TResult Function(String oldPassword, String newPassword)? updatePassword,
+    required TResult orElse(),
+  }) {
+    if (createEvent != null) {
+      return createEvent(user);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_CheckAuth value) checkAuth,
+    required TResult Function(_CreateEvent value) createEvent,
+    required TResult Function(_Login value) login,
+    required TResult Function(_Register value) register,
+    required TResult Function(_Logout value) logout,
+    required TResult Function(_UpdateProfile value) updateProfile,
+    required TResult Function(_UpdatePassword value) updatePassword,
+  }) {
+    return createEvent(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_CheckAuth value)? checkAuth,
+    TResult? Function(_CreateEvent value)? createEvent,
+    TResult? Function(_Login value)? login,
+    TResult? Function(_Register value)? register,
+    TResult? Function(_Logout value)? logout,
+    TResult? Function(_UpdateProfile value)? updateProfile,
+    TResult? Function(_UpdatePassword value)? updatePassword,
+  }) {
+    return createEvent?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_CheckAuth value)? checkAuth,
+    TResult Function(_CreateEvent value)? createEvent,
+    TResult Function(_Login value)? login,
+    TResult Function(_Register value)? register,
+    TResult Function(_Logout value)? logout,
+    TResult Function(_UpdateProfile value)? updateProfile,
+    TResult Function(_UpdatePassword value)? updatePassword,
+    required TResult orElse(),
+  }) {
+    if (createEvent != null) {
+      return createEvent(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _CreateEvent implements AuthEvent {
+  const factory _CreateEvent({required final User user}) = _$CreateEventImpl;
+
+  User get user;
+
+  /// Create a copy of AuthEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$CreateEventImplCopyWith<_$CreateEventImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
 abstract class _$$LoginImplCopyWith<$Res> {
   factory _$$LoginImplCopyWith(
           _$LoginImpl value, $Res Function(_$LoginImpl) then) =
       __$$LoginImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({String email, String password});
+  $Res call({User user});
+
+  $UserCopyWith<$Res> get user;
 }
 
 /// @nodoc
@@ -854,35 +1292,38 @@ class __$$LoginImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? email = null,
-    Object? password = null,
+    Object? user = null,
   }) {
     return _then(_$LoginImpl(
-      email: null == email
-          ? _value.email
-          : email // ignore: cast_nullable_to_non_nullable
-              as String,
-      password: null == password
-          ? _value.password
-          : password // ignore: cast_nullable_to_non_nullable
-              as String,
+      user: null == user
+          ? _value.user
+          : user // ignore: cast_nullable_to_non_nullable
+              as User,
     ));
+  }
+
+  /// Create a copy of AuthEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $UserCopyWith<$Res> get user {
+    return $UserCopyWith<$Res>(_value.user, (value) {
+      return _then(_value.copyWith(user: value));
+    });
   }
 }
 
 /// @nodoc
 
 class _$LoginImpl implements _Login {
-  const _$LoginImpl({required this.email, required this.password});
+  const _$LoginImpl({required this.user});
 
   @override
-  final String email;
-  @override
-  final String password;
+  final User user;
 
   @override
   String toString() {
-    return 'AuthEvent.login(email: $email, password: $password)';
+    return 'AuthEvent.login(user: $user)';
   }
 
   @override
@@ -890,13 +1331,11 @@ class _$LoginImpl implements _Login {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$LoginImpl &&
-            (identical(other.email, email) || other.email == email) &&
-            (identical(other.password, password) ||
-                other.password == password));
+            (identical(other.user, user) || other.user == user));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, email, password);
+  int get hashCode => Object.hash(runtimeType, user);
 
   /// Create a copy of AuthEvent
   /// with the given fields replaced by the non-null parameter values.
@@ -910,10 +1349,9 @@ class _$LoginImpl implements _Login {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() checkAuth,
-    required TResult Function(String email, String password) login,
-    required TResult Function(String name, String email, String password,
-            String gander, String phoneNumber, String region)
-        register,
+    required TResult Function(User user) createEvent,
+    required TResult Function(User user) login,
+    required TResult Function(User user) register,
     required TResult Function() logout,
     required TResult Function(String name, String email, String gander,
             String phoneNumber, String region)
@@ -921,34 +1359,32 @@ class _$LoginImpl implements _Login {
     required TResult Function(String oldPassword, String newPassword)
         updatePassword,
   }) {
-    return login(email, password);
+    return login(user);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? checkAuth,
-    TResult? Function(String email, String password)? login,
-    TResult? Function(String name, String email, String password, String gander,
-            String phoneNumber, String region)?
-        register,
+    TResult? Function(User user)? createEvent,
+    TResult? Function(User user)? login,
+    TResult? Function(User user)? register,
     TResult? Function()? logout,
     TResult? Function(String name, String email, String gander,
             String phoneNumber, String region)?
         updateProfile,
     TResult? Function(String oldPassword, String newPassword)? updatePassword,
   }) {
-    return login?.call(email, password);
+    return login?.call(user);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? checkAuth,
-    TResult Function(String email, String password)? login,
-    TResult Function(String name, String email, String password, String gander,
-            String phoneNumber, String region)?
-        register,
+    TResult Function(User user)? createEvent,
+    TResult Function(User user)? login,
+    TResult Function(User user)? register,
     TResult Function()? logout,
     TResult Function(String name, String email, String gander,
             String phoneNumber, String region)?
@@ -957,7 +1393,7 @@ class _$LoginImpl implements _Login {
     required TResult orElse(),
   }) {
     if (login != null) {
-      return login(email, password);
+      return login(user);
     }
     return orElse();
   }
@@ -966,6 +1402,7 @@ class _$LoginImpl implements _Login {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_CheckAuth value) checkAuth,
+    required TResult Function(_CreateEvent value) createEvent,
     required TResult Function(_Login value) login,
     required TResult Function(_Register value) register,
     required TResult Function(_Logout value) logout,
@@ -979,6 +1416,7 @@ class _$LoginImpl implements _Login {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_CheckAuth value)? checkAuth,
+    TResult? Function(_CreateEvent value)? createEvent,
     TResult? Function(_Login value)? login,
     TResult? Function(_Register value)? register,
     TResult? Function(_Logout value)? logout,
@@ -992,6 +1430,7 @@ class _$LoginImpl implements _Login {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_CheckAuth value)? checkAuth,
+    TResult Function(_CreateEvent value)? createEvent,
     TResult Function(_Login value)? login,
     TResult Function(_Register value)? register,
     TResult Function(_Logout value)? logout,
@@ -1007,12 +1446,9 @@ class _$LoginImpl implements _Login {
 }
 
 abstract class _Login implements AuthEvent {
-  const factory _Login(
-      {required final String email,
-      required final String password}) = _$LoginImpl;
+  const factory _Login({required final User user}) = _$LoginImpl;
 
-  String get email;
-  String get password;
+  User get user;
 
   /// Create a copy of AuthEvent
   /// with the given fields replaced by the non-null parameter values.
@@ -1027,13 +1463,9 @@ abstract class _$$RegisterImplCopyWith<$Res> {
           _$RegisterImpl value, $Res Function(_$RegisterImpl) then) =
       __$$RegisterImplCopyWithImpl<$Res>;
   @useResult
-  $Res call(
-      {String name,
-      String email,
-      String password,
-      String gander,
-      String phoneNumber,
-      String region});
+  $Res call({User user});
+
+  $UserCopyWith<$Res> get user;
 }
 
 /// @nodoc
@@ -1049,69 +1481,38 @@ class __$$RegisterImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? name = null,
-    Object? email = null,
-    Object? password = null,
-    Object? gander = null,
-    Object? phoneNumber = null,
-    Object? region = null,
+    Object? user = null,
   }) {
     return _then(_$RegisterImpl(
-      name: null == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String,
-      email: null == email
-          ? _value.email
-          : email // ignore: cast_nullable_to_non_nullable
-              as String,
-      password: null == password
-          ? _value.password
-          : password // ignore: cast_nullable_to_non_nullable
-              as String,
-      gander: null == gander
-          ? _value.gander
-          : gander // ignore: cast_nullable_to_non_nullable
-              as String,
-      phoneNumber: null == phoneNumber
-          ? _value.phoneNumber
-          : phoneNumber // ignore: cast_nullable_to_non_nullable
-              as String,
-      region: null == region
-          ? _value.region
-          : region // ignore: cast_nullable_to_non_nullable
-              as String,
+      user: null == user
+          ? _value.user
+          : user // ignore: cast_nullable_to_non_nullable
+              as User,
     ));
+  }
+
+  /// Create a copy of AuthEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $UserCopyWith<$Res> get user {
+    return $UserCopyWith<$Res>(_value.user, (value) {
+      return _then(_value.copyWith(user: value));
+    });
   }
 }
 
 /// @nodoc
 
 class _$RegisterImpl implements _Register {
-  const _$RegisterImpl(
-      {required this.name,
-      required this.email,
-      required this.password,
-      required this.gander,
-      required this.phoneNumber,
-      required this.region});
+  const _$RegisterImpl({required this.user});
 
   @override
-  final String name;
-  @override
-  final String email;
-  @override
-  final String password;
-  @override
-  final String gander;
-  @override
-  final String phoneNumber;
-  @override
-  final String region;
+  final User user;
 
   @override
   String toString() {
-    return 'AuthEvent.register(name: $name, email: $email, password: $password, gander: $gander, phoneNumber: $phoneNumber, region: $region)';
+    return 'AuthEvent.register(user: $user)';
   }
 
   @override
@@ -1119,19 +1520,11 @@ class _$RegisterImpl implements _Register {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$RegisterImpl &&
-            (identical(other.name, name) || other.name == name) &&
-            (identical(other.email, email) || other.email == email) &&
-            (identical(other.password, password) ||
-                other.password == password) &&
-            (identical(other.gander, gander) || other.gander == gander) &&
-            (identical(other.phoneNumber, phoneNumber) ||
-                other.phoneNumber == phoneNumber) &&
-            (identical(other.region, region) || other.region == region));
+            (identical(other.user, user) || other.user == user));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, name, email, password, gander, phoneNumber, region);
+  int get hashCode => Object.hash(runtimeType, user);
 
   /// Create a copy of AuthEvent
   /// with the given fields replaced by the non-null parameter values.
@@ -1145,10 +1538,9 @@ class _$RegisterImpl implements _Register {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() checkAuth,
-    required TResult Function(String email, String password) login,
-    required TResult Function(String name, String email, String password,
-            String gander, String phoneNumber, String region)
-        register,
+    required TResult Function(User user) createEvent,
+    required TResult Function(User user) login,
+    required TResult Function(User user) register,
     required TResult Function() logout,
     required TResult Function(String name, String email, String gander,
             String phoneNumber, String region)
@@ -1156,34 +1548,32 @@ class _$RegisterImpl implements _Register {
     required TResult Function(String oldPassword, String newPassword)
         updatePassword,
   }) {
-    return register(name, email, password, gander, phoneNumber, region);
+    return register(user);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? checkAuth,
-    TResult? Function(String email, String password)? login,
-    TResult? Function(String name, String email, String password, String gander,
-            String phoneNumber, String region)?
-        register,
+    TResult? Function(User user)? createEvent,
+    TResult? Function(User user)? login,
+    TResult? Function(User user)? register,
     TResult? Function()? logout,
     TResult? Function(String name, String email, String gander,
             String phoneNumber, String region)?
         updateProfile,
     TResult? Function(String oldPassword, String newPassword)? updatePassword,
   }) {
-    return register?.call(name, email, password, gander, phoneNumber, region);
+    return register?.call(user);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? checkAuth,
-    TResult Function(String email, String password)? login,
-    TResult Function(String name, String email, String password, String gander,
-            String phoneNumber, String region)?
-        register,
+    TResult Function(User user)? createEvent,
+    TResult Function(User user)? login,
+    TResult Function(User user)? register,
     TResult Function()? logout,
     TResult Function(String name, String email, String gander,
             String phoneNumber, String region)?
@@ -1192,7 +1582,7 @@ class _$RegisterImpl implements _Register {
     required TResult orElse(),
   }) {
     if (register != null) {
-      return register(name, email, password, gander, phoneNumber, region);
+      return register(user);
     }
     return orElse();
   }
@@ -1201,6 +1591,7 @@ class _$RegisterImpl implements _Register {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_CheckAuth value) checkAuth,
+    required TResult Function(_CreateEvent value) createEvent,
     required TResult Function(_Login value) login,
     required TResult Function(_Register value) register,
     required TResult Function(_Logout value) logout,
@@ -1214,6 +1605,7 @@ class _$RegisterImpl implements _Register {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_CheckAuth value)? checkAuth,
+    TResult? Function(_CreateEvent value)? createEvent,
     TResult? Function(_Login value)? login,
     TResult? Function(_Register value)? register,
     TResult? Function(_Logout value)? logout,
@@ -1227,6 +1619,7 @@ class _$RegisterImpl implements _Register {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_CheckAuth value)? checkAuth,
+    TResult Function(_CreateEvent value)? createEvent,
     TResult Function(_Login value)? login,
     TResult Function(_Register value)? register,
     TResult Function(_Logout value)? logout,
@@ -1242,20 +1635,9 @@ class _$RegisterImpl implements _Register {
 }
 
 abstract class _Register implements AuthEvent {
-  const factory _Register(
-      {required final String name,
-      required final String email,
-      required final String password,
-      required final String gander,
-      required final String phoneNumber,
-      required final String region}) = _$RegisterImpl;
+  const factory _Register({required final User user}) = _$RegisterImpl;
 
-  String get name;
-  String get email;
-  String get password;
-  String get gander;
-  String get phoneNumber;
-  String get region;
+  User get user;
 
   /// Create a copy of AuthEvent
   /// with the given fields replaced by the non-null parameter values.
@@ -1306,10 +1688,9 @@ class _$LogoutImpl implements _Logout {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() checkAuth,
-    required TResult Function(String email, String password) login,
-    required TResult Function(String name, String email, String password,
-            String gander, String phoneNumber, String region)
-        register,
+    required TResult Function(User user) createEvent,
+    required TResult Function(User user) login,
+    required TResult Function(User user) register,
     required TResult Function() logout,
     required TResult Function(String name, String email, String gander,
             String phoneNumber, String region)
@@ -1324,10 +1705,9 @@ class _$LogoutImpl implements _Logout {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? checkAuth,
-    TResult? Function(String email, String password)? login,
-    TResult? Function(String name, String email, String password, String gander,
-            String phoneNumber, String region)?
-        register,
+    TResult? Function(User user)? createEvent,
+    TResult? Function(User user)? login,
+    TResult? Function(User user)? register,
     TResult? Function()? logout,
     TResult? Function(String name, String email, String gander,
             String phoneNumber, String region)?
@@ -1341,10 +1721,9 @@ class _$LogoutImpl implements _Logout {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? checkAuth,
-    TResult Function(String email, String password)? login,
-    TResult Function(String name, String email, String password, String gander,
-            String phoneNumber, String region)?
-        register,
+    TResult Function(User user)? createEvent,
+    TResult Function(User user)? login,
+    TResult Function(User user)? register,
     TResult Function()? logout,
     TResult Function(String name, String email, String gander,
             String phoneNumber, String region)?
@@ -1362,6 +1741,7 @@ class _$LogoutImpl implements _Logout {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_CheckAuth value) checkAuth,
+    required TResult Function(_CreateEvent value) createEvent,
     required TResult Function(_Login value) login,
     required TResult Function(_Register value) register,
     required TResult Function(_Logout value) logout,
@@ -1375,6 +1755,7 @@ class _$LogoutImpl implements _Logout {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_CheckAuth value)? checkAuth,
+    TResult? Function(_CreateEvent value)? createEvent,
     TResult? Function(_Login value)? login,
     TResult? Function(_Register value)? register,
     TResult? Function(_Logout value)? logout,
@@ -1388,6 +1769,7 @@ class _$LogoutImpl implements _Logout {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_CheckAuth value)? checkAuth,
+    TResult Function(_CreateEvent value)? createEvent,
     TResult Function(_Login value)? login,
     TResult Function(_Register value)? register,
     TResult Function(_Logout value)? logout,
@@ -1519,10 +1901,9 @@ class _$UpdateProfileImpl implements _UpdateProfile {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() checkAuth,
-    required TResult Function(String email, String password) login,
-    required TResult Function(String name, String email, String password,
-            String gander, String phoneNumber, String region)
-        register,
+    required TResult Function(User user) createEvent,
+    required TResult Function(User user) login,
+    required TResult Function(User user) register,
     required TResult Function() logout,
     required TResult Function(String name, String email, String gander,
             String phoneNumber, String region)
@@ -1537,10 +1918,9 @@ class _$UpdateProfileImpl implements _UpdateProfile {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? checkAuth,
-    TResult? Function(String email, String password)? login,
-    TResult? Function(String name, String email, String password, String gander,
-            String phoneNumber, String region)?
-        register,
+    TResult? Function(User user)? createEvent,
+    TResult? Function(User user)? login,
+    TResult? Function(User user)? register,
     TResult? Function()? logout,
     TResult? Function(String name, String email, String gander,
             String phoneNumber, String region)?
@@ -1554,10 +1934,9 @@ class _$UpdateProfileImpl implements _UpdateProfile {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? checkAuth,
-    TResult Function(String email, String password)? login,
-    TResult Function(String name, String email, String password, String gander,
-            String phoneNumber, String region)?
-        register,
+    TResult Function(User user)? createEvent,
+    TResult Function(User user)? login,
+    TResult Function(User user)? register,
     TResult Function()? logout,
     TResult Function(String name, String email, String gander,
             String phoneNumber, String region)?
@@ -1575,6 +1954,7 @@ class _$UpdateProfileImpl implements _UpdateProfile {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_CheckAuth value) checkAuth,
+    required TResult Function(_CreateEvent value) createEvent,
     required TResult Function(_Login value) login,
     required TResult Function(_Register value) register,
     required TResult Function(_Logout value) logout,
@@ -1588,6 +1968,7 @@ class _$UpdateProfileImpl implements _UpdateProfile {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_CheckAuth value)? checkAuth,
+    TResult? Function(_CreateEvent value)? createEvent,
     TResult? Function(_Login value)? login,
     TResult? Function(_Register value)? register,
     TResult? Function(_Logout value)? logout,
@@ -1601,6 +1982,7 @@ class _$UpdateProfileImpl implements _UpdateProfile {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_CheckAuth value)? checkAuth,
+    TResult Function(_CreateEvent value)? createEvent,
     TResult Function(_Login value)? login,
     TResult Function(_Register value)? register,
     TResult Function(_Logout value)? logout,
@@ -1717,10 +2099,9 @@ class _$UpdatePasswordImpl implements _UpdatePassword {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() checkAuth,
-    required TResult Function(String email, String password) login,
-    required TResult Function(String name, String email, String password,
-            String gander, String phoneNumber, String region)
-        register,
+    required TResult Function(User user) createEvent,
+    required TResult Function(User user) login,
+    required TResult Function(User user) register,
     required TResult Function() logout,
     required TResult Function(String name, String email, String gander,
             String phoneNumber, String region)
@@ -1735,10 +2116,9 @@ class _$UpdatePasswordImpl implements _UpdatePassword {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? checkAuth,
-    TResult? Function(String email, String password)? login,
-    TResult? Function(String name, String email, String password, String gander,
-            String phoneNumber, String region)?
-        register,
+    TResult? Function(User user)? createEvent,
+    TResult? Function(User user)? login,
+    TResult? Function(User user)? register,
     TResult? Function()? logout,
     TResult? Function(String name, String email, String gander,
             String phoneNumber, String region)?
@@ -1752,10 +2132,9 @@ class _$UpdatePasswordImpl implements _UpdatePassword {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? checkAuth,
-    TResult Function(String email, String password)? login,
-    TResult Function(String name, String email, String password, String gander,
-            String phoneNumber, String region)?
-        register,
+    TResult Function(User user)? createEvent,
+    TResult Function(User user)? login,
+    TResult Function(User user)? register,
     TResult Function()? logout,
     TResult Function(String name, String email, String gander,
             String phoneNumber, String region)?
@@ -1773,6 +2152,7 @@ class _$UpdatePasswordImpl implements _UpdatePassword {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_CheckAuth value) checkAuth,
+    required TResult Function(_CreateEvent value) createEvent,
     required TResult Function(_Login value) login,
     required TResult Function(_Register value) register,
     required TResult Function(_Logout value) logout,
@@ -1786,6 +2166,7 @@ class _$UpdatePasswordImpl implements _UpdatePassword {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_CheckAuth value)? checkAuth,
+    TResult? Function(_CreateEvent value)? createEvent,
     TResult? Function(_Login value)? login,
     TResult? Function(_Register value)? register,
     TResult? Function(_Logout value)? logout,
@@ -1799,6 +2180,7 @@ class _$UpdatePasswordImpl implements _UpdatePassword {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_CheckAuth value)? checkAuth,
+    TResult Function(_CreateEvent value)? createEvent,
     TResult Function(_Login value)? login,
     TResult Function(_Register value)? register,
     TResult Function(_Logout value)? logout,

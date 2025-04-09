@@ -22,10 +22,13 @@ class User with _$User {
     required String email,
     required String role,
     String? gander,
+    String? company,
+    String? specialization,
+    String? country,
     String? image,
     String? phoneNumber,
-    String? region,
     String? password,
+    @Default(false) bool? checkIsTerms,
     @JsonKey(name: 'created_at') DateTime? createdAt,
   }) = _User;
 

@@ -192,13 +192,15 @@ mixin _$User {
   String get email => throw _privateConstructorUsedError;
   String get role => throw _privateConstructorUsedError;
   String? get gander => throw _privateConstructorUsedError;
+  String? get company => throw _privateConstructorUsedError;
+  String? get specialization => throw _privateConstructorUsedError;
+  String? get country => throw _privateConstructorUsedError;
   String? get image => throw _privateConstructorUsedError;
   String? get phoneNumber => throw _privateConstructorUsedError;
-  String? get region => throw _privateConstructorUsedError;
   String? get password => throw _privateConstructorUsedError;
+  bool? get checkIsTerms => throw _privateConstructorUsedError;
   @JsonKey(name: 'created_at')
   DateTime? get createdAt => throw _privateConstructorUsedError;
-  DateTime? get updated_at => throw _privateConstructorUsedError;
 
   /// Serializes this User to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -220,12 +222,14 @@ abstract class $UserCopyWith<$Res> {
       String email,
       String role,
       String? gander,
+      String? company,
+      String? specialization,
+      String? country,
       String? image,
       String? phoneNumber,
-      String? region,
       String? password,
-      @JsonKey(name: 'created_at') DateTime? createdAt,
-      DateTime? updated_at});
+      bool? checkIsTerms,
+      @JsonKey(name: 'created_at') DateTime? createdAt});
 }
 
 /// @nodoc
@@ -248,12 +252,14 @@ class _$UserCopyWithImpl<$Res, $Val extends User>
     Object? email = null,
     Object? role = null,
     Object? gander = freezed,
+    Object? company = freezed,
+    Object? specialization = freezed,
+    Object? country = freezed,
     Object? image = freezed,
     Object? phoneNumber = freezed,
-    Object? region = freezed,
     Object? password = freezed,
+    Object? checkIsTerms = freezed,
     Object? createdAt = freezed,
-    Object? updated_at = freezed,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -276,6 +282,18 @@ class _$UserCopyWithImpl<$Res, $Val extends User>
           ? _value.gander
           : gander // ignore: cast_nullable_to_non_nullable
               as String?,
+      company: freezed == company
+          ? _value.company
+          : company // ignore: cast_nullable_to_non_nullable
+              as String?,
+      specialization: freezed == specialization
+          ? _value.specialization
+          : specialization // ignore: cast_nullable_to_non_nullable
+              as String?,
+      country: freezed == country
+          ? _value.country
+          : country // ignore: cast_nullable_to_non_nullable
+              as String?,
       image: freezed == image
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
@@ -284,21 +302,17 @@ class _$UserCopyWithImpl<$Res, $Val extends User>
           ? _value.phoneNumber
           : phoneNumber // ignore: cast_nullable_to_non_nullable
               as String?,
-      region: freezed == region
-          ? _value.region
-          : region // ignore: cast_nullable_to_non_nullable
-              as String?,
       password: freezed == password
           ? _value.password
           : password // ignore: cast_nullable_to_non_nullable
               as String?,
+      checkIsTerms: freezed == checkIsTerms
+          ? _value.checkIsTerms
+          : checkIsTerms // ignore: cast_nullable_to_non_nullable
+              as bool?,
       createdAt: freezed == createdAt
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      updated_at: freezed == updated_at
-          ? _value.updated_at
-          : updated_at // ignore: cast_nullable_to_non_nullable
               as DateTime?,
     ) as $Val);
   }
@@ -317,12 +331,14 @@ abstract class _$$UserImplCopyWith<$Res> implements $UserCopyWith<$Res> {
       String email,
       String role,
       String? gander,
+      String? company,
+      String? specialization,
+      String? country,
       String? image,
       String? phoneNumber,
-      String? region,
       String? password,
-      @JsonKey(name: 'created_at') DateTime? createdAt,
-      DateTime? updated_at});
+      bool? checkIsTerms,
+      @JsonKey(name: 'created_at') DateTime? createdAt});
 }
 
 /// @nodoc
@@ -342,12 +358,14 @@ class __$$UserImplCopyWithImpl<$Res>
     Object? email = null,
     Object? role = null,
     Object? gander = freezed,
+    Object? company = freezed,
+    Object? specialization = freezed,
+    Object? country = freezed,
     Object? image = freezed,
     Object? phoneNumber = freezed,
-    Object? region = freezed,
     Object? password = freezed,
+    Object? checkIsTerms = freezed,
     Object? createdAt = freezed,
-    Object? updated_at = freezed,
   }) {
     return _then(_$UserImpl(
       id: null == id
@@ -370,6 +388,18 @@ class __$$UserImplCopyWithImpl<$Res>
           ? _value.gander
           : gander // ignore: cast_nullable_to_non_nullable
               as String?,
+      company: freezed == company
+          ? _value.company
+          : company // ignore: cast_nullable_to_non_nullable
+              as String?,
+      specialization: freezed == specialization
+          ? _value.specialization
+          : specialization // ignore: cast_nullable_to_non_nullable
+              as String?,
+      country: freezed == country
+          ? _value.country
+          : country // ignore: cast_nullable_to_non_nullable
+              as String?,
       image: freezed == image
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
@@ -378,21 +408,17 @@ class __$$UserImplCopyWithImpl<$Res>
           ? _value.phoneNumber
           : phoneNumber // ignore: cast_nullable_to_non_nullable
               as String?,
-      region: freezed == region
-          ? _value.region
-          : region // ignore: cast_nullable_to_non_nullable
-              as String?,
       password: freezed == password
           ? _value.password
           : password // ignore: cast_nullable_to_non_nullable
               as String?,
+      checkIsTerms: freezed == checkIsTerms
+          ? _value.checkIsTerms
+          : checkIsTerms // ignore: cast_nullable_to_non_nullable
+              as bool?,
       createdAt: freezed == createdAt
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      updated_at: freezed == updated_at
-          ? _value.updated_at
-          : updated_at // ignore: cast_nullable_to_non_nullable
               as DateTime?,
     ));
   }
@@ -407,12 +433,14 @@ class _$UserImpl implements _User {
       required this.email,
       required this.role,
       this.gander,
+      this.company,
+      this.specialization,
+      this.country,
       this.image,
       this.phoneNumber,
-      this.region,
       this.password,
-      @JsonKey(name: 'created_at') this.createdAt,
-      this.updated_at});
+      this.checkIsTerms = false,
+      @JsonKey(name: 'created_at') this.createdAt});
 
   factory _$UserImpl.fromJson(Map<String, dynamic> json) =>
       _$$UserImplFromJson(json);
@@ -428,22 +456,27 @@ class _$UserImpl implements _User {
   @override
   final String? gander;
   @override
+  final String? company;
+  @override
+  final String? specialization;
+  @override
+  final String? country;
+  @override
   final String? image;
   @override
   final String? phoneNumber;
   @override
-  final String? region;
-  @override
   final String? password;
+  @override
+  @JsonKey()
+  final bool? checkIsTerms;
   @override
   @JsonKey(name: 'created_at')
   final DateTime? createdAt;
-  @override
-  final DateTime? updated_at;
 
   @override
   String toString() {
-    return 'User(id: $id, name: $name, email: $email, role: $role, gander: $gander, image: $image, phoneNumber: $phoneNumber, region: $region, password: $password, createdAt: $createdAt, updated_at: $updated_at)';
+    return 'User(id: $id, name: $name, email: $email, role: $role, gander: $gander, company: $company, specialization: $specialization, country: $country, image: $image, phoneNumber: $phoneNumber, password: $password, checkIsTerms: $checkIsTerms, createdAt: $createdAt)';
   }
 
   @override
@@ -456,22 +489,38 @@ class _$UserImpl implements _User {
             (identical(other.email, email) || other.email == email) &&
             (identical(other.role, role) || other.role == role) &&
             (identical(other.gander, gander) || other.gander == gander) &&
+            (identical(other.company, company) || other.company == company) &&
+            (identical(other.specialization, specialization) ||
+                other.specialization == specialization) &&
+            (identical(other.country, country) || other.country == country) &&
             (identical(other.image, image) || other.image == image) &&
             (identical(other.phoneNumber, phoneNumber) ||
                 other.phoneNumber == phoneNumber) &&
-            (identical(other.region, region) || other.region == region) &&
             (identical(other.password, password) ||
                 other.password == password) &&
+            (identical(other.checkIsTerms, checkIsTerms) ||
+                other.checkIsTerms == checkIsTerms) &&
             (identical(other.createdAt, createdAt) ||
-                other.createdAt == createdAt) &&
-            (identical(other.updated_at, updated_at) ||
-                other.updated_at == updated_at));
+                other.createdAt == createdAt));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, id, name, email, role, gander,
-      image, phoneNumber, region, password, createdAt, updated_at);
+  int get hashCode => Object.hash(
+      runtimeType,
+      id,
+      name,
+      email,
+      role,
+      gander,
+      company,
+      specialization,
+      country,
+      image,
+      phoneNumber,
+      password,
+      checkIsTerms,
+      createdAt);
 
   /// Create a copy of User
   /// with the given fields replaced by the non-null parameter values.
@@ -496,12 +545,14 @@ abstract class _User implements User {
       required final String email,
       required final String role,
       final String? gander,
+      final String? company,
+      final String? specialization,
+      final String? country,
       final String? image,
       final String? phoneNumber,
-      final String? region,
       final String? password,
-      @JsonKey(name: 'created_at') final DateTime? createdAt,
-      final DateTime? updated_at}) = _$UserImpl;
+      final bool? checkIsTerms,
+      @JsonKey(name: 'created_at') final DateTime? createdAt}) = _$UserImpl;
 
   factory _User.fromJson(Map<String, dynamic> json) = _$UserImpl.fromJson;
 
@@ -516,18 +567,22 @@ abstract class _User implements User {
   @override
   String? get gander;
   @override
+  String? get company;
+  @override
+  String? get specialization;
+  @override
+  String? get country;
+  @override
   String? get image;
   @override
   String? get phoneNumber;
   @override
-  String? get region;
-  @override
   String? get password;
+  @override
+  bool? get checkIsTerms;
   @override
   @JsonKey(name: 'created_at')
   DateTime? get createdAt;
-  @override
-  DateTime? get updated_at;
 
   /// Create a copy of User
   /// with the given fields replaced by the non-null parameter values.

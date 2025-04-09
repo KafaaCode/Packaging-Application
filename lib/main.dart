@@ -12,6 +12,7 @@ import 'package:frip_trading/core/routes/routes_name.dart';
 import 'package:frip_trading/core/services/services_locator.dart';
 import 'package:frip_trading/core/theme/theme.dart';
 import 'package:frip_trading/core/theme/theme_cubit.dart';
+import 'package:frip_trading/src/presentation/controllers/auth/auth_bloc.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
 import 'package:path_provider/path_provider.dart';
 
@@ -45,7 +46,7 @@ class MainApp extends StatelessWidget {
                 lazy: false,
               ),
               BlocProvider(create: (context) => ThemesCubit()),
-              // BlocProvider(create: (context) => CheckAuthBloc(sl()))
+              BlocProvider(create: (context) => sl<AuthBloc>())
             ],
             child: BlocBuilder<ThemesCubit, ThemeMode>(
               builder: (context, state) {

@@ -155,7 +155,7 @@ class AuthRemoteDataSource extends BaseAuthRemoteDataSource {
         'email': user.email,
         'password': user.password,
         'password_confirmation': user.password,
-        'region_id': user.region,
+        'region_id': user.company,
         'gander': user.gander,
         'phoneNumber': user.phoneNumber,
       });
@@ -182,7 +182,7 @@ class AuthRemoteDataSource extends BaseAuthRemoteDataSource {
         );
       }
 
-      // Handle successful response
+      
       if (response.statusCode == 200 || response.statusCode == 201) {
         return Auth.fromJson(response.data);
       }
@@ -207,8 +207,8 @@ class AuthRemoteDataSource extends BaseAuthRemoteDataSource {
       'name': user.name,
       'email': user.email,
       'password': user.password,
-      // 'password_confirmation': user.password,
-      // 'region_id': user.region,
+      
+      
       'gander': user.gander,
       'phoneNumber': user.phoneNumber,
     });

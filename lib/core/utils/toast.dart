@@ -31,7 +31,6 @@ class Toast {
 
   void success(BuildContext context, String message) {
     toastification.show(
-      // context: context,
       type: ToastificationType.success,
       style: ToastificationStyle.flat,
       title: Text(message),
@@ -68,3 +67,4 @@ class InternetToast {
     );
   }
 }
+
