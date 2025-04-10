@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:frip_trading/src/presentation/screens/main/deitels_product.dart';
+
 
 class FilterPage extends StatelessWidget {
   const FilterPage({super.key});
@@ -27,17 +29,12 @@ class FilterPage extends StatelessWidget {
                   'assets/images/Group940.svg',
                   height: 50,
                   errorBuilder: (context, error, stackTrace) {
-                    return const SizedBox(
-                      width: 25,
-                      height: 50,
-                    );
+                    return const SizedBox(width: 25, height: 50);
                   },
                 ),
               ],
             ),
-            const SizedBox(
-              height: 10,
-            ),
+            const SizedBox(height: 10),
             const Center(
               child: Text(
                 'Welcome to Frip Trading',
@@ -55,25 +52,26 @@ class FilterPage extends StatelessWidget {
                     style: const TextStyle(fontSize: 14),
                     textAlignVertical: TextAlignVertical.center,
                     decoration: InputDecoration(
-                        hintText: 'Search...',
-                        filled: true,
-                        fillColor: const Color(0xFFF5F6FA),
-                        hintStyle:
-                            const TextStyle(color: Colors.grey, fontSize: 13),
-                        prefixIcon: const Icon(
-                          Icons.search,
-                          color: Color(0xFFBDC1C8),
-                        ),
-                        prefixIconConstraints: const BoxConstraints(
-                          minWidth: 30,
-                          minHeight: 40,
-                        ),
-                        focusedBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(30),
-                        ),
-                        contentPadding: const EdgeInsets.symmetric(
-                            horizontal: 10, vertical: 3),
-                        isDense: true),
+                      hintText: 'Search...',
+                      filled: true,
+                      fillColor: const Color(0xFFF5F6FA),
+                      hintStyle:
+                          const TextStyle(color: Colors.grey, fontSize: 13),
+                      prefixIcon: const Icon(
+                        Icons.search,
+                        color: Color(0xFFBDC1C8),
+                      ),
+                      prefixIconConstraints: const BoxConstraints(
+                        minWidth: 30,
+                        minHeight: 40,
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(30),
+                      ),
+                      contentPadding:
+                          const EdgeInsets.symmetric(horizontal: 10, vertical: 3),
+                      isDense: true,
+                    ),
                   ),
                 ),
                 const SizedBox(width: 8),
@@ -91,10 +89,7 @@ class FilterPage extends StatelessWidget {
                       height: 25,
                       fit: BoxFit.contain,
                       errorBuilder: (context, error, stackTrace) {
-                        return const SizedBox(
-                          width: 25,
-                          height: 25,
-                        );
+                        return const SizedBox(width: 25, height: 25);
                       },
                     ),
                   ),
@@ -117,38 +112,52 @@ class FilterPage extends StatelessWidget {
                     spacing: 10,
                     runSpacing: 5,
                     children: List.generate(10, (i) {
-                      return SizedBox(
-                        width: MediaQuery.of(context).size.width > 971
-                            ? MediaQuery.of(context).size.width * 0.31
-                            : MediaQuery.of(context).size.width > 800
-                                ? MediaQuery.of(context).size.width * 0.47
-                                : MediaQuery.of(context).size.width > 621
-                                    ? MediaQuery.of(context).size.width * 0.30
-                                    : MediaQuery.of(context).size.width * 0.43,
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            ClipRRect(
-                              borderRadius: BorderRadius.circular(12),
-                              child: Image.asset(
-                                'assets/images/Rectangle569.png',
-                                fit: BoxFit.cover,
-                                errorBuilder: (context, error, stackTrace) {
-                                  return const SizedBox(
-                                    width: 25,
-                                    height: 25,
-                                  );
-                                },
+                      final width = MediaQuery.of(context).size.width;
+                      final itemWidth = width > 971
+                          ? width * 0.31
+                          : width > 800
+                              ? width * 0.47
+                              : width > 621
+                                  ? width * 0.30
+                                  : width * 0.43;
+
+                      return InkWell(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) =>  ProductDetailsPage(),
+                            ),
+                          );
+                        },
+                        borderRadius: BorderRadius.circular(12),
+                        child: SizedBox(
+                          width: itemWidth,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              ClipRRect(
+                                borderRadius: BorderRadius.circular(12),
+                                child: Image.asset(
+                                  'assets/images/Rectangle569.png',
+                                  fit: BoxFit.cover,
+                                  errorBuilder: (context, error, stackTrace) {
+                                    return const SizedBox(
+                                      width: 25,
+                                      height: 25,
+                                    );
+                                  },
+                                ),
                               ),
-                            ),
-                            const SizedBox(height: 6),
-                            const Text(
-                              maxLines: 2,
-                              overflow: TextOverflow.ellipsis,
-                              'Product Name sample data',
-                              style: TextStyle(fontSize: 14),
-                            ),
-                          ],
+                              const SizedBox(height: 6),
+                              const Text(
+                                maxLines: 2,
+                                overflow: TextOverflow.ellipsis,
+                                'Product Name sample data',
+                                style: TextStyle(fontSize: 14),
+                              ),
+                            ],
+                          ),
                         ),
                       );
                     }),
