@@ -5,6 +5,8 @@ import 'package:frip_trading/src/presentation/screens/auth/register_page.dart';
 import 'package:frip_trading/src/presentation/screens/init_page.dart';
 import 'package:frip_trading/src/presentation/screens/main/main_page.dart';
 
+import '../../src/presentation/screens/main/products.dart';
+
 void configureRoutes(FluroRouter router) {
   router.define(
     RoutesNames.initalRoute,
@@ -30,7 +32,7 @@ void configureRoutes(FluroRouter router) {
       },
     ),
   );
-  router.define(
+    router.define(
     RoutesNames.registerRoute,
     handler: Handler(
       handlerFunc: (context, parameters) {
@@ -38,6 +40,15 @@ void configureRoutes(FluroRouter router) {
       },
     ),
   );
+  router.define(
+    RoutesNames.products,
+    handler: Handler(
+      handlerFunc: (context, parameters) {
+        return const  Products();
+      },
+    ),
+  );
+  
 
 
   // routes :

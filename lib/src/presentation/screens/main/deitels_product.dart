@@ -195,14 +195,18 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                                 quantity.toString(),
                                 style: const TextStyle(fontSize: 15),
                               ),
-                              IconButton(
-                                onPressed: () {
-                                  setState(() {
-                                    quantity++;
-                                  });
-                                },
-                                icon: const Icon(Icons.add_circle_outline),
-                              ),
+                           IconButton(
+  onPressed: () {
+    setState(() {
+      quantity++;
+    });
+  },
+  icon: SvgPicture.asset(
+    'images/IconArtwork.svg', 
+    height: 24,
+    width: 24,
+  ),
+),
                             ],
                           ),
                         ],

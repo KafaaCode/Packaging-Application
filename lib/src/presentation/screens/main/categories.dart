@@ -1,6 +1,10 @@
+import 'package:fluro/fluro.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:frip_trading/src/presentation/screens/main/deitels_product.dart';
+import 'package:frip_trading/core/routes/router_screens.dart';
+import 'package:frip_trading/core/routes/routes_name.dart';
+import 'package:frip_trading/src/presentation/screens/main/products.dart';
+
 
 
 class FilterPage extends StatelessWidget {
@@ -65,8 +69,18 @@ class FilterPage extends StatelessWidget {
                         minWidth: 30,
                         minHeight: 40,
                       ),
+                                   enabledBorder: OutlineInputBorder(
+      borderRadius: BorderRadius.circular(10), 
+      borderSide: BorderSide.none,
+    ),
+                          border: InputBorder.none,
+
+  
                       focusedBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(30),
+                        borderRadius: BorderRadius.circular(10),
+                        borderSide: const BorderSide(
+                          color: Color(0xFF70b9be),
+                        ),
                       ),
                       contentPadding:
                           const EdgeInsets.symmetric(horizontal: 10, vertical: 3),
@@ -123,12 +137,12 @@ class FilterPage extends StatelessWidget {
 
                       return InkWell(
                         onTap: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) =>  ProductDetailsPage(),
-                            ),
-                          );
+                                  AppRouter.router.navigateTo(
+                              context, RoutesNames.products,
+                              transition: TransitionType.inFromRight,
+                              transitionDuration:
+                                  const Duration(milliseconds: 500));
+                   
                         },
                         borderRadius: BorderRadius.circular(12),
                         child: SizedBox(

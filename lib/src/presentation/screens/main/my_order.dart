@@ -9,6 +9,7 @@ class MyOrdersPage extends StatelessWidget {
     {"id": "Bp001717343401", "date": "Wed, 24,Jun,2024, 8:00AM", "status": "Completed"},
     {"id": "Bp001717343401", "date": "Wed, 24,Jun,2024, 8:00AM", "status": "Delivered"},
     {"id": "Bp001717343401", "date": "Wed, 24,Jun,2024, 8:00AM", "status": "Pending"},
+    {"id": "Bp001717343401", "date": "Wed, 24,Jun,2024, 8:00AM", "status": "Completed"},
 
   ];
 
@@ -67,11 +68,19 @@ class MyOrdersPage extends StatelessWidget {
                 Expanded(
                   child:
             TextField(
+              
                         
                                       style: const TextStyle(fontSize: 14),
                                       textAlignVertical: TextAlignVertical.center,
                                     
                                     decoration: InputDecoration(
+                                          enabledBorder: OutlineInputBorder(
+      borderRadius: BorderRadius.circular(10), 
+      borderSide: BorderSide.none,
+    ),
+                                          border: InputBorder.none,
+   
+
                                       hintText: 'Search...',
                                       filled: true,
                 
@@ -85,9 +94,11 @@ class MyOrdersPage extends StatelessWidget {
                                     
                                  
                                       focusedBorder: OutlineInputBorder(
-                                        borderRadius: BorderRadius.circular(30),
-                                       
-                                      ),
+                        borderRadius: BorderRadius.circular(10),
+                        borderSide: const BorderSide(
+                          color: Color(0xFF70b9be),
+                        ),
+                      ),
                                       contentPadding: const EdgeInsets.symmetric(
                                           horizontal: 10, vertical: 3),
                                           isDense: true
