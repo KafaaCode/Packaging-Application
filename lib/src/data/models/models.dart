@@ -74,6 +74,7 @@ class Category with _$Category {
 class Product with _$Product {
   const factory Product({
     required int id,
+    int? minimumOrder,
     required String name,
     String? image,
     required String serial_numbe,
