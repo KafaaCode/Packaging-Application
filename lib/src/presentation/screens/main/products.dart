@@ -108,13 +108,26 @@ class Products extends StatelessWidget {
 
                               return InkWell(
                                 onTap: () {
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (context) =>
-                                          ProductDetailsPage(product: state.products[i]),
-                                    ),
-                                  );
+                           Navigator.push(
+  context,
+  PageRouteBuilder(
+    pageBuilder: (context, animation, secondaryAnimation) {
+      return ProductDetailsPage(/* product: state.products[i] */);
+    },
+    transitionsBuilder: (context, animation, secondaryAnimation, child) {
+      // تأثير الانتقال باستخدام FadeTransition
+      const begin = Offset(1.0, 0.0); // بداية الانتقال من اليمين لليسار
+      const end = Offset.zero;
+      const curve = Curves.easeInOut;
+
+      var tween = Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
+      var offsetAnimation = animation.drive(tween);
+
+      return SlideTransition(position: offsetAnimation, child: child); // تأثير الانتقال
+    },
+  ),
+);
+
                                 },
                                 borderRadius: BorderRadius.circular(12),
                                 child: SizedBox(

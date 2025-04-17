@@ -6,7 +6,7 @@ import 'package:frip_trading/src/presentation/controllers/counter/counter_bloc.d
 import 'package:readmore/readmore.dart';
 
 class ProductDetailsPage extends StatelessWidget {
-  final Product product;
+ /*  final Product product; */
   final int minQuantity = 10;
 
   final String fullDescription =
@@ -14,7 +14,7 @@ class ProductDetailsPage extends StatelessWidget {
       "It’s designed for performance and comfort. Stylish and warm for everyday use. "
       "It’s a great choice for daily wear or workouts. Available in various sizes and colors.";
 
- const ProductDetailsPage({super.key,required this.product});
+ const ProductDetailsPage({super.key,/* required this.product */});
 
   @override
   Widget build(BuildContext context) {

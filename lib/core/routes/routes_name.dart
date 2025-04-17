@@ -7,4 +7,5 @@ class RoutesNames {
   static const String mainRoute = '/home';
     static const String products = '/products';
   static const String notFoundRoute = '/404';
+    static const String details = '/details';
 }
