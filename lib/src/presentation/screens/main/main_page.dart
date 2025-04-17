@@ -17,11 +17,11 @@ class _MainPageState extends State<MainPage> {
 
   // الصفحات
   final List<Widget> _pages = [
-    FilterPage(),        // Home
-    MyOrdersPage(),        // Order
-    Placeholder(),       // Cart (بدّلها بصفحتك)
-    Placeholder(),       // Support
-    Placeholder(),       // Profile
+    const FilterPage(), // Home
+    MyOrdersPage(), // Order
+    const Placeholder(), // Cart (بدّلها بصفحتك)
+    const Placeholder(), // Support
+    const Placeholder(), // Profile
   ];
 
   void _onItemTapped(int index) {
@@ -32,32 +32,38 @@ class _MainPageState extends State<MainPage> {
 
   @override
   Widget build(BuildContext context) {
+    ThemeData theme = Theme.of(context);
     return Scaffold(
       body: _pages[_selectedIndex],
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _selectedIndex,
         onTap: _onItemTapped,
-        selectedItemColor: Color(0xFF70b9be),
+        selectedItemColor: theme.primaryColor,
         unselectedItemColor: Colors.grey,
         items: [
           BottomNavigationBarItem(
-            icon: SvgPicture.asset('assets/SVG/home.svg', color: _selectedIndex == 0 ? Color(0xFF70b9be) : Colors.grey),
+            icon: SvgPicture.asset('assets/SVG/home.svg',
+                color: _selectedIndex == 0 ? theme.primaryColor : Colors.grey),
             label: 'Home',
           ),
           BottomNavigationBarItem(
-            icon: SvgPicture.asset('assets/SVG/order.svg', color: _selectedIndex == 1 ? Color(0xFF70b9be) : Colors.grey),
+            icon: SvgPicture.asset('assets/SVG/order.svg',
+                color: _selectedIndex == 1 ? theme.primaryColor : Colors.grey),
             label: 'Orders',
           ),
           BottomNavigationBarItem(
-            icon: SvgPicture.asset('assets/SVG/cart.svg', color: _selectedIndex == 2 ? Color(0xFF70b9be): Colors.grey),
+            icon: SvgPicture.asset('assets/SVG/cart.svg',
+                color: _selectedIndex == 2 ? theme.primaryColor : Colors.grey),
             label: 'Cart',
           ),
           BottomNavigationBarItem(
-            icon: SvgPicture.asset('assets/SVG/support.svg', color: _selectedIndex == 3 ? Color(0xFF70b9be) : Colors.grey),
+            icon: SvgPicture.asset('assets/SVG/support.svg',
+                color: _selectedIndex == 3 ? theme.primaryColor : Colors.grey),
             label: 'Support',
           ),
           BottomNavigationBarItem(
-            icon: SvgPicture.asset('assets/SVG/profile.svg', color: _selectedIndex == 4 ? Color(0xFF70b9be) : Colors.grey),
+            icon: SvgPicture.asset('assets/SVG/profile.svg',
+                color: _selectedIndex == 4 ? theme.primaryColor : Colors.grey),
             label: 'Profile',
           ),
         ],

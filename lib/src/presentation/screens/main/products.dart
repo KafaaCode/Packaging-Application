@@ -2,9 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:frip_trading/src/presentation/screens/main/deitels_product.dart';
 
-
 class Products extends StatelessWidget {
-  const Products ({super.key});
+  const Products({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -22,17 +21,17 @@ class Products extends StatelessWidget {
                   Row(
                     children: [
                       CircleAvatar(
-                    backgroundColor: Colors.white,
-                    child: IconButton(
-                      icon: const Icon(
-                        Icons.arrow_back,
-                        color: Color(0xFF70b9be),
+                        backgroundColor: Colors.white,
+                        child: IconButton(
+                          icon: const Icon(
+                            Icons.arrow_back,
+                            color: Color(0xFF70b9be),
+                          ),
+                          onPressed: () {
+                            Navigator.pop(context);
+                          },
+                        ),
                       ),
-                      onPressed: () {
-                        Navigator.pop(context);
-                      },
-                    ),
-                  ),
                       const Text(
                         'Products ',
                         style: TextStyle(
@@ -52,7 +51,7 @@ class Products extends StatelessWidget {
                 ],
               ),
               const SizedBox(height: 10),
-              Text(
+              const Text(
                 'Clothing Packaging Category Products',
                 style: TextStyle(
                   color: Color(0xFF70b9be),
@@ -80,21 +79,19 @@ class Products extends StatelessWidget {
                           minWidth: 30,
                           minHeight: 40,
                         ),
-                                     enabledBorder: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(10), 
-        borderSide: BorderSide.none,
-      ),
-                            border: InputBorder.none,
-      
-        
+                        enabledBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10),
+                          borderSide: BorderSide.none,
+                        ),
+                        border: InputBorder.none,
                         focusedBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10),
                           borderSide: const BorderSide(
                             color: Color(0xFF70b9be),
                           ),
                         ),
-                        contentPadding:
-                            const EdgeInsets.symmetric(horizontal: 10, vertical: 3),
+                        contentPadding: const EdgeInsets.symmetric(
+                            horizontal: 10, vertical: 3),
                         isDense: true,
                       ),
                     ),
@@ -145,13 +142,13 @@ class Products extends StatelessWidget {
                                 : width > 621
                                     ? width * 0.30
                                     : width * 0.43;
-      
+
                         return InkWell(
                           onTap: () {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) =>  ProductDetailsPage(),
+                                builder: (context) => ProductDetailsPage(),
                               ),
                             );
                           },

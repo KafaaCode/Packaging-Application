@@ -3,15 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:frip_trading/core/routes/router_screens.dart';
 import 'package:frip_trading/core/routes/routes_name.dart';
-import 'package:frip_trading/src/presentation/screens/main/products.dart';
-
-
 
 class FilterPage extends StatelessWidget {
   const FilterPage({super.key});
 
   @override
   Widget build(BuildContext context) {
+    ThemeData theme = Theme.of(context);
     return Container(
       color: Colors.white,
       child: Padding(
@@ -22,10 +20,10 @@ class FilterPage extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                const Text(
+                Text(
                   'User Name',
                   style: TextStyle(
-                      color: Color(0xFF70b9be),
+                      color: theme.primaryColor,
                       fontWeight: FontWeight.bold,
                       fontSize: 30),
                 ),
@@ -39,11 +37,11 @@ class FilterPage extends StatelessWidget {
               ],
             ),
             const SizedBox(height: 10),
-            const Center(
+            Center(
               child: Text(
                 'Welcome to Frip Trading',
                 style: TextStyle(
-                  color: Color(0xFF70b9be),
+                  color: theme.primaryColor,
                   fontSize: 18,
                 ),
               ),
@@ -69,21 +67,19 @@ class FilterPage extends StatelessWidget {
                         minWidth: 30,
                         minHeight: 40,
                       ),
-                                   enabledBorder: OutlineInputBorder(
-      borderRadius: BorderRadius.circular(10), 
-      borderSide: BorderSide.none,
-    ),
-                          border: InputBorder.none,
-
-  
+                      enabledBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(10),
+                        borderSide: BorderSide.none,
+                      ),
+                      border: InputBorder.none,
                       focusedBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10),
-                        borderSide: const BorderSide(
-                          color: Color(0xFF70b9be),
+                        borderSide: BorderSide(
+                          color: theme.primaryColor,
                         ),
                       ),
-                      contentPadding:
-                          const EdgeInsets.symmetric(horizontal: 10, vertical: 3),
+                      contentPadding: const EdgeInsets.symmetric(
+                          horizontal: 10, vertical: 3),
                       isDense: true,
                     ),
                   ),
@@ -93,7 +89,7 @@ class FilterPage extends StatelessWidget {
                   width: 50,
                   height: 40,
                   decoration: BoxDecoration(
-                    color: const Color(0xFF70b9be),
+                    color: theme.primaryColor,
                     borderRadius: BorderRadius.circular(10),
                   ),
                   child: Center(
@@ -137,12 +133,11 @@ class FilterPage extends StatelessWidget {
 
                       return InkWell(
                         onTap: () {
-                                  AppRouter.router.navigateTo(
+                          AppRouter.router.navigateTo(
                               context, RoutesNames.products,
                               transition: TransitionType.inFromRight,
                               transitionDuration:
                                   const Duration(milliseconds: 500));
-                   
                         },
                         borderRadius: BorderRadius.circular(12),
                         child: SizedBox(

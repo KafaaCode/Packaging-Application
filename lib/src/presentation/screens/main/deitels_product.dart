@@ -59,7 +59,7 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
               fit: StackFit.expand,
               children: [
                 Image.asset(
-                  'images/image5.png',
+                  'assets/images/image5.png',
                   fit: BoxFit.cover,
                 ),
                 Positioned(
@@ -82,7 +82,7 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                   top: 10,
                   right: 10,
                   child: SvgPicture.asset(
-                    'images/Group940.svg',
+                    'assets/images/Group940.svg',
                     height: 50,
                   ),
                 ),
@@ -195,18 +195,18 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                                 quantity.toString(),
                                 style: const TextStyle(fontSize: 15),
                               ),
-                           IconButton(
-  onPressed: () {
-    setState(() {
-      quantity++;
-    });
-  },
-  icon: SvgPicture.asset(
-    'images/IconArtwork.svg', 
-    height: 24,
-    width: 24,
-  ),
-),
+                              IconButton(
+                                onPressed: () {
+                                  setState(() {
+                                    quantity++;
+                                  });
+                                },
+                                icon: SvgPicture.asset(
+                                  'assets/images/IconArtwork.svg',
+                                  height: 24,
+                                  width: 24,
+                                ),
+                              ),
                             ],
                           ),
                         ],
