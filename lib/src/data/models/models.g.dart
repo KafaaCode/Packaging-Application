@@ -95,6 +95,7 @@ Map<String, dynamic> _$$CategoryImplToJson(_$CategoryImpl instance) =>
 _$ProductImpl _$$ProductImplFromJson(Map<String, dynamic> json) =>
     _$ProductImpl(
       id: (json['id'] as num).toInt(),
+      minimumOrder: (json['minimumOrder'] as num?)?.toInt(),
       name: json['name'] as String,
       image: json['image'] as String?,
       serial_numbe: json['serial_numbe'] as String,
@@ -108,6 +109,7 @@ _$ProductImpl _$$ProductImplFromJson(Map<String, dynamic> json) =>
 Map<String, dynamic> _$$ProductImplToJson(_$ProductImpl instance) =>
     <String, dynamic>{
       'id': instance.id,
+      'minimumOrder': instance.minimumOrder,
       'name': instance.name,
       'image': instance.image,
       'serial_numbe': instance.serial_numbe,

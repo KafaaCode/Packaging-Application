@@ -229,7 +229,6 @@ abstract class $UserCopyWith<$Res> {
       String? phoneNumber,
       String? password,
       bool? checkIsTerms,
-
       @JsonKey(name: 'created_at') DateTime? createdAt});
 }
 
@@ -339,7 +338,6 @@ abstract class _$$UserImplCopyWith<$Res> implements $UserCopyWith<$Res> {
       String? phoneNumber,
       String? password,
       bool? checkIsTerms,
-
       @JsonKey(name: 'created_at') DateTime? createdAt});
 }
 
@@ -442,8 +440,6 @@ class _$UserImpl implements _User {
       this.phoneNumber,
       this.password,
       this.checkIsTerms = false,
-
-
       @JsonKey(name: 'created_at') this.createdAt});
 
   factory _$UserImpl.fromJson(Map<String, dynamic> json) =>
@@ -526,7 +522,6 @@ class _$UserImpl implements _User {
       checkIsTerms,
       createdAt);
 
-
   /// Create a copy of User
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
@@ -557,7 +552,6 @@ abstract class _User implements User {
       final String? phoneNumber,
       final String? password,
       final bool? checkIsTerms,
-
       @JsonKey(name: 'created_at') final DateTime? createdAt}) = _$UserImpl;
 
   factory _User.fromJson(Map<String, dynamic> json) = _$UserImpl.fromJson;
@@ -1164,6 +1158,7 @@ Product _$ProductFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$Product {
   int get id => throw _privateConstructorUsedError;
+  int? get minimumOrder => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   String? get image => throw _privateConstructorUsedError;
   String get serial_numbe => throw _privateConstructorUsedError;
@@ -1189,6 +1184,7 @@ abstract class $ProductCopyWith<$Res> {
   @useResult
   $Res call(
       {int id,
+      int? minimumOrder,
       String name,
       String? image,
       String serial_numbe,
@@ -1217,6 +1213,7 @@ class _$ProductCopyWithImpl<$Res, $Val extends Product>
   @override
   $Res call({
     Object? id = null,
+    Object? minimumOrder = freezed,
     Object? name = null,
     Object? image = freezed,
     Object? serial_numbe = null,
@@ -1231,6 +1228,10 @@ class _$ProductCopyWithImpl<$Res, $Val extends Product>
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int,
+      minimumOrder: freezed == minimumOrder
+          ? _value.minimumOrder
+          : minimumOrder // ignore: cast_nullable_to_non_nullable
+              as int?,
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -1286,6 +1287,7 @@ abstract class _$$ProductImplCopyWith<$Res> implements $ProductCopyWith<$Res> {
   @useResult
   $Res call(
       {int id,
+      int? minimumOrder,
       String name,
       String? image,
       String serial_numbe,
@@ -1313,6 +1315,7 @@ class __$$ProductImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? id = null,
+    Object? minimumOrder = freezed,
     Object? name = null,
     Object? image = freezed,
     Object? serial_numbe = null,
@@ -1327,6 +1330,10 @@ class __$$ProductImplCopyWithImpl<$Res>
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int,
+      minimumOrder: freezed == minimumOrder
+          ? _value.minimumOrder
+          : minimumOrder // ignore: cast_nullable_to_non_nullable
+              as int?,
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -1368,6 +1375,7 @@ class __$$ProductImplCopyWithImpl<$Res>
 class _$ProductImpl implements _Product {
   const _$ProductImpl(
       {required this.id,
+      this.minimumOrder,
       required this.name,
       this.image,
       required this.serial_numbe,
@@ -1382,6 +1390,8 @@ class _$ProductImpl implements _Product {
 
   @override
   final int id;
+  @override
+  final int? minimumOrder;
   @override
   final String name;
   @override
@@ -1401,7 +1411,7 @@ class _$ProductImpl implements _Product {
 
   @override
   String toString() {
-    return 'Product(id: $id, name: $name, image: $image, serial_numbe: $serial_numbe, description: $description, cateogry: $cateogry, request_number: $request_number, price: $price, intactive: $intactive)';
+    return 'Product(id: $id, minimumOrder: $minimumOrder, name: $name, image: $image, serial_numbe: $serial_numbe, description: $description, cateogry: $cateogry, request_number: $request_number, price: $price, intactive: $intactive)';
   }
 
   @override
@@ -1410,6 +1420,8 @@ class _$ProductImpl implements _Product {
         (other.runtimeType == runtimeType &&
             other is _$ProductImpl &&
             (identical(other.id, id) || other.id == id) &&
+            (identical(other.minimumOrder, minimumOrder) ||
+                other.minimumOrder == minimumOrder) &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.image, image) || other.image == image) &&
             (identical(other.serial_numbe, serial_numbe) ||
@@ -1427,8 +1439,8 @@ class _$ProductImpl implements _Product {
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, id, name, image, serial_numbe,
-      description, cateogry, request_number, price, intactive);
+  int get hashCode => Object.hash(runtimeType, id, minimumOrder, name, image,
+      serial_numbe, description, cateogry, request_number, price, intactive);
 
   /// Create a copy of Product
   /// with the given fields replaced by the non-null parameter values.
@@ -1449,6 +1461,7 @@ class _$ProductImpl implements _Product {
 abstract class _Product implements Product {
   const factory _Product(
       {required final int id,
+      final int? minimumOrder,
       required final String name,
       final String? image,
       required final String serial_numbe,
@@ -1462,6 +1475,8 @@ abstract class _Product implements Product {
 
   @override
   int get id;
+  @override
+  int? get minimumOrder;
   @override
   String get name;
   @override
