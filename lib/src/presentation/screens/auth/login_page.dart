@@ -114,13 +114,16 @@ class _LoginPageState extends State<LoginPage> {
                   const SizedBox(height: 20),
                   ButtonCostum(
                     onPressed: () {
-                      context.read<AuthBloc>().add(AuthEvent.login(
-                          user: User(
-                              id: 0,
-                              name: '',
-                              email: emailController.text,
-                              role: 'role',
-                              password: passwordController.text)));
+                      context.read<AuthBloc>().add(
+                            AuthEvent.login(
+                              user: User(
+                                id: 0,
+                                name: 'User',
+                                email: emailController.text,
+                                password: passwordController.text,
+                              ),
+                            ),
+                          );
                     },
                     text: 'Login',
                   ),

@@ -190,11 +190,15 @@ mixin _$User {
   int get id => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   String get email => throw _privateConstructorUsedError;
-  String get role => throw _privateConstructorUsedError;
+  String? get companyName => throw _privateConstructorUsedError;
+  int? get status => throw _privateConstructorUsedError;
+  String? get role => throw _privateConstructorUsedError;
   String? get gander => throw _privateConstructorUsedError;
   String? get company => throw _privateConstructorUsedError;
-  String? get specialization => throw _privateConstructorUsedError;
-  String? get country => throw _privateConstructorUsedError;
+  @JsonKey(name: "specialization_id")
+  int? get specializationId => throw _privateConstructorUsedError;
+  @JsonKey(name: 'country_id')
+  int? get countryId => throw _privateConstructorUsedError;
   String? get image => throw _privateConstructorUsedError;
   String? get phoneNumber => throw _privateConstructorUsedError;
   String? get password => throw _privateConstructorUsedError;
@@ -220,11 +224,13 @@ abstract class $UserCopyWith<$Res> {
       {int id,
       String name,
       String email,
-      String role,
+      String? companyName,
+      int? status,
+      String? role,
       String? gander,
       String? company,
-      String? specialization,
-      String? country,
+      @JsonKey(name: "specialization_id") int? specializationId,
+      @JsonKey(name: 'country_id') int? countryId,
       String? image,
       String? phoneNumber,
       String? password,
@@ -250,11 +256,13 @@ class _$UserCopyWithImpl<$Res, $Val extends User>
     Object? id = null,
     Object? name = null,
     Object? email = null,
-    Object? role = null,
+    Object? companyName = freezed,
+    Object? status = freezed,
+    Object? role = freezed,
     Object? gander = freezed,
     Object? company = freezed,
-    Object? specialization = freezed,
-    Object? country = freezed,
+    Object? specializationId = freezed,
+    Object? countryId = freezed,
     Object? image = freezed,
     Object? phoneNumber = freezed,
     Object? password = freezed,
@@ -274,10 +282,18 @@ class _$UserCopyWithImpl<$Res, $Val extends User>
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
               as String,
-      role: null == role
+      companyName: freezed == companyName
+          ? _value.companyName
+          : companyName // ignore: cast_nullable_to_non_nullable
+              as String?,
+      status: freezed == status
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as int?,
+      role: freezed == role
           ? _value.role
           : role // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       gander: freezed == gander
           ? _value.gander
           : gander // ignore: cast_nullable_to_non_nullable
@@ -286,14 +302,14 @@ class _$UserCopyWithImpl<$Res, $Val extends User>
           ? _value.company
           : company // ignore: cast_nullable_to_non_nullable
               as String?,
-      specialization: freezed == specialization
-          ? _value.specialization
-          : specialization // ignore: cast_nullable_to_non_nullable
-              as String?,
-      country: freezed == country
-          ? _value.country
-          : country // ignore: cast_nullable_to_non_nullable
-              as String?,
+      specializationId: freezed == specializationId
+          ? _value.specializationId
+          : specializationId // ignore: cast_nullable_to_non_nullable
+              as int?,
+      countryId: freezed == countryId
+          ? _value.countryId
+          : countryId // ignore: cast_nullable_to_non_nullable
+              as int?,
       image: freezed == image
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
@@ -329,11 +345,13 @@ abstract class _$$UserImplCopyWith<$Res> implements $UserCopyWith<$Res> {
       {int id,
       String name,
       String email,
-      String role,
+      String? companyName,
+      int? status,
+      String? role,
       String? gander,
       String? company,
-      String? specialization,
-      String? country,
+      @JsonKey(name: "specialization_id") int? specializationId,
+      @JsonKey(name: 'country_id') int? countryId,
       String? image,
       String? phoneNumber,
       String? password,
@@ -356,11 +374,13 @@ class __$$UserImplCopyWithImpl<$Res>
     Object? id = null,
     Object? name = null,
     Object? email = null,
-    Object? role = null,
+    Object? companyName = freezed,
+    Object? status = freezed,
+    Object? role = freezed,
     Object? gander = freezed,
     Object? company = freezed,
-    Object? specialization = freezed,
-    Object? country = freezed,
+    Object? specializationId = freezed,
+    Object? countryId = freezed,
     Object? image = freezed,
     Object? phoneNumber = freezed,
     Object? password = freezed,
@@ -380,10 +400,18 @@ class __$$UserImplCopyWithImpl<$Res>
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
               as String,
-      role: null == role
+      companyName: freezed == companyName
+          ? _value.companyName
+          : companyName // ignore: cast_nullable_to_non_nullable
+              as String?,
+      status: freezed == status
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as int?,
+      role: freezed == role
           ? _value.role
           : role // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       gander: freezed == gander
           ? _value.gander
           : gander // ignore: cast_nullable_to_non_nullable
@@ -392,14 +420,14 @@ class __$$UserImplCopyWithImpl<$Res>
           ? _value.company
           : company // ignore: cast_nullable_to_non_nullable
               as String?,
-      specialization: freezed == specialization
-          ? _value.specialization
-          : specialization // ignore: cast_nullable_to_non_nullable
-              as String?,
-      country: freezed == country
-          ? _value.country
-          : country // ignore: cast_nullable_to_non_nullable
-              as String?,
+      specializationId: freezed == specializationId
+          ? _value.specializationId
+          : specializationId // ignore: cast_nullable_to_non_nullable
+              as int?,
+      countryId: freezed == countryId
+          ? _value.countryId
+          : countryId // ignore: cast_nullable_to_non_nullable
+              as int?,
       image: freezed == image
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
@@ -431,11 +459,13 @@ class _$UserImpl implements _User {
       {required this.id,
       required this.name,
       required this.email,
-      required this.role,
+      this.companyName,
+      this.status,
+      this.role,
       this.gander,
       this.company,
-      this.specialization,
-      this.country,
+      @JsonKey(name: "specialization_id") this.specializationId,
+      @JsonKey(name: 'country_id') this.countryId,
       this.image,
       this.phoneNumber,
       this.password,
@@ -452,15 +482,21 @@ class _$UserImpl implements _User {
   @override
   final String email;
   @override
-  final String role;
+  final String? companyName;
+  @override
+  final int? status;
+  @override
+  final String? role;
   @override
   final String? gander;
   @override
   final String? company;
   @override
-  final String? specialization;
+  @JsonKey(name: "specialization_id")
+  final int? specializationId;
   @override
-  final String? country;
+  @JsonKey(name: 'country_id')
+  final int? countryId;
   @override
   final String? image;
   @override
@@ -476,7 +512,7 @@ class _$UserImpl implements _User {
 
   @override
   String toString() {
-    return 'User(id: $id, name: $name, email: $email, role: $role, gander: $gander, company: $company, specialization: $specialization, country: $country, image: $image, phoneNumber: $phoneNumber, password: $password, checkIsTerms: $checkIsTerms, createdAt: $createdAt)';
+    return 'User(id: $id, name: $name, email: $email, companyName: $companyName, status: $status, role: $role, gander: $gander, company: $company, specializationId: $specializationId, countryId: $countryId, image: $image, phoneNumber: $phoneNumber, password: $password, checkIsTerms: $checkIsTerms, createdAt: $createdAt)';
   }
 
   @override
@@ -487,12 +523,16 @@ class _$UserImpl implements _User {
             (identical(other.id, id) || other.id == id) &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.email, email) || other.email == email) &&
+            (identical(other.companyName, companyName) ||
+                other.companyName == companyName) &&
+            (identical(other.status, status) || other.status == status) &&
             (identical(other.role, role) || other.role == role) &&
             (identical(other.gander, gander) || other.gander == gander) &&
             (identical(other.company, company) || other.company == company) &&
-            (identical(other.specialization, specialization) ||
-                other.specialization == specialization) &&
-            (identical(other.country, country) || other.country == country) &&
+            (identical(other.specializationId, specializationId) ||
+                other.specializationId == specializationId) &&
+            (identical(other.countryId, countryId) ||
+                other.countryId == countryId) &&
             (identical(other.image, image) || other.image == image) &&
             (identical(other.phoneNumber, phoneNumber) ||
                 other.phoneNumber == phoneNumber) &&
@@ -511,11 +551,13 @@ class _$UserImpl implements _User {
       id,
       name,
       email,
+      companyName,
+      status,
       role,
       gander,
       company,
-      specialization,
-      country,
+      specializationId,
+      countryId,
       image,
       phoneNumber,
       password,
@@ -543,11 +585,13 @@ abstract class _User implements User {
       {required final int id,
       required final String name,
       required final String email,
-      required final String role,
+      final String? companyName,
+      final int? status,
+      final String? role,
       final String? gander,
       final String? company,
-      final String? specialization,
-      final String? country,
+      @JsonKey(name: "specialization_id") final int? specializationId,
+      @JsonKey(name: 'country_id') final int? countryId,
       final String? image,
       final String? phoneNumber,
       final String? password,
@@ -563,15 +607,21 @@ abstract class _User implements User {
   @override
   String get email;
   @override
-  String get role;
+  String? get companyName;
+  @override
+  int? get status;
+  @override
+  String? get role;
   @override
   String? get gander;
   @override
   String? get company;
   @override
-  String? get specialization;
+  @JsonKey(name: "specialization_id")
+  int? get specializationId;
   @override
-  String? get country;
+  @JsonKey(name: 'country_id')
+  int? get countryId;
   @override
   String? get image;
   @override
@@ -599,8 +649,9 @@ Auth _$AuthFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$Auth {
   User get user => throw _privateConstructorUsedError;
-  String get token => throw _privateConstructorUsedError;
-  String? get message => throw _privateConstructorUsedError;
+  @JsonKey(name: 'access_token')
+  String? get token => throw _privateConstructorUsedError;
+  String? get role => throw _privateConstructorUsedError;
 
   /// Serializes this Auth to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -616,7 +667,8 @@ abstract class $AuthCopyWith<$Res> {
   factory $AuthCopyWith(Auth value, $Res Function(Auth) then) =
       _$AuthCopyWithImpl<$Res, Auth>;
   @useResult
-  $Res call({User user, String token, String? message});
+  $Res call(
+      {User user, @JsonKey(name: 'access_token') String? token, String? role});
 
   $UserCopyWith<$Res> get user;
 }
@@ -637,21 +689,21 @@ class _$AuthCopyWithImpl<$Res, $Val extends Auth>
   @override
   $Res call({
     Object? user = null,
-    Object? token = null,
-    Object? message = freezed,
+    Object? token = freezed,
+    Object? role = freezed,
   }) {
     return _then(_value.copyWith(
       user: null == user
           ? _value.user
           : user // ignore: cast_nullable_to_non_nullable
               as User,
-      token: null == token
+      token: freezed == token
           ? _value.token
           : token // ignore: cast_nullable_to_non_nullable
-              as String,
-      message: freezed == message
-          ? _value.message
-          : message // ignore: cast_nullable_to_non_nullable
+              as String?,
+      role: freezed == role
+          ? _value.role
+          : role // ignore: cast_nullable_to_non_nullable
               as String?,
     ) as $Val);
   }
@@ -674,7 +726,8 @@ abstract class _$$AuthImplCopyWith<$Res> implements $AuthCopyWith<$Res> {
       __$$AuthImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({User user, String token, String? message});
+  $Res call(
+      {User user, @JsonKey(name: 'access_token') String? token, String? role});
 
   @override
   $UserCopyWith<$Res> get user;
@@ -693,21 +746,21 @@ class __$$AuthImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? user = null,
-    Object? token = null,
-    Object? message = freezed,
+    Object? token = freezed,
+    Object? role = freezed,
   }) {
     return _then(_$AuthImpl(
       user: null == user
           ? _value.user
           : user // ignore: cast_nullable_to_non_nullable
               as User,
-      token: null == token
+      token: freezed == token
           ? _value.token
           : token // ignore: cast_nullable_to_non_nullable
-              as String,
-      message: freezed == message
-          ? _value.message
-          : message // ignore: cast_nullable_to_non_nullable
+              as String?,
+      role: freezed == role
+          ? _value.role
+          : role // ignore: cast_nullable_to_non_nullable
               as String?,
     ));
   }
@@ -716,7 +769,10 @@ class __$$AuthImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$AuthImpl implements _Auth {
-  const _$AuthImpl({required this.user, required this.token, this.message});
+  const _$AuthImpl(
+      {required this.user,
+      @JsonKey(name: 'access_token') this.token,
+      this.role});
 
   factory _$AuthImpl.fromJson(Map<String, dynamic> json) =>
       _$$AuthImplFromJson(json);
@@ -724,13 +780,14 @@ class _$AuthImpl implements _Auth {
   @override
   final User user;
   @override
-  final String token;
+  @JsonKey(name: 'access_token')
+  final String? token;
   @override
-  final String? message;
+  final String? role;
 
   @override
   String toString() {
-    return 'Auth(user: $user, token: $token, message: $message)';
+    return 'Auth(user: $user, token: $token, role: $role)';
   }
 
   @override
@@ -740,12 +797,12 @@ class _$AuthImpl implements _Auth {
             other is _$AuthImpl &&
             (identical(other.user, user) || other.user == user) &&
             (identical(other.token, token) || other.token == token) &&
-            (identical(other.message, message) || other.message == message));
+            (identical(other.role, role) || other.role == role));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, user, token, message);
+  int get hashCode => Object.hash(runtimeType, user, token, role);
 
   /// Create a copy of Auth
   /// with the given fields replaced by the non-null parameter values.
@@ -766,17 +823,18 @@ class _$AuthImpl implements _Auth {
 abstract class _Auth implements Auth {
   const factory _Auth(
       {required final User user,
-      required final String token,
-      final String? message}) = _$AuthImpl;
+      @JsonKey(name: 'access_token') final String? token,
+      final String? role}) = _$AuthImpl;
 
   factory _Auth.fromJson(Map<String, dynamic> json) = _$AuthImpl.fromJson;
 
   @override
   User get user;
   @override
-  String get token;
+  @JsonKey(name: 'access_token')
+  String? get token;
   @override
-  String? get message;
+  String? get role;
 
   /// Create a copy of Auth
   /// with the given fields replaced by the non-null parameter values.

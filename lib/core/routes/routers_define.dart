@@ -1,9 +1,9 @@
 import 'package:fluro/fluro.dart';
+import 'package:frip_trading/admin/admin_page.dart';
 import 'package:frip_trading/core/routes/routes_name.dart';
 import 'package:frip_trading/src/presentation/screens/auth/login_page.dart';
 import 'package:frip_trading/src/presentation/screens/auth/register_page.dart';
 import 'package:frip_trading/src/presentation/screens/init_page.dart';
-import 'package:frip_trading/src/presentation/screens/main/deitels_product.dart';
 import 'package:frip_trading/src/presentation/screens/main/main_page.dart';
 
 import '../../src/presentation/screens/main/products.dart';
@@ -57,4 +57,15 @@ void configureRoutes(FluroRouter router) {
   // routes :
 
 
+
+
+  // admin 
+  router.define(
+    RoutesNames.adminMainRoute,
+    handler: Handler(
+      handlerFunc: (context, parameters) {
+        return const  AdminPage();
+      },
+    ),
+  );
 }
