@@ -29,6 +29,7 @@ class ApiConstances {
   static const String getRegionUrl = "$_baseUrl/Region";
   // Main
     static const String getcategoriesUrl = "$_baseUrl/categories";
+       static const String getordersUrl = "$_baseUrl/orders";
   static String getproductsUrl({required int categoryId}) =>
       "$_baseUrl/Catogry/$categoryId";
   // Tools
