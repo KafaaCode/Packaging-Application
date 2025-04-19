@@ -33,6 +33,7 @@ class _RegisterPageState extends State<RegisterPage> {
   @override
   void dispose() {
     nameController.dispose();
+
     emailController.dispose();
     passwordController.dispose();
     companyController.dispose();
@@ -88,26 +89,30 @@ class _RegisterPageState extends State<RegisterPage> {
                       vertical: 10.0, horizontal: 30),
                   child: Column(
                     children: [
-                      const TextFieldAuth(
+                      TextFieldAuth(
                           svgIcon: 'assets/SVG/Vector.svg',
+                          controller: companyController,
                           hintText: 'Company Name'),
                       const SizedBox(height: 20),
-                      const TextFieldAuth(
+                      TextFieldAuth(
                         svgIcon: 'assets/SVG/user.svg',
                         hintText: 'Full name',
-                        colorIcon: Color.fromRGBO(0, 0, 0, 1),
+                        controller: nameController,
+                        colorIcon: const Color.fromRGBO(0, 0, 0, 1),
                       ),
                       const SizedBox(height: 20),
-                      const TextFieldAuth(
+                      TextFieldAuth(
                         svgIcon: 'assets/SVG/mail.svg',
                         hintText: 'Valid email',
-                        colorIcon: Color.fromRGBO(0, 0, 0, .7),
+                        controller: emailController,
+                        colorIcon: const Color.fromRGBO(0, 0, 0, .7),
                       ),
                       const SizedBox(height: 20),
-                      const TextFieldAuth(
+                      TextFieldAuth(
                         svgIcon: 'assets/SVG/lock.svg',
                         hintText: 'Strong Password',
-                        colorIcon: Color.fromRGBO(0, 0, 0, .7),
+                        controller: passwordController,
+                        colorIcon: const Color.fromRGBO(0, 0, 0, .7),
                       ),
                       const SizedBox(height: 20),
                       BlocBuilder<AuthBloc, AuthState>(
@@ -122,7 +127,8 @@ class _RegisterPageState extends State<RegisterPage> {
                                   'Individual',
                                 ],
                                 defaultValue: state.maybeWhen(
-                                  create: (user) => user.specialization,
+                                  create: (user) =>
+                                      user.specializationId.toString(),
                                   orElse: () => null,
                                 ),
                                 onChanged: (value) {
@@ -130,13 +136,13 @@ class _RegisterPageState extends State<RegisterPage> {
                                         AuthEvent.createEvent(
                                           user: state.maybeWhen(
                                             create: (user) => user.copyWith(
-                                              specialization: value,
+                                              specializationId:
+                                                  int.tryParse(value!),
                                             ),
                                             orElse: () => const User(
                                               id: 0,
                                               name: '',
                                               email: '',
-                                              role: '',
                                             ),
                                           ),
                                         ),
@@ -148,7 +154,7 @@ class _RegisterPageState extends State<RegisterPage> {
                                 svgIcon: 'assets/SVG/Vector_down.svg',
                                 labelText: 'Select Country',
                                 defaultValue: state.maybeWhen(
-                                  create: (user) => user.country,
+                                  create: (user) => user.countryId.toString(),
                                   orElse: () => null,
                                 ),
                                 items: const [
@@ -161,13 +167,12 @@ class _RegisterPageState extends State<RegisterPage> {
                                         AuthEvent.createEvent(
                                           user: state.maybeWhen(
                                             create: (user) => user.copyWith(
-                                              country: value,
+                                              countryId: int.parse(value!),
                                             ),
                                             orElse: () => const User(
                                               id: 0,
                                               name: '',
                                               email: '',
-                                              role: '',
                                             ),
                                           ),
                                         ),
@@ -220,7 +225,6 @@ class _RegisterPageState extends State<RegisterPage> {
                                             id: 0,
                                             name: '',
                                             email: '',
-                                            role: '',
                                           ),
                                         ),
                                       ),
@@ -278,20 +282,20 @@ class _RegisterPageState extends State<RegisterPage> {
                     onPressed: () {
                       context.read<AuthBloc>().add(
                             AuthEvent.register(
-                                user: context.read<AuthBloc>().state.maybeWhen(
-                                      create: (user) => user.copyWith(
-                                        name: nameController.text,
-                                        email: emailController.text,
-                                        password: passwordController.text,
-                                        company: companyController.text,
-                                      ),
-                                      orElse: () => const User(
-                                        id: 0,
-                                        name: '',
-                                        email: '',
-                                        role: '',
-                                      ),
-                                    )),
+                              user: context.read<AuthBloc>().state.maybeWhen(
+                                    create: (user) => user.copyWith(
+                                      name: nameController.text,
+                                      email: emailController.text,
+                                      password: passwordController.text,
+                                      company: companyController.text,
+                                    ),
+                                    orElse: () => const User(
+                                      id: 0,
+                                      name: '',
+                                      email: '',
+                                    ),
+                                  ),
+                            ),
                           );
                     },
                     text: 'Register',

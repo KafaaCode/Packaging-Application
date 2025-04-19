@@ -1,4 +1,3 @@
-
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'models.freezed.dart';
@@ -21,11 +20,13 @@ class User with _$User {
     required int id,
     required String name,
     required String email,
-    required String role,
+    String? companyName,
+    int? status,
+    String? role,
     String? gander,
     String? company,
-    String? specialization,
-    String? country,
+    @JsonKey(name: "specialization_id") int? specializationId,
+    @JsonKey(name: 'country_id') int? countryId,
     String? image,
     String? phoneNumber,
     String? password,
@@ -40,8 +41,8 @@ class User with _$User {
 class Auth with _$Auth {
   const factory Auth({
     required User user,
-    required String token,
-    String? message,
+    @JsonKey(name: 'access_token') String? token,
+    String? role,
   }) = _Auth;
 
   factory Auth.fromJson(Map<String, dynamic> json) => _$AuthFromJson(json);
@@ -64,12 +65,12 @@ class Category with _$Category {
     required int id,
     required String name,
     required String image,
-    
-  }) =_Category;
+  }) = _Category;
 
   factory Category.fromJson(Map<String, dynamic> json) =>
       _$CategoryFromJson(json);
 }
+
 @freezed
 class Product with _$Product {
   const factory Product({
@@ -78,12 +79,12 @@ class Product with _$Product {
     required String name,
     String? image,
     required String serial_numbe,
-   String?  description,
-   required Category cateogry,
+    String? description,
+    required Category cateogry,
     required int request_number,
-   required double  price,
-    required bool intactive,  
-  }) =_Product;
+    required double price,
+    required bool intactive,
+  }) = _Product;
 
   factory Product.fromJson(Map<String, dynamic> json) =>
       _$ProductFromJson(json);

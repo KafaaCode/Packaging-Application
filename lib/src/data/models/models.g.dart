@@ -22,11 +22,13 @@ _$UserImpl _$$UserImplFromJson(Map<String, dynamic> json) => _$UserImpl(
       id: (json['id'] as num).toInt(),
       name: json['name'] as String,
       email: json['email'] as String,
-      role: json['role'] as String,
+      companyName: json['companyName'] as String?,
+      status: (json['status'] as num?)?.toInt(),
+      role: json['role'] as String?,
       gander: json['gander'] as String?,
       company: json['company'] as String?,
-      specialization: json['specialization'] as String?,
-      country: json['country'] as String?,
+      specializationId: (json['specialization_id'] as num?)?.toInt(),
+      countryId: (json['country_id'] as num?)?.toInt(),
       image: json['image'] as String?,
       phoneNumber: json['phoneNumber'] as String?,
       password: json['password'] as String?,
@@ -41,11 +43,13 @@ Map<String, dynamic> _$$UserImplToJson(_$UserImpl instance) =>
       'id': instance.id,
       'name': instance.name,
       'email': instance.email,
+      'companyName': instance.companyName,
+      'status': instance.status,
       'role': instance.role,
       'gander': instance.gander,
       'company': instance.company,
-      'specialization': instance.specialization,
-      'country': instance.country,
+      'specialization_id': instance.specializationId,
+      'country_id': instance.countryId,
       'image': instance.image,
       'phoneNumber': instance.phoneNumber,
       'password': instance.password,
@@ -55,15 +59,15 @@ Map<String, dynamic> _$$UserImplToJson(_$UserImpl instance) =>
 
 _$AuthImpl _$$AuthImplFromJson(Map<String, dynamic> json) => _$AuthImpl(
       user: User.fromJson(json['user'] as Map<String, dynamic>),
-      token: json['token'] as String,
-      message: json['message'] as String?,
+      token: json['access_token'] as String?,
+      role: json['role'] as String?,
     );
 
 Map<String, dynamic> _$$AuthImplToJson(_$AuthImpl instance) =>
     <String, dynamic>{
       'user': instance.user,
-      'token': instance.token,
-      'message': instance.message,
+      'access_token': instance.token,
+      'role': instance.role,
     };
 
 _$UpdateDataImpl _$$UpdateDataImplFromJson(Map<String, dynamic> json) =>

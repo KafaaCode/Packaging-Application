@@ -16,30 +16,24 @@ class ServicesLocator {
   void init() {
     _authSl();
     _mainSl();
-    
   }
 
   void _authSl() {
-    sl.registerLazySingleton(() => AuthBloc());
+    sl.registerLazySingleton(() => AuthBloc(sl()));
     sl.registerLazySingleton<BaseAuthRepository>(
         () => AuthRepository(baseAuthRemoteDataSource: sl()));
     sl.registerLazySingleton<BaseAuthRemoteDataSource>(
         () => AuthRemoteDataSource());
-      
   }
-   void _mainSl() {
 
-   sl.registerLazySingleton<BaseMainRepository>(
+  void _mainSl() {
+    sl.registerLazySingleton<BaseMainRepository>(
         () => MainRepository(mainRemoteDataSource: sl()));
     sl.registerLazySingleton<BaseMainRemoteDataSource>(
         () => MainRemoteDataSource());
     sl.registerLazySingleton(() => ProductBloc(mainRepository: sl()));
     sl.registerLazySingleton(() => CategoriesBloc(sl()));
-
-   
   }
-
-
 }
 
 class SingleInstanceService {

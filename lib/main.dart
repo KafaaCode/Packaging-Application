@@ -46,7 +46,9 @@ class MainApp extends StatelessWidget {
                 lazy: false,
               ),
               BlocProvider(create: (context) => ThemesCubit()),
-              BlocProvider(create: (context) => sl<AuthBloc>())
+              BlocProvider(
+                  create: (context) =>
+                      sl<AuthBloc>()..add(const AuthEvent.checkAuth())),
             ],
             child: BlocBuilder<ThemesCubit, ThemeMode>(
               builder: (context, state) {

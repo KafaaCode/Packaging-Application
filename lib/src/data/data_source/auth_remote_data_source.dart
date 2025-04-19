@@ -44,7 +44,7 @@ class AuthRemoteDataSource extends BaseAuthRemoteDataSource {
       }
       print(response.data);
       if (response.statusCode == 200 || response.statusCode == 201) {
-        return Auth.fromJson(response.data);
+        return Auth.fromJson(response.data['data']);
       }
 
       throw AuthException(
@@ -182,7 +182,6 @@ class AuthRemoteDataSource extends BaseAuthRemoteDataSource {
         );
       }
 
-      
       if (response.statusCode == 200 || response.statusCode == 201) {
         return Auth.fromJson(response.data);
       }
@@ -207,8 +206,6 @@ class AuthRemoteDataSource extends BaseAuthRemoteDataSource {
       'name': user.name,
       'email': user.email,
       'password': user.password,
-      
-      
       'gander': user.gander,
       'phoneNumber': user.phoneNumber,
     });

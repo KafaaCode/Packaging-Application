@@ -1,7 +1,7 @@
 import 'package:hydrated_bloc/hydrated_bloc.dart';
 
 class ApiConstances {
-  static const String _baseUrl = "http://192.168.22.7:8000/api";
+  static const String _baseUrl = "https://cash4plus.online/api";
 
   static Map<String, dynamic> headers(
       {bool? isToken = true, String? token, bool? isMulti = false}) {
@@ -22,13 +22,12 @@ class ApiConstances {
   }
 
   // Authentication
-  static const String registerUrl = "$_baseUrl/auth/register";
-  static const String loginUrl = "$_baseUrl/auth/login";
+  static const String registerUrl = "$_baseUrl/register";
+  static const String loginUrl = "$_baseUrl/login";
   static const String logoutUrl = "$_baseUrl/logout";
-  static const String refreshTokenUrl = "$_baseUrl/auth/refreshToken";
-  static const String getRegionUrl = "$_baseUrl/Region";
+  static const String refreshTokenUrl = "$_baseUrl/refreshToken";
   // Main
-    static const String getcategoriesUrl = "$_baseUrl/categories";
+  static const String getcategoriesUrl = "$_baseUrl/categories";
   static String getproductsUrl({required int categoryId}) =>
       "$_baseUrl/Catogry/$categoryId";
   // Tools
