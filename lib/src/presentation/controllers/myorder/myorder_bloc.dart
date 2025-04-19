@@ -2,22 +2,23 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:frip_trading/src/data/models/models.dart';
 import 'package:frip_trading/src/domin/repository/main_repository.dart';
-import 'package:hydrated_bloc/hydrated_bloc.dart';
-part 'category_state.dart';
-part 'category_event.dart';
-part 'category_bloc.freezed.dart';
 
-class CategoriesBloc extends Bloc<CategoriesEvent, CategoriesState> {
+import 'package:hydrated_bloc/hydrated_bloc.dart';
+part 'myorder_state.dart';
+part 'myorder_event.dart';
+part 'myorder_bloc.freezed.dart';
+
+class MyOrdersBloc extends Bloc<MyOrdersEvent,MyOrdersState> {
   final BaseMainRepository baseMainRepository;
 
-  CategoriesBloc(this.baseMainRepository) : super(const CategoriesState()) {
-    on<CategoriesEvent>((event, emit) async {
+  MyOrdersBloc(this.baseMainRepository) : super(const MyOrdersState()) {
+    on<MyOrdersEvent>((event, emit) async {
       await event.map(
-       getCategories: (value) async {
+       getMyOrders: (value) async {
           emit(state.copyWith(
               error: false, isAuth: false, isEmpty: false, loading: true));
 
-          final response = await baseMainRepository.getCategoies();
+          final response = await baseMainRepository.getmyOrders();
           print(response);
 
           await response.fold(
@@ -26,7 +27,7 @@ class CategoriesBloc extends Bloc<CategoriesEvent, CategoriesState> {
                   loading: false,
                   error: true,
                   errorMessage: l.message,
-                  categories: state.categories));
+                  myorders: state.myorders));
             },
             (r) async {
               emit(state.copyWith(
@@ -34,7 +35,7 @@ class CategoriesBloc extends Bloc<CategoriesEvent, CategoriesState> {
                   error: false,
                   isAuth: true,
                   isEmpty: false,
-                  categories: r));
+                  myorders: r));
             },
           );
         },

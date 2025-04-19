@@ -120,7 +120,8 @@ Map<String, dynamic> _$$ProductImplToJson(_$ProductImpl instance) =>
       'active': instance.active,
     };
 
-_$OrderImpl _$$OrderImplFromJson(Map<String, dynamic> json) => _$OrderImpl(
+_$MyOrderImpl _$$MyOrderImplFromJson(Map<String, dynamic> json) =>
+    _$MyOrderImpl(
       id: (json['id'] as num).toInt(),
       status: json['status'] as String,
       serial_number: json['serial_number'] as String,
@@ -130,7 +131,7 @@ _$OrderImpl _$$OrderImplFromJson(Map<String, dynamic> json) => _$OrderImpl(
           : DateTime.parse(json['created_at'] as String),
     );
 
-Map<String, dynamic> _$$OrderImplToJson(_$OrderImpl instance) =>
+Map<String, dynamic> _$$MyOrderImplToJson(_$MyOrderImpl instance) =>
     <String, dynamic>{
       'id': instance.id,
       'status': instance.status,

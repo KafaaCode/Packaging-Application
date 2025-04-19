@@ -89,16 +89,16 @@ class Product with _$Product {
       _$ProductFromJson(json);
 }
 @freezed
-class Order with _$Order {
-  const factory Order({
+class MyOrder with _$MyOrder  {
+  const factory MyOrder ({
     required int id,
     required String status,
     required String serial_number,
     required String delivery_time,
     
     DateTime? created_at,
-  }) =_Order;
+  }) =_MyOrder;
 
-  factory Order.fromJson(Map<String, dynamic> json) =>
-      _$OrderFromJson(json);
+  factory MyOrder.fromJson(Map<String, dynamic> json) =>
+      _$MyOrderFromJson(json);
 }

@@ -1500,31 +1500,31 @@ abstract class _Product implements Product {
       throw _privateConstructorUsedError;
 }
 
-Order _$OrderFromJson(Map<String, dynamic> json) {
-  return _Order.fromJson(json);
+MyOrder _$MyOrderFromJson(Map<String, dynamic> json) {
+  return _MyOrder.fromJson(json);
 }
 
 /// @nodoc
-mixin _$Order {
+mixin _$MyOrder {
   int get id => throw _privateConstructorUsedError;
   String get status => throw _privateConstructorUsedError;
   String get serial_number => throw _privateConstructorUsedError;
   String get delivery_time => throw _privateConstructorUsedError;
   DateTime? get created_at => throw _privateConstructorUsedError;
 
-  /// Serializes this Order to a JSON map.
+  /// Serializes this MyOrder to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
 
-  /// Create a copy of Order
+  /// Create a copy of MyOrder
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $OrderCopyWith<Order> get copyWith => throw _privateConstructorUsedError;
+  $MyOrderCopyWith<MyOrder> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $OrderCopyWith<$Res> {
-  factory $OrderCopyWith(Order value, $Res Function(Order) then) =
-      _$OrderCopyWithImpl<$Res, Order>;
+abstract class $MyOrderCopyWith<$Res> {
+  factory $MyOrderCopyWith(MyOrder value, $Res Function(MyOrder) then) =
+      _$MyOrderCopyWithImpl<$Res, MyOrder>;
   @useResult
   $Res call(
       {int id,
@@ -1535,16 +1535,16 @@ abstract class $OrderCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$OrderCopyWithImpl<$Res, $Val extends Order>
-    implements $OrderCopyWith<$Res> {
-  _$OrderCopyWithImpl(this._value, this._then);
+class _$MyOrderCopyWithImpl<$Res, $Val extends MyOrder>
+    implements $MyOrderCopyWith<$Res> {
+  _$MyOrderCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of Order
+  /// Create a copy of MyOrder
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -1581,10 +1581,10 @@ class _$OrderCopyWithImpl<$Res, $Val extends Order>
 }
 
 /// @nodoc
-abstract class _$$OrderImplCopyWith<$Res> implements $OrderCopyWith<$Res> {
-  factory _$$OrderImplCopyWith(
-          _$OrderImpl value, $Res Function(_$OrderImpl) then) =
-      __$$OrderImplCopyWithImpl<$Res>;
+abstract class _$$MyOrderImplCopyWith<$Res> implements $MyOrderCopyWith<$Res> {
+  factory _$$MyOrderImplCopyWith(
+          _$MyOrderImpl value, $Res Function(_$MyOrderImpl) then) =
+      __$$MyOrderImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -1596,14 +1596,14 @@ abstract class _$$OrderImplCopyWith<$Res> implements $OrderCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$OrderImplCopyWithImpl<$Res>
-    extends _$OrderCopyWithImpl<$Res, _$OrderImpl>
-    implements _$$OrderImplCopyWith<$Res> {
-  __$$OrderImplCopyWithImpl(
-      _$OrderImpl _value, $Res Function(_$OrderImpl) _then)
+class __$$MyOrderImplCopyWithImpl<$Res>
+    extends _$MyOrderCopyWithImpl<$Res, _$MyOrderImpl>
+    implements _$$MyOrderImplCopyWith<$Res> {
+  __$$MyOrderImplCopyWithImpl(
+      _$MyOrderImpl _value, $Res Function(_$MyOrderImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of Order
+  /// Create a copy of MyOrder
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -1614,7 +1614,7 @@ class __$$OrderImplCopyWithImpl<$Res>
     Object? delivery_time = null,
     Object? created_at = freezed,
   }) {
-    return _then(_$OrderImpl(
+    return _then(_$MyOrderImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -1641,16 +1641,16 @@ class __$$OrderImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$OrderImpl implements _Order {
-  const _$OrderImpl(
+class _$MyOrderImpl implements _MyOrder {
+  const _$MyOrderImpl(
       {required this.id,
       required this.status,
       required this.serial_number,
       required this.delivery_time,
       this.created_at});
 
-  factory _$OrderImpl.fromJson(Map<String, dynamic> json) =>
-      _$$OrderImplFromJson(json);
+  factory _$MyOrderImpl.fromJson(Map<String, dynamic> json) =>
+      _$$MyOrderImplFromJson(json);
 
   @override
   final int id;
@@ -1665,14 +1665,14 @@ class _$OrderImpl implements _Order {
 
   @override
   String toString() {
-    return 'Order(id: $id, status: $status, serial_number: $serial_number, delivery_time: $delivery_time, created_at: $created_at)';
+    return 'MyOrder(id: $id, status: $status, serial_number: $serial_number, delivery_time: $delivery_time, created_at: $created_at)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$OrderImpl &&
+            other is _$MyOrderImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.status, status) || other.status == status) &&
             (identical(other.serial_number, serial_number) ||
@@ -1688,31 +1688,31 @@ class _$OrderImpl implements _Order {
   int get hashCode => Object.hash(
       runtimeType, id, status, serial_number, delivery_time, created_at);
 
-  /// Create a copy of Order
+  /// Create a copy of MyOrder
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$OrderImplCopyWith<_$OrderImpl> get copyWith =>
-      __$$OrderImplCopyWithImpl<_$OrderImpl>(this, _$identity);
+  _$$MyOrderImplCopyWith<_$MyOrderImpl> get copyWith =>
+      __$$MyOrderImplCopyWithImpl<_$MyOrderImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$OrderImplToJson(
+    return _$$MyOrderImplToJson(
       this,
     );
   }
 }
 
-abstract class _Order implements Order {
-  const factory _Order(
+abstract class _MyOrder implements MyOrder {
+  const factory _MyOrder(
       {required final int id,
       required final String status,
       required final String serial_number,
       required final String delivery_time,
-      final DateTime? created_at}) = _$OrderImpl;
+      final DateTime? created_at}) = _$MyOrderImpl;
 
-  factory _Order.fromJson(Map<String, dynamic> json) = _$OrderImpl.fromJson;
+  factory _MyOrder.fromJson(Map<String, dynamic> json) = _$MyOrderImpl.fromJson;
 
   @override
   int get id;
@@ -1725,10 +1725,10 @@ abstract class _Order implements Order {
   @override
   DateTime? get created_at;
 
-  /// Create a copy of Order
+  /// Create a copy of MyOrder
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$OrderImplCopyWith<_$OrderImpl> get copyWith =>
+  _$$MyOrderImplCopyWith<_$MyOrderImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
