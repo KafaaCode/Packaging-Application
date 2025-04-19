@@ -65,7 +65,11 @@ class Category with _$Category {
     required int id,
     required String name,
     required String image,
-  }) = _Category;
+
+     required bool active,  
+    
+  }) =_Category;
+
 
   factory Category.fromJson(Map<String, dynamic> json) =>
       _$CategoryFromJson(json);
@@ -75,17 +79,35 @@ class Category with _$Category {
 class Product with _$Product {
   const factory Product({
     required int id,
-    int? minimumOrder,
     required String name,
     String? image,
     required String serial_numbe,
     String? description,
     required Category cateogry,
     required int request_number,
-    required double price,
-    required bool intactive,
-  }) = _Product;
+
+   required double  price,
+    required bool active,  
+  }) =_Product;
+
 
   factory Product.fromJson(Map<String, dynamic> json) =>
       _$ProductFromJson(json);
 }
+
+@freezed
+class MyOrder with _$MyOrder  {
+  const factory MyOrder ({
+    required int id,
+    required String status,
+    required String serial_number,
+    required String delivery_time,
+    
+    DateTime? created_at,
+  }) =_MyOrder;
+
+  factory MyOrder.fromJson(Map<String, dynamic> json) =>
+      _$MyOrderFromJson(json);
+}
+
+

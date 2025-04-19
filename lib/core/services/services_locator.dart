@@ -8,6 +8,7 @@ import 'package:frip_trading/src/domin/repository/auth_repository.dart';
 import 'package:frip_trading/src/domin/repository/main_repository.dart';
 import 'package:frip_trading/src/presentation/controllers/auth/auth_bloc.dart';
 import 'package:frip_trading/src/presentation/controllers/category/category_bloc.dart';
+import 'package:frip_trading/src/presentation/controllers/myorder/myorder_bloc.dart';
 import 'package:frip_trading/src/presentation/controllers/products/products_bloc.dart';
 import 'package:get_it/get_it.dart';
 
@@ -35,6 +36,11 @@ class ServicesLocator {
         () => MainRemoteDataSource());
     sl.registerLazySingleton(() => ProductBloc(mainRepository: sl()));
     sl.registerLazySingleton(() => CategoriesBloc(sl()));
+
+     sl.registerLazySingleton(() => MyOrdersBloc(sl()));
+
+   
+
   }
 }
 

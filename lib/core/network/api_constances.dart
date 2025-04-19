@@ -27,7 +27,10 @@ class ApiConstances {
   static const String logoutUrl = "$_baseUrl/logout";
   static const String refreshTokenUrl = "$_baseUrl/refreshToken";
   // Main
-  static const String getcategoriesUrl = "$_baseUrl/categories";
+
+    static const String getcategoriesUrl = "$_baseUrl/categories";
+       static const String getordersUrl = "$_baseUrl/orders";
+
   static String getproductsUrl({required int categoryId}) =>
       "$_baseUrl/Catogry/$categoryId";
   // Tools

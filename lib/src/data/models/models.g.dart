@@ -87,6 +87,7 @@ _$CategoryImpl _$$CategoryImplFromJson(Map<String, dynamic> json) =>
       id: (json['id'] as num).toInt(),
       name: json['name'] as String,
       image: json['image'] as String,
+      active: json['active'] as bool,
     );
 
 Map<String, dynamic> _$$CategoryImplToJson(_$CategoryImpl instance) =>
@@ -94,12 +95,12 @@ Map<String, dynamic> _$$CategoryImplToJson(_$CategoryImpl instance) =>
       'id': instance.id,
       'name': instance.name,
       'image': instance.image,
+      'active': instance.active,
     };
 
 _$ProductImpl _$$ProductImplFromJson(Map<String, dynamic> json) =>
     _$ProductImpl(
       id: (json['id'] as num).toInt(),
-      minimumOrder: (json['minimumOrder'] as num?)?.toInt(),
       name: json['name'] as String,
       image: json['image'] as String?,
       serial_numbe: json['serial_numbe'] as String,
@@ -107,13 +108,12 @@ _$ProductImpl _$$ProductImplFromJson(Map<String, dynamic> json) =>
       cateogry: Category.fromJson(json['cateogry'] as Map<String, dynamic>),
       request_number: (json['request_number'] as num).toInt(),
       price: (json['price'] as num).toDouble(),
-      intactive: json['intactive'] as bool,
+      active: json['active'] as bool,
     );
 
 Map<String, dynamic> _$$ProductImplToJson(_$ProductImpl instance) =>
     <String, dynamic>{
       'id': instance.id,
-      'minimumOrder': instance.minimumOrder,
       'name': instance.name,
       'image': instance.image,
       'serial_numbe': instance.serial_numbe,
@@ -121,5 +121,25 @@ Map<String, dynamic> _$$ProductImplToJson(_$ProductImpl instance) =>
       'cateogry': instance.cateogry,
       'request_number': instance.request_number,
       'price': instance.price,
-      'intactive': instance.intactive,
+      'active': instance.active,
+    };
+
+_$MyOrderImpl _$$MyOrderImplFromJson(Map<String, dynamic> json) =>
+    _$MyOrderImpl(
+      id: (json['id'] as num).toInt(),
+      status: json['status'] as String,
+      serial_number: json['serial_number'] as String,
+      delivery_time: json['delivery_time'] as String,
+      created_at: json['created_at'] == null
+          ? null
+          : DateTime.parse(json['created_at'] as String),
+    );
+
+Map<String, dynamic> _$$MyOrderImplToJson(_$MyOrderImpl instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'status': instance.status,
+      'serial_number': instance.serial_number,
+      'delivery_time': instance.delivery_time,
+      'created_at': instance.created_at?.toIso8601String(),
     };
