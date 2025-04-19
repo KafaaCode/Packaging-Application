@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:frip_trading/src/presentation/screens/main/categories.dart';
 import 'package:frip_trading/src/presentation/screens/main/my_order.dart';
+import 'package:frip_trading/src/presentation/screens/settings/profile.dart';
 // صفحة الأوردر
 // باقي الصفحات...
 
@@ -21,7 +22,7 @@ class _MainPageState extends State<MainPage> {
     MyOrdersPage(), // Order
     const Placeholder(), // Cart (بدّلها بصفحتك)
     const Placeholder(), // Support
-    const Placeholder(), // Profile
+    const Profile(), // Profile
   ];
 
   void _onItemTapped(int index) {
