@@ -18,7 +18,7 @@ dependencies:
   fluro: ^2.0.5
   flutter_bloc: ^9.0.0
   flutter_localization: any
-  toastification: ^3.0.2
+  toastification: any
   image_picker: any
   flutter_screenutil: ^5.8.4
   bloc_concurrency: ^0.3.0

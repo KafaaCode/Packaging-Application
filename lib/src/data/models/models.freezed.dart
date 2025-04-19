@@ -1229,6 +1229,547 @@ abstract class _Category implements Category {
       throw _privateConstructorUsedError;
 }
 
+SpecializationAndCountry _$SpecializationAndCountryFromJson(
+    Map<String, dynamic> json) {
+  return _SpecializationAndCountry.fromJson(json);
+}
+
+/// @nodoc
+mixin _$SpecializationAndCountry {
+  @JsonKey(name: 'countries')
+  List<Country?>? get country => throw _privateConstructorUsedError;
+  @JsonKey(name: 'specializations')
+  List<Specialization?>? get specialization =>
+      throw _privateConstructorUsedError;
+
+  /// Serializes this SpecializationAndCountry to a JSON map.
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+
+  /// Create a copy of SpecializationAndCountry
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  $SpecializationAndCountryCopyWith<SpecializationAndCountry> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $SpecializationAndCountryCopyWith<$Res> {
+  factory $SpecializationAndCountryCopyWith(SpecializationAndCountry value,
+          $Res Function(SpecializationAndCountry) then) =
+      _$SpecializationAndCountryCopyWithImpl<$Res, SpecializationAndCountry>;
+  @useResult
+  $Res call(
+      {@JsonKey(name: 'countries') List<Country?>? country,
+      @JsonKey(name: 'specializations') List<Specialization?>? specialization});
+}
+
+/// @nodoc
+class _$SpecializationAndCountryCopyWithImpl<$Res,
+        $Val extends SpecializationAndCountry>
+    implements $SpecializationAndCountryCopyWith<$Res> {
+  _$SpecializationAndCountryCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  /// Create a copy of SpecializationAndCountry
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? country = freezed,
+    Object? specialization = freezed,
+  }) {
+    return _then(_value.copyWith(
+      country: freezed == country
+          ? _value.country
+          : country // ignore: cast_nullable_to_non_nullable
+              as List<Country?>?,
+      specialization: freezed == specialization
+          ? _value.specialization
+          : specialization // ignore: cast_nullable_to_non_nullable
+              as List<Specialization?>?,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$SpecializationAndCountryImplCopyWith<$Res>
+    implements $SpecializationAndCountryCopyWith<$Res> {
+  factory _$$SpecializationAndCountryImplCopyWith(
+          _$SpecializationAndCountryImpl value,
+          $Res Function(_$SpecializationAndCountryImpl) then) =
+      __$$SpecializationAndCountryImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {@JsonKey(name: 'countries') List<Country?>? country,
+      @JsonKey(name: 'specializations') List<Specialization?>? specialization});
+}
+
+/// @nodoc
+class __$$SpecializationAndCountryImplCopyWithImpl<$Res>
+    extends _$SpecializationAndCountryCopyWithImpl<$Res,
+        _$SpecializationAndCountryImpl>
+    implements _$$SpecializationAndCountryImplCopyWith<$Res> {
+  __$$SpecializationAndCountryImplCopyWithImpl(
+      _$SpecializationAndCountryImpl _value,
+      $Res Function(_$SpecializationAndCountryImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of SpecializationAndCountry
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? country = freezed,
+    Object? specialization = freezed,
+  }) {
+    return _then(_$SpecializationAndCountryImpl(
+      country: freezed == country
+          ? _value._country
+          : country // ignore: cast_nullable_to_non_nullable
+              as List<Country?>?,
+      specialization: freezed == specialization
+          ? _value._specialization
+          : specialization // ignore: cast_nullable_to_non_nullable
+              as List<Specialization?>?,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$SpecializationAndCountryImpl implements _SpecializationAndCountry {
+  const _$SpecializationAndCountryImpl(
+      {@JsonKey(name: 'countries') final List<Country?>? country,
+      @JsonKey(name: 'specializations')
+      final List<Specialization?>? specialization})
+      : _country = country,
+        _specialization = specialization;
+
+  factory _$SpecializationAndCountryImpl.fromJson(Map<String, dynamic> json) =>
+      _$$SpecializationAndCountryImplFromJson(json);
+
+  final List<Country?>? _country;
+  @override
+  @JsonKey(name: 'countries')
+  List<Country?>? get country {
+    final value = _country;
+    if (value == null) return null;
+    if (_country is EqualUnmodifiableListView) return _country;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
+
+  final List<Specialization?>? _specialization;
+  @override
+  @JsonKey(name: 'specializations')
+  List<Specialization?>? get specialization {
+    final value = _specialization;
+    if (value == null) return null;
+    if (_specialization is EqualUnmodifiableListView) return _specialization;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
+
+  @override
+  String toString() {
+    return 'SpecializationAndCountry(country: $country, specialization: $specialization)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$SpecializationAndCountryImpl &&
+            const DeepCollectionEquality().equals(other._country, _country) &&
+            const DeepCollectionEquality()
+                .equals(other._specialization, _specialization));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(_country),
+      const DeepCollectionEquality().hash(_specialization));
+
+  /// Create a copy of SpecializationAndCountry
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$SpecializationAndCountryImplCopyWith<_$SpecializationAndCountryImpl>
+      get copyWith => __$$SpecializationAndCountryImplCopyWithImpl<
+          _$SpecializationAndCountryImpl>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$SpecializationAndCountryImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _SpecializationAndCountry implements SpecializationAndCountry {
+  const factory _SpecializationAndCountry(
+          {@JsonKey(name: 'countries') final List<Country?>? country,
+          @JsonKey(name: 'specializations')
+          final List<Specialization?>? specialization}) =
+      _$SpecializationAndCountryImpl;
+
+  factory _SpecializationAndCountry.fromJson(Map<String, dynamic> json) =
+      _$SpecializationAndCountryImpl.fromJson;
+
+  @override
+  @JsonKey(name: 'countries')
+  List<Country?>? get country;
+  @override
+  @JsonKey(name: 'specializations')
+  List<Specialization?>? get specialization;
+
+  /// Create a copy of SpecializationAndCountry
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$SpecializationAndCountryImplCopyWith<_$SpecializationAndCountryImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+Country _$CountryFromJson(Map<String, dynamic> json) {
+  return _Country.fromJson(json);
+}
+
+/// @nodoc
+mixin _$Country {
+  int get id => throw _privateConstructorUsedError;
+  String get name => throw _privateConstructorUsedError;
+
+  /// Serializes this Country to a JSON map.
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+
+  /// Create a copy of Country
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  $CountryCopyWith<Country> get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $CountryCopyWith<$Res> {
+  factory $CountryCopyWith(Country value, $Res Function(Country) then) =
+      _$CountryCopyWithImpl<$Res, Country>;
+  @useResult
+  $Res call({int id, String name});
+}
+
+/// @nodoc
+class _$CountryCopyWithImpl<$Res, $Val extends Country>
+    implements $CountryCopyWith<$Res> {
+  _$CountryCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  /// Create a copy of Country
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? id = null,
+    Object? name = null,
+  }) {
+    return _then(_value.copyWith(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
+      name: null == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$CountryImplCopyWith<$Res> implements $CountryCopyWith<$Res> {
+  factory _$$CountryImplCopyWith(
+          _$CountryImpl value, $Res Function(_$CountryImpl) then) =
+      __$$CountryImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({int id, String name});
+}
+
+/// @nodoc
+class __$$CountryImplCopyWithImpl<$Res>
+    extends _$CountryCopyWithImpl<$Res, _$CountryImpl>
+    implements _$$CountryImplCopyWith<$Res> {
+  __$$CountryImplCopyWithImpl(
+      _$CountryImpl _value, $Res Function(_$CountryImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of Country
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? id = null,
+    Object? name = null,
+  }) {
+    return _then(_$CountryImpl(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
+      name: null == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$CountryImpl extends _Country {
+  _$CountryImpl({required this.id, required this.name}) : super._();
+
+  factory _$CountryImpl.fromJson(Map<String, dynamic> json) =>
+      _$$CountryImplFromJson(json);
+
+  @override
+  final int id;
+  @override
+  final String name;
+
+  @override
+  String toString() {
+    return 'Country(id: $id, name: $name)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$CountryImpl &&
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.name, name) || other.name == name));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(runtimeType, id, name);
+
+  /// Create a copy of Country
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$CountryImplCopyWith<_$CountryImpl> get copyWith =>
+      __$$CountryImplCopyWithImpl<_$CountryImpl>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$CountryImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _Country extends Country {
+  factory _Country({required final int id, required final String name}) =
+      _$CountryImpl;
+  _Country._() : super._();
+
+  factory _Country.fromJson(Map<String, dynamic> json) = _$CountryImpl.fromJson;
+
+  @override
+  int get id;
+  @override
+  String get name;
+
+  /// Create a copy of Country
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$CountryImplCopyWith<_$CountryImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+Specialization _$SpecializationFromJson(Map<String, dynamic> json) {
+  return _Specialization.fromJson(json);
+}
+
+/// @nodoc
+mixin _$Specialization {
+  int get id => throw _privateConstructorUsedError;
+  String get name => throw _privateConstructorUsedError;
+
+  /// Serializes this Specialization to a JSON map.
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+
+  /// Create a copy of Specialization
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  $SpecializationCopyWith<Specialization> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $SpecializationCopyWith<$Res> {
+  factory $SpecializationCopyWith(
+          Specialization value, $Res Function(Specialization) then) =
+      _$SpecializationCopyWithImpl<$Res, Specialization>;
+  @useResult
+  $Res call({int id, String name});
+}
+
+/// @nodoc
+class _$SpecializationCopyWithImpl<$Res, $Val extends Specialization>
+    implements $SpecializationCopyWith<$Res> {
+  _$SpecializationCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  /// Create a copy of Specialization
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? id = null,
+    Object? name = null,
+  }) {
+    return _then(_value.copyWith(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
+      name: null == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$SpecializationImplCopyWith<$Res>
+    implements $SpecializationCopyWith<$Res> {
+  factory _$$SpecializationImplCopyWith(_$SpecializationImpl value,
+          $Res Function(_$SpecializationImpl) then) =
+      __$$SpecializationImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({int id, String name});
+}
+
+/// @nodoc
+class __$$SpecializationImplCopyWithImpl<$Res>
+    extends _$SpecializationCopyWithImpl<$Res, _$SpecializationImpl>
+    implements _$$SpecializationImplCopyWith<$Res> {
+  __$$SpecializationImplCopyWithImpl(
+      _$SpecializationImpl _value, $Res Function(_$SpecializationImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of Specialization
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? id = null,
+    Object? name = null,
+  }) {
+    return _then(_$SpecializationImpl(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
+      name: null == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$SpecializationImpl extends _Specialization {
+  _$SpecializationImpl({required this.id, required this.name}) : super._();
+
+  factory _$SpecializationImpl.fromJson(Map<String, dynamic> json) =>
+      _$$SpecializationImplFromJson(json);
+
+  @override
+  final int id;
+  @override
+  final String name;
+
+  @override
+  String toString() {
+    return 'Specialization(id: $id, name: $name)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$SpecializationImpl &&
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.name, name) || other.name == name));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(runtimeType, id, name);
+
+  /// Create a copy of Specialization
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$SpecializationImplCopyWith<_$SpecializationImpl> get copyWith =>
+      __$$SpecializationImplCopyWithImpl<_$SpecializationImpl>(
+          this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$SpecializationImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _Specialization extends Specialization {
+  factory _Specialization({required final int id, required final String name}) =
+      _$SpecializationImpl;
+  _Specialization._() : super._();
+
+  factory _Specialization.fromJson(Map<String, dynamic> json) =
+      _$SpecializationImpl.fromJson;
+
+  @override
+  int get id;
+  @override
+  String get name;
+
+  /// Create a copy of Specialization
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$SpecializationImplCopyWith<_$SpecializationImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
 Product _$ProductFromJson(Map<String, dynamic> json) {
   return _Product.fromJson(json);
 }
@@ -1240,7 +1781,7 @@ mixin _$Product {
   String? get image => throw _privateConstructorUsedError;
   String get serial_numbe => throw _privateConstructorUsedError;
   String? get description => throw _privateConstructorUsedError;
-  Category get cateogry => throw _privateConstructorUsedError;
+  Category? get cateogry => throw _privateConstructorUsedError;
   int get request_number => throw _privateConstructorUsedError;
   double get price => throw _privateConstructorUsedError;
   bool get active => throw _privateConstructorUsedError;
@@ -1265,12 +1806,12 @@ abstract class $ProductCopyWith<$Res> {
       String? image,
       String serial_numbe,
       String? description,
-      Category cateogry,
+      Category? cateogry,
       int request_number,
       double price,
       bool active});
 
-  $CategoryCopyWith<$Res> get cateogry;
+  $CategoryCopyWith<$Res>? get cateogry;
 }
 
 /// @nodoc
@@ -1293,7 +1834,7 @@ class _$ProductCopyWithImpl<$Res, $Val extends Product>
     Object? image = freezed,
     Object? serial_numbe = null,
     Object? description = freezed,
-    Object? cateogry = null,
+    Object? cateogry = freezed,
     Object? request_number = null,
     Object? price = null,
     Object? active = null,
@@ -1319,10 +1860,10 @@ class _$ProductCopyWithImpl<$Res, $Val extends Product>
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
               as String?,
-      cateogry: null == cateogry
+      cateogry: freezed == cateogry
           ? _value.cateogry
           : cateogry // ignore: cast_nullable_to_non_nullable
-              as Category,
+              as Category?,
       request_number: null == request_number
           ? _value.request_number
           : request_number // ignore: cast_nullable_to_non_nullable
@@ -1342,8 +1883,12 @@ class _$ProductCopyWithImpl<$Res, $Val extends Product>
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  $CategoryCopyWith<$Res> get cateogry {
-    return $CategoryCopyWith<$Res>(_value.cateogry, (value) {
+  $CategoryCopyWith<$Res>? get cateogry {
+    if (_value.cateogry == null) {
+      return null;
+    }
+
+    return $CategoryCopyWith<$Res>(_value.cateogry!, (value) {
       return _then(_value.copyWith(cateogry: value) as $Val);
     });
   }
@@ -1362,13 +1907,13 @@ abstract class _$$ProductImplCopyWith<$Res> implements $ProductCopyWith<$Res> {
       String? image,
       String serial_numbe,
       String? description,
-      Category cateogry,
+      Category? cateogry,
       int request_number,
       double price,
       bool active});
 
   @override
-  $CategoryCopyWith<$Res> get cateogry;
+  $CategoryCopyWith<$Res>? get cateogry;
 }
 
 /// @nodoc
@@ -1389,7 +1934,7 @@ class __$$ProductImplCopyWithImpl<$Res>
     Object? image = freezed,
     Object? serial_numbe = null,
     Object? description = freezed,
-    Object? cateogry = null,
+    Object? cateogry = freezed,
     Object? request_number = null,
     Object? price = null,
     Object? active = null,
@@ -1415,10 +1960,10 @@ class __$$ProductImplCopyWithImpl<$Res>
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
               as String?,
-      cateogry: null == cateogry
+      cateogry: freezed == cateogry
           ? _value.cateogry
           : cateogry // ignore: cast_nullable_to_non_nullable
-              as Category,
+              as Category?,
       request_number: null == request_number
           ? _value.request_number
           : request_number // ignore: cast_nullable_to_non_nullable
@@ -1463,7 +2008,7 @@ class _$ProductImpl implements _Product {
   @override
   final String? description;
   @override
-  final Category cateogry;
+  final Category? cateogry;
   @override
   final int request_number;
   @override
@@ -1524,7 +2069,7 @@ abstract class _Product implements Product {
       final String? image,
       required final String serial_numbe,
       final String? description,
-      required final Category cateogry,
+      required final Category? cateogry,
       required final int request_number,
       required final double price,
       required final bool active}) = _$ProductImpl;
@@ -1542,7 +2087,7 @@ abstract class _Product implements Product {
   @override
   String? get description;
   @override
-  Category get cateogry;
+  Category? get cateogry;
   @override
   int get request_number;
   @override

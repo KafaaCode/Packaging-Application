@@ -12,9 +12,22 @@ class AuthBloc extends HydratedBloc<AuthEvent, AuthState> {
 
   AuthBloc(this.repository) : super(const AuthState.initial()) {
     on<_CheckAuth>(_checkAuthEvent);
+    on<_Logout>(_logoutEvent);
     on<_CreateEvent>(_createEvent);
     on<_Register>(_registerEvent);
     on<_Login>(_loginEvent);
+  }
+
+  void _logoutEvent(
+    _Logout event,
+    Emitter<AuthState> emit,
+  ) async {
+    try {
+      await HydratedBloc.storage.clear();
+      if (!emit.isDone) emit(const AuthState.initial());
+    } catch (e) {
+      if (!emit.isDone) emit(AuthState.error(message: e.toString()));
+    }
   }
 
   void _checkAuthEvent(
