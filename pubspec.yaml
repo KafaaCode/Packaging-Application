@@ -53,8 +53,6 @@ flutter:
   assets:
     - assets/lottie/
     - assets/images/
-    - assets/fonts/
-    - assets/SVG/
   # fonts:
   #   - family: Bahij_TheSansArabic
   #     fonts:

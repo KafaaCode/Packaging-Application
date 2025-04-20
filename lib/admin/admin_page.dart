@@ -1,10 +1,79 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:frip_trading/admin/screens/HomePage.dart';
 
-class AdminPage extends StatelessWidget {
+class AdminPage extends StatefulWidget {
   const AdminPage({super.key});
 
   @override
+  State<AdminPage> createState() => _AdminPageState();
+}
+
+class _AdminPageState extends State<AdminPage> {
+  int _selectedIndex = 0;
+
+  final List<Widget> _pages = [
+    const HomePage(), // Dashboard
+    const Placeholder(), // Manage Users
+    const Placeholder(), // Orders
+    const Placeholder(), // Support
+    const Placeholder(), // Profile or Settings
+  ];
+
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    ThemeData theme = Theme.of(context);
+    return Scaffold(
+      body: _pages[_selectedIndex],
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: _selectedIndex,
+        onTap: _onItemTapped,
+        selectedItemColor: theme.primaryColor,
+        unselectedItemColor: Colors.grey,
+        items: [
+          BottomNavigationBarItem(
+            icon: SvgPicture.asset(
+              'assets/SVG/dashboard.svg',
+              color: _selectedIndex == 0 ? theme.primaryColor : Colors.grey,
+            ),
+            label: 'Dashboard',
+          ),
+          BottomNavigationBarItem(
+            icon: SvgPicture.asset(
+              'assets/SVG/users.svg',
+              color: _selectedIndex == 1 ? theme.primaryColor : Colors.grey,
+            ),
+            label: 'Users',
+          ),
+          BottomNavigationBarItem(
+            icon: SvgPicture.asset(
+              'assets/SVG/order.svg',
+              color: _selectedIndex == 2 ? theme.primaryColor : Colors.grey,
+            ),
+            label: 'Orders',
+          ),
+          BottomNavigationBarItem(
+            icon: SvgPicture.asset(
+              'assets/SVG/support.svg',
+              color: _selectedIndex == 3 ? theme.primaryColor : Colors.grey,
+            ),
+            label: 'Support',
+          ),
+          BottomNavigationBarItem(
+            icon: SvgPicture.asset(
+              'assets/SVG/profile.svg',
+              color: _selectedIndex == 4 ? theme.primaryColor : Colors.grey,
+            ),
+            label: 'Settings',
+          ),
+        ],
+      ),
+    );
   }
 }

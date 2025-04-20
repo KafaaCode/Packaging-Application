@@ -46,18 +46,18 @@ class _InitPageState extends State<InitPage> {
         Navigator.of(context, rootNavigator: true).pop();
         if (user.role == "User") {
           debugPrint('Loaded with user: ${user.email}');
-          AppRouter.router.navigateTo(context, RoutesNames.mainRoute,
+          AppRouter.router.navigateTo(context, RoutesNames.adminMainRoute,
               clearStack: true,
               transitionDuration: const Duration(milliseconds: 500),
               transition: TransitionType.inFromBottom);
         } else if (user.role == "Admin") {
-          AppRouter.router.navigateTo(context, RoutesNames.mainRoute,
+          AppRouter.router.navigateTo(context, RoutesNames.adminMainRoute,
               clearStack: true,
               transitionDuration: const Duration(milliseconds: 500),
               transition: TransitionType.inFromLeft);
         } else {
           // Toast().error(context, 'Something went wrong!');
-          AppRouter.router.navigateTo(context, RoutesNames.loginRoute,
+          AppRouter.router.navigateTo(context, RoutesNames.adminMainRoute,
               clearStack: true,
               transitionDuration: const Duration(milliseconds: 500),
               transition: TransitionType.inFromBottom);
