@@ -62,11 +62,11 @@ class UpdateData with _$UpdateData {
 @freezed
 class Category with _$Category {
   const factory Category({
-    required int id,
-    required String name,
-    required String image,
+   int? id,
+  String? name,
+     String? image,
 
-     required bool active,  
+     required int active,  
     
   }) =_Category;
 
@@ -81,13 +81,13 @@ class Product with _$Product {
     required int id,
     required String name,
     String? image,
-    required String serial_numbe,
+    String? serial_numbe,
     String? description,
-    required Category cateogry,
-    required int request_number,
+   Category? cateogry,
+    int? request_number, 
 
-   required double  price,
-    required bool active,  
+   required String  price,
+  required int active,  
   }) =_Product;
 
 

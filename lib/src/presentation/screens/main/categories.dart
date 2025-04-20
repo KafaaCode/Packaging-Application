@@ -5,6 +5,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:frip_trading/core/routes/router_screens.dart';
 import 'package:frip_trading/core/routes/routes_name.dart';
 import 'package:frip_trading/core/services/services_locator.dart';
+import 'package:frip_trading/core/utils/loading_dialog.dart';
 import 'package:frip_trading/src/presentation/controllers/category/category_bloc.dart';
 import 'package:frip_trading/src/presentation/screens/auth/widgets/cardproductandCatogry.dart';
 import 'package:frip_trading/src/presentation/screens/auth/widgets/option_filter.dart';
@@ -79,12 +80,31 @@ class FilterPage extends StatelessWidget {
               Expanded(
                 child: BlocBuilder<CategoriesBloc,CategoriesState>(
                   builder: (context, state) {
+                      if(state.loading){
+
+                        return Center(
+  child: CircularProgressIndicator(
+    backgroundColor: Colors.white,
+    valueColor: AlwaysStoppedAnimation<Color>(Color(0xFF70b9be)),
+  ),
+);
+
+                         
+                      }
+                      else if(state.error){
+                        return Center(
+                          child: Text(
+                            'products not found',
+                            style: const TextStyle(color:  Color(0xFF70b9be),fontWeight: FontWeight.bold,fontSize: 15),
+                          ),
+                        );
+                      }
                     return SingleChildScrollView(
                 child: Center(
                   child: Wrap(
                     spacing: 10,
                     runSpacing: 5,
-                    children: List.generate(10, (i) {
+                    children: List.generate(state.categories.length, (i) {
                       final width = MediaQuery.of(context).size.width;
                       final itemWidth = width > 971
                           ? width * 0.31
@@ -96,9 +116,17 @@ class FilterPage extends StatelessWidget {
 
                       return InkWell(
                         onTap: () {
+                           
+                          /* 
+                                    AppRouter.router.navigateTo(context,
+                                        RoutesNames.teacherDetailsRoute,
+                                        routeSettings: RouteSettings(
+                                            arguments: state.teachers[i])); */
                         AppRouter.router.navigateTo(
                             context, RoutesNames.products,
                             transition: TransitionType.inFromRight,
+                             routeSettings: RouteSettings(
+                                            arguments: state.categories[i].id),
                             transitionDuration:
                                 const Duration(milliseconds: 500));
                       },
@@ -106,7 +134,7 @@ class FilterPage extends StatelessWidget {
                         child: SizedBox(
                           width: itemWidth,
                           child: MainCard(
-                      name: 'catogris name',
+                      name: state.categories[i].name.toString(),
                       imageUrl: 'assets/images/Rectangle569.png',
                 
                     )

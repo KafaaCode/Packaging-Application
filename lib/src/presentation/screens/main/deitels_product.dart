@@ -6,7 +6,7 @@ import 'package:frip_trading/src/presentation/controllers/counter/counter_bloc.d
 import 'package:readmore/readmore.dart';
 
 class ProductDetailsPage extends StatelessWidget {
- /*  final Product product; */
+  final Product product; 
   final int minQuantity = 10;
 
   final String fullDescription =
@@ -14,12 +14,12 @@ class ProductDetailsPage extends StatelessWidget {
       "It’s designed for performance and comfort. Stylish and warm for everyday use. "
       "It’s a great choice for daily wear or workouts. Available in various sizes and colors.";
 
- const ProductDetailsPage({super.key,/* required this.product */});
+ const ProductDetailsPage({super.key,required this.product});
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => CounterBloc(min: minQuantity),
+      create: (context) => CounterBloc(min:this.product.request_number??0),
       child: Scaffold(
         body: Column(
           children: [
@@ -72,14 +72,14 @@ class ProductDetailsPage extends StatelessWidget {
                       style: TextStyle(color: Colors.grey),
                     ),
                     const SizedBox(height: 8),
-                    const Text(
-                      "Nike Club Fleece",
+                     Text(
+                     this.product.name,
                       style:
                           TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                     ),
                     const SizedBox(height: 8),
                     const Text("Price", style: TextStyle(color: Colors.grey)),
-                    const Text("\$99",
+                    Text("\$${this.product.price}",
                         style: TextStyle(
                             fontSize: 18, fontWeight: FontWeight.bold)),
                     const SizedBox(height: 12),
@@ -92,7 +92,7 @@ class ProductDetailsPage extends StatelessWidget {
                     Expanded(
                       child: SingleChildScrollView(
                         child: ReadMoreText(
-                          fullDescription,
+                         this.product.description ?? '',
                           trimLines: 3,
                           colorClickableText: Colors.teal,
                           trimMode: TrimMode.Line,
