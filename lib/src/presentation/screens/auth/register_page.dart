@@ -67,8 +67,26 @@ class _RegisterPageState extends State<RegisterPage> {
             children: [
               BlocListener<AuthBloc, AuthState>(
                 listener: (context, state) {
-                  print(state);
+                  print('state: $state');
                   state.maybeWhen(
+                    error: (message) {
+                      showDialog(
+                        context: context,
+                        builder: (context) => AlertDialog(
+                          title: const Text('Error'),
+                          content: Text(message),
+                          actions: [
+                            TextButton(
+                              onPressed: () {
+                                Navigator.of(context).pop();
+                              },
+                              child: const Text('OK'),
+                            ),
+                          ],
+                        ),
+                      );
+                      Navigator.of(context, rootNavigator: true).pop();
+                    },
                     loadInProgress: () {
                       showLoadingDialog(context);
                     },
@@ -123,6 +141,7 @@ class _RegisterPageState extends State<RegisterPage> {
                       TextFieldAuth(
                         svgIcon: 'assets/SVG/lock.svg',
                         hintText: 'Strong Password',
+                        isPassword: true,
                         controller: passwordController,
                         colorIcon: const Color.fromRGBO(0, 0, 0, .7),
                       ),
@@ -156,11 +175,12 @@ class _RegisterPageState extends State<RegisterPage> {
                                             create: (user) => user.copyWith(
                                               specializationId: value?.id ?? 0,
                                             ),
-                                            orElse: () => const User(
-                                              id: 0,
-                                              name: '',
-                                              email: '',
-                                            ),
+                                            orElse: () => User(
+                                                id: 0,
+                                                name: '',
+                                                email: '',
+                                                specializationId:
+                                                    value?.id ?? 0),
                                           ),
                                         ),
                                       );
@@ -192,11 +212,11 @@ class _RegisterPageState extends State<RegisterPage> {
                                             create: (user) => user.copyWith(
                                               countryId: value?.id ?? 0,
                                             ),
-                                            orElse: () => const User(
-                                              id: 0,
-                                              name: '',
-                                              email: '',
-                                            ),
+                                            orElse: () => User(
+                                                id: 0,
+                                                name: '',
+                                                email: '',
+                                                countryId: value?.id ?? 0),
                                           ),
                                         ),
                                       );
@@ -301,28 +321,38 @@ class _RegisterPageState extends State<RegisterPage> {
                       ],
                     ),
                   ),
-                  ButtonCostum(
-                    onPressed: () {
-                      context.read<AuthBloc>().add(
-                            AuthEvent.register(
-                              user: context.read<AuthBloc>().state.maybeWhen(
-                                    create: (user) => user.copyWith(
-                                      name: nameController.text,
-                                      email: emailController.text,
-                                      password: passwordController.text,
-                                      company: companyController.text,
-                                    ),
-                                    orElse: () => const User(
-                                      id: 0,
-                                      name: '',
-                                      email: '',
-                                    ),
-                                  ),
-                            ),
-                          );
+                  BlocBuilder<AuthBloc, AuthState>(
+                    builder: (context, state) {
+                      return ButtonCostum(
+                        onPressed: () {
+                          context.read<AuthBloc>().add(
+                                AuthEvent.register(
+                                  user: state.maybeWhen(
+                                      create: (user) => user.copyWith(
+                                            name: nameController.text,
+                                            email: emailController.text,
+                                            password: passwordController.text,
+                                            company: companyController.text,
+                                          ),
+                                      orElse: () {
+                                        print(3333);
+                                        return const User(
+                                          id: 0,
+                                          name: '',
+                                          email: '',
+                                        );
+                                      }),
+                                ),
+                              );
+                          // print(nameController.text);
+                          // print(
+
+                          // );
+                        },
+                        text: 'Register',
+                        size: const Size(340, 52),
+                      );
                     },
-                    text: 'Register',
-                    size: const Size(340, 52),
                   ),
                   Row(
                     crossAxisAlignment: CrossAxisAlignment.center,

@@ -115,6 +115,7 @@ class AuthBloc extends HydratedBloc<AuthEvent, AuthState> {
         password: event.user.password!,
       );
       await response.fold((error) async {
+        print('Error: ${error.message}');
         if (!emit.isDone) emit(AuthState.error(message: error.message));
       }, (r) async {
         await HydratedBloc.storage.write('token', r.token);
