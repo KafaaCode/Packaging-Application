@@ -1236,7 +1236,7 @@ mixin _$Product {
   String? get image => throw _privateConstructorUsedError;
   String? get serial_numbe => throw _privateConstructorUsedError;
   String? get description => throw _privateConstructorUsedError;
-  Category? get cateogry => throw _privateConstructorUsedError;
+  Category? get category => throw _privateConstructorUsedError;
   int? get request_number => throw _privateConstructorUsedError;
   String get price => throw _privateConstructorUsedError;
   int get active => throw _privateConstructorUsedError;
@@ -1261,12 +1261,12 @@ abstract class $ProductCopyWith<$Res> {
       String? image,
       String? serial_numbe,
       String? description,
-      Category? cateogry,
+      Category? category,
       int? request_number,
       String price,
       int active});
 
-  $CategoryCopyWith<$Res>? get cateogry;
+  $CategoryCopyWith<$Res>? get category;
 }
 
 /// @nodoc
@@ -1289,7 +1289,7 @@ class _$ProductCopyWithImpl<$Res, $Val extends Product>
     Object? image = freezed,
     Object? serial_numbe = freezed,
     Object? description = freezed,
-    Object? cateogry = freezed,
+    Object? category = freezed,
     Object? request_number = freezed,
     Object? price = null,
     Object? active = null,
@@ -1315,9 +1315,9 @@ class _$ProductCopyWithImpl<$Res, $Val extends Product>
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
               as String?,
-      cateogry: freezed == cateogry
-          ? _value.cateogry
-          : cateogry // ignore: cast_nullable_to_non_nullable
+      category: freezed == category
+          ? _value.category
+          : category // ignore: cast_nullable_to_non_nullable
               as Category?,
       request_number: freezed == request_number
           ? _value.request_number
@@ -1338,13 +1338,13 @@ class _$ProductCopyWithImpl<$Res, $Val extends Product>
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  $CategoryCopyWith<$Res>? get cateogry {
-    if (_value.cateogry == null) {
+  $CategoryCopyWith<$Res>? get category {
+    if (_value.category == null) {
       return null;
     }
 
-    return $CategoryCopyWith<$Res>(_value.cateogry!, (value) {
-      return _then(_value.copyWith(cateogry: value) as $Val);
+    return $CategoryCopyWith<$Res>(_value.category!, (value) {
+      return _then(_value.copyWith(category: value) as $Val);
     });
   }
 }
@@ -1362,13 +1362,13 @@ abstract class _$$ProductImplCopyWith<$Res> implements $ProductCopyWith<$Res> {
       String? image,
       String? serial_numbe,
       String? description,
-      Category? cateogry,
+      Category? category,
       int? request_number,
       String price,
       int active});
 
   @override
-  $CategoryCopyWith<$Res>? get cateogry;
+  $CategoryCopyWith<$Res>? get category;
 }
 
 /// @nodoc
@@ -1389,7 +1389,7 @@ class __$$ProductImplCopyWithImpl<$Res>
     Object? image = freezed,
     Object? serial_numbe = freezed,
     Object? description = freezed,
-    Object? cateogry = freezed,
+    Object? category = freezed,
     Object? request_number = freezed,
     Object? price = null,
     Object? active = null,
@@ -1415,9 +1415,9 @@ class __$$ProductImplCopyWithImpl<$Res>
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
               as String?,
-      cateogry: freezed == cateogry
-          ? _value.cateogry
-          : cateogry // ignore: cast_nullable_to_non_nullable
+      category: freezed == category
+          ? _value.category
+          : category // ignore: cast_nullable_to_non_nullable
               as Category?,
       request_number: freezed == request_number
           ? _value.request_number
@@ -1444,7 +1444,7 @@ class _$ProductImpl implements _Product {
       this.image,
       this.serial_numbe,
       this.description,
-      this.cateogry,
+      this.category,
       this.request_number,
       required this.price,
       required this.active});
@@ -1463,7 +1463,7 @@ class _$ProductImpl implements _Product {
   @override
   final String? description;
   @override
-  final Category? cateogry;
+  final Category? category;
   @override
   final int? request_number;
   @override
@@ -1473,7 +1473,7 @@ class _$ProductImpl implements _Product {
 
   @override
   String toString() {
-    return 'Product(id: $id, name: $name, image: $image, serial_numbe: $serial_numbe, description: $description, cateogry: $cateogry, request_number: $request_number, price: $price, active: $active)';
+    return 'Product(id: $id, name: $name, image: $image, serial_numbe: $serial_numbe, description: $description, category: $category, request_number: $request_number, price: $price, active: $active)';
   }
 
   @override
@@ -1488,8 +1488,8 @@ class _$ProductImpl implements _Product {
                 other.serial_numbe == serial_numbe) &&
             (identical(other.description, description) ||
                 other.description == description) &&
-            (identical(other.cateogry, cateogry) ||
-                other.cateogry == cateogry) &&
+            (identical(other.category, category) ||
+                other.category == category) &&
             (identical(other.request_number, request_number) ||
                 other.request_number == request_number) &&
             (identical(other.price, price) || other.price == price) &&
@@ -1499,7 +1499,7 @@ class _$ProductImpl implements _Product {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, id, name, image, serial_numbe,
-      description, cateogry, request_number, price, active);
+      description, category, request_number, price, active);
 
   /// Create a copy of Product
   /// with the given fields replaced by the non-null parameter values.
@@ -1524,7 +1524,7 @@ abstract class _Product implements Product {
       final String? image,
       final String? serial_numbe,
       final String? description,
-      final Category? cateogry,
+      final Category? category,
       final int? request_number,
       required final String price,
       required final int active}) = _$ProductImpl;
@@ -1542,7 +1542,7 @@ abstract class _Product implements Product {
   @override
   String? get description;
   @override
-  Category? get cateogry;
+  Category? get category;
   @override
   int? get request_number;
   @override

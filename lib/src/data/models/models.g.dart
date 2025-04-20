@@ -105,9 +105,9 @@ _$ProductImpl _$$ProductImplFromJson(Map<String, dynamic> json) =>
       image: json['image'] as String?,
       serial_numbe: json['serial_numbe'] as String?,
       description: json['description'] as String?,
-      cateogry: json['cateogry'] == null
+      category: json['category'] == null
           ? null
-          : Category.fromJson(json['cateogry'] as Map<String, dynamic>),
+          : Category.fromJson(json['category'] as Map<String, dynamic>),
       request_number: (json['request_number'] as num?)?.toInt(),
       price: json['price'] as String,
       active: (json['active'] as num).toInt(),
@@ -120,7 +120,7 @@ Map<String, dynamic> _$$ProductImplToJson(_$ProductImpl instance) =>
       'image': instance.image,
       'serial_numbe': instance.serial_numbe,
       'description': instance.description,
-      'cateogry': instance.cateogry,
+      'category': instance.category,
       'request_number': instance.request_number,
       'price': instance.price,
       'active': instance.active,

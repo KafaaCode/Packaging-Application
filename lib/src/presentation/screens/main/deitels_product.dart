@@ -67,8 +67,8 @@ class ProductDetailsPage extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const Text(
-                      "Men's Printed Pullover Hoodie",
+                     Text(
+                     this.product.category?.name ?? '',
                       style: TextStyle(color: Colors.grey),
                     ),
                     const SizedBox(height: 8),

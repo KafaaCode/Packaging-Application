@@ -83,7 +83,7 @@ class Product with _$Product {
     String? image,
     String? serial_numbe,
     String? description,
-   Category? cateogry,
+   Category? category,
     int? request_number, 
 
    required String  price,
