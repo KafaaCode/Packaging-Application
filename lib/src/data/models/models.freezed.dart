@@ -1031,10 +1031,10 @@ Category _$CategoryFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Category {
-  int get id => throw _privateConstructorUsedError;
-  String get name => throw _privateConstructorUsedError;
-  String get image => throw _privateConstructorUsedError;
-  bool get active => throw _privateConstructorUsedError;
+  int? get id => throw _privateConstructorUsedError;
+  String? get name => throw _privateConstructorUsedError;
+  String? get image => throw _privateConstructorUsedError;
+  int get active => throw _privateConstructorUsedError;
 
   /// Serializes this Category to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -1051,7 +1051,7 @@ abstract class $CategoryCopyWith<$Res> {
   factory $CategoryCopyWith(Category value, $Res Function(Category) then) =
       _$CategoryCopyWithImpl<$Res, Category>;
   @useResult
-  $Res call({int id, String name, String image, bool active});
+  $Res call({int? id, String? name, String? image, int active});
 }
 
 /// @nodoc
@@ -1069,28 +1069,28 @@ class _$CategoryCopyWithImpl<$Res, $Val extends Category>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = null,
-    Object? name = null,
-    Object? image = null,
+    Object? id = freezed,
+    Object? name = freezed,
+    Object? image = freezed,
     Object? active = null,
   }) {
     return _then(_value.copyWith(
-      id: null == id
+      id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as int,
-      name: null == name
+              as int?,
+      name: freezed == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
-              as String,
-      image: null == image
+              as String?,
+      image: freezed == image
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       active: null == active
           ? _value.active
           : active // ignore: cast_nullable_to_non_nullable
-              as bool,
+              as int,
     ) as $Val);
   }
 }
@@ -1103,7 +1103,7 @@ abstract class _$$CategoryImplCopyWith<$Res>
       __$$CategoryImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({int id, String name, String image, bool active});
+  $Res call({int? id, String? name, String? image, int active});
 }
 
 /// @nodoc
@@ -1119,28 +1119,28 @@ class __$$CategoryImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = null,
-    Object? name = null,
-    Object? image = null,
+    Object? id = freezed,
+    Object? name = freezed,
+    Object? image = freezed,
     Object? active = null,
   }) {
     return _then(_$CategoryImpl(
-      id: null == id
+      id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as int,
-      name: null == name
+              as int?,
+      name: freezed == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
-              as String,
-      image: null == image
+              as String?,
+      image: freezed == image
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       active: null == active
           ? _value.active
           : active // ignore: cast_nullable_to_non_nullable
-              as bool,
+              as int,
     ));
   }
 }
@@ -1148,23 +1148,19 @@ class __$$CategoryImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$CategoryImpl implements _Category {
-  const _$CategoryImpl(
-      {required this.id,
-      required this.name,
-      required this.image,
-      required this.active});
+  const _$CategoryImpl({this.id, this.name, this.image, required this.active});
 
   factory _$CategoryImpl.fromJson(Map<String, dynamic> json) =>
       _$$CategoryImplFromJson(json);
 
   @override
-  final int id;
+  final int? id;
   @override
-  final String name;
+  final String? name;
   @override
-  final String image;
+  final String? image;
   @override
-  final bool active;
+  final int active;
 
   @override
   String toString() {
@@ -1204,22 +1200,22 @@ class _$CategoryImpl implements _Category {
 
 abstract class _Category implements Category {
   const factory _Category(
-      {required final int id,
-      required final String name,
-      required final String image,
-      required final bool active}) = _$CategoryImpl;
+      {final int? id,
+      final String? name,
+      final String? image,
+      required final int active}) = _$CategoryImpl;
 
   factory _Category.fromJson(Map<String, dynamic> json) =
       _$CategoryImpl.fromJson;
 
   @override
-  int get id;
+  int? get id;
   @override
-  String get name;
+  String? get name;
   @override
-  String get image;
+  String? get image;
   @override
-  bool get active;
+  int get active;
 
   /// Create a copy of Category
   /// with the given fields replaced by the non-null parameter values.
@@ -1779,12 +1775,14 @@ mixin _$Product {
   int get id => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   String? get image => throw _privateConstructorUsedError;
-  String get serial_numbe => throw _privateConstructorUsedError;
+  String? get serial_numbe => throw _privateConstructorUsedError;
   String? get description => throw _privateConstructorUsedError;
-  Category? get cateogry => throw _privateConstructorUsedError;
-  int get request_number => throw _privateConstructorUsedError;
-  double get price => throw _privateConstructorUsedError;
-  bool get active => throw _privateConstructorUsedError;
+
+  Category? get category => throw _privateConstructorUsedError;
+  int? get request_number => throw _privateConstructorUsedError;
+  String get price => throw _privateConstructorUsedError;
+  int get active => throw _privateConstructorUsedError;
+
 
   /// Serializes this Product to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -1804,14 +1802,16 @@ abstract class $ProductCopyWith<$Res> {
       {int id,
       String name,
       String? image,
-      String serial_numbe,
+      String? serial_numbe,
       String? description,
-      Category? cateogry,
-      int request_number,
-      double price,
-      bool active});
 
-  $CategoryCopyWith<$Res>? get cateogry;
+      Category? category,
+      int? request_number,
+      String price,
+      int active});
+
+  $CategoryCopyWith<$Res>? get category;
+
 }
 
 /// @nodoc
@@ -1832,10 +1832,12 @@ class _$ProductCopyWithImpl<$Res, $Val extends Product>
     Object? id = null,
     Object? name = null,
     Object? image = freezed,
-    Object? serial_numbe = null,
+    Object? serial_numbe = freezed,
     Object? description = freezed,
-    Object? cateogry = freezed,
-    Object? request_number = null,
+
+    Object? category = freezed,
+    Object? request_number = freezed,
+
     Object? price = null,
     Object? active = null,
   }) {
@@ -1852,30 +1854,32 @@ class _$ProductCopyWithImpl<$Res, $Val extends Product>
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
               as String?,
-      serial_numbe: null == serial_numbe
+      serial_numbe: freezed == serial_numbe
           ? _value.serial_numbe
           : serial_numbe // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       description: freezed == description
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
               as String?,
-      cateogry: freezed == cateogry
-          ? _value.cateogry
-          : cateogry // ignore: cast_nullable_to_non_nullable
+
+      category: freezed == category
+          ? _value.category
+          : category // ignore: cast_nullable_to_non_nullable
               as Category?,
-      request_number: null == request_number
+      request_number: freezed == request_number
+
           ? _value.request_number
           : request_number // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
       price: null == price
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
-              as double,
+              as String,
       active: null == active
           ? _value.active
           : active // ignore: cast_nullable_to_non_nullable
-              as bool,
+              as int,
     ) as $Val);
   }
 
@@ -1883,13 +1887,15 @@ class _$ProductCopyWithImpl<$Res, $Val extends Product>
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  $CategoryCopyWith<$Res>? get cateogry {
-    if (_value.cateogry == null) {
+
+  $CategoryCopyWith<$Res>? get category {
+    if (_value.category == null) {
       return null;
     }
 
-    return $CategoryCopyWith<$Res>(_value.cateogry!, (value) {
-      return _then(_value.copyWith(cateogry: value) as $Val);
+    return $CategoryCopyWith<$Res>(_value.category!, (value) {
+      return _then(_value.copyWith(category: value) as $Val);
+
     });
   }
 }
@@ -1905,15 +1911,17 @@ abstract class _$$ProductImplCopyWith<$Res> implements $ProductCopyWith<$Res> {
       {int id,
       String name,
       String? image,
-      String serial_numbe,
+      String? serial_numbe,
       String? description,
-      Category? cateogry,
-      int request_number,
-      double price,
-      bool active});
+
+      Category? category,
+      int? request_number,
+      String price,
+      int active});
 
   @override
-  $CategoryCopyWith<$Res>? get cateogry;
+  $CategoryCopyWith<$Res>? get category;
+
 }
 
 /// @nodoc
@@ -1932,10 +1940,12 @@ class __$$ProductImplCopyWithImpl<$Res>
     Object? id = null,
     Object? name = null,
     Object? image = freezed,
-    Object? serial_numbe = null,
+    Object? serial_numbe = freezed,
     Object? description = freezed,
-    Object? cateogry = freezed,
-    Object? request_number = null,
+
+    Object? category = freezed,
+    Object? request_number = freezed,
+
     Object? price = null,
     Object? active = null,
   }) {
@@ -1952,30 +1962,32 @@ class __$$ProductImplCopyWithImpl<$Res>
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
               as String?,
-      serial_numbe: null == serial_numbe
+      serial_numbe: freezed == serial_numbe
           ? _value.serial_numbe
           : serial_numbe // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       description: freezed == description
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
               as String?,
-      cateogry: freezed == cateogry
-          ? _value.cateogry
-          : cateogry // ignore: cast_nullable_to_non_nullable
+
+      category: freezed == category
+          ? _value.category
+          : category // ignore: cast_nullable_to_non_nullable
               as Category?,
-      request_number: null == request_number
+      request_number: freezed == request_number
+
           ? _value.request_number
           : request_number // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
       price: null == price
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
-              as double,
+              as String,
       active: null == active
           ? _value.active
           : active // ignore: cast_nullable_to_non_nullable
-              as bool,
+              as int,
     ));
   }
 }
@@ -1987,10 +1999,10 @@ class _$ProductImpl implements _Product {
       {required this.id,
       required this.name,
       this.image,
-      required this.serial_numbe,
+      this.serial_numbe,
       this.description,
-      required this.cateogry,
-      required this.request_number,
+      this.category,
+      this.request_number,
       required this.price,
       required this.active});
 
@@ -2004,21 +2016,23 @@ class _$ProductImpl implements _Product {
   @override
   final String? image;
   @override
-  final String serial_numbe;
+  final String? serial_numbe;
   @override
   final String? description;
   @override
-  final Category? cateogry;
+
+  final Category? category;
+
   @override
-  final int request_number;
+  final int? request_number;
   @override
-  final double price;
+  final String price;
   @override
-  final bool active;
+  final int active;
 
   @override
   String toString() {
-    return 'Product(id: $id, name: $name, image: $image, serial_numbe: $serial_numbe, description: $description, cateogry: $cateogry, request_number: $request_number, price: $price, active: $active)';
+    return 'Product(id: $id, name: $name, image: $image, serial_numbe: $serial_numbe, description: $description, category: $category, request_number: $request_number, price: $price, active: $active)';
   }
 
   @override
@@ -2033,8 +2047,8 @@ class _$ProductImpl implements _Product {
                 other.serial_numbe == serial_numbe) &&
             (identical(other.description, description) ||
                 other.description == description) &&
-            (identical(other.cateogry, cateogry) ||
-                other.cateogry == cateogry) &&
+            (identical(other.category, category) ||
+                other.category == category) &&
             (identical(other.request_number, request_number) ||
                 other.request_number == request_number) &&
             (identical(other.price, price) || other.price == price) &&
@@ -2044,7 +2058,7 @@ class _$ProductImpl implements _Product {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, id, name, image, serial_numbe,
-      description, cateogry, request_number, price, active);
+      description, category, request_number, price, active);
 
   /// Create a copy of Product
   /// with the given fields replaced by the non-null parameter values.
@@ -2067,12 +2081,14 @@ abstract class _Product implements Product {
       {required final int id,
       required final String name,
       final String? image,
-      required final String serial_numbe,
+      final String? serial_numbe,
       final String? description,
-      required final Category? cateogry,
-      required final int request_number,
-      required final double price,
-      required final bool active}) = _$ProductImpl;
+
+      final Category? category,
+      final int? request_number,
+      required final String price,
+      required final int active}) = _$ProductImpl;
+
 
   factory _Product.fromJson(Map<String, dynamic> json) = _$ProductImpl.fromJson;
 
@@ -2083,17 +2099,19 @@ abstract class _Product implements Product {
   @override
   String? get image;
   @override
-  String get serial_numbe;
+  String? get serial_numbe;
   @override
   String? get description;
   @override
-  Category? get cateogry;
+
+  Category? get category;
+
   @override
-  int get request_number;
+  int? get request_number;
   @override
-  double get price;
+  String get price;
   @override
-  bool get active;
+  int get active;
 
   /// Create a copy of Product
   /// with the given fields replaced by the non-null parameter values.

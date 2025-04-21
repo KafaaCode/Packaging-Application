@@ -34,7 +34,7 @@ class ApiConstances {
   static const String getordersUrl = "$_baseUrl/orders";
 
   static String getproductsUrl({required int categoryId}) =>
-      "$_baseUrl/Catogry/$categoryId";
+      "$_baseUrl/products/categories/$categoryId";
   // Tools
   static String getToken() {
     print(HydratedBloc.storage.read('token').toString());

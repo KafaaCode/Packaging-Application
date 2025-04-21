@@ -63,11 +63,16 @@ class UpdateData with _$UpdateData {
 @freezed
 class Category with _$Category {
   const factory Category({
-    required int id,
-    required String name,
-    required String image,
-    required bool active,
-  }) = _Category;
+
+   int? id,
+  String? name,
+     String? image,
+
+     required int active,  
+    
+  }) =_Category;
+
+
 
   factory Category.fromJson(Map<String, dynamic> json) =>
       _$CategoryFromJson(json);
@@ -126,13 +131,17 @@ class Product with _$Product {
     required int id,
     required String name,
     String? image,
-    required String serial_numbe,
+    String? serial_numbe,
     String? description,
-    required Category? cateogry,
-    required int request_number,
-    required double price,
-    required bool active,
-  }) = _Product;
+
+   Category? category,
+    int? request_number, 
+
+   required String  price,
+  required int active,  
+  }) =_Product;
+
+
 
   factory Product.fromJson(Map<String, dynamic> json) =>
       _$ProductFromJson(json);

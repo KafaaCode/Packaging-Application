@@ -21,6 +21,7 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
     emit(state.copyWith(loading: true));
     
     final result = await mainRepository.getProducts( categoryId: event.categoryId);
+ 
     result.fold(
       (l) => emit(state.copyWith(
           loading: false,

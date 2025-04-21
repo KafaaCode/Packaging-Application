@@ -41,16 +41,30 @@ void configureRoutes(FluroRouter router) {
       },
     ),
   );
-  router.define(
+/*   router.define(
     RoutesNames.products,
     handler: Handler(
       handlerFunc: (context, parameters) {
         return const  Products();
       },
     ),
+  ); */
+
+router.define(
+    RoutesNames.products,
+    handler: Handler(
+      handlerFunc: (context, parameters) {
+        final args = context!.settings!.arguments;
+        if (args is int) {
+          return Products(
+           cartegriesId: args,
+          );
+        } else {
+          return null;
+        }
+      },
+    ),
   );
-
-
   
 
 
