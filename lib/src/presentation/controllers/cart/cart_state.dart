@@ -8,4 +8,5 @@ class CartState with _$CartState {
 
   factory CartState.fromJson(Map<String, dynamic> json) =>
       _$CartStateFromJson(json);
+      
 }
