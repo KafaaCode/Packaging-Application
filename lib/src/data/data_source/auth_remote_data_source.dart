@@ -54,7 +54,8 @@ class AuthRemoteDataSource extends BaseAuthRemoteDataSource {
     } on DioException catch (e) {
       print('DioError: ${e.message}');
       print('Response data: ${e.response?.data}');
-      throw AuthException.fromDioError(e.response?.statusCode ?? 404, e);
+      throw AuthException(
+          statusCode: e.response?.statusCode, authMessage: e.response?.data);
     } catch (e) {
       print('Unexpected error: $e');
       throw AuthException(statusCode: 404, authMessage: e.toString());
@@ -64,24 +65,14 @@ class AuthRemoteDataSource extends BaseAuthRemoteDataSource {
   @override
   Future<bool> logout() async {
     try {
-      final response = await Dio().post(ApiConstances.logoutUrl,
-          options: Options(
-            headers: ApiConstances.headers(
-                isToken: true, token: ApiConstances.getToken()),
-            validateStatus: (status) => status! < 500,
-          ));
-      if (response.statusCode == 422) {
-        final Map<String, dynamic> errors = response.data['errors'] ?? {};
-        final String errorMessage = errors.values
-            .expand((e) => e is List ? e : [e.toString()])
-            .join(', ');
-        throw AuthException(
-          statusCode: 422,
-          authMessage: errorMessage.isNotEmpty
-              ? errorMessage
-              : 'Validation error occurred',
-        );
-      }
+      final response = await Dio().post(
+        ApiConstances.logoutUrl,
+        options: Options(
+          headers: ApiConstances.headers(
+              isToken: true, token: ApiConstances.getToken()),
+          validateStatus: (status) => status! < 500,
+        ),
+      );
 
       if (response.statusCode == 200 || response.statusCode == 201) {
         return true;
@@ -92,19 +83,21 @@ class AuthRemoteDataSource extends BaseAuthRemoteDataSource {
         authMessage: response.data['message'] ?? 'Unknown error occurred',
       );
     } on DioException catch (e) {
-      print('DioError: ${e.message}');
-      print('Response data: ${e.response?.data}');
-      throw AuthException.fromDioError(e.response?.statusCode ?? 404, e);
+      throw AuthException(
+        statusCode: e.response?.statusCode,
+        authMessage: e.response?.data['message'] ?? e.message,
+      );
     } catch (e) {
-      print('Unexpected error: $e');
-      throw AuthException(statusCode: 404, authMessage: e.toString());
+      throw AuthException(
+        statusCode: 500,
+        authMessage: 'Unexpected error: $e',
+      );
     }
   }
 
   @override
   Future<RefreshToken> refreshToken() async {
     try {
-      print('-------refreshToken------');
       final response = await Dio().post(
         ApiConstances.refreshTokenUrl,
         options: Options(
@@ -113,21 +106,6 @@ class AuthRemoteDataSource extends BaseAuthRemoteDataSource {
           validateStatus: (status) => status! < 500,
         ),
       );
-      print('Response data: ${response.data}');
-      print('Response status code: ${response.statusCode}');
-      print('-------refreshToken------');
-      if (response.statusCode == 422) {
-        final Map<String, dynamic> errors = response.data['errors'] ?? {};
-        final String errorMessage = errors.values
-            .expand((e) => e is List ? e : [e.toString()])
-            .join(', ');
-        throw AuthException(
-          statusCode: 422,
-          authMessage: errorMessage.isNotEmpty
-              ? errorMessage
-              : 'Validation error occurred',
-        );
-      }
 
       if (response.statusCode == 200 || response.statusCode == 201) {
         return RefreshToken.fromJson(response.data);
@@ -138,28 +116,31 @@ class AuthRemoteDataSource extends BaseAuthRemoteDataSource {
         authMessage: response.data['message'] ?? 'Unknown error occurred',
       );
     } on DioException catch (e) {
-      print('DioError: ${e.message}');
-      print('Response data: ${e.response?.data}');
-      throw AuthException.fromDioError(e.response?.statusCode ?? 404, e);
+      throw AuthException(
+        statusCode: e.response?.statusCode,
+        authMessage: e.response?.data['message'] ?? e.message,
+      );
     } catch (e) {
-      print('Unexpected error: $e');
-      throw AuthException(statusCode: 404, authMessage: e.toString());
+      throw AuthException(
+        statusCode: 500,
+        authMessage: 'Unexpected error: $e',
+      );
     }
   }
 
   @override
   Future<Auth> register({required User user}) async {
     try {
-      final requestBody = FormData.fromMap({
+      final requestBody = {
         'name': user.name,
         'email': user.email,
         'password': user.password,
         'password_confirmation': user.password,
-        'region_id': user.company,
-        'gander': user.gander,
-        'phoneNumber': user.phoneNumber,
-      });
-      print(requestBody);
+        'companyName': user.company,
+        'specialization_id': user.specializationId,
+        'country_id': user.countryId,
+      };
+
       final response = await Dio().post(
         ApiConstances.registerUrl,
         options: Options(
@@ -168,7 +149,8 @@ class AuthRemoteDataSource extends BaseAuthRemoteDataSource {
         ),
         data: requestBody,
       );
-
+      print(response.data);
+      print(response.statusCode);
       if (response.statusCode == 422) {
         final Map<String, dynamic> errors = response.data['errors'] ?? {};
         final String errorMessage = errors.values
@@ -181,9 +163,8 @@ class AuthRemoteDataSource extends BaseAuthRemoteDataSource {
               : 'Validation error occurred',
         );
       }
-
       if (response.statusCode == 200 || response.statusCode == 201) {
-        return Auth.fromJson(response.data);
+        return Auth.fromJson(response.data['data']);
       }
 
       throw AuthException(
@@ -191,60 +172,87 @@ class AuthRemoteDataSource extends BaseAuthRemoteDataSource {
         authMessage: response.data['errors'] ?? 'Unknown error occurred',
       );
     } on DioException catch (e) {
-      print('DioError: ${e.message}');
-      print('Response data: ${e.response?.data}');
-      throw AuthException.fromDioError(e.response?.statusCode ?? 404, e);
+      throw AuthException(
+        statusCode: e.response?.statusCode,
+        authMessage: e.response?.data['message'] ?? e.message,
+      );
     } catch (e) {
-      print('Unexpected error: $e');
-      throw AuthException(statusCode: 404, authMessage: e.toString());
+      throw AuthException(
+        statusCode: 500,
+        authMessage: 'Unexpected error: $e',
+      );
     }
   }
 
   @override
   Future<UpdateData> update({required User user}) async {
-    final requestBody = FormData.fromMap({
-      'name': user.name,
-      'email': user.email,
-      'password': user.password,
-      'gander': user.gander,
-      'phoneNumber': user.phoneNumber,
-    });
-    print(requestBody);
-    return sl.get<ApiCallHandler>().handler(
-          apiCall: () async => await Dio().post(
-            "",
-            options: Options(
-              headers: ApiConstances.headers(
-                  isToken: true, token: ApiConstances.getToken()),
-              validateStatus: (status) => status! < 500,
+    try {
+      final requestBody = FormData.fromMap({
+        'name': user.name,
+        'email': user.email,
+        'password': user.password,
+        'gander': user.gander,
+        'phoneNumber': user.phoneNumber,
+      });
+
+      return sl.get<ApiCallHandler>().handler(
+            apiCall: () async => await Dio().post(
+              "",
+              options: Options(
+                headers: ApiConstances.headers(
+                    isToken: true, token: ApiConstances.getToken()),
+                validateStatus: (status) => status! < 500,
+              ),
+              data: requestBody,
             ),
-            data: requestBody,
-          ),
-          responseHandler: (response) {
-            return UpdateData.fromJson(response.data);
-          },
-        );
+            responseHandler: (response) {
+              return UpdateData.fromJson(response.data);
+            },
+          );
+    } on DioException catch (e) {
+      throw AuthException(
+        statusCode: e.response?.statusCode,
+        authMessage: e.response?.data['message'] ?? e.message,
+      );
+    } catch (e) {
+      throw AuthException(
+        statusCode: 500,
+        authMessage: 'Unexpected error: $e',
+      );
+    }
   }
 
   @override
   Future<UpdateData> updateProfile({required String path}) async {
-    final requestBody = FormData.fromMap({
-      'image': await MultipartFile.fromFile(path),
-    });
-    print(requestBody);
-    return sl.get<ApiCallHandler>().handler(
-          apiCall: () async => await Dio().post(
-            '',
-            options: Options(
-              headers: ApiConstances.headers(
-                  isToken: true, token: ApiConstances.getToken()),
-              validateStatus: (status) => status! < 500,
+    try {
+      final requestBody = FormData.fromMap({
+        'image': await MultipartFile.fromFile(path),
+      });
+
+      return sl.get<ApiCallHandler>().handler(
+            apiCall: () async => await Dio().post(
+              '',
+              options: Options(
+                headers: ApiConstances.headers(
+                    isToken: true, token: ApiConstances.getToken()),
+                validateStatus: (status) => status! < 500,
+              ),
+              data: requestBody,
             ),
-            data: requestBody,
-          ),
-          responseHandler: (response) {
-            return UpdateData.fromJson(response.data);
-          },
-        );
+            responseHandler: (response) {
+              return UpdateData.fromJson(response.data);
+            },
+          );
+    } on DioException catch (e) {
+      throw AuthException(
+        statusCode: e.response?.statusCode,
+        authMessage: e.response?.data['message'] ?? e.message,
+      );
+    } catch (e) {
+      throw AuthException(
+        statusCode: 500,
+        authMessage: 'Unexpected error: $e',
+      );
+    }
   }
 }

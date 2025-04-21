@@ -51,7 +51,7 @@ class _InitPageState extends State<InitPage> {
               transitionDuration: const Duration(milliseconds: 500),
               transition: TransitionType.inFromBottom);
         } else if (user.role == "Admin") {
-          AppRouter.router.navigateTo(context, RoutesNames.mainRoute,
+          AppRouter.router.navigateTo(context, RoutesNames.adminMainRoute,
               clearStack: true,
               transitionDuration: const Duration(milliseconds: 500),
               transition: TransitionType.inFromLeft);

@@ -6,6 +6,10 @@ import 'package:frip_trading/src/data/repository/auth_repository.dart';
 import 'package:frip_trading/src/data/repository/main_repository.dart';
 import 'package:frip_trading/src/domin/repository/auth_repository.dart';
 import 'package:frip_trading/src/domin/repository/main_repository.dart';
+import 'package:frip_trading/src/features/inital/data/data_source/inital_remote_data_source.dart';
+import 'package:frip_trading/src/features/inital/data/repository/inital_repository.dart';
+import 'package:frip_trading/src/features/inital/domain/repository/inital_repository.dart';
+import 'package:frip_trading/src/features/inital/presentation/inital/inital_bloc.dart';
 import 'package:frip_trading/src/presentation/controllers/auth/auth_bloc.dart';
 import 'package:frip_trading/src/presentation/controllers/category/category_bloc.dart';
 import 'package:frip_trading/src/presentation/controllers/myorder/myorder_bloc.dart';
@@ -16,6 +20,7 @@ final sl = GetIt.instance;
 
 class ServicesLocator {
   void init() {
+    _initalSL();
     _authSl();
     _mainSl();
   }
@@ -37,10 +42,15 @@ class ServicesLocator {
     sl.registerLazySingleton(() => ProductBloc(mainRepository: sl()));
     sl.registerLazySingleton(() => CategoriesBloc(sl()));
 
-     sl.registerLazySingleton(() => MyOrdersBloc(sl()));
+    sl.registerLazySingleton(() => MyOrdersBloc(sl()));
+  }
 
-   
-
+  void _initalSL() {
+    sl.registerLazySingleton(() => InitalBloc(initalRepository: sl()));
+    sl.registerLazySingleton<BaseInitalRepository>(
+        () => InitalRepository(sl()));
+    sl.registerLazySingleton<BaseInitalRemoteDataSource>(
+        () => InitalRemoteDataSource());
   }
 }
 

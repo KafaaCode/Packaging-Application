@@ -35,6 +35,26 @@ class _LoginPageState extends State<LoginPage> {
             child: BlocListener<AuthBloc, AuthState>(
               listener: (context, state) {
                 state.maybeWhen(
+                  error: (message) {
+                    Navigator.of(context, rootNavigator: true).pop();
+                    debugPrint('Error: $message');
+
+                    showDialog(
+                      context: context,
+                      builder: (context) => AlertDialog(
+                        title: const Text('Error'),
+                        content: Text(message),
+                        actions: [
+                          TextButton(
+                            onPressed: () {
+                              Navigator.of(context).pop();
+                            },
+                            child: const Text('OK'),
+                          ),
+                        ],
+                      ),
+                    );
+                  },
                   loadInProgress: () {
                     showLoadingDialog(context);
                   },
@@ -100,6 +120,7 @@ class _LoginPageState extends State<LoginPage> {
                           isPassword: true,
                           labelText: 'Password',
                           hintText: 'Password',
+                          
                           controller: passwordController,
                         ),
                         TextButton(

@@ -5,7 +5,9 @@ import 'package:flutter_svg/svg.dart';
 import 'package:frip_trading/core/routes/router_screens.dart';
 import 'package:frip_trading/core/routes/routes_name.dart';
 import 'package:frip_trading/core/services/services_locator.dart';
+
 import 'package:frip_trading/core/utils/loading_dialog.dart';
+
 import 'package:frip_trading/src/presentation/controllers/category/category_bloc.dart';
 import 'package:frip_trading/src/presentation/screens/auth/widgets/cardproductandCatogry.dart';
 import 'package:frip_trading/src/presentation/screens/auth/widgets/option_filter.dart';
@@ -17,7 +19,8 @@ class FilterPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => CategoriesBloc(sl())..add(const CategoriesEvent.getCategories()),
+      create: (context) =>
+          CategoriesBloc(sl())..add(const CategoriesEvent.getCategories()),
       child: Container(
         color: Colors.white,
         child: Padding(
@@ -35,12 +38,29 @@ class FilterPage extends StatelessWidget {
                         fontWeight: FontWeight.bold,
                         fontSize: 30),
                   ),
-                  SvgPicture.asset(
-                    'assets/images/Group940.svg',
-                    height: 50,
-                    errorBuilder: (context, error, stackTrace) {
-                      return const SizedBox(width: 25, height: 50);
+                  BlocListener<AuthBloc, AuthState>(
+                    listener: (context, state) {
+                      state.mapOrNull(initial: (initial) {
+                        AppRouter.router.navigateTo(
+                            context, RoutesNames.loginRoute,
+                            clearStack: true,
+                            transition: TransitionType.inFromRight,
+                            transitionDuration:
+                                const Duration(milliseconds: 500));
+                      });
                     },
+                    child: InkWell(
+                      onTap: () {
+                        context.read<AuthBloc>().add(const AuthEvent.logout());
+                      },
+                      child: SvgPicture.asset(
+                        'assets/images/Group940.svg',
+                        height: 50,
+                        errorBuilder: (context, error, stackTrace) {
+                          return const SizedBox(width: 25, height: 50);
+                        },
+                      ),
+                    ),
                   ),
                 ],
               ),
@@ -78,7 +98,7 @@ class FilterPage extends StatelessWidget {
               ),
               const SizedBox(height: 8),
               Expanded(
-                child: BlocBuilder<CategoriesBloc,CategoriesState>(
+                child: BlocBuilder<CategoriesBloc, CategoriesState>(
                   builder: (context, state) {
                       if(state.loading){
 
@@ -100,6 +120,7 @@ class FilterPage extends StatelessWidget {
                         );
                       }
                     return SingleChildScrollView(
+
                 child: Center(
                   child: Wrap(
                     spacing: 10,
@@ -138,12 +159,10 @@ class FilterPage extends StatelessWidget {
                       imageUrl: 'assets/images/Rectangle569.png',
                 
                     )
+
                         ),
-                      );
-                    }),
-                  ),
-                ),
-              );
+                      ),
+                    );
                     /*  MainCard(
                       name: state.categories[0].name,
                       imageUrl: 'assets/images/Rectangle569.png',

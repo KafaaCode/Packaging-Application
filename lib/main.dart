@@ -12,6 +12,7 @@ import 'package:frip_trading/core/routes/routes_name.dart';
 import 'package:frip_trading/core/services/services_locator.dart';
 import 'package:frip_trading/core/theme/theme.dart';
 import 'package:frip_trading/core/theme/theme_cubit.dart';
+import 'package:frip_trading/src/features/inital/presentation/inital/inital_bloc.dart';
 import 'package:frip_trading/src/presentation/controllers/auth/auth_bloc.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
 import 'package:path_provider/path_provider.dart';
@@ -45,6 +46,10 @@ class MainApp extends StatelessWidget {
                 create: (context) => LanguageCubit(),
                 lazy: false,
               ),
+              BlocProvider(
+                  lazy: false,
+                  create: (context) =>
+                      sl<InitalBloc>()..add(const InitalEvent.getInitalData())),
               BlocProvider(create: (context) => ThemesCubit()),
               BlocProvider(
                   create: (context) =>

@@ -98,6 +98,52 @@ Map<String, dynamic> _$$CategoryImplToJson(_$CategoryImpl instance) =>
       'active': instance.active,
     };
 
+_$SpecializationAndCountryImpl _$$SpecializationAndCountryImplFromJson(
+        Map<String, dynamic> json) =>
+    _$SpecializationAndCountryImpl(
+      country: (json['countries'] as List<dynamic>?)
+          ?.map((e) =>
+              e == null ? null : Country.fromJson(e as Map<String, dynamic>))
+          .toList(),
+      specialization: (json['specializations'] as List<dynamic>?)
+          ?.map((e) => e == null
+              ? null
+              : Specialization.fromJson(e as Map<String, dynamic>))
+          .toList(),
+    );
+
+Map<String, dynamic> _$$SpecializationAndCountryImplToJson(
+        _$SpecializationAndCountryImpl instance) =>
+    <String, dynamic>{
+      'countries': instance.country,
+      'specializations': instance.specialization,
+    };
+
+_$CountryImpl _$$CountryImplFromJson(Map<String, dynamic> json) =>
+    _$CountryImpl(
+      id: (json['id'] as num).toInt(),
+      name: json['name'] as String,
+    );
+
+Map<String, dynamic> _$$CountryImplToJson(_$CountryImpl instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'name': instance.name,
+    };
+
+_$SpecializationImpl _$$SpecializationImplFromJson(Map<String, dynamic> json) =>
+    _$SpecializationImpl(
+      id: (json['id'] as num).toInt(),
+      name: json['name'] as String,
+    );
+
+Map<String, dynamic> _$$SpecializationImplToJson(
+        _$SpecializationImpl instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'name': instance.name,
+    };
+
 _$ProductImpl _$$ProductImplFromJson(Map<String, dynamic> json) =>
     _$ProductImpl(
       id: (json['id'] as num).toInt(),
@@ -105,12 +151,14 @@ _$ProductImpl _$$ProductImplFromJson(Map<String, dynamic> json) =>
       image: json['image'] as String?,
       serial_numbe: json['serial_numbe'] as String?,
       description: json['description'] as String?,
+
       category: json['category'] == null
           ? null
           : Category.fromJson(json['category'] as Map<String, dynamic>),
       request_number: (json['request_number'] as num?)?.toInt(),
       price: json['price'] as String,
       active: (json['active'] as num).toInt(),
+
     );
 
 Map<String, dynamic> _$$ProductImplToJson(_$ProductImpl instance) =>
