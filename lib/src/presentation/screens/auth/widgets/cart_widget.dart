@@ -72,7 +72,7 @@ class CartWidget extends StatelessWidget {
                                           Icons.remove_circle_outline),
                                     ),
                                     Text(
-                                       cartItem.quantity.toString(),
+                                      state.count.toString(),
                                       style: const TextStyle(fontSize: 15),
                                     ),
                                     IconButton(
