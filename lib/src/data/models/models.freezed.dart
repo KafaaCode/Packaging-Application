@@ -1777,12 +1777,10 @@ mixin _$Product {
   String? get image => throw _privateConstructorUsedError;
   String? get serial_numbe => throw _privateConstructorUsedError;
   String? get description => throw _privateConstructorUsedError;
-
   Category? get category => throw _privateConstructorUsedError;
   int? get request_number => throw _privateConstructorUsedError;
   String get price => throw _privateConstructorUsedError;
   int get active => throw _privateConstructorUsedError;
-
 
   /// Serializes this Product to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -1804,14 +1802,12 @@ abstract class $ProductCopyWith<$Res> {
       String? image,
       String? serial_numbe,
       String? description,
-
       Category? category,
       int? request_number,
       String price,
       int active});
 
   $CategoryCopyWith<$Res>? get category;
-
 }
 
 /// @nodoc
@@ -1834,10 +1830,8 @@ class _$ProductCopyWithImpl<$Res, $Val extends Product>
     Object? image = freezed,
     Object? serial_numbe = freezed,
     Object? description = freezed,
-
     Object? category = freezed,
     Object? request_number = freezed,
-
     Object? price = null,
     Object? active = null,
   }) {
@@ -1862,13 +1856,11 @@ class _$ProductCopyWithImpl<$Res, $Val extends Product>
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
               as String?,
-
       category: freezed == category
           ? _value.category
           : category // ignore: cast_nullable_to_non_nullable
               as Category?,
       request_number: freezed == request_number
-
           ? _value.request_number
           : request_number // ignore: cast_nullable_to_non_nullable
               as int?,
@@ -1887,7 +1879,6 @@ class _$ProductCopyWithImpl<$Res, $Val extends Product>
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-
   $CategoryCopyWith<$Res>? get category {
     if (_value.category == null) {
       return null;
@@ -1895,7 +1886,6 @@ class _$ProductCopyWithImpl<$Res, $Val extends Product>
 
     return $CategoryCopyWith<$Res>(_value.category!, (value) {
       return _then(_value.copyWith(category: value) as $Val);
-
     });
   }
 }
@@ -1913,7 +1903,6 @@ abstract class _$$ProductImplCopyWith<$Res> implements $ProductCopyWith<$Res> {
       String? image,
       String? serial_numbe,
       String? description,
-
       Category? category,
       int? request_number,
       String price,
@@ -1921,7 +1910,6 @@ abstract class _$$ProductImplCopyWith<$Res> implements $ProductCopyWith<$Res> {
 
   @override
   $CategoryCopyWith<$Res>? get category;
-
 }
 
 /// @nodoc
@@ -1942,10 +1930,8 @@ class __$$ProductImplCopyWithImpl<$Res>
     Object? image = freezed,
     Object? serial_numbe = freezed,
     Object? description = freezed,
-
     Object? category = freezed,
     Object? request_number = freezed,
-
     Object? price = null,
     Object? active = null,
   }) {
@@ -1970,13 +1956,11 @@ class __$$ProductImplCopyWithImpl<$Res>
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
               as String?,
-
       category: freezed == category
           ? _value.category
           : category // ignore: cast_nullable_to_non_nullable
               as Category?,
       request_number: freezed == request_number
-
           ? _value.request_number
           : request_number // ignore: cast_nullable_to_non_nullable
               as int?,
@@ -2020,9 +2004,7 @@ class _$ProductImpl implements _Product {
   @override
   final String? description;
   @override
-
   final Category? category;
-
   @override
   final int? request_number;
   @override
@@ -2083,12 +2065,10 @@ abstract class _Product implements Product {
       final String? image,
       final String? serial_numbe,
       final String? description,
-
       final Category? category,
       final int? request_number,
       required final String price,
       required final int active}) = _$ProductImpl;
-
 
   factory _Product.fromJson(Map<String, dynamic> json) = _$ProductImpl.fromJson;
 
@@ -2103,9 +2083,7 @@ abstract class _Product implements Product {
   @override
   String? get description;
   @override
-
   Category? get category;
-
   @override
   int? get request_number;
   @override
@@ -2351,5 +2329,187 @@ abstract class _MyOrder implements MyOrder {
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$MyOrderImplCopyWith<_$MyOrderImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+CartItem _$CartItemFromJson(Map<String, dynamic> json) {
+  return _CartItem.fromJson(json);
+}
+
+/// @nodoc
+mixin _$CartItem {
+  Product get product => throw _privateConstructorUsedError;
+  int get quantity => throw _privateConstructorUsedError;
+
+  /// Serializes this CartItem to a JSON map.
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+
+  /// Create a copy of CartItem
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  $CartItemCopyWith<CartItem> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $CartItemCopyWith<$Res> {
+  factory $CartItemCopyWith(CartItem value, $Res Function(CartItem) then) =
+      _$CartItemCopyWithImpl<$Res, CartItem>;
+  @useResult
+  $Res call({Product product, int quantity});
+
+  $ProductCopyWith<$Res> get product;
+}
+
+/// @nodoc
+class _$CartItemCopyWithImpl<$Res, $Val extends CartItem>
+    implements $CartItemCopyWith<$Res> {
+  _$CartItemCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  /// Create a copy of CartItem
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? product = null,
+    Object? quantity = null,
+  }) {
+    return _then(_value.copyWith(
+      product: null == product
+          ? _value.product
+          : product // ignore: cast_nullable_to_non_nullable
+              as Product,
+      quantity: null == quantity
+          ? _value.quantity
+          : quantity // ignore: cast_nullable_to_non_nullable
+              as int,
+    ) as $Val);
+  }
+
+  /// Create a copy of CartItem
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $ProductCopyWith<$Res> get product {
+    return $ProductCopyWith<$Res>(_value.product, (value) {
+      return _then(_value.copyWith(product: value) as $Val);
+    });
+  }
+}
+
+/// @nodoc
+abstract class _$$CartItemImplCopyWith<$Res>
+    implements $CartItemCopyWith<$Res> {
+  factory _$$CartItemImplCopyWith(
+          _$CartItemImpl value, $Res Function(_$CartItemImpl) then) =
+      __$$CartItemImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({Product product, int quantity});
+
+  @override
+  $ProductCopyWith<$Res> get product;
+}
+
+/// @nodoc
+class __$$CartItemImplCopyWithImpl<$Res>
+    extends _$CartItemCopyWithImpl<$Res, _$CartItemImpl>
+    implements _$$CartItemImplCopyWith<$Res> {
+  __$$CartItemImplCopyWithImpl(
+      _$CartItemImpl _value, $Res Function(_$CartItemImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of CartItem
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? product = null,
+    Object? quantity = null,
+  }) {
+    return _then(_$CartItemImpl(
+      product: null == product
+          ? _value.product
+          : product // ignore: cast_nullable_to_non_nullable
+              as Product,
+      quantity: null == quantity
+          ? _value.quantity
+          : quantity // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$CartItemImpl implements _CartItem {
+  const _$CartItemImpl({required this.product, required this.quantity});
+
+  factory _$CartItemImpl.fromJson(Map<String, dynamic> json) =>
+      _$$CartItemImplFromJson(json);
+
+  @override
+  final Product product;
+  @override
+  final int quantity;
+
+  @override
+  String toString() {
+    return 'CartItem(product: $product, quantity: $quantity)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$CartItemImpl &&
+            (identical(other.product, product) || other.product == product) &&
+            (identical(other.quantity, quantity) ||
+                other.quantity == quantity));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(runtimeType, product, quantity);
+
+  /// Create a copy of CartItem
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$CartItemImplCopyWith<_$CartItemImpl> get copyWith =>
+      __$$CartItemImplCopyWithImpl<_$CartItemImpl>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$CartItemImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _CartItem implements CartItem {
+  const factory _CartItem(
+      {required final Product product,
+      required final int quantity}) = _$CartItemImpl;
+
+  factory _CartItem.fromJson(Map<String, dynamic> json) =
+      _$CartItemImpl.fromJson;
+
+  @override
+  Product get product;
+  @override
+  int get quantity;
+
+  /// Create a copy of CartItem
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$CartItemImplCopyWith<_$CartItemImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

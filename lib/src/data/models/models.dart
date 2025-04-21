@@ -160,3 +160,15 @@ class MyOrder with _$MyOrder {
   factory MyOrder.fromJson(Map<String, dynamic> json) =>
       _$MyOrderFromJson(json);
 }
+
+@freezed
+class CartItem with _$CartItem {
+  const factory CartItem({
+    required Product product,
+    required int quantity,
+  }) = _CartItem;
+
+  factory CartItem.fromJson(Map<String, dynamic> json) =>
+      _$CartItemFromJson(json);
+}
+

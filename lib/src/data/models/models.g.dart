@@ -151,14 +151,12 @@ _$ProductImpl _$$ProductImplFromJson(Map<String, dynamic> json) =>
       image: json['image'] as String?,
       serial_numbe: json['serial_numbe'] as String?,
       description: json['description'] as String?,
-
       category: json['category'] == null
           ? null
           : Category.fromJson(json['category'] as Map<String, dynamic>),
       request_number: (json['request_number'] as num?)?.toInt(),
       price: json['price'] as String,
       active: (json['active'] as num).toInt(),
-
     );
 
 Map<String, dynamic> _$$ProductImplToJson(_$ProductImpl instance) =>
@@ -192,4 +190,16 @@ Map<String, dynamic> _$$MyOrderImplToJson(_$MyOrderImpl instance) =>
       'serial_number': instance.serial_number,
       'delivery_time': instance.delivery_time,
       'created_at': instance.created_at?.toIso8601String(),
+    };
+
+_$CartItemImpl _$$CartItemImplFromJson(Map<String, dynamic> json) =>
+    _$CartItemImpl(
+      product: Product.fromJson(json['product'] as Map<String, dynamic>),
+      quantity: (json['quantity'] as num).toInt(),
+    );
+
+Map<String, dynamic> _$$CartItemImplToJson(_$CartItemImpl instance) =>
+    <String, dynamic>{
+      'product': instance.product,
+      'quantity': instance.quantity,
     };
