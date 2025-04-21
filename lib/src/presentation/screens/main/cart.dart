@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:frip_trading/src/presentation/controllers/cart/cart_bloc.dart';
 import 'package:frip_trading/src/presentation/controllers/counter/counter_bloc.dart';
 import 'package:frip_trading/src/presentation/screens/auth/widgets/cart_widget.dart';
 
@@ -11,7 +12,7 @@ class CartDetailsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) =>
-          CounterBloc(min: 10 /* this.product.request_number??0 */),
+          CounterBloc(min:1 /* this.product.request_number??0 */),
       child: Scaffold(
         backgroundColor: Colors.white,
         body: Column(
@@ -40,11 +41,23 @@ class CartDetailsPage extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 30),
-            Expanded(
-              child: ListView.builder(
-                itemCount: 4,
-                itemBuilder: (context, index) => const CartItem(),
-              ),
+            BlocBuilder<CartBloc, CartState>(
+              builder: (context, state) {
+                return Expanded(
+                  child: ListView.builder(
+                    itemCount: state.items.length,
+                         itemBuilder: (context, index) {
+        final cartItem = state.items[index];
+        return    BlocProvider(
+    create: (context) => CounterBloc(
+      min: cartItem.product.request_number ?? 1,
+    ),
+    child: CartWidget(cartItem: cartItem),
+  );
+      },
+                  ),
+                );
+              },
             ),
             Container(
               padding: const EdgeInsets.all(16),

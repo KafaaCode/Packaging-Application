@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:frip_trading/src/data/models/models.dart';
+import 'package:frip_trading/src/presentation/controllers/cart/cart_bloc.dart';
 import 'package:frip_trading/src/presentation/controllers/counter/counter_bloc.dart';
 
 
-class CartItem extends StatelessWidget {
-  const CartItem({super.key});
+class CartWidget extends StatelessWidget {
+  final CartItem cartItem;
+
+  const CartWidget({super.key, required this.cartItem});
 
   @override
   Widget build(BuildContext context) {
@@ -38,8 +42,8 @@ class CartItem extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      const Text(
-                        'Product Name',
+                       Text(
+                        cartItem.product.name?? 'Product Name',
                         maxLines: 1,
                         overflow: TextOverflow.ellipsis,
                         style: TextStyle(
@@ -47,10 +51,10 @@ class CartItem extends StatelessWidget {
                             fontSize: 15,
                             color: Color(0xFF70b9be)),
                       ),
-                      const Text(
+                       Text(
                         maxLines: 1,
                         overflow: TextOverflow.ellipsis,
-                        'Category Name',
+                      cartItem.product.category?.name?? 'category Name',
                         style:
                             TextStyle(color: Color(0xFF70b9be), fontSize: 12),
                       ),
@@ -68,7 +72,7 @@ class CartItem extends StatelessWidget {
                                           Icons.remove_circle_outline),
                                     ),
                                     Text(
-                                      state.count.toString(),
+                                       cartItem.quantity.toString(),
                                       style: const TextStyle(fontSize: 15),
                                     ),
                                     IconButton(
@@ -98,7 +102,10 @@ class CartItem extends StatelessWidget {
 
             right: 4,
             child: IconButton(
-              onPressed: () {},
+              onPressed: () {
+                // Remove item from cart logic here
+             context.read<CartBloc>().add(CartEvent.removeProduct(cartItem.product));
+              },
               icon: Image.asset(
                 'images/IconArtwork.png',
                 width: 20,
