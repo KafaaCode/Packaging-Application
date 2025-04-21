@@ -6,7 +6,8 @@ import 'package:frip_trading/core/routes/router_screens.dart';
 import 'package:frip_trading/core/routes/routes_name.dart';
 import 'package:frip_trading/core/services/services_locator.dart';
 
-import 'package:frip_trading/core/utils/loading_dialog.dart';
+
+import 'package:frip_trading/src/presentation/controllers/auth/auth_bloc.dart';
 
 import 'package:frip_trading/src/presentation/controllers/category/category_bloc.dart';
 import 'package:frip_trading/src/presentation/screens/auth/widgets/cardproductandCatogry.dart';
@@ -161,7 +162,7 @@ class FilterPage extends StatelessWidget {
                     )
 
                         ),
-                      ),
+                      );})))
                     );
                     /*  MainCard(
                       name: state.categories[0].name,
