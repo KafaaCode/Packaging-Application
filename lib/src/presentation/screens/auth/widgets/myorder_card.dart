@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 import '../../../../data/models/models.dart';
 
@@ -64,14 +65,14 @@ class OrderCard extends StatelessWidget {
                                               CrossAxisAlignment.start,
                                           children: [
                                             Text(
-                                              order.id.toString(),
+                                              order.serial_number.toString(),
                                               style: const TextStyle(
                                                   fontWeight: FontWeight.w900,
                                                   color: Color(0xFF726c6c),
                                                   fontSize: 14),
                                             ),
                                             const SizedBox(height: 2),
-                                            Text(order.serial_number.toString(),
+                                            Text(formatCustomDate(order.created_at.toString()),
                                                 style: const TextStyle(
                                                     color: Color(0xFF726c6c),
                                                     fontSize: 12,
@@ -136,4 +137,15 @@ class OrderCard extends StatelessWidget {
                           ),
                         );
   }
+  String formatCustomDate(String originalDate) {
+  DateTime dateTime = DateTime.parse(originalDate).toLocal(); // نحول للـ local لو بتحب
+
+  String dayShort = DateFormat('E').format(dateTime);       // Wed
+  String dayNum = DateFormat('dd').format(dateTime);        // 24
+  String monthShort = DateFormat('MMM').format(dateTime);   // Jun
+  String year = DateFormat('yyyy').format(dateTime);        // 2024
+  String time = DateFormat('h:mm a').format(dateTime);      // 8:00 AM
+
+  return ' $dayShort, $dayNum, $monthShort, $year, $time';
+}
 }
