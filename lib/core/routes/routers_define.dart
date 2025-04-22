@@ -5,6 +5,7 @@ import 'package:frip_trading/src/presentation/screens/auth/login_page.dart';
 import 'package:frip_trading/src/presentation/screens/auth/register_page.dart';
 import 'package:frip_trading/src/presentation/screens/init_page.dart';
 import 'package:frip_trading/src/presentation/screens/main/main_page.dart';
+import 'package:frip_trading/src/presentation/screens/settings/edit_profile.dart';
 
 import '../../src/presentation/screens/main/products.dart';
 
@@ -33,7 +34,7 @@ void configureRoutes(FluroRouter router) {
       },
     ),
   );
-    router.define(
+  router.define(
     RoutesNames.registerRoute,
     handler: Handler(
       handlerFunc: (context, parameters) {
@@ -45,7 +46,7 @@ void configureRoutes(FluroRouter router) {
     RoutesNames.products,
     handler: Handler(
       handlerFunc: (context, parameters) {
-        return const  Products();
+        return const Products();
       },
     ),
   ); */
@@ -65,20 +66,34 @@ router.define(
       },
     ),
   );
-  
-
 
   // routes :
+  router.define(
+    RoutesNames.editProfileRoute,
+    handler: Handler(
+      handlerFunc: (context, parameters) {
+        return const EditProfile();
+      },
+    ),
+  );
 
 
 
 
-  // admin 
+
+
+
+
+
+  // admin routes
+
   router.define(
     RoutesNames.adminMainRoute,
     handler: Handler(
       handlerFunc: (context, parameters) {
-        return const  AdminPage();
+
+        return const AdminPage();
+
       },
     ),
   );

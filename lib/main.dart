@@ -36,6 +36,7 @@ class MainApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(
+
         designSize: const Size(360, 690),
         minTextAdapt: true,
         splitScreenMode: true,
@@ -76,8 +77,35 @@ class MainApp extends StatelessWidget {
                   navigatorKey: SingleInstanceService.navigatorKey,
                 );
               },
+
             ),
-          );
-        });
+            BlocProvider(create: (context) => ThemesCubit()),
+            BlocProvider(create: (context) => sl<AuthBloc>())
+          ],
+          child: BlocBuilder<ThemesCubit, ThemeMode>(
+            builder: (context, state) {
+              return MaterialApp(
+                debugShowCheckedModeBanner: false,
+                localizationsDelegates: const [
+                  Lang.delegate,
+                  GlobalMaterialLocalizations.delegate,
+                  GlobalWidgetsLocalizations.delegate,
+                  GlobalCupertinoLocalizations.delegate,
+                ],
+                locale: const Locale('en'),
+                supportedLocales: Lang.delegate.supportedLocales,
+                theme: lightTheme,
+                darkTheme: darkTheme,
+                themeMode: state,
+                onGenerateTitle: (BuildContext context) => "app",
+                initialRoute: RoutesNames.initalRoute,
+                onGenerateRoute: AppRouter.router.generator,
+                navigatorKey: SingleInstanceService.navigatorKey,
+              );
+            },
+          ),
+        );
+      },
+    );
   }
 }
