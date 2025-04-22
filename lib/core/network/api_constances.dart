@@ -25,12 +25,16 @@ class ApiConstances {
   static const String registerUrl = "$_baseUrl/register";
   static const String loginUrl = "$_baseUrl/login";
   static const String logoutUrl = "$_baseUrl/logout";
-  static const String refreshTokenUrl = "$_baseUrl/auth/refreshToken";
-  static const String getRegionUrl = "$_baseUrl/Region";
+  static const String refreshTokenUrl = "$_baseUrl/refreshToken";
+  static const String sspecializationsAndCountryUrl =
+      "$_baseUrl/specialization-and-country";
   // Main
-    static const String getcategoriesUrl = "$_baseUrl/categories";
+
+  static const String getcategoriesUrl = "$_baseUrl/categories";
+  static const String getordersUrl = "$_baseUrl/orders";
+
   static String getproductsUrl({required int categoryId}) =>
-      "$_baseUrl/Catogry/$categoryId";
+      "$_baseUrl/products/categories/$categoryId";
   // Tools
   static String getToken() {
     print(HydratedBloc.storage.read('token').toString());

@@ -7,7 +7,9 @@ import 'package:frip_trading/src/data/models/models.dart';
 
 abstract class BaseMainRemoteDataSource {
   Future<List<Category>> getCategories();
+    Future<List<MyOrder>> getmyOrders();
   Future<List<Product>> getProducts({required int categoryId});
+
 }
 
 class MainRemoteDataSource extends BaseMainRemoteDataSource {
@@ -60,7 +62,28 @@ class MainRemoteDataSource extends BaseMainRemoteDataSource {
 
 
 
- 
+  @override
+  Future<List<MyOrder>> getmyOrders() async {
+    return sl.get<ApiCallHandler>().handler(
+          apiCall: () => _dio.get(
+            ApiConstances.getordersUrl,
+            options: Options(
+              headers: ApiConstances.headers(
+                isToken: true,
+                token: ApiConstances.getToken(),
+              ),
+            ),
+          ),
+          responseHandler: (response) {
+            final List<dynamic> myorderList = response.data['data'];
+               return myorderList
+                .map((myorder) => MyOrder.fromJson(myorder as Map<String, dynamic>))
+                .toList();
+          
+          },
+    
+        );
+  }
 
  
 

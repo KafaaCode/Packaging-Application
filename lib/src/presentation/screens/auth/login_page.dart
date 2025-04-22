@@ -35,6 +35,26 @@ class _LoginPageState extends State<LoginPage> {
             child: BlocListener<AuthBloc, AuthState>(
               listener: (context, state) {
                 state.maybeWhen(
+                  error: (message) {
+                    Navigator.of(context, rootNavigator: true).pop();
+                    debugPrint('Error: $message');
+
+                    showDialog(
+                      context: context,
+                      builder: (context) => AlertDialog(
+                        title: const Text('Error'),
+                        content: Text(message),
+                        actions: [
+                          TextButton(
+                            onPressed: () {
+                              Navigator.of(context).pop();
+                            },
+                            child: const Text('OK'),
+                          ),
+                        ],
+                      ),
+                    );
+                  },
                   loadInProgress: () {
                     showLoadingDialog(context);
                   },
@@ -100,6 +120,7 @@ class _LoginPageState extends State<LoginPage> {
                           isPassword: true,
                           labelText: 'Password',
                           hintText: 'Password',
+                          
                           controller: passwordController,
                         ),
                         TextButton(
@@ -114,13 +135,16 @@ class _LoginPageState extends State<LoginPage> {
                   const SizedBox(height: 20),
                   ButtonCostum(
                     onPressed: () {
-                      context.read<AuthBloc>().add(AuthEvent.login(
-                          user: User(
-                              id: 0,
-                              name: '',
-                              email: emailController.text,
-                              role: 'role',
-                              password: passwordController.text)));
+                      context.read<AuthBloc>().add(
+                            AuthEvent.login(
+                              user: User(
+                                id: 0,
+                                name: 'User',
+                                email: emailController.text,
+                                password: passwordController.text,
+                              ),
+                            ),
+                          );
                     },
                     text: 'Login',
                   ),

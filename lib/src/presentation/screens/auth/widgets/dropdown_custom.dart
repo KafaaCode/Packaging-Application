@@ -1,15 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:frip_trading/core/utils/abstracts.dart';
 
-class DropdownCustom extends StatefulWidget {
-  final List<String> items;
-
-  final String? defaultValue;
-
-  final ValueChanged<String?> onChanged;
-
+class DropdownCustom<T extends HasIdAndName> extends StatefulWidget {
+  final List<T> items;
+  final T? defaultValue;
+  final ValueChanged<T?> onChanged;
   final String? labelText;
-
   final String svgIcon;
 
   const DropdownCustom({
@@ -22,16 +19,16 @@ class DropdownCustom extends StatefulWidget {
   });
 
   @override
-  State<DropdownCustom> createState() => _DropdownCustomState();
+  State<DropdownCustom<T>> createState() => _DropdownCustomState<T>();
 }
 
-class _DropdownCustomState extends State<DropdownCustom> {
-  late String? selectedValue;
+class _DropdownCustomState<T extends HasIdAndName>
+    extends State<DropdownCustom<T>> {
+  late T? selectedValue;
 
   @override
   void initState() {
     super.initState();
-
     selectedValue = widget.defaultValue ??
         (widget.items.isNotEmpty ? widget.items.first : null);
   }
@@ -56,7 +53,7 @@ class _DropdownCustomState extends State<DropdownCustom> {
         ),
       ),
       child: DropdownButtonHideUnderline(
-        child: DropdownButton<String>(
+        child: DropdownButton<T>(
           value: selectedValue,
           icon: Padding(
             padding: const EdgeInsets.all(15.0),
@@ -68,11 +65,11 @@ class _DropdownCustomState extends State<DropdownCustom> {
               ),
             ),
           ),
-          items: widget.items.map((String value) {
-            return DropdownMenuItem<String>(
+          items: widget.items.map((T value) {
+            return DropdownMenuItem<T>(
               value: value,
               child: Text(
-                value,
+                value.name,
                 style: theme.textTheme.bodyMedium?.copyWith(
                   color: Colors.grey[600],
                 ),
@@ -83,7 +80,6 @@ class _DropdownCustomState extends State<DropdownCustom> {
             setState(() {
               selectedValue = newValue;
             });
-
             widget.onChanged(newValue);
           },
         ),

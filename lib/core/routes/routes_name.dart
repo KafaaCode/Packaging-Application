@@ -9,4 +9,5 @@ class RoutesNames {
   static const String adminMainRoute = '/adminHome';
   static const String products = '/products';
   static const String notFoundRoute = '/404';
+  static const String details = '/details';
 }
