@@ -178,17 +178,10 @@ class ProductDetailsPage extends StatelessWidget {
                           borderRadius: BorderRadius.circular(15),
                             ),
                           ),
-                          onPressed: () {
-                            final cartItem = CartItem(
-                              product: product,
-                              quantity: context.read<CounterBloc>().state.count,
-                            );
-                            context.read<CartBloc>().add(CartEvent.addProduct(cartItem));
-                                context.read<CartBloc>().add(CartEvent.getCartItems());
-                            ScaffoldMessenger.of(context).showSnackBar(
-                              const SnackBar(content: Text('Product added to cart')),
-                            );
-                          },
+               onPressed: () {
+  AddToCard(context) ;
+},
+
                           child: const Text(
                             "Add To Cart",
                             style: TextStyle(fontSize: 18, color: Colors.white),
@@ -204,5 +197,33 @@ class ProductDetailsPage extends StatelessWidget {
         ],
       ),
     );
+  }
+  void AddToCard(BuildContext context) {
+ final cartBloc = context.read<CartBloc>();
+  final counterBloc = context.read<CounterBloc>();
+  final quantity = counterBloc.state.count;
+
+  final existingItem = cartBloc.state.items.firstWhere(
+    (item) => item.product.id == product.id,
+    orElse: () => CartItem(product: product, quantity: -1), 
+  );
+
+  if (existingItem.quantity == quantity) {
+      ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(content: Text('the product is elready exist in the same quantity in cart',style: TextStyle(color: Color(0xFF70b9be) )),backgroundColor:Color.fromARGB(255, 239, 244, 245)),
+    );
+  } else {
+
+    final newCartItem = CartItem(product: product, quantity: quantity);
+    cartBloc.add(CartEvent.removeProduct(product));
+    cartBloc.add(CartEvent.addProduct(newCartItem));
+   
+
+    ScaffoldMessenger.of(context).showSnackBar(
+      
+      const SnackBar(
+        content: Text('Product Aded to card',style: TextStyle(color: Color(0xFF70b9be) )),backgroundColor:Color.fromARGB(255, 239, 244, 245)),
+    );
+  }
   }
 }

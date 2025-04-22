@@ -64,15 +64,21 @@ class CartWidget extends StatelessWidget {
                                   children: [
                                     IconButton(
                                       onPressed: state.count > state.min
-                                          ? () => context
+                                          ? (){ context
                                               .read<CounterBloc>()
-                                              .add(const CounterEvent.decrement())
+                                              .add(const CounterEvent.decrement());
+                                              context.read<CartBloc>().add(
+  CartEvent.updateQuantity(product:cartItem.product, quantity: state.count-1),
+);
+
+                                              }
                                           : null,
                                       icon: const Icon(
                                           Icons.remove_circle_outline),
                                     ),
                                     Text(
-                                      state.count.toString(),
+                                   state.count.toString(),    
+                                    
                                       style: const TextStyle(fontSize: 15),
                                     ),
                                     IconButton(
@@ -80,6 +86,9 @@ class CartWidget extends StatelessWidget {
                                         context
                                             .read<CounterBloc>()
                                             .add(const CounterEvent.increment());
+                                                                      context.read<CartBloc>().add(
+  CartEvent.updateQuantity(product:cartItem.product, quantity: state.count+1),
+);
                                       },
                                       icon: SvgPicture.asset(
                                         'images/IconArtwork.svg',

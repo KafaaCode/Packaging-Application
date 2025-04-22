@@ -6,19 +6,18 @@ part 'counter_event.dart';
 part 'counter_bloc.freezed.dart';
 
 class CounterBloc extends Bloc<CounterEvent, CounterState> {
-  CounterBloc({required int min})
-      : super(CounterState(count: min, min: min)) {
+  CounterBloc({required int min, required int initial})
+      : super(CounterState(count: initial, min: min)) {
     on<Increment>((event, emit) {
       emit(state.copyWith(count: state.count + 1));
-      print(state.count);
     });
 
     on<Decrement>((event, emit) {
       if (state.count > state.min) {
         emit(state.copyWith(count: state.count - 1));
-        print(state.count);
       }
     });
   }
 }
+
 

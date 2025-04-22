@@ -13,6 +13,7 @@ class CartBloc extends HydratedBloc<CartEvent, CartState> {
     on< _RemoveProduct>(_onRemoveProduct);
     on< _ClearCart>(_onClearCart);
     on< _GetCartItems>(_onGetCartItems);
+      on<_UpdateQuantity>(_onUpdateQuantity);
   }
 
   void _onAddProduct(_AddProduct event, Emitter<CartState> emit) {
@@ -33,6 +34,16 @@ class CartBloc extends HydratedBloc<CartEvent, CartState> {
     emit(CartState(items: state.items));
     print('Cart items: ${state.items}');
   }
+  void _onUpdateQuantity(_UpdateQuantity event, Emitter<CartState> emit) {
+  final updatedItems = state.items.map((item) {
+    if (item.product.id == event.product.id) {
+      return item.copyWith(quantity: event.quantity);
+    }
+    return item;
+  }).toList();
+  emit(CartState(items: updatedItems));
+}
+
   @override
   CartState fromJson(Map<String, dynamic> json) {
     return CartState.fromJson(json);

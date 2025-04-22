@@ -3,6 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:frip_trading/core/services/services_locator.dart';
 import 'package:frip_trading/core/utils/loading_dialog.dart';
+import 'package:frip_trading/src/data/models/models.dart';
+import 'package:frip_trading/src/presentation/controllers/cart/cart_bloc.dart';
 import 'package:frip_trading/src/presentation/controllers/counter/counter_bloc.dart';
 import 'package:frip_trading/src/presentation/controllers/products/products_bloc.dart';
 import 'package:frip_trading/src/presentation/screens/auth/widgets/cardproductandCatogry.dart';
@@ -133,12 +135,22 @@ class Products extends StatelessWidget {
 
                               return InkWell(
                              onTap: () {
+                              
   Navigator.push(
     context,
     PageRouteBuilder(
       pageBuilder: (context, animation, secondaryAnimation) {
         return BlocProvider(
-          create: (_) => CounterBloc(min: state.products[i].request_number ?? 0),
+create: (_) => CounterBloc(
+  min: state.products[i].request_number ?? 0,
+  initial: context.read<CartBloc>().state.items
+              .firstWhere(
+                (item) => item.product.id == state.products[i].id,
+                orElse: () => CartItem(product: state.products[i], quantity: state.products[i].request_number ?? 0),
+              )
+              .quantity,
+),
+
           child: ProductDetailsPage(product: state.products[i]),
         );
       },
