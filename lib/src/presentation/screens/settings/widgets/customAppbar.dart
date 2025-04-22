@@ -15,50 +15,52 @@ class CustomAppbar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     ThemeData theme = Theme.of(context);
-    return Stack(
-      children: [
-        Container(
-          padding: const EdgeInsets.all(20),
-          height: 300,
-          decoration: BoxDecoration(
-            color: theme.primaryColor,
-            borderRadius: const BorderRadius.only(
-              bottomLeft: Radius.circular(16),
-              bottomRight: Radius.circular(16),
+    return Container(
+      color: Colors.white,
+      child: Stack(
+        alignment: Alignment.topCenter,
+        // clipBehavior: Clip.none,
+        children: [
+          Container(
+            padding: const EdgeInsets.fromLTRB(0, 30, 0, 0),
+            height: 350,
+            decoration: BoxDecoration(
+              color: theme.primaryColor,
+              borderRadius: const BorderRadius.only(
+                bottomLeft: Radius.circular(16),
+                bottomRight: Radius.circular(16),
+              ),
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.black.withOpacity(0.2),
+                  blurRadius: 10,
+                  offset: const Offset(0, 4),
+                ),
+              ],
             ),
-            boxShadow: [
-              BoxShadow(
-                color: Colors.black.withOpacity(0.2),
-                blurRadius: 10,
-                offset: const Offset(0, 4),
-              ),
-            ],
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Expanded(
+                  flex: 1,
+                  child: InkWell(onTap: onPressed, child: icon),
+                ),
+                Expanded(
+                  flex: 6,
+                  child: Text(tilte,
+                      style: theme.textTheme.headlineLarge!.copyWith(
+                        color: Colors.white,
+                        fontSize: 30,
+                        fontWeight: FontWeight.w500,
+                      )),
+                ),
+              ],
+            ),
           ),
-          child: Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              Expanded(
-                flex: 1,
-                child: InkWell(onTap: onPressed, child: icon),
-              ),
-              Expanded(
-                flex: 6,
-                child: Text(tilte,
-                    style: theme.textTheme.headlineLarge!.copyWith(
-                      color: Colors.white,
-                      fontSize: 30,
-                      fontWeight: FontWeight.w500,
-                    )),
-              ),
-            ],
-          ),
-        ),
-        Container(
-          padding: const EdgeInsets.fromLTRB(20, 90, 20, 0),
-          child: child,
-        ),
-      ],
+          child,
+        ],
+      ),
     );
   }
 }
