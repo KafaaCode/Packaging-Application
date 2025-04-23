@@ -21,7 +21,6 @@ mixin _$AuthState {
     required TResult Function() initial,
     required TResult Function(User user) create,
     required TResult Function() loadInProgress,
-    required TResult Function(User user) loaded,
     required TResult Function(String message) error,
   }) =>
       throw _privateConstructorUsedError;
@@ -30,7 +29,6 @@ mixin _$AuthState {
     TResult? Function()? initial,
     TResult? Function(User user)? create,
     TResult? Function()? loadInProgress,
-    TResult? Function(User user)? loaded,
     TResult? Function(String message)? error,
   }) =>
       throw _privateConstructorUsedError;
@@ -39,7 +37,6 @@ mixin _$AuthState {
     TResult Function()? initial,
     TResult Function(User user)? create,
     TResult Function()? loadInProgress,
-    TResult Function(User user)? loaded,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) =>
@@ -49,7 +46,6 @@ mixin _$AuthState {
     required TResult Function(_Initial value) initial,
     required TResult Function(_Create value) create,
     required TResult Function(_LoadInProgress value) loadInProgress,
-    required TResult Function(_Loaded value) loaded,
     required TResult Function(_Error value) error,
   }) =>
       throw _privateConstructorUsedError;
@@ -58,7 +54,6 @@ mixin _$AuthState {
     TResult? Function(_Initial value)? initial,
     TResult? Function(_Create value)? create,
     TResult? Function(_LoadInProgress value)? loadInProgress,
-    TResult? Function(_Loaded value)? loaded,
     TResult? Function(_Error value)? error,
   }) =>
       throw _privateConstructorUsedError;
@@ -67,7 +62,6 @@ mixin _$AuthState {
     TResult Function(_Initial value)? initial,
     TResult Function(_Create value)? create,
     TResult Function(_LoadInProgress value)? loadInProgress,
-    TResult Function(_Loaded value)? loaded,
     TResult Function(_Error value)? error,
     required TResult orElse(),
   }) =>
@@ -138,7 +132,6 @@ class _$InitialImpl implements _Initial {
     required TResult Function() initial,
     required TResult Function(User user) create,
     required TResult Function() loadInProgress,
-    required TResult Function(User user) loaded,
     required TResult Function(String message) error,
   }) {
     return initial();
@@ -150,7 +143,6 @@ class _$InitialImpl implements _Initial {
     TResult? Function()? initial,
     TResult? Function(User user)? create,
     TResult? Function()? loadInProgress,
-    TResult? Function(User user)? loaded,
     TResult? Function(String message)? error,
   }) {
     return initial?.call();
@@ -162,7 +154,6 @@ class _$InitialImpl implements _Initial {
     TResult Function()? initial,
     TResult Function(User user)? create,
     TResult Function()? loadInProgress,
-    TResult Function(User user)? loaded,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) {
@@ -178,7 +169,6 @@ class _$InitialImpl implements _Initial {
     required TResult Function(_Initial value) initial,
     required TResult Function(_Create value) create,
     required TResult Function(_LoadInProgress value) loadInProgress,
-    required TResult Function(_Loaded value) loaded,
     required TResult Function(_Error value) error,
   }) {
     return initial(this);
@@ -190,7 +180,6 @@ class _$InitialImpl implements _Initial {
     TResult? Function(_Initial value)? initial,
     TResult? Function(_Create value)? create,
     TResult? Function(_LoadInProgress value)? loadInProgress,
-    TResult? Function(_Loaded value)? loaded,
     TResult? Function(_Error value)? error,
   }) {
     return initial?.call(this);
@@ -202,7 +191,6 @@ class _$InitialImpl implements _Initial {
     TResult Function(_Initial value)? initial,
     TResult Function(_Create value)? create,
     TResult Function(_LoadInProgress value)? loadInProgress,
-    TResult Function(_Loaded value)? loaded,
     TResult Function(_Error value)? error,
     required TResult orElse(),
   }) {
@@ -300,7 +288,6 @@ class _$CreateImpl implements _Create {
     required TResult Function() initial,
     required TResult Function(User user) create,
     required TResult Function() loadInProgress,
-    required TResult Function(User user) loaded,
     required TResult Function(String message) error,
   }) {
     return create(user);
@@ -312,7 +299,6 @@ class _$CreateImpl implements _Create {
     TResult? Function()? initial,
     TResult? Function(User user)? create,
     TResult? Function()? loadInProgress,
-    TResult? Function(User user)? loaded,
     TResult? Function(String message)? error,
   }) {
     return create?.call(user);
@@ -324,7 +310,6 @@ class _$CreateImpl implements _Create {
     TResult Function()? initial,
     TResult Function(User user)? create,
     TResult Function()? loadInProgress,
-    TResult Function(User user)? loaded,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) {
@@ -340,7 +325,6 @@ class _$CreateImpl implements _Create {
     required TResult Function(_Initial value) initial,
     required TResult Function(_Create value) create,
     required TResult Function(_LoadInProgress value) loadInProgress,
-    required TResult Function(_Loaded value) loaded,
     required TResult Function(_Error value) error,
   }) {
     return create(this);
@@ -352,7 +336,6 @@ class _$CreateImpl implements _Create {
     TResult? Function(_Initial value)? initial,
     TResult? Function(_Create value)? create,
     TResult? Function(_LoadInProgress value)? loadInProgress,
-    TResult? Function(_Loaded value)? loaded,
     TResult? Function(_Error value)? error,
   }) {
     return create?.call(this);
@@ -364,7 +347,6 @@ class _$CreateImpl implements _Create {
     TResult Function(_Initial value)? initial,
     TResult Function(_Create value)? create,
     TResult Function(_LoadInProgress value)? loadInProgress,
-    TResult Function(_Loaded value)? loaded,
     TResult Function(_Error value)? error,
     required TResult orElse(),
   }) {
@@ -431,7 +413,6 @@ class _$LoadInProgressImpl implements _LoadInProgress {
     required TResult Function() initial,
     required TResult Function(User user) create,
     required TResult Function() loadInProgress,
-    required TResult Function(User user) loaded,
     required TResult Function(String message) error,
   }) {
     return loadInProgress();
@@ -443,7 +424,6 @@ class _$LoadInProgressImpl implements _LoadInProgress {
     TResult? Function()? initial,
     TResult? Function(User user)? create,
     TResult? Function()? loadInProgress,
-    TResult? Function(User user)? loaded,
     TResult? Function(String message)? error,
   }) {
     return loadInProgress?.call();
@@ -455,7 +435,6 @@ class _$LoadInProgressImpl implements _LoadInProgress {
     TResult Function()? initial,
     TResult Function(User user)? create,
     TResult Function()? loadInProgress,
-    TResult Function(User user)? loaded,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) {
@@ -471,7 +450,6 @@ class _$LoadInProgressImpl implements _LoadInProgress {
     required TResult Function(_Initial value) initial,
     required TResult Function(_Create value) create,
     required TResult Function(_LoadInProgress value) loadInProgress,
-    required TResult Function(_Loaded value) loaded,
     required TResult Function(_Error value) error,
   }) {
     return loadInProgress(this);
@@ -483,7 +461,6 @@ class _$LoadInProgressImpl implements _LoadInProgress {
     TResult? Function(_Initial value)? initial,
     TResult? Function(_Create value)? create,
     TResult? Function(_LoadInProgress value)? loadInProgress,
-    TResult? Function(_Loaded value)? loaded,
     TResult? Function(_Error value)? error,
   }) {
     return loadInProgress?.call(this);
@@ -495,7 +472,6 @@ class _$LoadInProgressImpl implements _LoadInProgress {
     TResult Function(_Initial value)? initial,
     TResult Function(_Create value)? create,
     TResult Function(_LoadInProgress value)? loadInProgress,
-    TResult Function(_Loaded value)? loaded,
     TResult Function(_Error value)? error,
     required TResult orElse(),
   }) {
@@ -508,176 +484,6 @@ class _$LoadInProgressImpl implements _LoadInProgress {
 
 abstract class _LoadInProgress implements AuthState {
   const factory _LoadInProgress() = _$LoadInProgressImpl;
-}
-
-/// @nodoc
-abstract class _$$LoadedImplCopyWith<$Res> {
-  factory _$$LoadedImplCopyWith(
-          _$LoadedImpl value, $Res Function(_$LoadedImpl) then) =
-      __$$LoadedImplCopyWithImpl<$Res>;
-  @useResult
-  $Res call({User user});
-
-  $UserCopyWith<$Res> get user;
-}
-
-/// @nodoc
-class __$$LoadedImplCopyWithImpl<$Res>
-    extends _$AuthStateCopyWithImpl<$Res, _$LoadedImpl>
-    implements _$$LoadedImplCopyWith<$Res> {
-  __$$LoadedImplCopyWithImpl(
-      _$LoadedImpl _value, $Res Function(_$LoadedImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of AuthState
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? user = null,
-  }) {
-    return _then(_$LoadedImpl(
-      user: null == user
-          ? _value.user
-          : user // ignore: cast_nullable_to_non_nullable
-              as User,
-    ));
-  }
-
-  /// Create a copy of AuthState
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $UserCopyWith<$Res> get user {
-    return $UserCopyWith<$Res>(_value.user, (value) {
-      return _then(_value.copyWith(user: value));
-    });
-  }
-}
-
-/// @nodoc
-
-class _$LoadedImpl implements _Loaded {
-  const _$LoadedImpl({required this.user});
-
-  @override
-  final User user;
-
-  @override
-  String toString() {
-    return 'AuthState.loaded(user: $user)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$LoadedImpl &&
-            (identical(other.user, user) || other.user == user));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, user);
-
-  /// Create a copy of AuthState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$LoadedImplCopyWith<_$LoadedImpl> get copyWith =>
-      __$$LoadedImplCopyWithImpl<_$LoadedImpl>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function(User user) create,
-    required TResult Function() loadInProgress,
-    required TResult Function(User user) loaded,
-    required TResult Function(String message) error,
-  }) {
-    return loaded(user);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function(User user)? create,
-    TResult? Function()? loadInProgress,
-    TResult? Function(User user)? loaded,
-    TResult? Function(String message)? error,
-  }) {
-    return loaded?.call(user);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function(User user)? create,
-    TResult Function()? loadInProgress,
-    TResult Function(User user)? loaded,
-    TResult Function(String message)? error,
-    required TResult orElse(),
-  }) {
-    if (loaded != null) {
-      return loaded(user);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_Create value) create,
-    required TResult Function(_LoadInProgress value) loadInProgress,
-    required TResult Function(_Loaded value) loaded,
-    required TResult Function(_Error value) error,
-  }) {
-    return loaded(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_Create value)? create,
-    TResult? Function(_LoadInProgress value)? loadInProgress,
-    TResult? Function(_Loaded value)? loaded,
-    TResult? Function(_Error value)? error,
-  }) {
-    return loaded?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Create value)? create,
-    TResult Function(_LoadInProgress value)? loadInProgress,
-    TResult Function(_Loaded value)? loaded,
-    TResult Function(_Error value)? error,
-    required TResult orElse(),
-  }) {
-    if (loaded != null) {
-      return loaded(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _Loaded implements AuthState {
-  const factory _Loaded({required final User user}) = _$LoadedImpl;
-
-  User get user;
-
-  /// Create a copy of AuthState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$LoadedImplCopyWith<_$LoadedImpl> get copyWith =>
-      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -751,7 +557,6 @@ class _$ErrorImpl implements _Error {
     required TResult Function() initial,
     required TResult Function(User user) create,
     required TResult Function() loadInProgress,
-    required TResult Function(User user) loaded,
     required TResult Function(String message) error,
   }) {
     return error(message);
@@ -763,7 +568,6 @@ class _$ErrorImpl implements _Error {
     TResult? Function()? initial,
     TResult? Function(User user)? create,
     TResult? Function()? loadInProgress,
-    TResult? Function(User user)? loaded,
     TResult? Function(String message)? error,
   }) {
     return error?.call(message);
@@ -775,7 +579,6 @@ class _$ErrorImpl implements _Error {
     TResult Function()? initial,
     TResult Function(User user)? create,
     TResult Function()? loadInProgress,
-    TResult Function(User user)? loaded,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) {
@@ -791,7 +594,6 @@ class _$ErrorImpl implements _Error {
     required TResult Function(_Initial value) initial,
     required TResult Function(_Create value) create,
     required TResult Function(_LoadInProgress value) loadInProgress,
-    required TResult Function(_Loaded value) loaded,
     required TResult Function(_Error value) error,
   }) {
     return error(this);
@@ -803,7 +605,6 @@ class _$ErrorImpl implements _Error {
     TResult? Function(_Initial value)? initial,
     TResult? Function(_Create value)? create,
     TResult? Function(_LoadInProgress value)? loadInProgress,
-    TResult? Function(_Loaded value)? loaded,
     TResult? Function(_Error value)? error,
   }) {
     return error?.call(this);
@@ -815,7 +616,6 @@ class _$ErrorImpl implements _Error {
     TResult Function(_Initial value)? initial,
     TResult Function(_Create value)? create,
     TResult Function(_LoadInProgress value)? loadInProgress,
-    TResult Function(_Loaded value)? loaded,
     TResult Function(_Error value)? error,
     required TResult orElse(),
   }) {

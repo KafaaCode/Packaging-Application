@@ -38,7 +38,7 @@ class Profile extends StatelessWidget {
                 BlocBuilder<AuthBloc, AuthState>(
                   builder: (context, state) {
                     User? user = state.mapOrNull(
-                      loaded: (state) => state.user,
+                    
                       create: (state) => state.user,
                     );
                     return Row(

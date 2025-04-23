@@ -40,7 +40,6 @@ class AuthBloc extends HydratedBloc<AuthEvent, AuthState> {
       final token = await HydratedBloc.storage.read('token');
       final user = state.mapOrNull(
         create: (create) => create.user,
-        loaded: (loaded) => loaded.user,
       );
       print('Token: $token');
       print('User: $user');
@@ -56,7 +55,7 @@ class AuthBloc extends HydratedBloc<AuthEvent, AuthState> {
             if (!emit.isDone) emit(AuthState.error(message: error.message));
           }, (r) async {
             await HydratedBloc.storage.write('token', r.token);
-            if (!emit.isDone) emit(AuthState.loaded(user: r.user));
+            if (!emit.isDone) emit(AuthState.create(user: r.user));
           });
         } else {
           if (!emit.isDone) emit(const AuthState.initial());
@@ -64,7 +63,7 @@ class AuthBloc extends HydratedBloc<AuthEvent, AuthState> {
       } else {
         if (!emit.isDone) {
           if (user != null) {
-            emit(AuthState.loaded(user: user));
+            emit(AuthState.create(user: user));
           } else {
             emit(const AuthState.initial());
           }
@@ -93,7 +92,7 @@ class AuthBloc extends HydratedBloc<AuthEvent, AuthState> {
         if (!emit.isDone) emit(AuthState.error(message: error.message));
       }, (r) async {
         await HydratedBloc.storage.write('token', r.token);
-        if (!emit.isDone) emit(AuthState.loaded(user: r.user));
+
         if (!emit.isDone) {
           emit(state.maybeMap(
             orElse: () => AuthState.create(user: r.user),
@@ -121,7 +120,7 @@ class AuthBloc extends HydratedBloc<AuthEvent, AuthState> {
         if (!emit.isDone) emit(AuthState.error(message: error.message));
       }, (r) async {
         await HydratedBloc.storage.write('token', r.token);
-        if (!emit.isDone) emit(AuthState.loaded(user: r.user));
+
         if (!emit.isDone) {
           emit(state.maybeMap(
             orElse: () => AuthState.create(user: r.user),
@@ -140,18 +139,23 @@ class AuthBloc extends HydratedBloc<AuthEvent, AuthState> {
   ) async {
     emit(const AuthState.loadInProgress());
     try {
-      final response = await repository.updatePassword(confirmPassword: event.confirmPassword, newPassword: event.newPassword, oldPassword: event.oldPassword); 
-     
+      final response = await repository.updatePassword(
+          confirmPassword: event.confirmPassword,
+          newPassword: event.newPassword,
+          oldPassword: event.oldPassword);
+
       await response.fold((error) async {
         if (!emit.isDone) emit(AuthState.error(message: error.message));
       }, (r) async {
-       
         if (!emit.isDone) {
-          emit(AuthState.loaded(user: state.maybeMap(
-          orElse: () => const User(id: 0, name: 'name', email: 'email'),
-          create: (create) => create.user,
-          loaded: (loaded) => loaded.user,
-        )));
+          emit(state.maybeMap(
+            orElse: () {
+              add(const AuthEvent.logout());
+              return const AuthState.create(
+                  user: User(id: 0, name: '', email: ''));
+            },
+            create: (create) => create,
+          ));
         }
       });
     } catch (e) {
@@ -170,14 +174,16 @@ class AuthBloc extends HydratedBloc<AuthEvent, AuthState> {
         if (!emit.isDone) emit(AuthState.error(message: error.message));
       }, (r) async {
         if (!emit.isDone) {
-          emit(AuthState.loaded(user: r.user!));
+          emit(state.maybeMap(
+            orElse: () => AuthState.create(user: r.user!),
+            create: (create) => create.copyWith(user: r.user!),
+          ));
         }
       });
     } catch (e) {
       if (!emit.isDone) emit(AuthState.error(message: e.toString()));
     }
   }
-
 
   @override
   AuthState? fromJson(Map<String, dynamic> json) {
@@ -194,12 +200,7 @@ class AuthBloc extends HydratedBloc<AuthEvent, AuthState> {
           );
         case '_LoadInProgress':
           return const AuthState.loadInProgress();
-        case '_Loaded':
-          return AuthState.loaded(
-            user: User.fromJson(
-              json['user'] as Map<String, dynamic>,
-            ),
-          );
+
         case '_Error':
           return AuthState.error(message: json['message'] as String);
         default:
@@ -219,10 +220,6 @@ class AuthBloc extends HydratedBloc<AuthEvent, AuthState> {
         'user': state.user.toJson(),
       },
       loadInProgress: (_) => {'type': '_LoadInProgress'},
-      loaded: (state) => {
-        'type': '_Loaded',
-        'user': state.user.toJson(),
-      },
       error: (state) => {
         'type': '_Error',
         'message': state.message,

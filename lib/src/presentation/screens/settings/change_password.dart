@@ -148,7 +148,7 @@ class ChangePassword extends StatelessWidget {
                       loadInProgress: () {
                         showLoadingDialog(context);
                       },
-                      loaded: (user) {
+                      create: (user) {
                         AppRouter.router.pop(context);
                         AppRouter.router.navigateTo(
                             context, RoutesNames.mainRoute,

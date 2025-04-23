@@ -1,4 +1,3 @@
-import 'package:fluro/fluro.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -93,24 +92,21 @@ class EditProfile extends StatelessWidget {
                 right: 20,
                 child: BlocBuilder<AuthBloc, AuthState>(
                   builder: (context, state) {
-                    if (nameController.text == '' &&
-                        emailController.text == '' &&
-                        companyController.text == '') {
-                      User? user = state.mapOrNull(
-                        loaded: (user) {
-                          nameController.text = user.user.name;
-                          emailController.text = user.user.email;
-                          companyController.text = user.user.companyName ?? '';
-                          return user.user;
-                        },
-                        create: (user) {
-                          nameController.text = user.user.name;
-                          emailController.text = user.user.email;
-                          companyController.text = user.user.companyName ?? '';
-                          return user.user;
-                        },
-                      );
-                      print('user: $user');
+                    if(nameController.text == '' &&
+                    emailController.text == '' &&
+                    companyController.text == '' 
+                    ){
+
+                    User? user = state.mapOrNull(
+                     
+                      create: (user) {
+                        nameController.text = user.user.name;
+                        emailController.text = user.user.email;
+                        companyController.text = user.user.companyName ?? '';
+                        return user.user;
+                      },
+                    );
+                    print('user: $user');
                     }
                     return Form(
                       key: _formKey,
@@ -272,7 +268,7 @@ class EditProfile extends StatelessWidget {
                       loadInProgress: () {
                         showLoadingDialog(context);
                       },
-                      loaded: (user) {
+                      create: (user) {
                         AppRouter.router.pop(context);
                         AppRouter.router.navigateTo(
                             context, RoutesNames.mainRoute,
