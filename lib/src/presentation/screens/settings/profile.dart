@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:frip_trading/core/routes/router_screens.dart';
 import 'package:frip_trading/core/routes/routes_name.dart';
+import 'package:frip_trading/src/data/models/models.dart';
 import 'package:frip_trading/src/presentation/controllers/auth/auth_bloc.dart';
 import 'package:frip_trading/src/presentation/screens/settings/widgets/customAppbar.dart';
 
@@ -36,6 +37,10 @@ class Profile extends StatelessWidget {
               children: [
                 BlocBuilder<AuthBloc, AuthState>(
                   builder: (context, state) {
+                    User? user = state.mapOrNull(
+                    
+                      create: (state) => state.user,
+                    );
                     return Row(
                       children: [
                         const CircleAvatar(
@@ -45,10 +50,7 @@ class Profile extends StatelessWidget {
                         ),
                         const SizedBox(width: 10),
                         Text(
-                          state.maybeMap(
-                            orElse: () => "User",
-                            create: (state) => state.user.name,
-                          ),
+                          user?.name ?? "User",
                           style: const TextStyle(
                               fontSize: 18, fontWeight: FontWeight.bold),
                         ),
@@ -66,6 +68,7 @@ class Profile extends StatelessWidget {
                     AppRouter.router.navigateTo(
                       context,
                       RoutesNames.editProfileRoute,
+                      rootNavigator: true,
                       transition: TransitionType.inFromLeft,
                       transitionDuration: const Duration(milliseconds: 500),
                     );
@@ -77,9 +80,20 @@ class Profile extends StatelessWidget {
                     ),
                   ),
                 ),
-                const ListTile(
-                  title: Text("Change password"),
-                  trailing: Icon(Icons.chevron_right),
+                InkWell(
+                  onTap: () {
+                    AppRouter.router.navigateTo(
+                      context,
+                      RoutesNames.changePasswordRoute,
+                      rootNavigator: true,
+                      transition: TransitionType.inFromLeft,
+                      transitionDuration: const Duration(milliseconds: 500),
+                    );
+                  },
+                  child: const ListTile(
+                    title: Text("Change password"),
+                    trailing: Icon(Icons.chevron_right),
+                  ),
                 ),
                 ListTile(
                   title: const Text("Select Languages"),

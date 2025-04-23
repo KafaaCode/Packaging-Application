@@ -11,15 +11,10 @@ class AuthEvent with _$AuthEvent {
     required User user,
   }) = _Register;
   const factory AuthEvent.logout() = _Logout;
-  const factory AuthEvent.updateProfile({
-    required String name,
-    required String email,
-    required String gander,
-    required String phoneNumber,
-    required String region,
-  }) = _UpdateProfile;
+  const factory AuthEvent.updateProfile({required User user}) = _UpdateProfile;
   const factory AuthEvent.updatePassword({
     required String oldPassword,
     required String newPassword,
+    required String confirmPassword,
   }) = _UpdatePassword;
 }

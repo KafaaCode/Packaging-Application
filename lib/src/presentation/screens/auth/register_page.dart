@@ -90,7 +90,7 @@ class _RegisterPageState extends State<RegisterPage> {
                     loadInProgress: () {
                       showLoadingDialog(context);
                     },
-                    loaded: (user) {
+                    create: (user) {
                       Navigator.of(context, rootNavigator: true).pop();
                       debugPrint('Loaded with user: ${user.email}');
                       AppRouter.router.navigateTo(

@@ -850,7 +850,8 @@ UpdateData _$UpdateDataFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$UpdateData {
-  User get user => throw _privateConstructorUsedError;
+  @JsonKey(name: 'data', nullable: true)
+  User? get user => throw _privateConstructorUsedError;
   String? get message => throw _privateConstructorUsedError;
 
   /// Serializes this UpdateData to a JSON map.
@@ -869,9 +870,10 @@ abstract class $UpdateDataCopyWith<$Res> {
           UpdateData value, $Res Function(UpdateData) then) =
       _$UpdateDataCopyWithImpl<$Res, UpdateData>;
   @useResult
-  $Res call({User user, String? message});
+  $Res call(
+      {@JsonKey(name: 'data', nullable: true) User? user, String? message});
 
-  $UserCopyWith<$Res> get user;
+  $UserCopyWith<$Res>? get user;
 }
 
 /// @nodoc
@@ -889,14 +891,14 @@ class _$UpdateDataCopyWithImpl<$Res, $Val extends UpdateData>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? user = null,
+    Object? user = freezed,
     Object? message = freezed,
   }) {
     return _then(_value.copyWith(
-      user: null == user
+      user: freezed == user
           ? _value.user
           : user // ignore: cast_nullable_to_non_nullable
-              as User,
+              as User?,
       message: freezed == message
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
@@ -908,8 +910,12 @@ class _$UpdateDataCopyWithImpl<$Res, $Val extends UpdateData>
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  $UserCopyWith<$Res> get user {
-    return $UserCopyWith<$Res>(_value.user, (value) {
+  $UserCopyWith<$Res>? get user {
+    if (_value.user == null) {
+      return null;
+    }
+
+    return $UserCopyWith<$Res>(_value.user!, (value) {
       return _then(_value.copyWith(user: value) as $Val);
     });
   }
@@ -923,10 +929,11 @@ abstract class _$$UpdateDataImplCopyWith<$Res>
       __$$UpdateDataImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({User user, String? message});
+  $Res call(
+      {@JsonKey(name: 'data', nullable: true) User? user, String? message});
 
   @override
-  $UserCopyWith<$Res> get user;
+  $UserCopyWith<$Res>? get user;
 }
 
 /// @nodoc
@@ -942,14 +949,14 @@ class __$$UpdateDataImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? user = null,
+    Object? user = freezed,
     Object? message = freezed,
   }) {
     return _then(_$UpdateDataImpl(
-      user: null == user
+      user: freezed == user
           ? _value.user
           : user // ignore: cast_nullable_to_non_nullable
-              as User,
+              as User?,
       message: freezed == message
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
@@ -961,13 +968,15 @@ class __$$UpdateDataImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$UpdateDataImpl implements _UpdateData {
-  const _$UpdateDataImpl({required this.user, this.message});
+  const _$UpdateDataImpl(
+      {@JsonKey(name: 'data', nullable: true) this.user, this.message});
 
   factory _$UpdateDataImpl.fromJson(Map<String, dynamic> json) =>
       _$$UpdateDataImplFromJson(json);
 
   @override
-  final User user;
+  @JsonKey(name: 'data', nullable: true)
+  final User? user;
   @override
   final String? message;
 
@@ -1006,14 +1015,16 @@ class _$UpdateDataImpl implements _UpdateData {
 }
 
 abstract class _UpdateData implements UpdateData {
-  const factory _UpdateData({required final User user, final String? message}) =
-      _$UpdateDataImpl;
+  const factory _UpdateData(
+      {@JsonKey(name: 'data', nullable: true) final User? user,
+      final String? message}) = _$UpdateDataImpl;
 
   factory _UpdateData.fromJson(Map<String, dynamic> json) =
       _$UpdateDataImpl.fromJson;
 
   @override
-  User get user;
+  @JsonKey(name: 'data', nullable: true)
+  User? get user;
   @override
   String? get message;
 
@@ -1777,12 +1788,10 @@ mixin _$Product {
   String? get image => throw _privateConstructorUsedError;
   String? get serial_numbe => throw _privateConstructorUsedError;
   String? get description => throw _privateConstructorUsedError;
-
   Category? get category => throw _privateConstructorUsedError;
   int? get request_number => throw _privateConstructorUsedError;
   String get price => throw _privateConstructorUsedError;
   int get active => throw _privateConstructorUsedError;
-
 
   /// Serializes this Product to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -1804,14 +1813,12 @@ abstract class $ProductCopyWith<$Res> {
       String? image,
       String? serial_numbe,
       String? description,
-
       Category? category,
       int? request_number,
       String price,
       int active});
 
   $CategoryCopyWith<$Res>? get category;
-
 }
 
 /// @nodoc
@@ -1834,10 +1841,8 @@ class _$ProductCopyWithImpl<$Res, $Val extends Product>
     Object? image = freezed,
     Object? serial_numbe = freezed,
     Object? description = freezed,
-
     Object? category = freezed,
     Object? request_number = freezed,
-
     Object? price = null,
     Object? active = null,
   }) {
@@ -1862,13 +1867,11 @@ class _$ProductCopyWithImpl<$Res, $Val extends Product>
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
               as String?,
-
       category: freezed == category
           ? _value.category
           : category // ignore: cast_nullable_to_non_nullable
               as Category?,
       request_number: freezed == request_number
-
           ? _value.request_number
           : request_number // ignore: cast_nullable_to_non_nullable
               as int?,
@@ -1887,7 +1890,6 @@ class _$ProductCopyWithImpl<$Res, $Val extends Product>
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-
   $CategoryCopyWith<$Res>? get category {
     if (_value.category == null) {
       return null;
@@ -1895,7 +1897,6 @@ class _$ProductCopyWithImpl<$Res, $Val extends Product>
 
     return $CategoryCopyWith<$Res>(_value.category!, (value) {
       return _then(_value.copyWith(category: value) as $Val);
-
     });
   }
 }
@@ -1913,7 +1914,6 @@ abstract class _$$ProductImplCopyWith<$Res> implements $ProductCopyWith<$Res> {
       String? image,
       String? serial_numbe,
       String? description,
-
       Category? category,
       int? request_number,
       String price,
@@ -1921,7 +1921,6 @@ abstract class _$$ProductImplCopyWith<$Res> implements $ProductCopyWith<$Res> {
 
   @override
   $CategoryCopyWith<$Res>? get category;
-
 }
 
 /// @nodoc
@@ -1942,10 +1941,8 @@ class __$$ProductImplCopyWithImpl<$Res>
     Object? image = freezed,
     Object? serial_numbe = freezed,
     Object? description = freezed,
-
     Object? category = freezed,
     Object? request_number = freezed,
-
     Object? price = null,
     Object? active = null,
   }) {
@@ -1970,13 +1967,11 @@ class __$$ProductImplCopyWithImpl<$Res>
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
               as String?,
-
       category: freezed == category
           ? _value.category
           : category // ignore: cast_nullable_to_non_nullable
               as Category?,
       request_number: freezed == request_number
-
           ? _value.request_number
           : request_number // ignore: cast_nullable_to_non_nullable
               as int?,
@@ -2020,9 +2015,7 @@ class _$ProductImpl implements _Product {
   @override
   final String? description;
   @override
-
   final Category? category;
-
   @override
   final int? request_number;
   @override
@@ -2083,12 +2076,10 @@ abstract class _Product implements Product {
       final String? image,
       final String? serial_numbe,
       final String? description,
-
       final Category? category,
       final int? request_number,
       required final String price,
       required final int active}) = _$ProductImpl;
-
 
   factory _Product.fromJson(Map<String, dynamic> json) = _$ProductImpl.fromJson;
 
@@ -2103,9 +2094,7 @@ abstract class _Product implements Product {
   @override
   String? get description;
   @override
-
   Category? get category;
-
   @override
   int? get request_number;
   @override

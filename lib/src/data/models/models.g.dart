@@ -72,13 +72,15 @@ Map<String, dynamic> _$$AuthImplToJson(_$AuthImpl instance) =>
 
 _$UpdateDataImpl _$$UpdateDataImplFromJson(Map<String, dynamic> json) =>
     _$UpdateDataImpl(
-      user: User.fromJson(json['user'] as Map<String, dynamic>),
+      user: json['data'] == null
+          ? null
+          : User.fromJson(json['data'] as Map<String, dynamic>),
       message: json['message'] as String?,
     );
 
 Map<String, dynamic> _$$UpdateDataImplToJson(_$UpdateDataImpl instance) =>
     <String, dynamic>{
-      'user': instance.user,
+      'data': instance.user,
       'message': instance.message,
     };
 
@@ -151,14 +153,12 @@ _$ProductImpl _$$ProductImplFromJson(Map<String, dynamic> json) =>
       image: json['image'] as String?,
       serial_numbe: json['serial_numbe'] as String?,
       description: json['description'] as String?,
-
       category: json['category'] == null
           ? null
           : Category.fromJson(json['category'] as Map<String, dynamic>),
       request_number: (json['request_number'] as num?)?.toInt(),
       price: json['price'] as String,
       active: (json['active'] as num).toInt(),
-
     );
 
 Map<String, dynamic> _$$ProductImplToJson(_$ProductImpl instance) =>

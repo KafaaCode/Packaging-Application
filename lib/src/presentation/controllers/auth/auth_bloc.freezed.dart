@@ -21,7 +21,6 @@ mixin _$AuthState {
     required TResult Function() initial,
     required TResult Function(User user) create,
     required TResult Function() loadInProgress,
-    required TResult Function(User user) loaded,
     required TResult Function(String message) error,
   }) =>
       throw _privateConstructorUsedError;
@@ -30,7 +29,6 @@ mixin _$AuthState {
     TResult? Function()? initial,
     TResult? Function(User user)? create,
     TResult? Function()? loadInProgress,
-    TResult? Function(User user)? loaded,
     TResult? Function(String message)? error,
   }) =>
       throw _privateConstructorUsedError;
@@ -39,7 +37,6 @@ mixin _$AuthState {
     TResult Function()? initial,
     TResult Function(User user)? create,
     TResult Function()? loadInProgress,
-    TResult Function(User user)? loaded,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) =>
@@ -49,7 +46,6 @@ mixin _$AuthState {
     required TResult Function(_Initial value) initial,
     required TResult Function(_Create value) create,
     required TResult Function(_LoadInProgress value) loadInProgress,
-    required TResult Function(_Loaded value) loaded,
     required TResult Function(_Error value) error,
   }) =>
       throw _privateConstructorUsedError;
@@ -58,7 +54,6 @@ mixin _$AuthState {
     TResult? Function(_Initial value)? initial,
     TResult? Function(_Create value)? create,
     TResult? Function(_LoadInProgress value)? loadInProgress,
-    TResult? Function(_Loaded value)? loaded,
     TResult? Function(_Error value)? error,
   }) =>
       throw _privateConstructorUsedError;
@@ -67,7 +62,6 @@ mixin _$AuthState {
     TResult Function(_Initial value)? initial,
     TResult Function(_Create value)? create,
     TResult Function(_LoadInProgress value)? loadInProgress,
-    TResult Function(_Loaded value)? loaded,
     TResult Function(_Error value)? error,
     required TResult orElse(),
   }) =>
@@ -138,7 +132,6 @@ class _$InitialImpl implements _Initial {
     required TResult Function() initial,
     required TResult Function(User user) create,
     required TResult Function() loadInProgress,
-    required TResult Function(User user) loaded,
     required TResult Function(String message) error,
   }) {
     return initial();
@@ -150,7 +143,6 @@ class _$InitialImpl implements _Initial {
     TResult? Function()? initial,
     TResult? Function(User user)? create,
     TResult? Function()? loadInProgress,
-    TResult? Function(User user)? loaded,
     TResult? Function(String message)? error,
   }) {
     return initial?.call();
@@ -162,7 +154,6 @@ class _$InitialImpl implements _Initial {
     TResult Function()? initial,
     TResult Function(User user)? create,
     TResult Function()? loadInProgress,
-    TResult Function(User user)? loaded,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) {
@@ -178,7 +169,6 @@ class _$InitialImpl implements _Initial {
     required TResult Function(_Initial value) initial,
     required TResult Function(_Create value) create,
     required TResult Function(_LoadInProgress value) loadInProgress,
-    required TResult Function(_Loaded value) loaded,
     required TResult Function(_Error value) error,
   }) {
     return initial(this);
@@ -190,7 +180,6 @@ class _$InitialImpl implements _Initial {
     TResult? Function(_Initial value)? initial,
     TResult? Function(_Create value)? create,
     TResult? Function(_LoadInProgress value)? loadInProgress,
-    TResult? Function(_Loaded value)? loaded,
     TResult? Function(_Error value)? error,
   }) {
     return initial?.call(this);
@@ -202,7 +191,6 @@ class _$InitialImpl implements _Initial {
     TResult Function(_Initial value)? initial,
     TResult Function(_Create value)? create,
     TResult Function(_LoadInProgress value)? loadInProgress,
-    TResult Function(_Loaded value)? loaded,
     TResult Function(_Error value)? error,
     required TResult orElse(),
   }) {
@@ -300,7 +288,6 @@ class _$CreateImpl implements _Create {
     required TResult Function() initial,
     required TResult Function(User user) create,
     required TResult Function() loadInProgress,
-    required TResult Function(User user) loaded,
     required TResult Function(String message) error,
   }) {
     return create(user);
@@ -312,7 +299,6 @@ class _$CreateImpl implements _Create {
     TResult? Function()? initial,
     TResult? Function(User user)? create,
     TResult? Function()? loadInProgress,
-    TResult? Function(User user)? loaded,
     TResult? Function(String message)? error,
   }) {
     return create?.call(user);
@@ -324,7 +310,6 @@ class _$CreateImpl implements _Create {
     TResult Function()? initial,
     TResult Function(User user)? create,
     TResult Function()? loadInProgress,
-    TResult Function(User user)? loaded,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) {
@@ -340,7 +325,6 @@ class _$CreateImpl implements _Create {
     required TResult Function(_Initial value) initial,
     required TResult Function(_Create value) create,
     required TResult Function(_LoadInProgress value) loadInProgress,
-    required TResult Function(_Loaded value) loaded,
     required TResult Function(_Error value) error,
   }) {
     return create(this);
@@ -352,7 +336,6 @@ class _$CreateImpl implements _Create {
     TResult? Function(_Initial value)? initial,
     TResult? Function(_Create value)? create,
     TResult? Function(_LoadInProgress value)? loadInProgress,
-    TResult? Function(_Loaded value)? loaded,
     TResult? Function(_Error value)? error,
   }) {
     return create?.call(this);
@@ -364,7 +347,6 @@ class _$CreateImpl implements _Create {
     TResult Function(_Initial value)? initial,
     TResult Function(_Create value)? create,
     TResult Function(_LoadInProgress value)? loadInProgress,
-    TResult Function(_Loaded value)? loaded,
     TResult Function(_Error value)? error,
     required TResult orElse(),
   }) {
@@ -431,7 +413,6 @@ class _$LoadInProgressImpl implements _LoadInProgress {
     required TResult Function() initial,
     required TResult Function(User user) create,
     required TResult Function() loadInProgress,
-    required TResult Function(User user) loaded,
     required TResult Function(String message) error,
   }) {
     return loadInProgress();
@@ -443,7 +424,6 @@ class _$LoadInProgressImpl implements _LoadInProgress {
     TResult? Function()? initial,
     TResult? Function(User user)? create,
     TResult? Function()? loadInProgress,
-    TResult? Function(User user)? loaded,
     TResult? Function(String message)? error,
   }) {
     return loadInProgress?.call();
@@ -455,7 +435,6 @@ class _$LoadInProgressImpl implements _LoadInProgress {
     TResult Function()? initial,
     TResult Function(User user)? create,
     TResult Function()? loadInProgress,
-    TResult Function(User user)? loaded,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) {
@@ -471,7 +450,6 @@ class _$LoadInProgressImpl implements _LoadInProgress {
     required TResult Function(_Initial value) initial,
     required TResult Function(_Create value) create,
     required TResult Function(_LoadInProgress value) loadInProgress,
-    required TResult Function(_Loaded value) loaded,
     required TResult Function(_Error value) error,
   }) {
     return loadInProgress(this);
@@ -483,7 +461,6 @@ class _$LoadInProgressImpl implements _LoadInProgress {
     TResult? Function(_Initial value)? initial,
     TResult? Function(_Create value)? create,
     TResult? Function(_LoadInProgress value)? loadInProgress,
-    TResult? Function(_Loaded value)? loaded,
     TResult? Function(_Error value)? error,
   }) {
     return loadInProgress?.call(this);
@@ -495,7 +472,6 @@ class _$LoadInProgressImpl implements _LoadInProgress {
     TResult Function(_Initial value)? initial,
     TResult Function(_Create value)? create,
     TResult Function(_LoadInProgress value)? loadInProgress,
-    TResult Function(_Loaded value)? loaded,
     TResult Function(_Error value)? error,
     required TResult orElse(),
   }) {
@@ -508,176 +484,6 @@ class _$LoadInProgressImpl implements _LoadInProgress {
 
 abstract class _LoadInProgress implements AuthState {
   const factory _LoadInProgress() = _$LoadInProgressImpl;
-}
-
-/// @nodoc
-abstract class _$$LoadedImplCopyWith<$Res> {
-  factory _$$LoadedImplCopyWith(
-          _$LoadedImpl value, $Res Function(_$LoadedImpl) then) =
-      __$$LoadedImplCopyWithImpl<$Res>;
-  @useResult
-  $Res call({User user});
-
-  $UserCopyWith<$Res> get user;
-}
-
-/// @nodoc
-class __$$LoadedImplCopyWithImpl<$Res>
-    extends _$AuthStateCopyWithImpl<$Res, _$LoadedImpl>
-    implements _$$LoadedImplCopyWith<$Res> {
-  __$$LoadedImplCopyWithImpl(
-      _$LoadedImpl _value, $Res Function(_$LoadedImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of AuthState
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? user = null,
-  }) {
-    return _then(_$LoadedImpl(
-      user: null == user
-          ? _value.user
-          : user // ignore: cast_nullable_to_non_nullable
-              as User,
-    ));
-  }
-
-  /// Create a copy of AuthState
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $UserCopyWith<$Res> get user {
-    return $UserCopyWith<$Res>(_value.user, (value) {
-      return _then(_value.copyWith(user: value));
-    });
-  }
-}
-
-/// @nodoc
-
-class _$LoadedImpl implements _Loaded {
-  const _$LoadedImpl({required this.user});
-
-  @override
-  final User user;
-
-  @override
-  String toString() {
-    return 'AuthState.loaded(user: $user)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$LoadedImpl &&
-            (identical(other.user, user) || other.user == user));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, user);
-
-  /// Create a copy of AuthState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$LoadedImplCopyWith<_$LoadedImpl> get copyWith =>
-      __$$LoadedImplCopyWithImpl<_$LoadedImpl>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function(User user) create,
-    required TResult Function() loadInProgress,
-    required TResult Function(User user) loaded,
-    required TResult Function(String message) error,
-  }) {
-    return loaded(user);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function(User user)? create,
-    TResult? Function()? loadInProgress,
-    TResult? Function(User user)? loaded,
-    TResult? Function(String message)? error,
-  }) {
-    return loaded?.call(user);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function(User user)? create,
-    TResult Function()? loadInProgress,
-    TResult Function(User user)? loaded,
-    TResult Function(String message)? error,
-    required TResult orElse(),
-  }) {
-    if (loaded != null) {
-      return loaded(user);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_Create value) create,
-    required TResult Function(_LoadInProgress value) loadInProgress,
-    required TResult Function(_Loaded value) loaded,
-    required TResult Function(_Error value) error,
-  }) {
-    return loaded(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_Create value)? create,
-    TResult? Function(_LoadInProgress value)? loadInProgress,
-    TResult? Function(_Loaded value)? loaded,
-    TResult? Function(_Error value)? error,
-  }) {
-    return loaded?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Create value)? create,
-    TResult Function(_LoadInProgress value)? loadInProgress,
-    TResult Function(_Loaded value)? loaded,
-    TResult Function(_Error value)? error,
-    required TResult orElse(),
-  }) {
-    if (loaded != null) {
-      return loaded(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _Loaded implements AuthState {
-  const factory _Loaded({required final User user}) = _$LoadedImpl;
-
-  User get user;
-
-  /// Create a copy of AuthState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$LoadedImplCopyWith<_$LoadedImpl> get copyWith =>
-      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -751,7 +557,6 @@ class _$ErrorImpl implements _Error {
     required TResult Function() initial,
     required TResult Function(User user) create,
     required TResult Function() loadInProgress,
-    required TResult Function(User user) loaded,
     required TResult Function(String message) error,
   }) {
     return error(message);
@@ -763,7 +568,6 @@ class _$ErrorImpl implements _Error {
     TResult? Function()? initial,
     TResult? Function(User user)? create,
     TResult? Function()? loadInProgress,
-    TResult? Function(User user)? loaded,
     TResult? Function(String message)? error,
   }) {
     return error?.call(message);
@@ -775,7 +579,6 @@ class _$ErrorImpl implements _Error {
     TResult Function()? initial,
     TResult Function(User user)? create,
     TResult Function()? loadInProgress,
-    TResult Function(User user)? loaded,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) {
@@ -791,7 +594,6 @@ class _$ErrorImpl implements _Error {
     required TResult Function(_Initial value) initial,
     required TResult Function(_Create value) create,
     required TResult Function(_LoadInProgress value) loadInProgress,
-    required TResult Function(_Loaded value) loaded,
     required TResult Function(_Error value) error,
   }) {
     return error(this);
@@ -803,7 +605,6 @@ class _$ErrorImpl implements _Error {
     TResult? Function(_Initial value)? initial,
     TResult? Function(_Create value)? create,
     TResult? Function(_LoadInProgress value)? loadInProgress,
-    TResult? Function(_Loaded value)? loaded,
     TResult? Function(_Error value)? error,
   }) {
     return error?.call(this);
@@ -815,7 +616,6 @@ class _$ErrorImpl implements _Error {
     TResult Function(_Initial value)? initial,
     TResult Function(_Create value)? create,
     TResult Function(_LoadInProgress value)? loadInProgress,
-    TResult Function(_Loaded value)? loaded,
     TResult Function(_Error value)? error,
     required TResult orElse(),
   }) {
@@ -847,10 +647,9 @@ mixin _$AuthEvent {
     required TResult Function(User user) login,
     required TResult Function(User user) register,
     required TResult Function() logout,
-    required TResult Function(String name, String email, String gander,
-            String phoneNumber, String region)
-        updateProfile,
-    required TResult Function(String oldPassword, String newPassword)
+    required TResult Function(User user) updateProfile,
+    required TResult Function(
+            String oldPassword, String newPassword, String confirmPassword)
         updatePassword,
   }) =>
       throw _privateConstructorUsedError;
@@ -861,10 +660,10 @@ mixin _$AuthEvent {
     TResult? Function(User user)? login,
     TResult? Function(User user)? register,
     TResult? Function()? logout,
-    TResult? Function(String name, String email, String gander,
-            String phoneNumber, String region)?
-        updateProfile,
-    TResult? Function(String oldPassword, String newPassword)? updatePassword,
+    TResult? Function(User user)? updateProfile,
+    TResult? Function(
+            String oldPassword, String newPassword, String confirmPassword)?
+        updatePassword,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -874,10 +673,10 @@ mixin _$AuthEvent {
     TResult Function(User user)? login,
     TResult Function(User user)? register,
     TResult Function()? logout,
-    TResult Function(String name, String email, String gander,
-            String phoneNumber, String region)?
-        updateProfile,
-    TResult Function(String oldPassword, String newPassword)? updatePassword,
+    TResult Function(User user)? updateProfile,
+    TResult Function(
+            String oldPassword, String newPassword, String confirmPassword)?
+        updatePassword,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -983,10 +782,9 @@ class _$CheckAuthImpl implements _CheckAuth {
     required TResult Function(User user) login,
     required TResult Function(User user) register,
     required TResult Function() logout,
-    required TResult Function(String name, String email, String gander,
-            String phoneNumber, String region)
-        updateProfile,
-    required TResult Function(String oldPassword, String newPassword)
+    required TResult Function(User user) updateProfile,
+    required TResult Function(
+            String oldPassword, String newPassword, String confirmPassword)
         updatePassword,
   }) {
     return checkAuth();
@@ -1000,10 +798,10 @@ class _$CheckAuthImpl implements _CheckAuth {
     TResult? Function(User user)? login,
     TResult? Function(User user)? register,
     TResult? Function()? logout,
-    TResult? Function(String name, String email, String gander,
-            String phoneNumber, String region)?
-        updateProfile,
-    TResult? Function(String oldPassword, String newPassword)? updatePassword,
+    TResult? Function(User user)? updateProfile,
+    TResult? Function(
+            String oldPassword, String newPassword, String confirmPassword)?
+        updatePassword,
   }) {
     return checkAuth?.call();
   }
@@ -1016,10 +814,10 @@ class _$CheckAuthImpl implements _CheckAuth {
     TResult Function(User user)? login,
     TResult Function(User user)? register,
     TResult Function()? logout,
-    TResult Function(String name, String email, String gander,
-            String phoneNumber, String region)?
-        updateProfile,
-    TResult Function(String oldPassword, String newPassword)? updatePassword,
+    TResult Function(User user)? updateProfile,
+    TResult Function(
+            String oldPassword, String newPassword, String confirmPassword)?
+        updatePassword,
     required TResult orElse(),
   }) {
     if (checkAuth != null) {
@@ -1164,10 +962,9 @@ class _$CreateEventImpl implements _CreateEvent {
     required TResult Function(User user) login,
     required TResult Function(User user) register,
     required TResult Function() logout,
-    required TResult Function(String name, String email, String gander,
-            String phoneNumber, String region)
-        updateProfile,
-    required TResult Function(String oldPassword, String newPassword)
+    required TResult Function(User user) updateProfile,
+    required TResult Function(
+            String oldPassword, String newPassword, String confirmPassword)
         updatePassword,
   }) {
     return createEvent(user);
@@ -1181,10 +978,10 @@ class _$CreateEventImpl implements _CreateEvent {
     TResult? Function(User user)? login,
     TResult? Function(User user)? register,
     TResult? Function()? logout,
-    TResult? Function(String name, String email, String gander,
-            String phoneNumber, String region)?
-        updateProfile,
-    TResult? Function(String oldPassword, String newPassword)? updatePassword,
+    TResult? Function(User user)? updateProfile,
+    TResult? Function(
+            String oldPassword, String newPassword, String confirmPassword)?
+        updatePassword,
   }) {
     return createEvent?.call(user);
   }
@@ -1197,10 +994,10 @@ class _$CreateEventImpl implements _CreateEvent {
     TResult Function(User user)? login,
     TResult Function(User user)? register,
     TResult Function()? logout,
-    TResult Function(String name, String email, String gander,
-            String phoneNumber, String region)?
-        updateProfile,
-    TResult Function(String oldPassword, String newPassword)? updatePassword,
+    TResult Function(User user)? updateProfile,
+    TResult Function(
+            String oldPassword, String newPassword, String confirmPassword)?
+        updatePassword,
     required TResult orElse(),
   }) {
     if (createEvent != null) {
@@ -1353,10 +1150,9 @@ class _$LoginImpl implements _Login {
     required TResult Function(User user) login,
     required TResult Function(User user) register,
     required TResult Function() logout,
-    required TResult Function(String name, String email, String gander,
-            String phoneNumber, String region)
-        updateProfile,
-    required TResult Function(String oldPassword, String newPassword)
+    required TResult Function(User user) updateProfile,
+    required TResult Function(
+            String oldPassword, String newPassword, String confirmPassword)
         updatePassword,
   }) {
     return login(user);
@@ -1370,10 +1166,10 @@ class _$LoginImpl implements _Login {
     TResult? Function(User user)? login,
     TResult? Function(User user)? register,
     TResult? Function()? logout,
-    TResult? Function(String name, String email, String gander,
-            String phoneNumber, String region)?
-        updateProfile,
-    TResult? Function(String oldPassword, String newPassword)? updatePassword,
+    TResult? Function(User user)? updateProfile,
+    TResult? Function(
+            String oldPassword, String newPassword, String confirmPassword)?
+        updatePassword,
   }) {
     return login?.call(user);
   }
@@ -1386,10 +1182,10 @@ class _$LoginImpl implements _Login {
     TResult Function(User user)? login,
     TResult Function(User user)? register,
     TResult Function()? logout,
-    TResult Function(String name, String email, String gander,
-            String phoneNumber, String region)?
-        updateProfile,
-    TResult Function(String oldPassword, String newPassword)? updatePassword,
+    TResult Function(User user)? updateProfile,
+    TResult Function(
+            String oldPassword, String newPassword, String confirmPassword)?
+        updatePassword,
     required TResult orElse(),
   }) {
     if (login != null) {
@@ -1542,10 +1338,9 @@ class _$RegisterImpl implements _Register {
     required TResult Function(User user) login,
     required TResult Function(User user) register,
     required TResult Function() logout,
-    required TResult Function(String name, String email, String gander,
-            String phoneNumber, String region)
-        updateProfile,
-    required TResult Function(String oldPassword, String newPassword)
+    required TResult Function(User user) updateProfile,
+    required TResult Function(
+            String oldPassword, String newPassword, String confirmPassword)
         updatePassword,
   }) {
     return register(user);
@@ -1559,10 +1354,10 @@ class _$RegisterImpl implements _Register {
     TResult? Function(User user)? login,
     TResult? Function(User user)? register,
     TResult? Function()? logout,
-    TResult? Function(String name, String email, String gander,
-            String phoneNumber, String region)?
-        updateProfile,
-    TResult? Function(String oldPassword, String newPassword)? updatePassword,
+    TResult? Function(User user)? updateProfile,
+    TResult? Function(
+            String oldPassword, String newPassword, String confirmPassword)?
+        updatePassword,
   }) {
     return register?.call(user);
   }
@@ -1575,10 +1370,10 @@ class _$RegisterImpl implements _Register {
     TResult Function(User user)? login,
     TResult Function(User user)? register,
     TResult Function()? logout,
-    TResult Function(String name, String email, String gander,
-            String phoneNumber, String region)?
-        updateProfile,
-    TResult Function(String oldPassword, String newPassword)? updatePassword,
+    TResult Function(User user)? updateProfile,
+    TResult Function(
+            String oldPassword, String newPassword, String confirmPassword)?
+        updatePassword,
     required TResult orElse(),
   }) {
     if (register != null) {
@@ -1692,10 +1487,9 @@ class _$LogoutImpl implements _Logout {
     required TResult Function(User user) login,
     required TResult Function(User user) register,
     required TResult Function() logout,
-    required TResult Function(String name, String email, String gander,
-            String phoneNumber, String region)
-        updateProfile,
-    required TResult Function(String oldPassword, String newPassword)
+    required TResult Function(User user) updateProfile,
+    required TResult Function(
+            String oldPassword, String newPassword, String confirmPassword)
         updatePassword,
   }) {
     return logout();
@@ -1709,10 +1503,10 @@ class _$LogoutImpl implements _Logout {
     TResult? Function(User user)? login,
     TResult? Function(User user)? register,
     TResult? Function()? logout,
-    TResult? Function(String name, String email, String gander,
-            String phoneNumber, String region)?
-        updateProfile,
-    TResult? Function(String oldPassword, String newPassword)? updatePassword,
+    TResult? Function(User user)? updateProfile,
+    TResult? Function(
+            String oldPassword, String newPassword, String confirmPassword)?
+        updatePassword,
   }) {
     return logout?.call();
   }
@@ -1725,10 +1519,10 @@ class _$LogoutImpl implements _Logout {
     TResult Function(User user)? login,
     TResult Function(User user)? register,
     TResult Function()? logout,
-    TResult Function(String name, String email, String gander,
-            String phoneNumber, String region)?
-        updateProfile,
-    TResult Function(String oldPassword, String newPassword)? updatePassword,
+    TResult Function(User user)? updateProfile,
+    TResult Function(
+            String oldPassword, String newPassword, String confirmPassword)?
+        updatePassword,
     required TResult orElse(),
   }) {
     if (logout != null) {
@@ -1794,12 +1588,9 @@ abstract class _$$UpdateProfileImplCopyWith<$Res> {
           _$UpdateProfileImpl value, $Res Function(_$UpdateProfileImpl) then) =
       __$$UpdateProfileImplCopyWithImpl<$Res>;
   @useResult
-  $Res call(
-      {String name,
-      String email,
-      String gander,
-      String phoneNumber,
-      String region});
+  $Res call({User user});
+
+  $UserCopyWith<$Res> get user;
 }
 
 /// @nodoc
@@ -1815,61 +1606,38 @@ class __$$UpdateProfileImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? name = null,
-    Object? email = null,
-    Object? gander = null,
-    Object? phoneNumber = null,
-    Object? region = null,
+    Object? user = null,
   }) {
     return _then(_$UpdateProfileImpl(
-      name: null == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String,
-      email: null == email
-          ? _value.email
-          : email // ignore: cast_nullable_to_non_nullable
-              as String,
-      gander: null == gander
-          ? _value.gander
-          : gander // ignore: cast_nullable_to_non_nullable
-              as String,
-      phoneNumber: null == phoneNumber
-          ? _value.phoneNumber
-          : phoneNumber // ignore: cast_nullable_to_non_nullable
-              as String,
-      region: null == region
-          ? _value.region
-          : region // ignore: cast_nullable_to_non_nullable
-              as String,
+      user: null == user
+          ? _value.user
+          : user // ignore: cast_nullable_to_non_nullable
+              as User,
     ));
+  }
+
+  /// Create a copy of AuthEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $UserCopyWith<$Res> get user {
+    return $UserCopyWith<$Res>(_value.user, (value) {
+      return _then(_value.copyWith(user: value));
+    });
   }
 }
 
 /// @nodoc
 
 class _$UpdateProfileImpl implements _UpdateProfile {
-  const _$UpdateProfileImpl(
-      {required this.name,
-      required this.email,
-      required this.gander,
-      required this.phoneNumber,
-      required this.region});
+  const _$UpdateProfileImpl({required this.user});
 
   @override
-  final String name;
-  @override
-  final String email;
-  @override
-  final String gander;
-  @override
-  final String phoneNumber;
-  @override
-  final String region;
+  final User user;
 
   @override
   String toString() {
-    return 'AuthEvent.updateProfile(name: $name, email: $email, gander: $gander, phoneNumber: $phoneNumber, region: $region)';
+    return 'AuthEvent.updateProfile(user: $user)';
   }
 
   @override
@@ -1877,17 +1645,11 @@ class _$UpdateProfileImpl implements _UpdateProfile {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$UpdateProfileImpl &&
-            (identical(other.name, name) || other.name == name) &&
-            (identical(other.email, email) || other.email == email) &&
-            (identical(other.gander, gander) || other.gander == gander) &&
-            (identical(other.phoneNumber, phoneNumber) ||
-                other.phoneNumber == phoneNumber) &&
-            (identical(other.region, region) || other.region == region));
+            (identical(other.user, user) || other.user == user));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, name, email, gander, phoneNumber, region);
+  int get hashCode => Object.hash(runtimeType, user);
 
   /// Create a copy of AuthEvent
   /// with the given fields replaced by the non-null parameter values.
@@ -1905,13 +1667,12 @@ class _$UpdateProfileImpl implements _UpdateProfile {
     required TResult Function(User user) login,
     required TResult Function(User user) register,
     required TResult Function() logout,
-    required TResult Function(String name, String email, String gander,
-            String phoneNumber, String region)
-        updateProfile,
-    required TResult Function(String oldPassword, String newPassword)
+    required TResult Function(User user) updateProfile,
+    required TResult Function(
+            String oldPassword, String newPassword, String confirmPassword)
         updatePassword,
   }) {
-    return updateProfile(name, email, gander, phoneNumber, region);
+    return updateProfile(user);
   }
 
   @override
@@ -1922,12 +1683,12 @@ class _$UpdateProfileImpl implements _UpdateProfile {
     TResult? Function(User user)? login,
     TResult? Function(User user)? register,
     TResult? Function()? logout,
-    TResult? Function(String name, String email, String gander,
-            String phoneNumber, String region)?
-        updateProfile,
-    TResult? Function(String oldPassword, String newPassword)? updatePassword,
+    TResult? Function(User user)? updateProfile,
+    TResult? Function(
+            String oldPassword, String newPassword, String confirmPassword)?
+        updatePassword,
   }) {
-    return updateProfile?.call(name, email, gander, phoneNumber, region);
+    return updateProfile?.call(user);
   }
 
   @override
@@ -1938,14 +1699,14 @@ class _$UpdateProfileImpl implements _UpdateProfile {
     TResult Function(User user)? login,
     TResult Function(User user)? register,
     TResult Function()? logout,
-    TResult Function(String name, String email, String gander,
-            String phoneNumber, String region)?
-        updateProfile,
-    TResult Function(String oldPassword, String newPassword)? updatePassword,
+    TResult Function(User user)? updateProfile,
+    TResult Function(
+            String oldPassword, String newPassword, String confirmPassword)?
+        updatePassword,
     required TResult orElse(),
   }) {
     if (updateProfile != null) {
-      return updateProfile(name, email, gander, phoneNumber, region);
+      return updateProfile(user);
     }
     return orElse();
   }
@@ -1998,18 +1759,10 @@ class _$UpdateProfileImpl implements _UpdateProfile {
 }
 
 abstract class _UpdateProfile implements AuthEvent {
-  const factory _UpdateProfile(
-      {required final String name,
-      required final String email,
-      required final String gander,
-      required final String phoneNumber,
-      required final String region}) = _$UpdateProfileImpl;
+  const factory _UpdateProfile({required final User user}) =
+      _$UpdateProfileImpl;
 
-  String get name;
-  String get email;
-  String get gander;
-  String get phoneNumber;
-  String get region;
+  User get user;
 
   /// Create a copy of AuthEvent
   /// with the given fields replaced by the non-null parameter values.
@@ -2024,7 +1777,7 @@ abstract class _$$UpdatePasswordImplCopyWith<$Res> {
           $Res Function(_$UpdatePasswordImpl) then) =
       __$$UpdatePasswordImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({String oldPassword, String newPassword});
+  $Res call({String oldPassword, String newPassword, String confirmPassword});
 }
 
 /// @nodoc
@@ -2042,6 +1795,7 @@ class __$$UpdatePasswordImplCopyWithImpl<$Res>
   $Res call({
     Object? oldPassword = null,
     Object? newPassword = null,
+    Object? confirmPassword = null,
   }) {
     return _then(_$UpdatePasswordImpl(
       oldPassword: null == oldPassword
@@ -2052,6 +1806,10 @@ class __$$UpdatePasswordImplCopyWithImpl<$Res>
           ? _value.newPassword
           : newPassword // ignore: cast_nullable_to_non_nullable
               as String,
+      confirmPassword: null == confirmPassword
+          ? _value.confirmPassword
+          : confirmPassword // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -2060,16 +1818,20 @@ class __$$UpdatePasswordImplCopyWithImpl<$Res>
 
 class _$UpdatePasswordImpl implements _UpdatePassword {
   const _$UpdatePasswordImpl(
-      {required this.oldPassword, required this.newPassword});
+      {required this.oldPassword,
+      required this.newPassword,
+      required this.confirmPassword});
 
   @override
   final String oldPassword;
   @override
   final String newPassword;
+  @override
+  final String confirmPassword;
 
   @override
   String toString() {
-    return 'AuthEvent.updatePassword(oldPassword: $oldPassword, newPassword: $newPassword)';
+    return 'AuthEvent.updatePassword(oldPassword: $oldPassword, newPassword: $newPassword, confirmPassword: $confirmPassword)';
   }
 
   @override
@@ -2080,11 +1842,14 @@ class _$UpdatePasswordImpl implements _UpdatePassword {
             (identical(other.oldPassword, oldPassword) ||
                 other.oldPassword == oldPassword) &&
             (identical(other.newPassword, newPassword) ||
-                other.newPassword == newPassword));
+                other.newPassword == newPassword) &&
+            (identical(other.confirmPassword, confirmPassword) ||
+                other.confirmPassword == confirmPassword));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, oldPassword, newPassword);
+  int get hashCode =>
+      Object.hash(runtimeType, oldPassword, newPassword, confirmPassword);
 
   /// Create a copy of AuthEvent
   /// with the given fields replaced by the non-null parameter values.
@@ -2103,13 +1868,12 @@ class _$UpdatePasswordImpl implements _UpdatePassword {
     required TResult Function(User user) login,
     required TResult Function(User user) register,
     required TResult Function() logout,
-    required TResult Function(String name, String email, String gander,
-            String phoneNumber, String region)
-        updateProfile,
-    required TResult Function(String oldPassword, String newPassword)
+    required TResult Function(User user) updateProfile,
+    required TResult Function(
+            String oldPassword, String newPassword, String confirmPassword)
         updatePassword,
   }) {
-    return updatePassword(oldPassword, newPassword);
+    return updatePassword(oldPassword, newPassword, confirmPassword);
   }
 
   @override
@@ -2120,12 +1884,12 @@ class _$UpdatePasswordImpl implements _UpdatePassword {
     TResult? Function(User user)? login,
     TResult? Function(User user)? register,
     TResult? Function()? logout,
-    TResult? Function(String name, String email, String gander,
-            String phoneNumber, String region)?
-        updateProfile,
-    TResult? Function(String oldPassword, String newPassword)? updatePassword,
+    TResult? Function(User user)? updateProfile,
+    TResult? Function(
+            String oldPassword, String newPassword, String confirmPassword)?
+        updatePassword,
   }) {
-    return updatePassword?.call(oldPassword, newPassword);
+    return updatePassword?.call(oldPassword, newPassword, confirmPassword);
   }
 
   @override
@@ -2136,14 +1900,14 @@ class _$UpdatePasswordImpl implements _UpdatePassword {
     TResult Function(User user)? login,
     TResult Function(User user)? register,
     TResult Function()? logout,
-    TResult Function(String name, String email, String gander,
-            String phoneNumber, String region)?
-        updateProfile,
-    TResult Function(String oldPassword, String newPassword)? updatePassword,
+    TResult Function(User user)? updateProfile,
+    TResult Function(
+            String oldPassword, String newPassword, String confirmPassword)?
+        updatePassword,
     required TResult orElse(),
   }) {
     if (updatePassword != null) {
-      return updatePassword(oldPassword, newPassword);
+      return updatePassword(oldPassword, newPassword, confirmPassword);
     }
     return orElse();
   }
@@ -2198,10 +1962,12 @@ class _$UpdatePasswordImpl implements _UpdatePassword {
 abstract class _UpdatePassword implements AuthEvent {
   const factory _UpdatePassword(
       {required final String oldPassword,
-      required final String newPassword}) = _$UpdatePasswordImpl;
+      required final String newPassword,
+      required final String confirmPassword}) = _$UpdatePasswordImpl;
 
   String get oldPassword;
   String get newPassword;
+  String get confirmPassword;
 
   /// Create a copy of AuthEvent
   /// with the given fields replaced by the non-null parameter values.

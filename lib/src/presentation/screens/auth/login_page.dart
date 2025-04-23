@@ -58,7 +58,7 @@ class _LoginPageState extends State<LoginPage> {
                   loadInProgress: () {
                     showLoadingDialog(context);
                   },
-                  loaded: (user) {
+                  create: (user) {
                     Navigator.of(context, rootNavigator: true).pop();
                     debugPrint('Loaded with user: ${user.email}');
                     AppRouter.router.navigateTo(context, RoutesNames.mainRoute,
@@ -120,7 +120,6 @@ class _LoginPageState extends State<LoginPage> {
                           isPassword: true,
                           labelText: 'Password',
                           hintText: 'Password',
-                          
                           controller: passwordController,
                         ),
                         TextButton(
