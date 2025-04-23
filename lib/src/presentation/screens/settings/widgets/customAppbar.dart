@@ -40,20 +40,29 @@ class CustomAppbar extends StatelessWidget {
             ),
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                Expanded(
-                  flex: 1,
-                  child: InkWell(onTap: onPressed, child: icon),
+                InkWell(
+                  onTap: onPressed,
+                  child: Expanded(
+                    flex: 1,
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: icon,
+                    ),
+                  ),
                 ),
                 Expanded(
                   flex: 6,
-                  child: Text(tilte,
-                      style: theme.textTheme.headlineLarge!.copyWith(
-                        color: Colors.white,
-                        fontSize: 30,
-                        fontWeight: FontWeight.w500,
-                      )),
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Text(tilte,
+                        textAlign: TextAlign.start,
+                        style: theme.textTheme.headlineLarge!.copyWith(
+                          color: Colors.white,
+                          fontSize: 30,
+                          fontWeight: FontWeight.w500,
+                        )),
+                  ),
                 ),
               ],
             ),

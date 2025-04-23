@@ -13,9 +13,11 @@ class AuthBloc extends HydratedBloc<AuthEvent, AuthState> {
   AuthBloc(this.repository) : super(const AuthState.initial()) {
     on<_CheckAuth>(_checkAuthEvent);
     on<_Logout>(_logoutEvent);
+    on<_UpdatePassword>(_updatePasswordEvent);
     on<_CreateEvent>(_createEvent);
     on<_Register>(_registerEvent);
     on<_Login>(_loginEvent);
+    on<_UpdateProfile>(_updateEvent);
   }
 
   void _logoutEvent(
@@ -131,6 +133,51 @@ class AuthBloc extends HydratedBloc<AuthEvent, AuthState> {
       if (!emit.isDone) emit(AuthState.error(message: e.toString()));
     }
   }
+
+  void _updatePasswordEvent(
+    _UpdatePassword event,
+    Emitter<AuthState> emit,
+  ) async {
+    emit(const AuthState.loadInProgress());
+    try {
+      final response = await repository.updatePassword(confirmPassword: event.confirmPassword, newPassword: event.newPassword, oldPassword: event.oldPassword); 
+     
+      await response.fold((error) async {
+        if (!emit.isDone) emit(AuthState.error(message: error.message));
+      }, (r) async {
+       
+        if (!emit.isDone) {
+          emit(AuthState.loaded(user: state.maybeMap(
+          orElse: () => const User(id: 0, name: 'name', email: 'email'),
+          create: (create) => create.user,
+          loaded: (loaded) => loaded.user,
+        )));
+        }
+      });
+    } catch (e) {
+      if (!emit.isDone) emit(AuthState.error(message: e.toString()));
+    }
+  }
+
+  void _updateEvent(
+    _UpdateProfile event,
+    Emitter<AuthState> emit,
+  ) async {
+    emit(const AuthState.loadInProgress());
+    try {
+      final response = await repository.update(user: event.user);
+      await response.fold((error) async {
+        if (!emit.isDone) emit(AuthState.error(message: error.message));
+      }, (r) async {
+        if (!emit.isDone) {
+          emit(AuthState.loaded(user: r.user!));
+        }
+      });
+    } catch (e) {
+      if (!emit.isDone) emit(AuthState.error(message: e.toString()));
+    }
+  }
+
 
   @override
   AuthState? fromJson(Map<String, dynamic> json) {

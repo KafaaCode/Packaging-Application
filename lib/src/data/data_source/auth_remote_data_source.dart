@@ -10,6 +10,11 @@ abstract class BaseAuthRemoteDataSource {
   Future<UpdateData> update({required User user});
   Future<UpdateData> updateProfile({required String path});
   Future<Auth> login({required String email, required String password});
+  Future<String> updatePassword({
+    required String oldPassword,
+    required String newPassword,
+    required String confirmPassword,
+  });
   Future<RefreshToken> refreshToken();
   Future<bool> logout();
 }
@@ -190,14 +195,14 @@ class AuthRemoteDataSource extends BaseAuthRemoteDataSource {
       final requestBody = FormData.fromMap({
         'name': user.name,
         'email': user.email,
-        'password': user.password,
-        'gander': user.gander,
-        'phoneNumber': user.phoneNumber,
+        'companyName': user.companyName,
+        'specialization_id': user.specializationId,
+        'country_id': user.countryId,
       });
 
       return sl.get<ApiCallHandler>().handler(
-            apiCall: () async => await Dio().post(
-              "",
+            apiCall: () async => await Dio().put(
+              ApiConstances.updateUrl,
               options: Options(
                 headers: ApiConstances.headers(
                     isToken: true, token: ApiConstances.getToken()),
@@ -241,6 +246,45 @@ class AuthRemoteDataSource extends BaseAuthRemoteDataSource {
             ),
             responseHandler: (response) {
               return UpdateData.fromJson(response.data);
+            },
+          );
+    } on DioException catch (e) {
+      throw AuthException(
+        statusCode: e.response?.statusCode,
+        authMessage: e.response?.data['message'] ?? e.message,
+      );
+    } catch (e) {
+      throw AuthException(
+        statusCode: 500,
+        authMessage: 'Unexpected error: $e',
+      );
+    }
+  }
+
+  @override
+  Future<String> updatePassword(
+      {required String oldPassword,
+      required String newPassword,
+      required String confirmPassword}) async {
+    try {
+      final requestBody = {
+        'current_password': oldPassword,
+        'new_password': newPassword,
+        'new_password_confirmation': confirmPassword,
+      };
+
+      return sl.get<ApiCallHandler>().handler(
+            apiCall: () async => await Dio().post(
+              ApiConstances.updatePasswordUrl,
+              options: Options(
+                headers: ApiConstances.headers(
+                    isToken: true, token: ApiConstances.getToken()),
+                validateStatus: (status) => status! < 500,
+              ),
+              data: requestBody,
+            ),
+            responseHandler: (response) {
+              return response.data['message'];
             },
           );
     } on DioException catch (e) {

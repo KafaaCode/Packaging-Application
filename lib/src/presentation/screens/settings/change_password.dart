@@ -1,0 +1,222 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:frip_trading/core/routes/router_screens.dart';
+import 'package:frip_trading/core/routes/routes_name.dart';
+import 'package:frip_trading/core/services/services_locator.dart';
+import 'package:frip_trading/core/utils/loading_dialog.dart';
+import 'package:frip_trading/src/data/models/models.dart';
+import 'package:frip_trading/src/presentation/controllers/auth/auth_bloc.dart';
+import 'package:frip_trading/src/presentation/screens/settings/widgets/customAppbar.dart';
+import 'package:frip_trading/src/presentation/screens/settings/widgets/custom_text_feild.dart';
+
+class ChangePassword extends StatelessWidget {
+  ChangePassword({super.key});
+
+  final TextEditingController currentController = TextEditingController();
+  final TextEditingController newController = TextEditingController();
+  final TextEditingController contirmController = TextEditingController();
+
+  @override
+  Widget build(BuildContext context) {
+    ThemeData theme = Theme.of(context);
+    MediaQueryData mediaQuery = MediaQuery.of(context);
+    double screenHeight = mediaQuery.size.height;
+    double screenWidth = mediaQuery.size.width;
+
+    return Scaffold(
+      body: CustomAppbar(
+        tilte: 'Change Password',
+        icon: SvgPicture.asset(
+          'assets/SVG/alarm.svg',
+        ),
+        onPressed: () {
+          print('pressed');
+          AppRouter.router.pop(context);
+        },
+        child: SingleChildScrollView(
+          child: Stack(
+            children: [
+              Container(
+                padding: const EdgeInsets.fromLTRB(20, 130, 20, 0),
+                height: screenHeight,
+                child: Container(
+                  margin: const EdgeInsets.only(bottom: 100),
+                  padding: const EdgeInsets.all(10),
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(16),
+                    boxShadow: const [
+                      BoxShadow(color: Colors.black12, blurRadius: 5)
+                    ],
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.all(13.0),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const Text(
+                          'Current password',
+                          style: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.w500,
+                            color: Colors.black54,
+                          ),
+                        ),
+                        const SizedBox(height: 10),
+                        CustomTextFeild(
+                          controller: currentController,
+                          labelText: 'Current password...',
+                        ),
+                        const SizedBox(height: 10),
+                        const Text(
+                          'New password',
+                          style: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.w500,
+                            color: Colors.black54,
+                          ),
+                        ),
+                        const SizedBox(height: 10),
+                        CustomTextFeild(
+                          controller: newController,
+                          labelText: 'enter new password...',
+                        ),
+                        const SizedBox(height: 10),
+                        const Text(
+                          'Confirm password',
+                          style: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.w500,
+                            color: Colors.black54,
+                          ),
+                        ),
+                        const SizedBox(height: 10),
+                        CustomTextFeild(
+                          controller: contirmController,
+                          labelText: 'enter confirm password...',
+                        ),
+                        const SizedBox(height: 10),
+                        Row(
+                          children: [
+                            TextButton(
+                              onPressed: () {},
+                              child: Text(
+                                'Forgot your password ?',
+                                style: TextStyle(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w500,
+                                  color: theme.primaryColor,
+                                ),
+                              ),
+                            ),
+                            TextButton(
+                              onPressed: () {},
+                              child: const Text(
+                                'Reset',
+                                style: TextStyle(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w400,
+                                  color: Colors.red,
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.fromLTRB(0, 40, 0, 0),
+                          child: Center(
+                            child: Image.asset(
+                              'assets/images/init_page.png',
+                              width: 245,
+                              height: 142,
+                              filterQuality: FilterQuality.high,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+              Positioned(
+                bottom: screenHeight / 10 - 15,
+                left: screenWidth / 2 - 150,
+                child: BlocConsumer<AuthBloc, AuthState>(
+                  listener: (context, state) {
+                    state.whenOrNull(
+                      loadInProgress: () {
+                        showLoadingDialog(context);
+                      },
+                      loaded: (user) {
+                        AppRouter.router.pop(context);
+                        AppRouter.router.navigateTo(
+                            context, RoutesNames.mainRoute,
+                            clearStack: true);
+                      },
+                      error: (error) {
+                        AppRouter.router.pop(context);
+                        showDialog(
+                          context: context,
+                          builder: (context) {
+                            return AlertDialog(
+                              title: const Text('Error'),
+                              content: Text(error),
+                              actions: [
+                                TextButton(
+                                  onPressed: () {
+                                    AppRouter.router.pop(context);
+                                  },
+                                  child: const Text('OK'),
+                                ),
+                              ],
+                            );
+                          },
+                        );
+                      },
+                    );
+                  },
+                  builder: (context, state) {
+                    return InkWell(
+                      onTap: () {
+                        
+                        context.read<AuthBloc>().add(
+                              AuthEvent.updatePassword(
+                                oldPassword: currentController.text,
+                                newPassword: newController.text,
+                                confirmPassword: contirmController.text,
+                              ),
+                            );
+                      },
+                      child: Container(
+                        width: 300,
+                        height: 50,
+                        decoration: BoxDecoration(
+                          color: theme.primaryColor,
+                          borderRadius: BorderRadius.circular(16),
+                          boxShadow: const [
+                            BoxShadow(color: Colors.black12, blurRadius: 5)
+                          ],
+                        ),
+                        child: const Center(
+                          child: Text(
+                            'Change',
+                            style: TextStyle(
+                              fontSize: 18,
+                              fontWeight: FontWeight.w500,
+                              color: Colors.white,
+                            ),
+                          ),
+                        ),
+                      ),
+                    );
+                  },
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}

@@ -77,4 +77,21 @@ class AuthRepository extends BaseAuthRepository {
           message: failure.authMessage ?? 'error'));
     }
   }
+  
+  @override
+  ResultFuture<String> updatePassword({required String oldPassword, required String newPassword, required String confirmPassword}) async {
+    
+    try {
+      final response = await baseAuthRemoteDataSource.updatePassword(
+        oldPassword: oldPassword,
+        newPassword: newPassword,
+        confirmPassword: confirmPassword,
+      );
+      return Right(response);
+    } on AuthException catch (failure) {
+      return Left(Failure(
+          statusCode: failure.statusCode ?? 404,
+          message: failure.authMessage ?? 'error'));
+    }
+  }
 }

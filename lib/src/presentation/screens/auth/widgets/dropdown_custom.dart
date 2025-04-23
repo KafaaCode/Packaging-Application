@@ -7,6 +7,7 @@ class DropdownCustom<T extends HasIdAndName> extends StatefulWidget {
   final T? defaultValue;
   final ValueChanged<T?> onChanged;
   final String? labelText;
+  final InputDecoration? decoration;
   final String svgIcon;
 
   const DropdownCustom({
@@ -16,6 +17,7 @@ class DropdownCustom<T extends HasIdAndName> extends StatefulWidget {
     this.defaultValue,
     this.labelText,
     required this.svgIcon,
+    this.decoration,
   });
 
   @override
@@ -38,20 +40,23 @@ class _DropdownCustomState<T extends HasIdAndName>
     final theme = Theme.of(context);
 
     return InputDecorator(
-      decoration: InputDecoration(
-        contentPadding: const EdgeInsets.symmetric(vertical: 5, horizontal: 20),
-        hintText: widget.labelText,
-        labelStyle: theme.textTheme.bodyMedium?.copyWith(
-          color: Colors.grey[600],
-        ),
-        hintStyle: theme.textTheme.bodyMedium?.copyWith(
-          color: Colors.grey[600],
-        ),
-        focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(10),
-          borderSide: BorderSide(color: theme.primaryColor),
-        ),
-      ),
+      decoration: widget.decoration == null
+          ? InputDecoration(
+              contentPadding:
+                  const EdgeInsets.symmetric(vertical: 5, horizontal: 20),
+              hintText: widget.labelText,
+              labelStyle: theme.textTheme.bodyMedium?.copyWith(
+                color: Colors.grey[600],
+              ),
+              hintStyle: theme.textTheme.bodyMedium?.copyWith(
+                color: Colors.grey[600],
+              ),
+              focusedBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(10),
+                borderSide: BorderSide(color: theme.primaryColor),
+              ),
+            )
+          : widget.decoration ?? const InputDecoration(),
       child: DropdownButtonHideUnderline(
         child: DropdownButton<T>(
           value: selectedValue,
