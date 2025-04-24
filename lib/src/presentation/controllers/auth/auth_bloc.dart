@@ -62,8 +62,10 @@ class AuthBloc extends HydratedBloc<AuthEvent, AuthState> {
         }
       } else {
         if (!emit.isDone) {
-          if (user != null) {
-            emit(AuthState.create(user: user));
+          print('Token: $token');
+          print('User: ${user?.email != null}');
+          if (user?.email != null) {
+            emit(AuthState.create(user: user!));
           } else {
             emit(const AuthState.initial());
           }
