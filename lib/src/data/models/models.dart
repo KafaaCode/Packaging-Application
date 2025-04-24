@@ -52,7 +52,7 @@ class Auth with _$Auth {
 @freezed
 class UpdateData with _$UpdateData {
   const factory UpdateData({
-    required User user,
+    @JsonKey(name: 'data', nullable: true) User? user,
     String? message,
   }) = _UpdateData;
 
@@ -63,16 +63,11 @@ class UpdateData with _$UpdateData {
 @freezed
 class Category with _$Category {
   const factory Category({
-
-   int? id,
-  String? name,
-     String? image,
-
-     required int active,  
-    
-  }) =_Category;
-
-
+    int? id,
+    String? name,
+    String? image,
+    required int active,
+  }) = _Category;
 
   factory Category.fromJson(Map<String, dynamic> json) =>
       _$CategoryFromJson(json);
@@ -133,15 +128,11 @@ class Product with _$Product {
     String? image,
     String? serial_numbe,
     String? description,
-
-   Category? category,
-    int? request_number, 
-
-   required String  price,
-  required int active,  
-  }) =_Product;
-
-
+    Category? category,
+    int? request_number,
+    required String price,
+    required int active,
+  }) = _Product;
 
   factory Product.fromJson(Map<String, dynamic> json) =>
       _$ProductFromJson(json);

@@ -850,7 +850,8 @@ UpdateData _$UpdateDataFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$UpdateData {
-  User get user => throw _privateConstructorUsedError;
+  @JsonKey(name: 'data', nullable: true)
+  User? get user => throw _privateConstructorUsedError;
   String? get message => throw _privateConstructorUsedError;
 
   /// Serializes this UpdateData to a JSON map.
@@ -869,9 +870,10 @@ abstract class $UpdateDataCopyWith<$Res> {
           UpdateData value, $Res Function(UpdateData) then) =
       _$UpdateDataCopyWithImpl<$Res, UpdateData>;
   @useResult
-  $Res call({User user, String? message});
+  $Res call(
+      {@JsonKey(name: 'data', nullable: true) User? user, String? message});
 
-  $UserCopyWith<$Res> get user;
+  $UserCopyWith<$Res>? get user;
 }
 
 /// @nodoc
@@ -889,14 +891,14 @@ class _$UpdateDataCopyWithImpl<$Res, $Val extends UpdateData>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? user = null,
+    Object? user = freezed,
     Object? message = freezed,
   }) {
     return _then(_value.copyWith(
-      user: null == user
+      user: freezed == user
           ? _value.user
           : user // ignore: cast_nullable_to_non_nullable
-              as User,
+              as User?,
       message: freezed == message
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
@@ -908,8 +910,12 @@ class _$UpdateDataCopyWithImpl<$Res, $Val extends UpdateData>
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  $UserCopyWith<$Res> get user {
-    return $UserCopyWith<$Res>(_value.user, (value) {
+  $UserCopyWith<$Res>? get user {
+    if (_value.user == null) {
+      return null;
+    }
+
+    return $UserCopyWith<$Res>(_value.user!, (value) {
       return _then(_value.copyWith(user: value) as $Val);
     });
   }
@@ -923,10 +929,11 @@ abstract class _$$UpdateDataImplCopyWith<$Res>
       __$$UpdateDataImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({User user, String? message});
+  $Res call(
+      {@JsonKey(name: 'data', nullable: true) User? user, String? message});
 
   @override
-  $UserCopyWith<$Res> get user;
+  $UserCopyWith<$Res>? get user;
 }
 
 /// @nodoc
@@ -942,14 +949,14 @@ class __$$UpdateDataImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? user = null,
+    Object? user = freezed,
     Object? message = freezed,
   }) {
     return _then(_$UpdateDataImpl(
-      user: null == user
+      user: freezed == user
           ? _value.user
           : user // ignore: cast_nullable_to_non_nullable
-              as User,
+              as User?,
       message: freezed == message
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
@@ -961,13 +968,15 @@ class __$$UpdateDataImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$UpdateDataImpl implements _UpdateData {
-  const _$UpdateDataImpl({required this.user, this.message});
+  const _$UpdateDataImpl(
+      {@JsonKey(name: 'data', nullable: true) this.user, this.message});
 
   factory _$UpdateDataImpl.fromJson(Map<String, dynamic> json) =>
       _$$UpdateDataImplFromJson(json);
 
   @override
-  final User user;
+  @JsonKey(name: 'data', nullable: true)
+  final User? user;
   @override
   final String? message;
 
@@ -1006,14 +1015,16 @@ class _$UpdateDataImpl implements _UpdateData {
 }
 
 abstract class _UpdateData implements UpdateData {
-  const factory _UpdateData({required final User user, final String? message}) =
-      _$UpdateDataImpl;
+  const factory _UpdateData(
+      {@JsonKey(name: 'data', nullable: true) final User? user,
+      final String? message}) = _$UpdateDataImpl;
 
   factory _UpdateData.fromJson(Map<String, dynamic> json) =
       _$UpdateDataImpl.fromJson;
 
   @override
-  User get user;
+  @JsonKey(name: 'data', nullable: true)
+  User? get user;
   @override
   String? get message;
 

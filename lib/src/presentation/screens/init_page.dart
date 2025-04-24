@@ -42,7 +42,7 @@ class _InitPageState extends State<InitPage> {
             transitionDuration: const Duration(milliseconds: 500),
             transition: TransitionType.inFromBottom);
       },
-      loaded: (user) {
+      create: (user) {
         Navigator.of(context, rootNavigator: true).pop();
         if (user.role == "User") {
           debugPrint('Loaded with user: ${user.email}');

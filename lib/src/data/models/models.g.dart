@@ -72,13 +72,15 @@ Map<String, dynamic> _$$AuthImplToJson(_$AuthImpl instance) =>
 
 _$UpdateDataImpl _$$UpdateDataImplFromJson(Map<String, dynamic> json) =>
     _$UpdateDataImpl(
-      user: User.fromJson(json['user'] as Map<String, dynamic>),
+      user: json['data'] == null
+          ? null
+          : User.fromJson(json['data'] as Map<String, dynamic>),
       message: json['message'] as String?,
     );
 
 Map<String, dynamic> _$$UpdateDataImplToJson(_$UpdateDataImpl instance) =>
     <String, dynamic>{
-      'user': instance.user,
+      'data': instance.user,
       'message': instance.message,
     };
 
