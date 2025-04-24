@@ -14,25 +14,41 @@ class MyOrdersPage extends StatelessWidget {
  final List<MyOrder> orders = [
   MyOrder(
     id: 1,
-    status: 'Pending',
+    status: 'pending',
     serial_number: 'SN12345',
     delivery_time: '10:00 AM',
     created_at: DateTime.now(),
   ),
   MyOrder(
     id: 2,
-    status: 'Delivered',
+    status: 'delivery',
     serial_number: 'SN67890',
     delivery_time: '12:30 PM',
     created_at: DateTime.now().subtract(Duration(days: 1)),
   ),
     MyOrder(
     id: 3,
-    status: 'Completed',
+    status: 'completed',
     serial_number: 'SN67890',
     delivery_time: '12:30 PM',
     created_at: DateTime.now().subtract(Duration(days: 1)),
   ),
+    MyOrder(
+    id: 3,
+    status: 'canceled',
+    serial_number: 'SN67890',
+    delivery_time: '12:30 PM',
+    created_at: DateTime.now().subtract(Duration(days: 1)),
+  ),
+    MyOrder(
+    id: 3,
+    status: 'partial delivery',
+    serial_number: 'SN67890',
+    delivery_time: '12:30 PM',
+    created_at: DateTime.now().subtract(Duration(days: 1)),
+  ),
+  
+
 ];
 
   @override
@@ -106,10 +122,11 @@ class MyOrdersPage extends StatelessWidget {
                   child: Container(
                     color: Colors.white,
                     child: ListView.builder(
-                      itemCount:state.myorders.length,
+                      itemCount:state.myorders.length /* orders.length */,
                       itemBuilder: (context, index) {
                         
-                        return OrderCard(length:state.myorders.length,index:index,order:state.myorders[index]);
+                       return OrderCard(length:state.myorders.length,index:index,order:state.myorders[index]); 
+         /*                return OrderCard(length:orders.length,index:index,order:orders[index]); */
                       },
                     ),
                   ),

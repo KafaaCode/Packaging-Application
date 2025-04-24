@@ -12,31 +12,40 @@ class OrderCard extends StatelessWidget {
 
 
 
-  Color getStatusColor(String status) {
-    switch (status) {
-      case 'Completed':
-        return const Color(0xFFc9d0e3);
-      case 'Delivered':
-        return const Color(0xFFbaffc8);
-      case 'pending':
-        return const Color(0xFFffe8ab);
-      default:
-        return Colors.grey;
-    }
+ Color getStatusColor(String status) {
+  switch (status) {
+    case 'completed':
+      return const Color(0xFFc9d0e3);
+    case 'delivery':
+      return const Color(0xFFbaffc8);
+    case 'pending':
+      return const Color(0xFFffe8ab);
+    case 'partial delivery':
+      return const Color(0xFFc5f0ff);
+    case 'canceled':
+      return const Color(0xFFffd1d1);
+    default:
+      return Colors.grey;
   }
+}
 
-  Color getStatusTextColor(String status) {
-    switch (status) {
-      case 'Completed':
-        return const Color(0xFF667dc0);
-      case 'Delivered':
-        return const Color(0xFF2cdd50);
-      case 'pending':
-        return const Color(0xFFf68f18);
-      default:
-        return const Color(0xFF667dc0);
-    }
+Color getStatusTextColor(String status) {
+  switch (status) {
+    case 'completed':
+      return const Color(0xFF667dc0);
+    case 'delivery':
+      return const Color(0xFF2cdd50);
+    case 'pending':
+      return const Color(0xFFf68f18);
+    case 'partial delivery':
+      return const Color(0xFF2596be);
+    case 'canceled':
+      return const Color(0xFFd14c4c);
+    default:
+      return const Color(0xFF667dc0);
   }
+}
+
   @override
   Widget build(BuildContext context) {
     return  Container(
