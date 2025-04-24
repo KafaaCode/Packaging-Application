@@ -3,6 +3,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:frip_trading/core/services/services_locator.dart';
 import 'package:frip_trading/core/utils/loading_dialog.dart';
+import 'package:frip_trading/src/data/models/models.dart';
+import 'package:frip_trading/src/presentation/controllers/cart/cart_bloc.dart';
+import 'package:frip_trading/src/presentation/controllers/counter/counter_bloc.dart';
 import 'package:frip_trading/src/presentation/controllers/products/products_bloc.dart';
 import 'package:frip_trading/src/presentation/screens/auth/widgets/cardproductandCatogry.dart';
 import 'package:frip_trading/src/presentation/screens/auth/widgets/option_filter.dart';
@@ -131,28 +134,39 @@ class Products extends StatelessWidget {
                                           : width * 0.43;
 
                               return InkWell(
-                                onTap: () {
-                           Navigator.push(
-  context,
-  PageRouteBuilder(
-    pageBuilder: (context, animation, secondaryAnimation) {
-      return ProductDetailsPage( product: state.products[i]);
-    },
-    transitionsBuilder: (context, animation, secondaryAnimation, child) {
-      // تأثير الانتقال باستخدام FadeTransition
-      const begin = Offset(1.0, 0.0); // بداية الانتقال من اليمين لليسار
-      const end = Offset.zero;
-      const curve = Curves.easeInOut;
+                             onTap: () {
+                              
+  Navigator.push(
+    context,
+    PageRouteBuilder(
+      pageBuilder: (context, animation, secondaryAnimation) {
+        return BlocProvider(
+create: (_) => CounterBloc(
+  min: state.products[i].request_number ?? 0,
+  initial: context.read<CartBloc>().state.items
+              .firstWhere(
+                (item) => item.product.id == state.products[i].id,
+                orElse: () => CartItem(product: state.products[i], quantity: state.products[i].request_number ?? 0),
+              )
+              .quantity,
+),
 
-      var tween = Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
-      var offsetAnimation = animation.drive(tween);
+          child: ProductDetailsPage(product: state.products[i]),
+        );
+      },
+      transitionsBuilder: (context, animation, secondaryAnimation, child) {
+        const begin = Offset(1.0, 0.0);
+        const end = Offset.zero;
+        const curve = Curves.easeInOut;
+        var tween = Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
+        var offsetAnimation = animation.drive(tween);
 
-      return SlideTransition(position: offsetAnimation, child: child); // تأثير الانتقال
-    },
-  ),
-);
+        return SlideTransition(position: offsetAnimation, child: child);
+      },
+    ),
+  );
+},
 
-                                },
                                 borderRadius: BorderRadius.circular(12),
                                 child: SizedBox(
                                     width: itemWidth,

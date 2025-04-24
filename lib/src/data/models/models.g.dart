@@ -193,3 +193,15 @@ Map<String, dynamic> _$$MyOrderImplToJson(_$MyOrderImpl instance) =>
       'delivery_time': instance.delivery_time,
       'created_at': instance.created_at?.toIso8601String(),
     };
+
+_$CartItemImpl _$$CartItemImplFromJson(Map<String, dynamic> json) =>
+    _$CartItemImpl(
+      product: Product.fromJson(json['product'] as Map<String, dynamic>),
+      quantity: (json['quantity'] as num).toInt(),
+    );
+
+Map<String, dynamic> _$$CartItemImplToJson(_$CartItemImpl instance) =>
+    <String, dynamic>{
+      'product': instance.product,
+      'quantity': instance.quantity,
+    };

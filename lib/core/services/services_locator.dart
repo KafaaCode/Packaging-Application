@@ -11,6 +11,7 @@ import 'package:frip_trading/src/features/inital/data/repository/inital_reposito
 import 'package:frip_trading/src/features/inital/domain/repository/inital_repository.dart';
 import 'package:frip_trading/src/features/inital/presentation/inital/inital_bloc.dart';
 import 'package:frip_trading/src/presentation/controllers/auth/auth_bloc.dart';
+import 'package:frip_trading/src/presentation/controllers/cart/cart_bloc.dart';
 import 'package:frip_trading/src/presentation/controllers/category/category_bloc.dart';
 import 'package:frip_trading/src/presentation/controllers/myorder/myorder_bloc.dart';
 import 'package:frip_trading/src/presentation/controllers/products/products_bloc.dart';
@@ -43,6 +44,7 @@ class ServicesLocator {
     sl.registerLazySingleton(() => CategoriesBloc(sl()));
 
     sl.registerLazySingleton(() => MyOrdersBloc(sl()));
+        sl.registerLazySingleton(() => CartBloc());
   }
 
   void _initalSL() {
