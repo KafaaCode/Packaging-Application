@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class CustomAppbar extends StatelessWidget {
   final Widget child;
   final String tilte;
-  final Function()? onPressed;
+  final VoidCallback? onPressed;
   final Widget icon;
   const CustomAppbar(
       {super.key,

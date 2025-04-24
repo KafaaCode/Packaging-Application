@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart'; 
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:frip_trading/src/data/models/models.dart';
 import 'package:frip_trading/src/presentation/controllers/cart/cart_bloc.dart';
@@ -7,7 +7,7 @@ import 'package:frip_trading/src/presentation/controllers/counter/counter_bloc.d
 import 'package:readmore/readmore.dart';
 
 class ProductDetailsPage extends StatelessWidget {
-  final Product product; 
+  final Product product;
   final int minQuantity = 10;
 
   final String fullDescription =
@@ -29,7 +29,7 @@ class ProductDetailsPage extends StatelessWidget {
               fit: StackFit.expand,
               children: [
                 Image.asset(
-                  'images/image5.png',
+                  'assets/images/image5.png',
                   fit: BoxFit.cover,
                 ),
                 Positioned(
@@ -52,7 +52,7 @@ class ProductDetailsPage extends StatelessWidget {
                   top: 10,
                   right: 10,
                   child: SvgPicture.asset(
-                    'images/Group940.svg',
+                    'assets/images/Group940.svg',
                     height: 50,
                   ),
                 ),
@@ -78,13 +78,12 @@ class ProductDetailsPage extends StatelessWidget {
                   const SizedBox(height: 8),
                   const Text("Price", style: TextStyle(color: Colors.grey)),
                   Text("\$${product.price}",
-                      style: TextStyle(
-                          fontSize: 18, fontWeight: FontWeight.bold)),
+                      style:
+                          TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
                   const SizedBox(height: 12),
                   const Text(
                     "Description",
-                    style:
-                        TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                   ),
                   const SizedBox(height: 4),
                   Expanded(
@@ -143,7 +142,8 @@ class ProductDetailsPage extends StatelessWidget {
                                             .read<CounterBloc>()
                                             .add(const CounterEvent.decrement())
                                         : null,
-                                    icon: const Icon(Icons.remove_circle_outline),
+                                    icon:
+                                        const Icon(Icons.remove_circle_outline),
                                   ),
                                   Text(
                                     state.count.toString(),
@@ -156,7 +156,7 @@ class ProductDetailsPage extends StatelessWidget {
                                           .add(const CounterEvent.increment());
                                     },
                                     icon: SvgPicture.asset(
-                                      'images/IconArtwork.svg',
+                                      'assets/images/IconArtwork.svg',
                                       height: 24,
                                       width: 24,
                                     ),
@@ -169,19 +169,18 @@ class ProductDetailsPage extends StatelessWidget {
                       ),
                       const SizedBox(height: 10),
                       SizedBox(
-                          width: double.infinity,
-                          child: ElevatedButton(
+                        width: double.infinity,
+                        child: ElevatedButton(
                           style: ElevatedButton.styleFrom(
-                          backgroundColor: const Color(0xFF70b9be),
-                          padding: const EdgeInsets.symmetric(vertical: 16),
-                          shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(15),
+                            backgroundColor: const Color(0xFF70b9be),
+                            padding: const EdgeInsets.symmetric(vertical: 16),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(15),
                             ),
                           ),
-               onPressed: () {
-  AddToCard(context) ;
-},
-
+                          onPressed: () {
+                            AddToCard(context);
+                          },
                           child: const Text(
                             "Add To Cart",
                             style: TextStyle(fontSize: 18, color: Colors.white),
@@ -198,32 +197,36 @@ class ProductDetailsPage extends StatelessWidget {
       ),
     );
   }
+
   void AddToCard(BuildContext context) {
- final cartBloc = context.read<CartBloc>();
-  final counterBloc = context.read<CounterBloc>();
-  final quantity = counterBloc.state.count;
+    final cartBloc = context.read<CartBloc>();
+    final counterBloc = context.read<CounterBloc>();
+    final quantity = counterBloc.state.count;
 
-  final existingItem = cartBloc.state.items.firstWhere(
-    (item) => item.product.id == product.id,
-    orElse: () => CartItem(product: product, quantity: -1), 
-  );
+    final existingItem = cartBloc.state.items.firstWhere(
+      (item) => item.product.id == product.id,
+      orElse: () => CartItem(product: product, quantity: -1),
+    );
 
-  if (existingItem.quantity == quantity) {
+    if (existingItem.quantity == quantity) {
       ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(content: Text('the product is elready exist in the same quantity in cart',style: TextStyle(color: Color(0xFF70b9be) )),backgroundColor:Color.fromARGB(255, 239, 244, 245)),
-    );
-  } else {
+        const SnackBar(
+            content: Text(
+                'the product is elready exist in the same quantity in cart',
+                style: TextStyle(color: Color(0xFF70b9be))),
+            backgroundColor: Color.fromARGB(255, 239, 244, 245)),
+      );
+    } else {
+      final newCartItem = CartItem(product: product, quantity: quantity);
+      cartBloc.add(CartEvent.removeProduct(product));
+      cartBloc.add(CartEvent.addProduct(newCartItem));
 
-    final newCartItem = CartItem(product: product, quantity: quantity);
-    cartBloc.add(CartEvent.removeProduct(product));
-    cartBloc.add(CartEvent.addProduct(newCartItem));
-   
-
-    ScaffoldMessenger.of(context).showSnackBar(
-      
-      const SnackBar(
-        content: Text('Product Aded to card',style: TextStyle(color: Color(0xFF70b9be) )),backgroundColor:Color.fromARGB(255, 239, 244, 245)),
-    );
-  }
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+            content: Text('Product Aded to card',
+                style: TextStyle(color: Color(0xFF70b9be))),
+            backgroundColor: Color.fromARGB(255, 239, 244, 245)),
+      );
+    }
   }
 }

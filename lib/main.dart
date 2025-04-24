@@ -4,7 +4,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:frip_trading/core/localization/generated/l10n.dart';
 import 'package:frip_trading/core/localization/language/language_cubit.dart';
-import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:frip_trading/core/localization/language/language_state.dart';
 import 'package:frip_trading/core/observer/app_observer.dart';
 import 'package:frip_trading/core/routes/router_screens.dart';
@@ -13,17 +12,15 @@ import 'package:frip_trading/core/routes/routes_name.dart';
 import 'package:frip_trading/core/services/services_locator.dart';
 import 'package:frip_trading/core/theme/theme.dart';
 import 'package:frip_trading/core/theme/theme_cubit.dart';
-
 import 'package:frip_trading/src/features/inital/presentation/inital/inital_bloc.dart';
 import 'package:frip_trading/src/presentation/controllers/auth/auth_bloc.dart';
 import 'package:frip_trading/src/presentation/controllers/cart/cart_bloc.dart';
-import 'package:frip_trading/src/presentation/controllers/counter/counter_bloc.dart';
-import 'package:hive_flutter/adapters.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
 import 'package:path_provider/path_provider.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 
 void main() async {
-    WidgetsFlutterBinding.ensureInitialized();
+  WidgetsFlutterBinding.ensureInitialized();
 
 /*   Hive.registerAdapter(ProductHiveModelAdapter());
 
@@ -46,21 +43,19 @@ class MainApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(
-
       designSize: const Size(360, 690),
       minTextAdapt: true,
       splitScreenMode: true,
       builder: (context, child) {
         return MultiBlocProvider(
           providers: [
-                           BlocProvider(
-          create: (_) => CartBloc(),
-               lazy: false,
-        ),
+            BlocProvider(
+              create: (_) => CartBloc(),
+              lazy: false,
+            ),
             BlocProvider(
               create: (context) => LanguageCubit(),
               lazy: false,
-
             ),
             BlocProvider(
                 lazy: false,

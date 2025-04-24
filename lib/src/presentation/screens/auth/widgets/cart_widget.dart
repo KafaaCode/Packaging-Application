@@ -5,7 +5,6 @@ import 'package:frip_trading/src/data/models/models.dart';
 import 'package:frip_trading/src/presentation/controllers/cart/cart_bloc.dart';
 import 'package:frip_trading/src/presentation/controllers/counter/counter_bloc.dart';
 
-
 class CartWidget extends StatelessWidget {
   final CartItem cartItem;
 
@@ -42,8 +41,8 @@ class CartWidget extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                       Text(
-                        cartItem.product.name?? 'Product Name',
+                      Text(
+                        cartItem.product.name ?? 'Product Name',
                         maxLines: 1,
                         overflow: TextOverflow.ellipsis,
                         style: TextStyle(
@@ -51,53 +50,54 @@ class CartWidget extends StatelessWidget {
                             fontSize: 15,
                             color: Color(0xFF70b9be)),
                       ),
-                       Text(
+                      Text(
                         maxLines: 1,
                         overflow: TextOverflow.ellipsis,
-                      cartItem.product.category?.name?? 'category Name',
+                        cartItem.product.category?.name ?? 'category Name',
                         style:
                             TextStyle(color: Color(0xFF70b9be), fontSize: 12),
                       ),
-                       BlocBuilder<CounterBloc, CounterState>(
+                      BlocBuilder<CounterBloc, CounterState>(
                         builder: (context, state) {
-                          return  Row(
-                                  children: [
-                                    IconButton(
-                                      onPressed: state.count > state.min
-                                          ? (){ context
-                                              .read<CounterBloc>()
-                                              .add(const CounterEvent.decrement());
-                                              context.read<CartBloc>().add(
-  CartEvent.updateQuantity(product:cartItem.product, quantity: state.count-1),
-);
-
-                                              }
-                                          : null,
-                                      icon: const Icon(
-                                          Icons.remove_circle_outline),
-                                    ),
-                                    Text(
-                                   state.count.toString(),    
-                                    
-                                      style: const TextStyle(fontSize: 15),
-                                    ),
-                                    IconButton(
-                                      onPressed: () {
-                                        context
-                                            .read<CounterBloc>()
-                                            .add(const CounterEvent.increment());
-                                                                      context.read<CartBloc>().add(
-  CartEvent.updateQuantity(product:cartItem.product, quantity: state.count+1),
-);
-                                      },
-                                      icon: SvgPicture.asset(
-                                        'images/IconArtwork.svg',
-                                        height: 22,
-                                        width: 22,
-                                      ),
-                                    ),
-                                  ],
-                                );
+                          return Row(
+                            children: [
+                              IconButton(
+                                onPressed: state.count > state.min
+                                    ? () {
+                                        context.read<CounterBloc>().add(
+                                            const CounterEvent.decrement());
+                                        context.read<CartBloc>().add(
+                                              CartEvent.updateQuantity(
+                                                  product: cartItem.product,
+                                                  quantity: state.count - 1),
+                                            );
+                                      }
+                                    : null,
+                                icon: const Icon(Icons.remove_circle_outline),
+                              ),
+                              Text(
+                                state.count.toString(),
+                                style: const TextStyle(fontSize: 15),
+                              ),
+                              IconButton(
+                                onPressed: () {
+                                  context
+                                      .read<CounterBloc>()
+                                      .add(const CounterEvent.increment());
+                                  context.read<CartBloc>().add(
+                                        CartEvent.updateQuantity(
+                                            product: cartItem.product,
+                                            quantity: state.count + 1),
+                                      );
+                                },
+                                icon: SvgPicture.asset(
+                                  'assets/images/IconArtwork.svg',
+                                  height: 22,
+                                  width: 22,
+                                ),
+                              ),
+                            ],
+                          );
                         },
                       ),
                     ],
@@ -108,15 +108,16 @@ class CartWidget extends StatelessWidget {
           ),
           Positioned(
             top: 4,
-
             right: 4,
             child: IconButton(
               onPressed: () {
                 // Remove item from cart logic here
-             context.read<CartBloc>().add(CartEvent.removeProduct(cartItem.product));
+                context
+                    .read<CartBloc>()
+                    .add(CartEvent.removeProduct(cartItem.product));
               },
               icon: Image.asset(
-                'images/IconArtwork.png',
+                'assets/images/IconArtwork.png',
                 width: 20,
                 height: 20,
               ),
