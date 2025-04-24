@@ -1,10 +1,13 @@
 import 'package:fluro/fluro.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:frip_trading/core/localization/language/language_cubit.dart';
+import 'package:frip_trading/core/localization/language/language_state.dart';
 import 'package:frip_trading/core/routes/router_screens.dart';
 import 'package:frip_trading/core/routes/routes_name.dart';
 import 'package:frip_trading/src/data/models/models.dart';
 import 'package:frip_trading/src/presentation/controllers/auth/auth_bloc.dart';
+import 'package:frip_trading/src/presentation/screens/auth/widgets/dropdown_custom.dart';
 import 'package:frip_trading/src/presentation/screens/settings/widgets/customAppbar.dart';
 
 class Profile extends StatelessWidget {
@@ -38,7 +41,6 @@ class Profile extends StatelessWidget {
                 BlocBuilder<AuthBloc, AuthState>(
                   builder: (context, state) {
                     User? user = state.mapOrNull(
-                    
                       create: (state) => state.user,
                     );
                     return Row(
@@ -96,27 +98,45 @@ class Profile extends StatelessWidget {
                   ),
                 ),
                 ListTile(
-                  title: const Text("Select Languages"),
-                  trailing: DropdownButton<String>(
-                    value: "English",
-                    underline: const SizedBox(),
-                    items: const [
-                      DropdownMenuItem(
-                        value: "English",
-                        child: Text("English"),
-                      ),
-                      DropdownMenuItem(
-                        value: "Arabic",
-                        child: Text("Arabic"),
-                      ),
-                      DropdownMenuItem(
-                        value: "French",
-                        child: Text("French"),
-                      ),
-                    ],
-                    onChanged: (value) {
-                      // Handle language change logic here
-                    },
+                  title: const Text("Select Language"),
+                  trailing: SizedBox(
+                    width: 110,
+                    child: BlocBuilder<LanguageCubit, LanguageState>(
+                      builder: (context, state) {
+                        List<SupportedLanguage> langs =
+                            LanguageCubit.supportedLanguages;
+                        return DropdownCustom<SupportedLanguage>(
+                          items: langs,
+                          onChanged: (v) {
+                            if (v != null) {
+                              print("Selected Language: ${v.langCode}");
+                              context
+                                  .read<LanguageCubit>()
+                                  .changeLanguageTo(v.langCode);
+                            }
+                          },
+                          decoration: InputDecoration(
+                            contentPadding: const EdgeInsets.symmetric(
+                                vertical: 2, horizontal: 2),
+                            hintText: "Select Language",
+                            labelStyle: Theme.of(context).textTheme.bodyMedium,
+                            hintStyle: Theme.of(context).textTheme.bodyMedium,
+                            focusedBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(10),
+                              borderSide: BorderSide(
+                                color: Theme.of(context).primaryColor,
+                              ),
+                            ),
+                          ),
+                          defaultValue: langs.firstWhere(
+                            (element) =>
+                                element.langCode == state.locale.languageCode,
+                          ),
+                          // context.read<LanguageCubit>().supportedLanguages[0],
+                          svgIcon: 'assets/SVG/Vector_down.svg',
+                        );
+                      },
+                    ),
                   ),
                 ),
                 const Divider(height: 32),

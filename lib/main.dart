@@ -5,6 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:frip_trading/core/localization/generated/l10n.dart';
 import 'package:frip_trading/core/localization/language/language_cubit.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:frip_trading/core/localization/language/language_state.dart';
 import 'package:frip_trading/core/observer/app_observer.dart';
 import 'package:frip_trading/core/routes/router_screens.dart';
 import 'package:frip_trading/core/routes/routers_define.dart';
@@ -72,23 +73,27 @@ class MainApp extends StatelessWidget {
           ],
           child: BlocBuilder<ThemesCubit, ThemeMode>(
             builder: (context, state) {
-              return MaterialApp(
-                debugShowCheckedModeBanner: false,
-                localizationsDelegates: const [
-                  Lang.delegate,
-                  GlobalMaterialLocalizations.delegate,
-                  GlobalWidgetsLocalizations.delegate,
-                  GlobalCupertinoLocalizations.delegate,
-                ],
-                locale: const Locale('en'),
-                supportedLocales: Lang.delegate.supportedLocales,
-                theme: lightTheme,
-                darkTheme: darkTheme,
-                themeMode: state,
-                onGenerateTitle: (BuildContext context) => "app",
-                initialRoute: RoutesNames.initalRoute,
-                onGenerateRoute: AppRouter.router.generator,
-                navigatorKey: SingleInstanceService.navigatorKey,
+              return BlocBuilder<LanguageCubit, LanguageState>(
+                builder: (context, lang) {
+                  return MaterialApp(
+                    debugShowCheckedModeBanner: false,
+                    localizationsDelegates: const [
+                      Lang.delegate,
+                      GlobalMaterialLocalizations.delegate,
+                      GlobalWidgetsLocalizations.delegate,
+                      GlobalCupertinoLocalizations.delegate,
+                    ],
+                    locale: lang.locale,
+                    supportedLocales: Lang.delegate.supportedLocales,
+                    theme: lightTheme,
+                    darkTheme: darkTheme,
+                    themeMode: state,
+                    onGenerateTitle: (BuildContext context) => "app",
+                    initialRoute: RoutesNames.initalRoute,
+                    onGenerateRoute: AppRouter.router.generator,
+                    navigatorKey: SingleInstanceService.navigatorKey,
+                  );
+                },
               );
             },
           ),
