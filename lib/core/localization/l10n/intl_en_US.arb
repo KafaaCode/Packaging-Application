@@ -62,6 +62,8 @@
   "minimumOrderText": "The minimum order for this",
   "productIsText": "product is",
   "addToCartButton": "Add To Cart",
+
+   ""
   "cartDetailsTitle": "Cart Details",
   "productAlreadyExistsMessage": "The product already exists in the same quantity in cart",
   "productAddedToCartMessage": "Product added to cart",
