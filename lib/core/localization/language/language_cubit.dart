@@ -16,20 +16,20 @@ class LanguageCubit extends HydratedCubit<LanguageState> {
   static List<SupportedLanguage> get supportedLanguages {
     return [
       SupportedLanguage(
+        langName: 'English',
+        langCode: 'en',
+        countryCode: 'US',
+      ),
+      SupportedLanguage(
+        langName: 'French',
+        langCode: 'fr',
+        countryCode: 'FR',
+      ),
+      SupportedLanguage(
         langName: 'العربية',
         langCode: 'ar',
         countryCode: 'SY',
       ),
-      SupportedLanguage(
-        langName: 'French',
-        langCode: 'ar',
-        countryCode: 'SY',
-      ),
-      SupportedLanguage(
-        langName: 'English',
-        langCode: 'en',
-        countryCode: 'US',
-      )
     ];
   }
 
@@ -64,4 +64,7 @@ class SupportedLanguage extends HasIdAndName {
 
   @override
   String get name => langName;
+  
+  @override
+  List<Object?> get props => [langName, langCode, countryCode];
 }

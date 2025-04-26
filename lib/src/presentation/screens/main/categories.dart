@@ -2,6 +2,7 @@ import 'package:fluro/fluro.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:frip_trading/core/localization/generated/l10n.dart';
 import 'package:frip_trading/core/routes/router_screens.dart';
 import 'package:frip_trading/core/routes/routes_name.dart';
 import 'package:frip_trading/core/services/services_locator.dart';
@@ -18,6 +19,7 @@ class FilterPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Lang lang = Lang.of(context);
     return BlocProvider(
       create: (context) =>
           CategoriesBloc(sl())..add(const CategoriesEvent.getCategories()),
@@ -65,9 +67,9 @@ class FilterPage extends StatelessWidget {
                 ],
               ),
               const SizedBox(height: 10),
-              const Center(
+              Center(
                 child: Text(
-                  'Welcome to Frip Trading',
+                 lang.welcomeMessage,
                   style: TextStyle(
                     color: Color(0xFF70b9be),
                     fontSize: 18,
@@ -89,10 +91,10 @@ class FilterPage extends StatelessWidget {
                 ],
               ),
               const SizedBox(height: 16),
-              const Align(
+               Align(
                 alignment: Alignment.centerLeft,
                 child: Text(
-                  'Product categories',
+                  lang.productCategoriesTitle,
                   style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
                 ),
               ),
@@ -111,7 +113,7 @@ class FilterPage extends StatelessWidget {
                     } else if (state.error) {
                       return Center(
                         child: Text(
-                          'products not found',
+                          lang.cateogriesNotFoundMessage,
                           style: const TextStyle(
                               color: Color(0xFF70b9be),
                               fontWeight: FontWeight.bold,

@@ -8,7 +8,7 @@ part 'language_state.freezed.dart';
 @freezed
 class LanguageState with _$LanguageState {
   factory LanguageState({
-    @Default(Locale('ar','SY')) Locale locale,
+    @Default(Locale('en', 'US')) Locale locale,
     List<SupportedLanguage>? supportedLanguages,
   }) = _LanguageState;
 }
