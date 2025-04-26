@@ -22,49 +22,10 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
-
-        "addToCartButton": MessageLookupByLibrary.simpleMessage("Add To Cart"),
-        "ali": MessageLookupByLibrary.simpleMessage("ali"),
-        "cartDetailsTitle":
-            MessageLookupByLibrary.simpleMessage("Cart Details"),
-        "cateogriesNotFoundMessage":
-            MessageLookupByLibrary.simpleMessage("Cateogries not found"),
-        "continueToConfirmOrderButton": MessageLookupByLibrary.simpleMessage(
-            "Continue to confirm the order"),
-        "descriptionLabel": MessageLookupByLibrary.simpleMessage("Description"),
-        "letsGetStarted":
-            MessageLookupByLibrary.simpleMessage("Let’s Get Started"),
-        "minimumOrderText":
-            MessageLookupByLibrary.simpleMessage("The minimum order for this"),
-        "myOrdersTitle": MessageLookupByLibrary.simpleMessage("My Orders"),
-        "omar": MessageLookupByLibrary.simpleMessage("omar"),
-        "orderDetailsTitle":
-            MessageLookupByLibrary.simpleMessage("Order Details"),
-        "ordersNotFoundMessage":
-            MessageLookupByLibrary.simpleMessage("Orders not found"),
-        "payButton": MessageLookupByLibrary.simpleMessage("Pay"),
-        "priceLabel": MessageLookupByLibrary.simpleMessage("Price"),
-        "productAddedToCartMessage":
-            MessageLookupByLibrary.simpleMessage("Product added to cart"),
-        "productAlreadyExistsMessage": MessageLookupByLibrary.simpleMessage(
-            "The product already exists in the same quantity in cart"),
-        "productCategoriesTitle":
-            MessageLookupByLibrary.simpleMessage("Product categories"),
-        "productCategoryDescription": MessageLookupByLibrary.simpleMessage(
-            "Clothing Packaging Category Products"),
-        "productIsText": MessageLookupByLibrary.simpleMessage("product is"),
-        "productTitle": MessageLookupByLibrary.simpleMessage("Product"),
-        "productsNotFoundMessage":
-            MessageLookupByLibrary.simpleMessage("Products not found"),
-        "readLessButton": MessageLookupByLibrary.simpleMessage("Read less"),
-        "readMoreButton": MessageLookupByLibrary.simpleMessage("Read more"),
-        "search": MessageLookupByLibrary.simpleMessage("Search..."),
-        "welcomeMessage":
-            MessageLookupByLibrary.simpleMessage("Welcome to Frip Trading")
-=======
         "aboutUs": MessageLookupByLibrary.simpleMessage("About us"),
         "accountSettings":
             MessageLookupByLibrary.simpleMessage("Account Settings"),
+        "addToCartButton": MessageLookupByLibrary.simpleMessage("Add To Cart"),
         "ali": MessageLookupByLibrary.simpleMessage("ali"),
         "alreadyAMember":
             MessageLookupByLibrary.simpleMessage("Already a member?"),
@@ -73,6 +34,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "and": MessageLookupByLibrary.simpleMessage(" and "),
         "byCheckingTheBoxYouAgreeToOur": MessageLookupByLibrary.simpleMessage(
             "By checking the box you agree to our "),
+        "cartDetailsTitle":
+            MessageLookupByLibrary.simpleMessage("Cart Details"),
+        "cateogriesNotFoundMessage":
+            MessageLookupByLibrary.simpleMessage("Cateogries not found"),
         "change": MessageLookupByLibrary.simpleMessage("Change"),
         "changePassword":
             MessageLookupByLibrary.simpleMessage("Change Password"),
@@ -83,10 +48,13 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Confirm password"),
         "confirmPasswordLabel":
             MessageLookupByLibrary.simpleMessage("enter confirm password..."),
+        "continueToConfirmOrderButton": MessageLookupByLibrary.simpleMessage(
+            "Continue to confirm the order"),
         "currentPassword":
             MessageLookupByLibrary.simpleMessage("Current password"),
         "currentPasswordLabel":
             MessageLookupByLibrary.simpleMessage("Current password..."),
+        "descriptionLabel": MessageLookupByLibrary.simpleMessage("Description"),
         "eamilHint": MessageLookupByLibrary.simpleMessage("Valid email"),
         "editProfile": MessageLookupByLibrary.simpleMessage("Edit profile"),
         "enterYourEamilHint":
@@ -102,17 +70,40 @@ class MessageLookup extends MessageLookupByLibrary {
         "letsGetStarted":
             MessageLookupByLibrary.simpleMessage("Let’s Get Started"),
         "login": MessageLookupByLibrary.simpleMessage("Login"),
+        "minimumOrderText":
+            MessageLookupByLibrary.simpleMessage("The minimum order for this"),
         "more": MessageLookupByLibrary.simpleMessage("More"),
+        "myOrdersTitle": MessageLookupByLibrary.simpleMessage("My Orders"),
         "newPassword": MessageLookupByLibrary.simpleMessage("New password"),
         "newPasswordLabel":
             MessageLookupByLibrary.simpleMessage("enter new password..."),
         "ok": MessageLookupByLibrary.simpleMessage("OK"),
         "omar": MessageLookupByLibrary.simpleMessage("omar"),
+        "orderDetailsTitle":
+            MessageLookupByLibrary.simpleMessage("Order Details"),
+        "ordersNotFoundMessage":
+            MessageLookupByLibrary.simpleMessage("Orders not found"),
         "passwordHint": MessageLookupByLibrary.simpleMessage("Password"),
         "passwordLabel": MessageLookupByLibrary.simpleMessage("Password"),
+        "payButton": MessageLookupByLibrary.simpleMessage("Pay"),
         "plsEnterDataToContiubue": MessageLookupByLibrary.simpleMessage(
             "Please enter your data to continue"),
+        "priceLabel": MessageLookupByLibrary.simpleMessage("Price"),
         "privacyPolicy": MessageLookupByLibrary.simpleMessage("Privacy policy"),
+        "productAddedToCartMessage":
+            MessageLookupByLibrary.simpleMessage("Product added to cart"),
+        "productAlreadyExistsMessage": MessageLookupByLibrary.simpleMessage(
+            "The product already exists in the same quantity in cart"),
+        "productCategoriesTitle":
+            MessageLookupByLibrary.simpleMessage("Product categories"),
+        "productCategoryDescription": MessageLookupByLibrary.simpleMessage(
+            "Clothing Packaging Category Products"),
+        "productIsText": MessageLookupByLibrary.simpleMessage("product is"),
+        "productTitle": MessageLookupByLibrary.simpleMessage("Product"),
+        "productsNotFoundMessage":
+            MessageLookupByLibrary.simpleMessage("Products not found"),
+        "readLessButton": MessageLookupByLibrary.simpleMessage("Read less"),
+        "readMoreButton": MessageLookupByLibrary.simpleMessage("Read more"),
         "register": MessageLookupByLibrary.simpleMessage("Register"),
         "reset": MessageLookupByLibrary.simpleMessage("Reset"),
         "search": MessageLookupByLibrary.simpleMessage("Search..."),
@@ -129,7 +120,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "signin": MessageLookupByLibrary.simpleMessage("Signin"),
         "termsAndConditions":
             MessageLookupByLibrary.simpleMessage("Terms and conditions"),
-        "trems": MessageLookupByLibrary.simpleMessage("Terms")
-
+        "trems": MessageLookupByLibrary.simpleMessage("Terms"),
+        "welcomeMessage":
+            MessageLookupByLibrary.simpleMessage("Welcome to Frip Trading")
       };
 }
