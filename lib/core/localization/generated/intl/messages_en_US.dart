@@ -22,38 +22,72 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
-        "academicStage": MessageLookupByLibrary.simpleMessage(" "),
-        "account": MessageLookupByLibrary.simpleMessage(" "),
-        "backOnline":
-            MessageLookupByLibrary.simpleMessage("Connected to the internet"),
-        "basic": MessageLookupByLibrary.simpleMessage(" "),
-        "btnIntroPage1": MessageLookupByLibrary.simpleMessage(" "),
-        "continueRegistration": MessageLookupByLibrary.simpleMessage(" "),
-        "courses": MessageLookupByLibrary.simpleMessage(" "),
-        "createAccount": MessageLookupByLibrary.simpleMessage(" "),
-        "female": MessageLookupByLibrary.simpleMessage(" "),
-        "general": MessageLookupByLibrary.simpleMessage("General"),
-        "highSchool": MessageLookupByLibrary.simpleMessage(" "),
-        "home": MessageLookupByLibrary.simpleMessage(" "),
-        "literary": MessageLookupByLibrary.simpleMessage("literary"),
-        "loding": MessageLookupByLibrary.simpleMessage("loding..."),
-        "loginAStudent": MessageLookupByLibrary.simpleMessage(" "),
-        "loginTeacher": MessageLookupByLibrary.simpleMessage(" "),
-        "male": MessageLookupByLibrary.simpleMessage(" "),
-        "pageNotFound":
-            MessageLookupByLibrary.simpleMessage("Oops! Page Not Found"),
-        "pageNotFoundMsg": MessageLookupByLibrary.simpleMessage(
-            "The page you are looking for does not exist."),
-        "preparatory": MessageLookupByLibrary.simpleMessage("preparatory"),
-        "primary": MessageLookupByLibrary.simpleMessage("primary"),
-        "registration": MessageLookupByLibrary.simpleMessage(" "),
-        "scientific": MessageLookupByLibrary.simpleMessage("scientific"),
-        "secondary": MessageLookupByLibrary.simpleMessage("secondary"),
-        "tests": MessageLookupByLibrary.simpleMessage(" "),
-        "textIntroPage1": MessageLookupByLibrary.simpleMessage(" "),
-        "tilteIntroPage1": MessageLookupByLibrary.simpleMessage(" "),
-        "type": MessageLookupByLibrary.simpleMessage(" "),
-        "youAreOffline":
-            MessageLookupByLibrary.simpleMessage("No internet connection")
+        "aboutUs": MessageLookupByLibrary.simpleMessage("About us"),
+        "accountSettings":
+            MessageLookupByLibrary.simpleMessage("Account Settings"),
+        "ali": MessageLookupByLibrary.simpleMessage("ali"),
+        "alreadyAMember":
+            MessageLookupByLibrary.simpleMessage("Already a member?"),
+        "alreadyHaveAnAccount":
+            MessageLookupByLibrary.simpleMessage("Already have an account?"),
+        "and": MessageLookupByLibrary.simpleMessage(" and "),
+        "byCheckingTheBoxYouAgreeToOur": MessageLookupByLibrary.simpleMessage(
+            "By checking the box you agree to our "),
+        "change": MessageLookupByLibrary.simpleMessage("Change"),
+        "changePassword":
+            MessageLookupByLibrary.simpleMessage("Change Password"),
+        "companyNameHint": MessageLookupByLibrary.simpleMessage("Company Name"),
+        "conditions": MessageLookupByLibrary.simpleMessage("Conditions"),
+        "confirmPassword":
+            MessageLookupByLibrary.simpleMessage("Confirm password"),
+        "confirmPasswordLabel":
+            MessageLookupByLibrary.simpleMessage("enter confirm password..."),
+        "currentPassword":
+            MessageLookupByLibrary.simpleMessage("Current password"),
+        "currentPasswordLabel":
+            MessageLookupByLibrary.simpleMessage("Current password..."),
+        "eamilHint": MessageLookupByLibrary.simpleMessage("Valid email"),
+        "editProfile": MessageLookupByLibrary.simpleMessage("Edit profile"),
+        "enterYourEamilHint":
+            MessageLookupByLibrary.simpleMessage("Enter your email"),
+        "enterYourEamilLabel":
+            MessageLookupByLibrary.simpleMessage("Enter your email"),
+        "error": MessageLookupByLibrary.simpleMessage("Error"),
+        "forgetPassword":
+            MessageLookupByLibrary.simpleMessage("\'Forget Password?"),
+        "forgotYourPassword":
+            MessageLookupByLibrary.simpleMessage("Forgot your password ?"),
+        "fullNameHint": MessageLookupByLibrary.simpleMessage("Full name"),
+        "letsGetStarted":
+            MessageLookupByLibrary.simpleMessage("Let’s Get Started"),
+        "login": MessageLookupByLibrary.simpleMessage("Login"),
+        "more": MessageLookupByLibrary.simpleMessage("More"),
+        "newPassword": MessageLookupByLibrary.simpleMessage("New password"),
+        "newPasswordLabel":
+            MessageLookupByLibrary.simpleMessage("enter new password..."),
+        "ok": MessageLookupByLibrary.simpleMessage("OK"),
+        "omar": MessageLookupByLibrary.simpleMessage("omar"),
+        "passwordHint": MessageLookupByLibrary.simpleMessage("Password"),
+        "passwordLabel": MessageLookupByLibrary.simpleMessage("Password"),
+        "plsEnterDataToContiubue": MessageLookupByLibrary.simpleMessage(
+            "Please enter your data to continue"),
+        "privacyPolicy": MessageLookupByLibrary.simpleMessage("Privacy policy"),
+        "register": MessageLookupByLibrary.simpleMessage("Register"),
+        "reset": MessageLookupByLibrary.simpleMessage("Reset"),
+        "search": MessageLookupByLibrary.simpleMessage("Search..."),
+        "selectCountryLabel":
+            MessageLookupByLibrary.simpleMessage("Select Country"),
+        "selectLanguage":
+            MessageLookupByLibrary.simpleMessage("Select language"),
+        "selectLanguageHint":
+            MessageLookupByLibrary.simpleMessage("Select language"),
+        "selectSpecializationLabel":
+            MessageLookupByLibrary.simpleMessage("Select Specialization"),
+        "settings": MessageLookupByLibrary.simpleMessage("Settings"),
+        "signUp": MessageLookupByLibrary.simpleMessage("Sign Up"),
+        "signin": MessageLookupByLibrary.simpleMessage("Signin"),
+        "termsAndConditions":
+            MessageLookupByLibrary.simpleMessage("Terms and conditions"),
+        "trems": MessageLookupByLibrary.simpleMessage("Terms")
       };
 }

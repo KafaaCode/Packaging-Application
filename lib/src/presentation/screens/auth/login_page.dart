@@ -96,7 +96,7 @@ class _LoginPageState extends State<LoginPage> {
                         style: theme.textTheme.headlineMedium,
                       ),
                       Text(
-                        'Please enter your data to continue',
+                        lang.plsEnterDataToContiubue,
                         style: theme.textTheme.bodyMedium?.copyWith(
                           color: Colors.grey[600],
                         ),
@@ -111,17 +111,17 @@ class _LoginPageState extends State<LoginPage> {
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
                         TextFieldAuth(
-                          labelText: 'Enter your email',
+                          labelText: lang.enterYourEamilLabel,
                           svgIcon: 'assets/SVG/mail.svg',
                           controller: emailController,
-                          hintText: 'Enter your email',
+                          hintText: lang.enterYourEamilHint,
                         ),
                         const SizedBox(height: 20),
                         TextFieldAuth(
                           svgIcon: 'assets/SVG/lock.svg',
                           isPassword: true,
-                          labelText: 'Password',
-                          hintText: 'Password',
+                          labelText: lang.passwordLabel,
+                          hintText: lang.passwordHint,
                           controller: passwordController,
                         ),
                         TextButton(
@@ -147,14 +147,14 @@ class _LoginPageState extends State<LoginPage> {
                             ),
                           );
                     },
-                    text: 'Login',
+                    text: lang.login,
                   ),
                   Row(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      const Text('Already have an account?',
-                          style: TextStyle(color: Colors.grey)),
+                      Text(lang.alreadyHaveAnAccount,
+                          style: const TextStyle(color: Colors.grey)),
                       TextButton(
                         onPressed: () {
                           AppRouter.router.navigateTo(
@@ -164,7 +164,7 @@ class _LoginPageState extends State<LoginPage> {
                                   const Duration(milliseconds: 800));
                         },
                         child: Text(
-                          'Signin',
+                          lang.signin,
                           style: theme.textTheme.bodyMedium?.copyWith(
                             color: theme.primaryColor,
                           ),

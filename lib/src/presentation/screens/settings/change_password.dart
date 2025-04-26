@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:frip_trading/core/localization/generated/l10n.dart';
 import 'package:frip_trading/core/routes/router_screens.dart';
 import 'package:frip_trading/core/routes/routes_name.dart';
 import 'package:frip_trading/core/utils/loading_dialog.dart';
@@ -18,13 +19,14 @@ class ChangePassword extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     ThemeData theme = Theme.of(context);
+    Lang lang = Lang.of(context);
     MediaQueryData mediaQuery = MediaQuery.of(context);
     double screenHeight = mediaQuery.size.height;
     double screenWidth = mediaQuery.size.width;
 
     return Scaffold(
       body: CustomAppbar(
-        tilte: 'Change Password',
+        tilte: lang.changePassword,
         icon: SvgPicture.asset(
           'assets/SVG/alarm.svg',
         ),
@@ -53,9 +55,9 @@ class ChangePassword extends StatelessWidget {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        const Text(
-                          'Current password',
-                          style: TextStyle(
+                        Text(
+                          lang.currentPassword,
+                          style: const TextStyle(
                             fontSize: 16,
                             fontWeight: FontWeight.w500,
                             color: Colors.black54,
@@ -64,12 +66,12 @@ class ChangePassword extends StatelessWidget {
                         const SizedBox(height: 10),
                         CustomTextFeild(
                           controller: currentController,
-                          labelText: 'Current password...',
+                          labelText: lang.currentPasswordLabel,
                         ),
                         const SizedBox(height: 10),
-                        const Text(
-                          'New password',
-                          style: TextStyle(
+                        Text(
+                          lang.newPassword,
+                          style: const TextStyle(
                             fontSize: 16,
                             fontWeight: FontWeight.w500,
                             color: Colors.black54,
@@ -78,12 +80,12 @@ class ChangePassword extends StatelessWidget {
                         const SizedBox(height: 10),
                         CustomTextFeild(
                           controller: newController,
-                          labelText: 'enter new password...',
+                          labelText: lang.newPasswordLabel,
                         ),
                         const SizedBox(height: 10),
-                        const Text(
-                          'Confirm password',
-                          style: TextStyle(
+                        Text(
+                          lang.confirmPassword,
+                          style: const TextStyle(
                             fontSize: 16,
                             fontWeight: FontWeight.w500,
                             color: Colors.black54,
@@ -92,7 +94,7 @@ class ChangePassword extends StatelessWidget {
                         const SizedBox(height: 10),
                         CustomTextFeild(
                           controller: contirmController,
-                          labelText: 'enter confirm password...',
+                          labelText: lang.confirmPasswordLabel,
                         ),
                         const SizedBox(height: 10),
                         Row(
@@ -100,7 +102,7 @@ class ChangePassword extends StatelessWidget {
                             TextButton(
                               onPressed: () {},
                               child: Text(
-                                'Forgot your password ?',
+                                lang.forgotYourPassword,
                                 style: TextStyle(
                                   fontSize: 16,
                                   fontWeight: FontWeight.w500,
@@ -110,9 +112,9 @@ class ChangePassword extends StatelessWidget {
                             ),
                             TextButton(
                               onPressed: () {},
-                              child: const Text(
-                                'Reset',
-                                style: TextStyle(
+                              child: Text(
+                                lang.reset,
+                                style: const TextStyle(
                                   fontSize: 16,
                                   fontWeight: FontWeight.w400,
                                   color: Colors.red,
@@ -158,14 +160,14 @@ class ChangePassword extends StatelessWidget {
                           context: context,
                           builder: (context) {
                             return AlertDialog(
-                              title: const Text('Error'),
+                              title: Text(lang.error),
                               content: Text(error),
                               actions: [
                                 TextButton(
                                   onPressed: () {
                                     AppRouter.router.pop(context);
                                   },
-                                  child: const Text('OK'),
+                                  child: Text(lang.ok),
                                 ),
                               ],
                             );
@@ -195,10 +197,10 @@ class ChangePassword extends StatelessWidget {
                             BoxShadow(color: Colors.black12, blurRadius: 5)
                           ],
                         ),
-                        child: const Center(
+                        child: Center(
                           child: Text(
-                            'Change',
-                            style: TextStyle(
+                            lang.change,
+                            style: const TextStyle(
                               fontSize: 18,
                               fontWeight: FontWeight.w500,
                               color: Colors.white,

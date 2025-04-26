@@ -1,6 +1,7 @@
 import 'package:fluro/fluro.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:frip_trading/core/localization/generated/l10n.dart';
 import 'package:frip_trading/core/localization/language/language_cubit.dart';
 import 'package:frip_trading/core/localization/language/language_state.dart';
 import 'package:frip_trading/core/routes/router_screens.dart';
@@ -15,6 +16,7 @@ class Profile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Lang lang = Lang.of(context);
     return SafeArea(
       child: CustomAppbar(
         icon: const Icon(
@@ -22,7 +24,7 @@ class Profile extends StatelessWidget {
           size: 35,
           color: Colors.white,
         ),
-        tilte: "Settings",
+        tilte: lang.settings,
         child: Container(
           padding: const EdgeInsets.fromLTRB(20, 100, 20, 0),
           child: Container(
@@ -63,8 +65,8 @@ class Profile extends StatelessWidget {
                 const Divider(height: 15),
                 Divider(height: .5, color: Colors.grey[350]),
                 const Divider(height: 15),
-                const Text("Account Settings",
-                    style: TextStyle(color: Colors.grey)),
+                Text(lang.accountSettings,
+                    style: const TextStyle(color: Colors.grey)),
                 InkWell(
                   onTap: () {
                     AppRouter.router.navigateTo(
@@ -75,9 +77,9 @@ class Profile extends StatelessWidget {
                       transitionDuration: const Duration(milliseconds: 500),
                     );
                   },
-                  child: const ListTile(
-                    title: Text("Edit profile"),
-                    trailing: Icon(
+                  child: ListTile(
+                    title: Text(lang.editProfile),
+                    trailing: const Icon(
                       Icons.chevron_right,
                     ),
                   ),
@@ -92,13 +94,13 @@ class Profile extends StatelessWidget {
                       transitionDuration: const Duration(milliseconds: 500),
                     );
                   },
-                  child: const ListTile(
-                    title: Text("Change password"),
-                    trailing: Icon(Icons.chevron_right),
+                  child: ListTile(
+                    title: Text(lang.changePassword),
+                    trailing: const Icon(Icons.chevron_right),
                   ),
                 ),
                 ListTile(
-                  title: const Text("Select Language"),
+                  title: Text(lang.selectLanguage),
                   trailing: SizedBox(
                     width: 110,
                     child: BlocBuilder<LanguageCubit, LanguageState>(
@@ -118,7 +120,7 @@ class Profile extends StatelessWidget {
                           decoration: InputDecoration(
                             contentPadding: const EdgeInsets.symmetric(
                                 vertical: 2, horizontal: 2),
-                            hintText: "Select Language",
+                            hintText: lang.selectLanguageHint,
                             labelStyle: Theme.of(context).textTheme.bodyMedium,
                             hintStyle: Theme.of(context).textTheme.bodyMedium,
                             focusedBorder: OutlineInputBorder(
@@ -140,20 +142,20 @@ class Profile extends StatelessWidget {
                   ),
                 ),
                 const Divider(height: 32),
-                const Text("More", style: TextStyle(color: Colors.grey)),
-                const ListTile(
-                  title: Text("About us"),
-                  trailing: Icon(Icons.chevron_right),
+                Text(lang.more, style: const TextStyle(color: Colors.grey)),
+                ListTile(
+                  title: Text(lang.aboutUs),
+                  trailing: const Icon(Icons.chevron_right),
                 ),
-                const ListTile(
-                  title: Text("Privacy policy"),
-                  trailing: Icon(Icons.chevron_right),
+                ListTile(
+                  title: Text(lang.privacyPolicy),
+                  trailing: const Icon(Icons.chevron_right),
                 ),
                 Divider(height: .5, color: Colors.grey[350]),
                 const Divider(height: 10),
-                const ListTile(
-                  title: Text("Terms and conditions"),
-                  trailing: Icon(Icons.chevron_right),
+                ListTile(
+                  title: Text(lang.termsAndConditions),
+                  trailing: const Icon(Icons.chevron_right),
                 ),
                 const SizedBox(height: 16),
                 Center(
