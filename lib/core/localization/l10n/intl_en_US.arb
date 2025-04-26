@@ -48,6 +48,35 @@
     "termsAndConditions":"Terms and conditions",
 
 
+    "ali":"ali",
+   "welcomeMessage": "Welcome to Frip Trading",
 
-    "ali":"ali"
+
+  "productCategoriesTitle": "Product categories",
+  "productTitle": "Product",
+  "cateogriesNotFoundMessage":"Cateogries not found",
+  "productsNotFoundMessage":"Products not found",
+  "productCategoryDescription": "Clothing Packaging Category Products",
+  "priceLabel": "Price",
+  "descriptionLabel": "Description",
+  "readMoreButton": "Read more",
+  "readLessButton": "Read less",
+  "minimumOrderText": "The minimum order for this",
+  "productIsText": "product is",
+  "addToCartButton": "Add To Cart",
+
+   ""
+  "cartDetailsTitle": "Cart Details",
+  "productAlreadyExistsMessage": "The product already exists in the same quantity in cart",
+  "productAddedToCartMessage": "Product added to cart",
+
+
+  "myOrdersTitle": "My Orders",
+  "ordersNotFoundMessage": "Orders not found",
+  "orderDetailsTitle": "Order Details",
+  "continueToConfirmOrderButton": "Continue to confirm the order",
+  "payButton": "Pay"
 }
+
+
+

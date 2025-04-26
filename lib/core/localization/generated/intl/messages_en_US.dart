@@ -22,6 +22,46 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+
+        "addToCartButton": MessageLookupByLibrary.simpleMessage("Add To Cart"),
+        "ali": MessageLookupByLibrary.simpleMessage("ali"),
+        "cartDetailsTitle":
+            MessageLookupByLibrary.simpleMessage("Cart Details"),
+        "cateogriesNotFoundMessage":
+            MessageLookupByLibrary.simpleMessage("Cateogries not found"),
+        "continueToConfirmOrderButton": MessageLookupByLibrary.simpleMessage(
+            "Continue to confirm the order"),
+        "descriptionLabel": MessageLookupByLibrary.simpleMessage("Description"),
+        "letsGetStarted":
+            MessageLookupByLibrary.simpleMessage("Let’s Get Started"),
+        "minimumOrderText":
+            MessageLookupByLibrary.simpleMessage("The minimum order for this"),
+        "myOrdersTitle": MessageLookupByLibrary.simpleMessage("My Orders"),
+        "omar": MessageLookupByLibrary.simpleMessage("omar"),
+        "orderDetailsTitle":
+            MessageLookupByLibrary.simpleMessage("Order Details"),
+        "ordersNotFoundMessage":
+            MessageLookupByLibrary.simpleMessage("Orders not found"),
+        "payButton": MessageLookupByLibrary.simpleMessage("Pay"),
+        "priceLabel": MessageLookupByLibrary.simpleMessage("Price"),
+        "productAddedToCartMessage":
+            MessageLookupByLibrary.simpleMessage("Product added to cart"),
+        "productAlreadyExistsMessage": MessageLookupByLibrary.simpleMessage(
+            "The product already exists in the same quantity in cart"),
+        "productCategoriesTitle":
+            MessageLookupByLibrary.simpleMessage("Product categories"),
+        "productCategoryDescription": MessageLookupByLibrary.simpleMessage(
+            "Clothing Packaging Category Products"),
+        "productIsText": MessageLookupByLibrary.simpleMessage("product is"),
+        "productTitle": MessageLookupByLibrary.simpleMessage("Product"),
+        "productsNotFoundMessage":
+            MessageLookupByLibrary.simpleMessage("Products not found"),
+        "readLessButton": MessageLookupByLibrary.simpleMessage("Read less"),
+        "readMoreButton": MessageLookupByLibrary.simpleMessage("Read more"),
+        "search": MessageLookupByLibrary.simpleMessage("Search..."),
+        "welcomeMessage":
+            MessageLookupByLibrary.simpleMessage("Welcome to Frip Trading")
+=======
         "aboutUs": MessageLookupByLibrary.simpleMessage("About us"),
         "accountSettings":
             MessageLookupByLibrary.simpleMessage("Account Settings"),
@@ -90,5 +130,6 @@ class MessageLookup extends MessageLookupByLibrary {
         "termsAndConditions":
             MessageLookupByLibrary.simpleMessage("Terms and conditions"),
         "trems": MessageLookupByLibrary.simpleMessage("Terms")
+
       };
 }

@@ -2,6 +2,7 @@ import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:frip_trading/core/localization/generated/l10n.dart';
 import 'package:frip_trading/src/data/models/models.dart';
 import 'package:frip_trading/src/presentation/controllers/myorder/myorder_bloc.dart';
 import 'package:frip_trading/src/presentation/screens/auth/widgets/myorder_card.dart';
@@ -53,6 +54,7 @@ class MyOrdersPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+     Lang lang = Lang.of(context);
     return BlocProvider(
       create: (context) =>
           MyOrdersBloc(sl())..add(const MyOrdersEvent.getMyOrders()),
@@ -67,8 +69,8 @@ class MyOrdersPage extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      const Text(
-                        'My Orders',
+                       Text(
+                       lang.myOrdersTitle,
                         style: TextStyle(
                             color: Color(0xFF70b9be),
                             fontWeight: FontWeight.bold,
@@ -112,7 +114,7 @@ class MyOrdersPage extends StatelessWidget {
                         return Expanded(
                           child: Center(
                             child: Text(
-                              'Orders not found',
+                             lang.ordersNotFoundMessage,
                               style: const TextStyle(color:  Color(0xFF70b9be),fontWeight: FontWeight.bold,fontSize: 15),
                             ),
                           ),
@@ -125,7 +127,7 @@ class MyOrdersPage extends StatelessWidget {
                       itemCount:state.myorders.length /* orders.length */,
                       itemBuilder: (context, index) {
                         
-                       return OrderCard(length:state.myorders.length,index:index,order:state.myorders[index]); 
+                       return OrderCard(length:state.myorders.length,index:index,order:state.myorders[index],lang:lang); 
          /*                return OrderCard(length:orders.length,index:index,order:orders[index]); */
                       },
                     ),
