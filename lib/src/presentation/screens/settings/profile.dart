@@ -10,6 +10,7 @@ import 'package:frip_trading/src/data/models/models.dart';
 import 'package:frip_trading/src/presentation/controllers/auth/auth_bloc.dart';
 import 'package:frip_trading/src/presentation/screens/auth/widgets/dropdown_custom.dart';
 import 'package:frip_trading/src/presentation/screens/settings/widgets/customAppbar.dart';
+import 'package:frip_trading/src/presentation/screens/settings/widgets/settings_dialogs.dart';
 
 class Profile extends StatelessWidget {
   const Profile({super.key});
@@ -144,18 +145,26 @@ class Profile extends StatelessWidget {
                 const Divider(height: 32),
                 Text(lang.more, style: const TextStyle(color: Colors.grey)),
                 ListTile(
-                  title: Text(lang.aboutUs),
-                  trailing: const Icon(Icons.chevron_right),
-                ),
+                    title: Text(lang.aboutUs),
+                    trailing: const Icon(Icons.chevron_right),
+                    onTap: () {
+                      SettingsDialogs.aboutUs(context);
+                    }),
                 ListTile(
                   title: Text(lang.privacyPolicy),
                   trailing: const Icon(Icons.chevron_right),
+                  onTap: () {
+                    SettingsDialogs.privacyPolicy(context);
+                  },
                 ),
                 Divider(height: .5, color: Colors.grey[350]),
                 const Divider(height: 10),
                 ListTile(
                   title: Text(lang.termsAndConditions),
                   trailing: const Icon(Icons.chevron_right),
+                  onTap: () {
+                    SettingsDialogs.termsAndConditions(context);
+                  },
                 ),
                 const SizedBox(height: 16),
                 Center(

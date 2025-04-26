@@ -317,6 +317,7 @@ class EditProfile extends StatelessWidget {
                                 ),
                               );
                         } else {
+                          
                           ScaffoldMessenger.of(context).showSnackBar(
                             const SnackBar(
                               content: Text('Please fill all fields'),

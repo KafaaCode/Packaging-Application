@@ -490,6 +490,16 @@ class Lang {
     );
   }
 
+  /// `Close`
+  String get close {
+    return Intl.message(
+      'Close',
+      name: 'close',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Terms and conditions`
   String get termsAndConditions {
     return Intl.message(
