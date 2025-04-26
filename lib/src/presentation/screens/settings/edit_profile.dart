@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:frip_trading/core/localization/generated/l10n.dart';
 import 'package:frip_trading/core/routes/router_screens.dart';
 import 'package:frip_trading/core/routes/routes_name.dart';
 import 'package:frip_trading/core/services/services_locator.dart';
@@ -34,13 +35,14 @@ class EditProfile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     ThemeData theme = Theme.of(context);
+    Lang lang = Lang.of(context);
     MediaQueryData mediaQuery = MediaQuery.of(context);
     double screenHeight = mediaQuery.size.height;
     double screenWidth = mediaQuery.size.width;
 
     return Scaffold(
       body: CustomAppbar(
-        tilte: 'Settings',
+        tilte: lang.settings,
         icon: SvgPicture.asset(
           'assets/SVG/alarm.svg',
         ),
@@ -92,21 +94,18 @@ class EditProfile extends StatelessWidget {
                 right: 20,
                 child: BlocBuilder<AuthBloc, AuthState>(
                   builder: (context, state) {
-                    if(nameController.text == '' &&
-                    emailController.text == '' &&
-                    companyController.text == '' 
-                    ){
-
-                    User? user = state.mapOrNull(
-                     
-                      create: (user) {
-                        nameController.text = user.user.name;
-                        emailController.text = user.user.email;
-                        companyController.text = user.user.companyName ?? '';
-                        return user.user;
-                      },
-                    );
-                    print('user: $user');
+                    if (nameController.text == '' &&
+                        emailController.text == '' &&
+                        companyController.text == '') {
+                      User? user = state.mapOrNull(
+                        create: (user) {
+                          nameController.text = user.user.name;
+                          emailController.text = user.user.email;
+                          companyController.text = user.user.companyName ?? '';
+                          return user.user;
+                        },
+                      );
+                      print('user: $user');
                     }
                     return Form(
                       key: _formKey,
@@ -115,9 +114,9 @@ class EditProfile extends StatelessWidget {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            const Text(
-                              'Company Name',
-                              style: TextStyle(
+                            Text(
+                              lang.companyNameHint,
+                              style: const TextStyle(
                                 fontSize: 16,
                                 fontWeight: FontWeight.w500,
                                 color: Colors.black54,
@@ -126,12 +125,12 @@ class EditProfile extends StatelessWidget {
                             const SizedBox(height: 10),
                             CustomTextFeild(
                               controller: companyController,
-                              labelText: 'Company Name',
+                              labelText: lang.companyNameHint,
                             ),
                             const SizedBox(height: 10),
-                            const Text(
-                              'Name',
-                              style: TextStyle(
+                            Text(
+                              lang.fullNameHint,
+                              style: const TextStyle(
                                 fontSize: 16,
                                 fontWeight: FontWeight.w500,
                                 color: Colors.black54,
@@ -140,12 +139,12 @@ class EditProfile extends StatelessWidget {
                             const SizedBox(height: 10),
                             CustomTextFeild(
                               controller: nameController,
-                              labelText: 'Name',
+                              labelText: lang.fullNameHint,
                             ),
                             const SizedBox(height: 10),
-                            const Text(
-                              'Email',
-                              style: TextStyle(
+                            Text(
+                              lang.enterYourEamilLabel,
+                              style: const TextStyle(
                                 fontSize: 16,
                                 fontWeight: FontWeight.w500,
                                 color: Colors.black54,
@@ -154,12 +153,12 @@ class EditProfile extends StatelessWidget {
                             const SizedBox(height: 10),
                             CustomTextFeild(
                               controller: emailController,
-                              labelText: 'Email',
+                              labelText: lang.enterYourEamilLabel,
                             ),
                             const SizedBox(height: 10),
-                            const Text(
-                              'Specialization',
-                              style: TextStyle(
+                            Text(
+                              lang.selectSpecializationLabel,
+                              style: const TextStyle(
                                 fontSize: 16,
                                 fontWeight: FontWeight.w500,
                                 color: Colors.black54,
@@ -168,7 +167,7 @@ class EditProfile extends StatelessWidget {
                             const SizedBox(height: 10),
                             DropdownCustom<Specialization>(
                               svgIcon: 'assets/SVG/Vector_down.svg',
-                              labelText: 'Select Specialization',
+                              labelText: lang.selectSpecializationLabel,
                               decoration: _decoration(),
                               items: specializations,
                               defaultValue: state.mapOrNull(
@@ -200,9 +199,9 @@ class EditProfile extends StatelessWidget {
                               },
                             ),
                             const SizedBox(height: 10),
-                            const Text(
-                              'Select Country',
-                              style: TextStyle(
+                            Text(
+                              lang.selectCountryLabel,
+                              style: const TextStyle(
                                 fontSize: 16,
                                 fontWeight: FontWeight.w500,
                                 color: Colors.black54,
@@ -211,7 +210,7 @@ class EditProfile extends StatelessWidget {
                             const SizedBox(height: 10),
                             DropdownCustom<Country>(
                               svgIcon: 'assets/SVG/Vector_down.svg',
-                              labelText: 'Select Country',
+                              labelText: lang.selectCountryLabel,
                               decoration: _decoration(),
                               defaultValue: state.mapOrNull(
                                 create: (user) {
@@ -280,14 +279,14 @@ class EditProfile extends StatelessWidget {
                           context: context,
                           builder: (context) {
                             return AlertDialog(
-                              title: const Text('Error'),
+                              title: Text(lang.error),
                               content: Text(error),
                               actions: [
                                 TextButton(
                                   onPressed: () {
                                     AppRouter.router.pop(context);
                                   },
-                                  child: const Text('OK'),
+                                  child: Text(lang.ok),
                                 ),
                               ],
                             );
@@ -318,6 +317,7 @@ class EditProfile extends StatelessWidget {
                                 ),
                               );
                         } else {
+                          
                           ScaffoldMessenger.of(context).showSnackBar(
                             const SnackBar(
                               content: Text('Please fill all fields'),

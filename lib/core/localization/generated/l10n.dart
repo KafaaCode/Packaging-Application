@@ -80,41 +80,183 @@ class Lang {
     );
   }
 
+
   /// `ali`
   String get ali {
     return Intl.message(
       'ali',
       name: 'ali',
+
+  /// `Please enter your data to continue`
+  String get plsEnterDataToContiubue {
+    return Intl.message(
+      'Please enter your data to continue',
+      name: 'plsEnterDataToContiubue',
       desc: '',
       args: [],
     );
   }
+
+  /// `Enter your email`
+  String get enterYourEamilLabel {
+    return Intl.message(
+      'Enter your email',
+      name: 'enterYourEamilLabel',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enter your email`
+  String get enterYourEamilHint {
+    return Intl.message(
+      'Enter your email',
+      name: 'enterYourEamilHint',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Password`
+  String get passwordLabel {
+    return Intl.message(
+      'Password',
+      name: 'passwordLabel',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Password`
+  String get passwordHint {
+    return Intl.message(
+      'Password',
+      name: 'passwordHint',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `'Forget Password?`
+  String get forgetPassword {
+    return Intl.message(
+      '\'Forget Password?',
+      name: 'forgetPassword',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Login`
+  String get login {
+    return Intl.message(
+      'Login',
+      name: 'login',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Already have an account?`
+  String get alreadyHaveAnAccount {
+    return Intl.message(
+      'Already have an account?',
+      name: 'alreadyHaveAnAccount',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Signin`
+  String get signin {
+    return Intl.message(
+      'Signin',
+      name: 'signin',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Error`
+  String get error {
+    return Intl.message(
+      'Error',
+      name: 'error',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Sign Up`
+  String get signUp {
+    return Intl.message(
+      'Sign Up',
+      name: 'signUp',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Company Name`
+  String get companyNameHint {
+    return Intl.message(
+      'Company Name',
+      name: 'companyNameHint',
+
+      desc: '',
+      args: [],
+    );
+  }
+
 
   /// `Welcome to Frip Trading`
   String get welcomeMessage {
     return Intl.message(
       'Welcome to Frip Trading',
       name: 'welcomeMessage',
+
+  /// `Full name`
+  String get fullNameHint {
+    return Intl.message(
+      'Full name',
+      name: 'fullNameHint',
+
       desc: '',
       args: [],
     );
   }
+
 
   /// `Product categories`
   String get productCategoriesTitle {
     return Intl.message(
       'Product categories',
       name: 'productCategoriesTitle',
+
+  /// `Valid email`
+  String get eamilHint {
+    return Intl.message(
+      'Valid email',
+      name: 'eamilHint',
+
       desc: '',
       args: [],
     );
   }
+
 
   /// `Product`
   String get productTitle {
     return Intl.message(
       'Product',
       name: 'productTitle',
+
+  /// `Select Specialization`
+  String get selectSpecializationLabel {
+    return Intl.message(
+      'Select Specialization',
+      name: 'selectSpecializationLabel',
+
       desc: '',
       args: [],
     );
@@ -125,56 +267,103 @@ class Lang {
     return Intl.message(
       'Cateogries not found',
       name: 'cateogriesNotFoundMessage',
+
+  /// `Select Country`
+  String get selectCountryLabel {
+    return Intl.message(
+      'Select Country',
+      name: 'selectCountryLabel',
+
       desc: '',
       args: [],
     );
   }
+
 
   /// `Products not found`
   String get productsNotFoundMessage {
     return Intl.message(
       'Products not found',
       name: 'productsNotFoundMessage',
+
+  /// `By checking the box you agree to our `
+  String get byCheckingTheBoxYouAgreeToOur {
+    return Intl.message(
+      'By checking the box you agree to our ',
+      name: 'byCheckingTheBoxYouAgreeToOur',
+
       desc: '',
       args: [],
     );
   }
+
 
   /// `Clothing Packaging Category Products`
   String get productCategoryDescription {
     return Intl.message(
       'Clothing Packaging Category Products',
       name: 'productCategoryDescription',
+
+  /// `Terms`
+  String get trems {
+    return Intl.message(
+      'Terms',
+      name: 'trems',
+
       desc: '',
       args: [],
     );
   }
+
 
   /// `Price`
   String get priceLabel {
     return Intl.message(
       'Price',
       name: 'priceLabel',
+
+  /// ` and `
+  String get and {
+    return Intl.message(
+      ' and ',
+      name: 'and',
+
       desc: '',
       args: [],
     );
   }
+
 
   /// `Description`
   String get descriptionLabel {
     return Intl.message(
       'Description',
       name: 'descriptionLabel',
+
+  /// `Conditions`
+  String get conditions {
+    return Intl.message(
+      'Conditions',
+      name: 'conditions',
+
       desc: '',
       args: [],
     );
   }
+
 
   /// `Read more`
   String get readMoreButton {
     return Intl.message(
       'Read more',
       name: 'readMoreButton',
+
+  /// `Register`
+  String get register {
+    return Intl.message(
+      'Register',
+      name: 'register',
+
       desc: '',
       args: [],
     );
@@ -185,6 +374,13 @@ class Lang {
     return Intl.message(
       'Read less',
       name: 'readLessButton',
+
+  /// `Already a member?`
+  String get alreadyAMember {
+    return Intl.message(
+      'Already a member?',
+      name: 'alreadyAMember',
+
       desc: '',
       args: [],
     );
@@ -195,106 +391,302 @@ class Lang {
     return Intl.message(
       'The minimum order for this',
       name: 'minimumOrderText',
+
+  /// `Change Password`
+  String get changePassword {
+    return Intl.message(
+      'Change Password',
+      name: 'changePassword',
+
       desc: '',
       args: [],
     );
   }
+
 
   /// `product is`
   String get productIsText {
     return Intl.message(
       'product is',
       name: 'productIsText',
+
+  /// `Current password`
+  String get currentPassword {
+    return Intl.message(
+      'Current password',
+      name: 'currentPassword',
+
       desc: '',
       args: [],
     );
   }
+
 
   /// `Add To Cart`
   String get addToCartButton {
     return Intl.message(
       'Add To Cart',
       name: 'addToCartButton',
+
+  /// `Current password...`
+  String get currentPasswordLabel {
+    return Intl.message(
+      'Current password...',
+      name: 'currentPasswordLabel',
+
       desc: '',
       args: [],
     );
   }
+
 
   /// `Cart Details`
   String get cartDetailsTitle {
     return Intl.message(
       'Cart Details',
       name: 'cartDetailsTitle',
+
+  /// `New password`
+  String get newPassword {
+    return Intl.message(
+      'New password',
+      name: 'newPassword',
+
       desc: '',
       args: [],
     );
   }
+
 
   /// `The product already exists in the same quantity in cart`
   String get productAlreadyExistsMessage {
     return Intl.message(
       'The product already exists in the same quantity in cart',
       name: 'productAlreadyExistsMessage',
+
+  /// `enter new password...`
+  String get newPasswordLabel {
+    return Intl.message(
+      'enter new password...',
+      name: 'newPasswordLabel',
+
       desc: '',
       args: [],
     );
   }
+
 
   /// `Product added to cart`
   String get productAddedToCartMessage {
     return Intl.message(
       'Product added to cart',
       name: 'productAddedToCartMessage',
+
+  /// `Confirm password`
+  String get confirmPassword {
+    return Intl.message(
+      'Confirm password',
+      name: 'confirmPassword',
+
       desc: '',
       args: [],
     );
   }
+
 
   /// `My Orders`
   String get myOrdersTitle {
     return Intl.message(
       'My Orders',
       name: 'myOrdersTitle',
+
+  /// `enter confirm password...`
+  String get confirmPasswordLabel {
+    return Intl.message(
+      'enter confirm password...',
+      name: 'confirmPasswordLabel',
+
       desc: '',
       args: [],
     );
   }
+
 
   /// `Orders not found`
   String get ordersNotFoundMessage {
     return Intl.message(
       'Orders not found',
       name: 'ordersNotFoundMessage',
+
+  /// `Forgot your password ?`
+  String get forgotYourPassword {
+    return Intl.message(
+      'Forgot your password ?',
+      name: 'forgotYourPassword',
+
       desc: '',
       args: [],
     );
   }
+
 
   /// `Order Details`
   String get orderDetailsTitle {
     return Intl.message(
       'Order Details',
       name: 'orderDetailsTitle',
+
+  /// `Reset`
+  String get reset {
+    return Intl.message(
+      'Reset',
+      name: 'reset',
+
       desc: '',
       args: [],
     );
   }
+
 
   /// `Continue to confirm the order`
   String get continueToConfirmOrderButton {
     return Intl.message(
       'Continue to confirm the order',
       name: 'continueToConfirmOrderButton',
+
+  /// `OK`
+  String get ok {
+    return Intl.message(
+      'OK',
+      name: 'ok',
+
       desc: '',
       args: [],
     );
   }
+
 
   /// `Pay`
   String get payButton {
     return Intl.message(
       'Pay',
       name: 'payButton',
+
+  /// `Change`
+  String get change {
+    return Intl.message(
+      'Change',
+      name: 'change',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Settings`
+  String get settings {
+    return Intl.message(
+      'Settings',
+      name: 'settings',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Account Settings`
+  String get accountSettings {
+    return Intl.message(
+      'Account Settings',
+      name: 'accountSettings',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Edit profile`
+  String get editProfile {
+    return Intl.message(
+      'Edit profile',
+      name: 'editProfile',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Select language`
+  String get selectLanguage {
+    return Intl.message(
+      'Select language',
+      name: 'selectLanguage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Select language`
+  String get selectLanguageHint {
+    return Intl.message(
+      'Select language',
+      name: 'selectLanguageHint',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `More`
+  String get more {
+    return Intl.message(
+      'More',
+      name: 'more',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `About us`
+  String get aboutUs {
+    return Intl.message(
+      'About us',
+      name: 'aboutUs',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Privacy policy`
+  String get privacyPolicy {
+    return Intl.message(
+      'Privacy policy',
+      name: 'privacyPolicy',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Close`
+  String get close {
+    return Intl.message(
+      'Close',
+      name: 'close',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Terms and conditions`
+  String get termsAndConditions {
+    return Intl.message(
+      'Terms and conditions',
+      name: 'termsAndConditions',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `ali`
+  String get ali {
+    return Intl.message(
+      'ali',
+      name: 'ali',
       desc: '',
       args: [],
     );

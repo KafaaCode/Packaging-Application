@@ -2,10 +2,10 @@ import 'package:fluro/fluro.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:frip_trading/core/localization/generated/l10n.dart';
 import 'package:frip_trading/core/routes/router_screens.dart';
 import 'package:frip_trading/core/routes/routes_name.dart';
 import 'package:frip_trading/core/services/services_locator.dart';
-import 'package:frip_trading/core/utils/dummy.dart';
 import 'package:frip_trading/core/utils/loading_dialog.dart';
 import 'package:frip_trading/src/data/models/models.dart';
 import 'package:frip_trading/src/features/inital/presentation/inital/inital_bloc.dart';
@@ -56,6 +56,7 @@ class _RegisterPageState extends State<RegisterPage> {
   @override
   Widget build(BuildContext context) {
     ThemeData theme = Theme.of(context);
+    Lang lang = Lang.of(context);
     return Scaffold(
       body: SingleChildScrollView(
         child: Container(
@@ -73,7 +74,7 @@ class _RegisterPageState extends State<RegisterPage> {
                       showDialog(
                         context: context,
                         builder: (context) => AlertDialog(
-                          title: const Text('Error'),
+                          title: Text(lang.error),
                           content: Text(message),
                           actions: [
                             TextButton(
@@ -105,7 +106,7 @@ class _RegisterPageState extends State<RegisterPage> {
                   );
                 },
                 child: Text(
-                  'Sign Up',
+                 lang.signUp,
                   style: theme.textTheme.headlineLarge?.copyWith(
                     color: theme.primaryColor,
                     fontWeight: FontWeight.w600,
@@ -122,25 +123,25 @@ class _RegisterPageState extends State<RegisterPage> {
                       TextFieldAuth(
                           svgIcon: 'assets/SVG/Vector.svg',
                           controller: companyController,
-                          hintText: 'Company Name'),
+                          hintText: lang.companyNameHint),
                       const SizedBox(height: 20),
                       TextFieldAuth(
                         svgIcon: 'assets/SVG/user.svg',
-                        hintText: 'Full name',
+                        hintText: lang.fullNameHint,
                         controller: nameController,
                         colorIcon: const Color.fromRGBO(0, 0, 0, 1),
                       ),
                       const SizedBox(height: 20),
                       TextFieldAuth(
                         svgIcon: 'assets/SVG/mail.svg',
-                        hintText: 'Valid email',
+                        hintText: lang.eamilHint,
                         controller: emailController,
                         colorIcon: const Color.fromRGBO(0, 0, 0, .7),
                       ),
                       const SizedBox(height: 20),
                       TextFieldAuth(
                         svgIcon: 'assets/SVG/lock.svg',
-                        hintText: 'Strong Password',
+                        hintText: lang.passwordHint,
                         isPassword: true,
                         controller: passwordController,
                         colorIcon: const Color.fromRGBO(0, 0, 0, .7),
@@ -152,7 +153,7 @@ class _RegisterPageState extends State<RegisterPage> {
                             children: [
                               DropdownCustom<Specialization>(
                                 svgIcon: 'assets/SVG/Vector_down.svg',
-                                labelText: 'Select Specialization',
+                                labelText: lang.selectSpecializationLabel,
                                 items: specializations,
                                 defaultValue: state.maybeWhen(
                                   create: (user) {
@@ -189,7 +190,7 @@ class _RegisterPageState extends State<RegisterPage> {
                               const SizedBox(height: 20),
                               DropdownCustom<Country>(
                                 svgIcon: 'assets/SVG/Vector_down.svg',
-                                labelText: 'Select Country',
+                                labelText: lang.selectCountryLabel,
                                 defaultValue: state.maybeWhen(
                                   create: (user) {
                                     final filteredCountries = countries
@@ -279,7 +280,7 @@ class _RegisterPageState extends State<RegisterPage> {
                         Expanded(
                           child: RichText(
                             text: TextSpan(
-                              text: 'By checking the box you agree to our ',
+                              text: lang.byCheckingTheBoxYouAgreeToOur,
                               style: theme.textTheme.bodyMedium?.copyWith(
                                 fontSize: 9,
                                 fontWeight: FontWeight.w400,
@@ -297,11 +298,11 @@ class _RegisterPageState extends State<RegisterPage> {
                                       print('Terms clicked');
                                     },
                                 ),
-                                const TextSpan(
-                                  text: ' and ',
+                                TextSpan(
+                                  text: lang.and,
                                 ),
                                 TextSpan(
-                                  text: 'Conditions',
+                                  text: lang.conditions,
                                   style: theme.textTheme.bodyMedium?.copyWith(
                                       fontSize: 9,
                                       fontWeight: FontWeight.w400,
@@ -349,7 +350,7 @@ class _RegisterPageState extends State<RegisterPage> {
 
                           // );
                         },
-                        text: 'Register',
+                        text: lang.register,
                         size: const Size(340, 52),
                       );
                     },
@@ -358,8 +359,8 @@ class _RegisterPageState extends State<RegisterPage> {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      const Text(
-                        'Already a member?',
+                       Text(lang.alreadyAMember
+                        
                       ),
                       TextButton(
                         onPressed: () {
@@ -370,7 +371,7 @@ class _RegisterPageState extends State<RegisterPage> {
                                   const Duration(milliseconds: 800));
                         },
                         child: Text(
-                          'Log In',
+                          lang.login,
                           style: theme.textTheme.bodyMedium?.copyWith(
                             color: theme.primaryColor,
                             fontWeight: FontWeight.w600,
