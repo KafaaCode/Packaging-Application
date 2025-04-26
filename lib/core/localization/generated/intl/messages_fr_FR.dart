@@ -21,5 +21,110 @@ class MessageLookup extends MessageLookupByLibrary {
   String get localeName => 'fr_FR';
 
   final messages = _notInlinedMessages(_notInlinedMessages);
-  static Map<String, Function> _notInlinedMessages(_) => <String, Function>{};
+  static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "aboutUs": MessageLookupByLibrary.simpleMessage("À propos de nous"),
+        "accountSettings":
+            MessageLookupByLibrary.simpleMessage("Paramètres du compte"),
+        "addToCartButton":
+            MessageLookupByLibrary.simpleMessage("Ajouter au panier"),
+        "ali": MessageLookupByLibrary.simpleMessage("Ali"),
+        "alreadyAMember": MessageLookupByLibrary.simpleMessage("Déjà membre ?"),
+        "alreadyHaveAnAccount":
+            MessageLookupByLibrary.simpleMessage("Vous avez déjà un compte ?"),
+        "and": MessageLookupByLibrary.simpleMessage(" et "),
+        "byCheckingTheBoxYouAgreeToOur": MessageLookupByLibrary.simpleMessage(
+            "En cochant la case, vous acceptez nos"),
+        "cartDetailsTitle":
+            MessageLookupByLibrary.simpleMessage("Détails du panier"),
+        "cateogriesNotFoundMessage":
+            MessageLookupByLibrary.simpleMessage("Catégories non trouvées"),
+        "change": MessageLookupByLibrary.simpleMessage("Changer"),
+        "changePassword":
+            MessageLookupByLibrary.simpleMessage("Changer le mot de passe"),
+        "close": MessageLookupByLibrary.simpleMessage("Fermer"),
+        "companyNameHint":
+            MessageLookupByLibrary.simpleMessage("Nom de l\'entreprise"),
+        "conditions": MessageLookupByLibrary.simpleMessage("Termes"),
+        "confirmPassword":
+            MessageLookupByLibrary.simpleMessage("Confirmer le mot de passe"),
+        "confirmPasswordLabel": MessageLookupByLibrary.simpleMessage(
+            "Entrez la confirmation du mot de passe..."),
+        "continueToConfirmOrderButton": MessageLookupByLibrary.simpleMessage(
+            "Continuer pour confirmer la commande"),
+        "currentPassword":
+            MessageLookupByLibrary.simpleMessage("Mot de passe actuel"),
+        "currentPasswordLabel":
+            MessageLookupByLibrary.simpleMessage("Mot de passe actuel..."),
+        "descriptionLabel": MessageLookupByLibrary.simpleMessage("Description"),
+        "eamilHint": MessageLookupByLibrary.simpleMessage("E-mail valide"),
+        "editProfile":
+            MessageLookupByLibrary.simpleMessage("Modifier le profil"),
+        "enterYourEamilHint":
+            MessageLookupByLibrary.simpleMessage("Entrez votre e-mail"),
+        "enterYourEamilLabel":
+            MessageLookupByLibrary.simpleMessage("Entrez votre e-mail"),
+        "error": MessageLookupByLibrary.simpleMessage("Erreur"),
+        "forgetPassword":
+            MessageLookupByLibrary.simpleMessage("Mot de passe oublié ?"),
+        "forgotYourPassword": MessageLookupByLibrary.simpleMessage(
+            "Vous avez oublié votre mot de passe ?"),
+        "fullNameHint": MessageLookupByLibrary.simpleMessage("Nom complet"),
+        "letsGetStarted": MessageLookupByLibrary.simpleMessage("Commençons"),
+        "login": MessageLookupByLibrary.simpleMessage("Connexion"),
+        "minimumOrderText":
+            MessageLookupByLibrary.simpleMessage("La commande minimum pour ce"),
+        "more": MessageLookupByLibrary.simpleMessage("Plus"),
+        "myOrdersTitle": MessageLookupByLibrary.simpleMessage("Mes commandes"),
+        "newPassword":
+            MessageLookupByLibrary.simpleMessage("Nouveau mot de passe"),
+        "newPasswordLabel": MessageLookupByLibrary.simpleMessage(
+            "Entrez le nouveau mot de passe..."),
+        "ok": MessageLookupByLibrary.simpleMessage("OK"),
+        "omar": MessageLookupByLibrary.simpleMessage("Omar"),
+        "orderDetailsTitle":
+            MessageLookupByLibrary.simpleMessage("Détails de la commande"),
+        "ordersNotFoundMessage":
+            MessageLookupByLibrary.simpleMessage("Commandes non trouvées"),
+        "passwordHint": MessageLookupByLibrary.simpleMessage("Mot de passe"),
+        "passwordLabel": MessageLookupByLibrary.simpleMessage("Mot de passe"),
+        "payButton": MessageLookupByLibrary.simpleMessage("Payer"),
+        "plsEnterDataToContiubue": MessageLookupByLibrary.simpleMessage(
+            "Veuillez entrer vos informations pour continuer"),
+        "priceLabel": MessageLookupByLibrary.simpleMessage("Prix"),
+        "privacyPolicy": MessageLookupByLibrary.simpleMessage(
+            "Politique de confidentialité"),
+        "productAddedToCartMessage":
+            MessageLookupByLibrary.simpleMessage("Produit ajouté au panier"),
+        "productAlreadyExistsMessage": MessageLookupByLibrary.simpleMessage(
+            "Le produit existe déjà en quantité identique dans le panier"),
+        "productCategoriesTitle":
+            MessageLookupByLibrary.simpleMessage("Catégories de produits"),
+        "productCategoryDescription": MessageLookupByLibrary.simpleMessage(
+            "Produits de la catégorie Emballage des vêtements"),
+        "productIsText": MessageLookupByLibrary.simpleMessage("produit est"),
+        "productTitle": MessageLookupByLibrary.simpleMessage("Produit"),
+        "productsNotFoundMessage":
+            MessageLookupByLibrary.simpleMessage("Produits non trouvés"),
+        "readLessButton": MessageLookupByLibrary.simpleMessage("Lire moins"),
+        "readMoreButton": MessageLookupByLibrary.simpleMessage("Lire plus"),
+        "register": MessageLookupByLibrary.simpleMessage("S\'inscrire"),
+        "reset": MessageLookupByLibrary.simpleMessage("Réinitialiser"),
+        "search": MessageLookupByLibrary.simpleMessage("Recherche..."),
+        "selectCountryLabel":
+            MessageLookupByLibrary.simpleMessage("Sélectionnez le pays"),
+        "selectLanguage":
+            MessageLookupByLibrary.simpleMessage("Choisir la langue"),
+        "selectLanguageHint":
+            MessageLookupByLibrary.simpleMessage("Choisir la langue"),
+        "selectSpecializationLabel": MessageLookupByLibrary.simpleMessage(
+            "Sélectionnez la spécialisation"),
+        "settings": MessageLookupByLibrary.simpleMessage("Paramètres"),
+        "signUp": MessageLookupByLibrary.simpleMessage("Créer un compte"),
+        "signin": MessageLookupByLibrary.simpleMessage("Se connecter"),
+        "termsAndConditions":
+            MessageLookupByLibrary.simpleMessage("Termes et conditions"),
+        "trems": MessageLookupByLibrary.simpleMessage("Conditions"),
+        "welcomeMessage":
+            MessageLookupByLibrary.simpleMessage("Bienvenue chez Frip Trading")
+      };
 }
