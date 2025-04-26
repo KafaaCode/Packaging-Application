@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:frip_trading/core/localization/generated/l10n.dart';
 import 'package:frip_trading/core/utils/abstracts.dart';
 
 class DropdownCustom<T extends HasIdAndName> extends StatefulWidget {
@@ -37,8 +38,8 @@ class _DropdownCustomState<T extends HasIdAndName>
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-
+    ThemeData theme = Theme.of(context);
+    Lang lang = Lang.of(context);
     return InputDecorator(
       decoration: widget.decoration == null
           ? InputDecoration(

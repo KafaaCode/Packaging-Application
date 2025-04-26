@@ -14,7 +14,7 @@ class CartWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
         color: Colors.white,
         boxShadow: [
           BoxShadow(
@@ -45,7 +45,7 @@ class CartWidget extends StatelessWidget {
                         cartItem.product.name ?? 'Product Name',
                         maxLines: 1,
                         overflow: TextOverflow.ellipsis,
-                        style: TextStyle(
+                        style: const TextStyle(
                             fontWeight: FontWeight.w600,
                             fontSize: 15,
                             color: Color(0xFF70b9be)),
@@ -54,8 +54,8 @@ class CartWidget extends StatelessWidget {
                         maxLines: 1,
                         overflow: TextOverflow.ellipsis,
                         cartItem.product.category?.name ?? 'category Name',
-                        style:
-                            TextStyle(color: Color(0xFF70b9be), fontSize: 12),
+                        style: const TextStyle(
+                            color: Color(0xFF70b9be), fontSize: 12),
                       ),
                       BlocBuilder<CounterBloc, CounterState>(
                         builder: (context, state) {

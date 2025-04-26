@@ -1,6 +1,7 @@
 import 'package:fluro/fluro.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:frip_trading/core/localization/generated/l10n.dart';
 import 'package:frip_trading/core/routes/router_screens.dart';
 import 'package:frip_trading/core/routes/routes_name.dart';
 import 'package:frip_trading/core/utils/loading_dialog.dart';
@@ -23,6 +24,7 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     ThemeData theme = Theme.of(context);
+    Lang lang = Lang.of(context);
     return Scaffold(
       body: SingleChildScrollView(
         child: Form(
@@ -74,7 +76,7 @@ class _LoginPageState extends State<LoginPage> {
               child: Column(
                 children: [
                   Center(
-                    child: Text('Let’s Get Started',
+                    child: Text(lang.letsGetStarted,
                         style: theme.textTheme.displayMedium?.copyWith(
                             color: theme.primaryColor,
                             fontWeight: FontWeight.w600,

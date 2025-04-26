@@ -100,6 +100,10 @@ class Country extends HasIdAndName with _$Country {
 
   @override
   String get name => name;
+  
+  @override
+  // TODO: implement props
+  List<Object?> get props => [id, name];
 }
 
 @freezed
@@ -118,6 +122,10 @@ class Specialization extends HasIdAndName with _$Specialization {
 
   @override
   String get name => name;
+  
+  @override
+  // TODO: implement props
+  List<Object?> get props => [id, name];
 }
 
 @freezed
