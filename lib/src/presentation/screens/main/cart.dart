@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:frip_trading/core/localization/generated/l10n.dart';
 import 'package:frip_trading/src/presentation/controllers/cart/cart_bloc.dart';
 import 'package:frip_trading/src/presentation/controllers/counter/counter_bloc.dart';
 import 'package:frip_trading/src/presentation/screens/auth/widgets/cart_widget.dart';
@@ -10,6 +11,7 @@ class CartDetailsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+     Lang lang = Lang.of(context);
     return Scaffold(
       backgroundColor: Colors.white,
       body: Column(
@@ -23,8 +25,8 @@ class CartDetailsPage extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                const Text(
-                  'Cart Details',
+                 Text(
+                  lang.cartDetailsTitle,
                   style: TextStyle(
                       color: Color(0xFF70b9be),
                       fontWeight: FontWeight.bold,
@@ -68,8 +70,8 @@ class CartDetailsPage extends StatelessWidget {
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
-                const Text(
-                  'Continue to confirm the order',
+               Text(
+                  lang.continueToConfirmOrderButton,
                   style: TextStyle(
                     color: Color(0xFF70b9be),
                     fontSize: 16,
@@ -87,7 +89,7 @@ class CartDetailsPage extends StatelessWidget {
                       ),
                     ),
                     onPressed: () {},
-                    child: const Text('Pay',
+                    child:  Text(lang.payButton,
                         style: TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.bold,

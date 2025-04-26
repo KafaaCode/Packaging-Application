@@ -69,6 +69,236 @@ class Lang {
       args: [],
     );
   }
+
+  /// `omar`
+  String get omar {
+    return Intl.message(
+      'omar',
+      name: 'omar',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `ali`
+  String get ali {
+    return Intl.message(
+      'ali',
+      name: 'ali',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Welcome to Frip Trading`
+  String get welcomeMessage {
+    return Intl.message(
+      'Welcome to Frip Trading',
+      name: 'welcomeMessage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Product categories`
+  String get productCategoriesTitle {
+    return Intl.message(
+      'Product categories',
+      name: 'productCategoriesTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Product`
+  String get productTitle {
+    return Intl.message(
+      'Product',
+      name: 'productTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Cateogries not found`
+  String get cateogriesNotFoundMessage {
+    return Intl.message(
+      'Cateogries not found',
+      name: 'cateogriesNotFoundMessage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Products not found`
+  String get productsNotFoundMessage {
+    return Intl.message(
+      'Products not found',
+      name: 'productsNotFoundMessage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Clothing Packaging Category Products`
+  String get productCategoryDescription {
+    return Intl.message(
+      'Clothing Packaging Category Products',
+      name: 'productCategoryDescription',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Price`
+  String get priceLabel {
+    return Intl.message(
+      'Price',
+      name: 'priceLabel',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Description`
+  String get descriptionLabel {
+    return Intl.message(
+      'Description',
+      name: 'descriptionLabel',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Read more`
+  String get readMoreButton {
+    return Intl.message(
+      'Read more',
+      name: 'readMoreButton',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Read less`
+  String get readLessButton {
+    return Intl.message(
+      'Read less',
+      name: 'readLessButton',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `The minimum order for this`
+  String get minimumOrderText {
+    return Intl.message(
+      'The minimum order for this',
+      name: 'minimumOrderText',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `product is`
+  String get productIsText {
+    return Intl.message(
+      'product is',
+      name: 'productIsText',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Add To Cart`
+  String get addToCartButton {
+    return Intl.message(
+      'Add To Cart',
+      name: 'addToCartButton',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Cart Details`
+  String get cartDetailsTitle {
+    return Intl.message(
+      'Cart Details',
+      name: 'cartDetailsTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `The product already exists in the same quantity in cart`
+  String get productAlreadyExistsMessage {
+    return Intl.message(
+      'The product already exists in the same quantity in cart',
+      name: 'productAlreadyExistsMessage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Product added to cart`
+  String get productAddedToCartMessage {
+    return Intl.message(
+      'Product added to cart',
+      name: 'productAddedToCartMessage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `My Orders`
+  String get myOrdersTitle {
+    return Intl.message(
+      'My Orders',
+      name: 'myOrdersTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Orders not found`
+  String get ordersNotFoundMessage {
+    return Intl.message(
+      'Orders not found',
+      name: 'ordersNotFoundMessage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Order Details`
+  String get orderDetailsTitle {
+    return Intl.message(
+      'Order Details',
+      name: 'orderDetailsTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Continue to confirm the order`
+  String get continueToConfirmOrderButton {
+    return Intl.message(
+      'Continue to confirm the order',
+      name: 'continueToConfirmOrderButton',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Pay`
+  String get payButton {
+    return Intl.message(
+      'Pay',
+      name: 'payButton',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<Lang> {

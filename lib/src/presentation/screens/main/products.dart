@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:frip_trading/core/localization/generated/l10n.dart';
 import 'package:frip_trading/core/services/services_locator.dart';
 import 'package:frip_trading/core/utils/loading_dialog.dart';
 import 'package:frip_trading/src/data/models/models.dart';
@@ -18,7 +19,7 @@ class Products extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
+  Lang lang = Lang.of(context);
     return BlocProvider(
       create: (context) => ProductBloc(mainRepository: sl())
         ..add( ProductEvent.getProducts(categoryId: cartegriesId)),
@@ -47,8 +48,8 @@ class Products extends StatelessWidget {
                             },
                           ),
                         ),
-                        const Text(
-                          'Products ',
+                        Text(
+                          lang.productTitle,
                           style: TextStyle(
                               color: Color(0xFF70b9be),
                               fontWeight: FontWeight.bold,
@@ -67,7 +68,7 @@ class Products extends StatelessWidget {
                 ),
                 const SizedBox(height: 10),
                 Text(
-                  'Clothing Packaging Category Products',
+                 lang.productCategoryDescription,
                   style: TextStyle(
                     color: Color(0xFF70b9be),
                     fontSize: 15,
@@ -86,10 +87,10 @@ class Products extends StatelessWidget {
                   ],
                 ),
                 const SizedBox(height: 16),
-                const Align(
+                 Align(
                   alignment: Alignment.centerLeft,
                   child: Text(
-                    'Products',
+                    lang.productTitle,
                     style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
                   ),
                 ),
@@ -111,7 +112,7 @@ class Products extends StatelessWidget {
                       else if(state.error){
                         return Center(
                           child: Text(
-                            'products not found',
+                           lang.productsNotFoundMessage,
                             style: const TextStyle(color:  Color(0xFF70b9be),fontWeight: FontWeight.bold,fontSize: 15),
                           ),
                         );

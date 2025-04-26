@@ -22,38 +22,43 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
-        "academicStage": MessageLookupByLibrary.simpleMessage(" "),
-        "account": MessageLookupByLibrary.simpleMessage(" "),
-        "backOnline":
-            MessageLookupByLibrary.simpleMessage("Connected to the internet"),
-        "basic": MessageLookupByLibrary.simpleMessage(" "),
-        "btnIntroPage1": MessageLookupByLibrary.simpleMessage(" "),
-        "continueRegistration": MessageLookupByLibrary.simpleMessage(" "),
-        "courses": MessageLookupByLibrary.simpleMessage(" "),
-        "createAccount": MessageLookupByLibrary.simpleMessage(" "),
-        "female": MessageLookupByLibrary.simpleMessage(" "),
-        "general": MessageLookupByLibrary.simpleMessage("General"),
-        "highSchool": MessageLookupByLibrary.simpleMessage(" "),
-        "home": MessageLookupByLibrary.simpleMessage(" "),
-        "literary": MessageLookupByLibrary.simpleMessage("literary"),
-        "loding": MessageLookupByLibrary.simpleMessage("loding..."),
-        "loginAStudent": MessageLookupByLibrary.simpleMessage(" "),
-        "loginTeacher": MessageLookupByLibrary.simpleMessage(" "),
-        "male": MessageLookupByLibrary.simpleMessage(" "),
-        "pageNotFound":
-            MessageLookupByLibrary.simpleMessage("Oops! Page Not Found"),
-        "pageNotFoundMsg": MessageLookupByLibrary.simpleMessage(
-            "The page you are looking for does not exist."),
-        "preparatory": MessageLookupByLibrary.simpleMessage("preparatory"),
-        "primary": MessageLookupByLibrary.simpleMessage("primary"),
-        "registration": MessageLookupByLibrary.simpleMessage(" "),
-        "scientific": MessageLookupByLibrary.simpleMessage("scientific"),
-        "secondary": MessageLookupByLibrary.simpleMessage("secondary"),
-        "tests": MessageLookupByLibrary.simpleMessage(" "),
-        "textIntroPage1": MessageLookupByLibrary.simpleMessage(" "),
-        "tilteIntroPage1": MessageLookupByLibrary.simpleMessage(" "),
-        "type": MessageLookupByLibrary.simpleMessage(" "),
-        "youAreOffline":
-            MessageLookupByLibrary.simpleMessage("No internet connection")
+        "addToCartButton": MessageLookupByLibrary.simpleMessage("Add To Cart"),
+        "ali": MessageLookupByLibrary.simpleMessage("ali"),
+        "cartDetailsTitle":
+            MessageLookupByLibrary.simpleMessage("Cart Details"),
+        "cateogriesNotFoundMessage":
+            MessageLookupByLibrary.simpleMessage("Cateogries not found"),
+        "continueToConfirmOrderButton": MessageLookupByLibrary.simpleMessage(
+            "Continue to confirm the order"),
+        "descriptionLabel": MessageLookupByLibrary.simpleMessage("Description"),
+        "letsGetStarted":
+            MessageLookupByLibrary.simpleMessage("Let’s Get Started"),
+        "minimumOrderText":
+            MessageLookupByLibrary.simpleMessage("The minimum order for this"),
+        "myOrdersTitle": MessageLookupByLibrary.simpleMessage("My Orders"),
+        "omar": MessageLookupByLibrary.simpleMessage("omar"),
+        "orderDetailsTitle":
+            MessageLookupByLibrary.simpleMessage("Order Details"),
+        "ordersNotFoundMessage":
+            MessageLookupByLibrary.simpleMessage("Orders not found"),
+        "payButton": MessageLookupByLibrary.simpleMessage("Pay"),
+        "priceLabel": MessageLookupByLibrary.simpleMessage("Price"),
+        "productAddedToCartMessage":
+            MessageLookupByLibrary.simpleMessage("Product added to cart"),
+        "productAlreadyExistsMessage": MessageLookupByLibrary.simpleMessage(
+            "The product already exists in the same quantity in cart"),
+        "productCategoriesTitle":
+            MessageLookupByLibrary.simpleMessage("Product categories"),
+        "productCategoryDescription": MessageLookupByLibrary.simpleMessage(
+            "Clothing Packaging Category Products"),
+        "productIsText": MessageLookupByLibrary.simpleMessage("product is"),
+        "productTitle": MessageLookupByLibrary.simpleMessage("Product"),
+        "productsNotFoundMessage":
+            MessageLookupByLibrary.simpleMessage("Products not found"),
+        "readLessButton": MessageLookupByLibrary.simpleMessage("Read less"),
+        "readMoreButton": MessageLookupByLibrary.simpleMessage("Read more"),
+        "search": MessageLookupByLibrary.simpleMessage("Search..."),
+        "welcomeMessage":
+            MessageLookupByLibrary.simpleMessage("Welcome to Frip Trading")
       };
 }

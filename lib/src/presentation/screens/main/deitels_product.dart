@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:frip_trading/core/localization/generated/l10n.dart';
 import 'package:frip_trading/src/data/models/models.dart';
 import 'package:frip_trading/src/presentation/controllers/cart/cart_bloc.dart';
 import 'package:frip_trading/src/presentation/controllers/counter/counter_bloc.dart';
@@ -9,6 +10,7 @@ import 'package:readmore/readmore.dart';
 class ProductDetailsPage extends StatelessWidget {
   final Product product;
   final int minQuantity = 10;
+
 
   final String fullDescription =
       "The Nike Throwback Pullover Hoodie is made from premium French terry fabric. "
@@ -19,6 +21,8 @@ class ProductDetailsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Lang lang = Lang.of(context);
+    
     return Scaffold(
       body: Column(
         children: [
@@ -76,13 +80,13 @@ class ProductDetailsPage extends StatelessWidget {
                     style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                   ),
                   const SizedBox(height: 8),
-                  const Text("Price", style: TextStyle(color: Colors.grey)),
+                   Text(lang.priceLabel, style: TextStyle(color: Colors.grey)),
                   Text("\$${product.price}",
                       style:
                           TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
                   const SizedBox(height: 12),
-                  const Text(
-                    "Description",
+                Text(
+                  lang.descriptionLabel,
                     style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                   ),
                   const SizedBox(height: 4),
@@ -93,8 +97,8 @@ class ProductDetailsPage extends StatelessWidget {
                         trimLines: 3,
                         colorClickableText: Colors.teal,
                         trimMode: TrimMode.Line,
-                        trimCollapsedText: ' Read more',
-                        trimExpandedText: ' Read less',
+                        trimCollapsedText: lang.readMoreButton,
+                        trimExpandedText: lang.readLessButton,
                         style: const TextStyle(color: Colors.grey),
                         moreStyle: const TextStyle(
                           fontSize: 14,
@@ -121,14 +125,14 @@ class ProductDetailsPage extends StatelessWidget {
                               Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  const Text(
-                                    "The minimum order for this",
+                                   Text(
+                                  lang.minimumOrderText,
                                     style: TextStyle(
                                         fontWeight: FontWeight.bold,
                                         fontSize: 14),
                                   ),
                                   Text(
-                                    "product is: ${state.min}",
+                                    "${lang.productIsText}: ${state.min}",
                                     style: const TextStyle(
                                         fontWeight: FontWeight.bold),
                                   ),
@@ -179,10 +183,10 @@ class ProductDetailsPage extends StatelessWidget {
                             ),
                           ),
                           onPressed: () {
-                            AddToCard(context);
+                            AddToCard(context,lang);
                           },
-                          child: const Text(
-                            "Add To Cart",
+                          child: Text(
+                           lang.addToCartButton,
                             style: TextStyle(fontSize: 18, color: Colors.white),
                           ),
                         ),
@@ -198,7 +202,7 @@ class ProductDetailsPage extends StatelessWidget {
     );
   }
 
-  void AddToCard(BuildContext context) {
+  void AddToCard(BuildContext context,Lang lang) {
     final cartBloc = context.read<CartBloc>();
     final counterBloc = context.read<CounterBloc>();
     final quantity = counterBloc.state.count;
@@ -210,9 +214,9 @@ class ProductDetailsPage extends StatelessWidget {
 
     if (existingItem.quantity == quantity) {
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
+      SnackBar(
             content: Text(
-                'the product is elready exist in the same quantity in cart',
+                lang.productAlreadyExistsMessage,
                 style: TextStyle(color: Color(0xFF70b9be))),
             backgroundColor: Color.fromARGB(255, 239, 244, 245)),
       );
@@ -222,8 +226,8 @@ class ProductDetailsPage extends StatelessWidget {
       cartBloc.add(CartEvent.addProduct(newCartItem));
 
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-            content: Text('Product Aded to card',
+      SnackBar(
+            content: Text(lang.productAddedToCartMessage,
                 style: TextStyle(color: Color(0xFF70b9be))),
             backgroundColor: Color.fromARGB(255, 239, 244, 245)),
       );

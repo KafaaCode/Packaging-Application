@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:frip_trading/core/localization/generated/l10n.dart';
 import 'package:intl/intl.dart';
 
 import '../../../../data/models/models.dart';
@@ -6,8 +7,9 @@ import '../../../../data/models/models.dart';
 class OrderCard extends StatelessWidget {
   final int length;
   final MyOrder order;
+   final Lang lang;
   final int index;
-  OrderCard({required this.length, required this.order, required this.index});
+  OrderCard({required this.length, required this.order, required this.index, required this.lang});
 
   Color getStatusColor(String status) {
     switch (status) {
@@ -106,8 +108,8 @@ class OrderCard extends StatelessWidget {
                       color: const Color(0xFF70b9be),
                       borderRadius: BorderRadius.circular(30),
                     ),
-                    child: const Text(
-                      "Details Order",
+                    child:  Text(
+                      lang.orderDetailsTitle,
                       style: TextStyle(
                           fontSize: 11,
                           color: Colors.white,
