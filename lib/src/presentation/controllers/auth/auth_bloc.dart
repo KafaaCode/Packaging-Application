@@ -43,6 +43,7 @@ class AuthBloc extends HydratedBloc<AuthEvent, AuthState> {
       );
       print('Token: $token');
       print('User: $user');
+      await Future.delayed(const Duration(seconds: 2));
       if (token == null) {
         print('Token: $token');
         if (user != null) {

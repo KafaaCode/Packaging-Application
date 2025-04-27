@@ -48,7 +48,7 @@ class FilterPage extends StatelessWidget {
                             clearStack: true,
                             transition: TransitionType.inFromRight,
                             transitionDuration:
-                                const Duration(milliseconds: 500));
+                                const Duration(milliseconds: 200));
                       });
                     },
                     child: InkWell(
@@ -153,7 +153,7 @@ class FilterPage extends StatelessWidget {
                                               arguments:
                                                   state.categories[i].id),
                                           transitionDuration: const Duration(
-                                              milliseconds: 500));
+                                              milliseconds: 200));
                                     },
                                     borderRadius: BorderRadius.circular(12),
                                     child: SizedBox(
@@ -174,7 +174,7 @@ class FilterPage extends StatelessWidget {
                             context, RoutesNames.products,
                             transition: TransitionType.inFromRight,
                             transitionDuration:
-                                const Duration(milliseconds: 500));
+                                const Duration(milliseconds: 200));
                       },
                     ); */
                   },

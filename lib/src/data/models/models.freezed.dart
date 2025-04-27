@@ -1555,24 +1555,6 @@ class _$CountryImpl extends _Country {
   @override
   final String name;
 
-  @override
-  String toString() {
-    return 'Country(id: $id, name: $name)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$CountryImpl &&
-            (identical(other.id, id) || other.id == id) &&
-            (identical(other.name, name) || other.name == name));
-  }
-
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  int get hashCode => Object.hash(runtimeType, id, name);
-
   /// Create a copy of Country
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
@@ -1720,24 +1702,6 @@ class _$SpecializationImpl extends _Specialization {
   final int id;
   @override
   final String name;
-
-  @override
-  String toString() {
-    return 'Specialization(id: $id, name: $name)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$SpecializationImpl &&
-            (identical(other.id, id) || other.id == id) &&
-            (identical(other.name, name) || other.name == name));
-  }
-
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  int get hashCode => Object.hash(runtimeType, id, name);
 
   /// Create a copy of Specialization
   /// with the given fields replaced by the non-null parameter values.

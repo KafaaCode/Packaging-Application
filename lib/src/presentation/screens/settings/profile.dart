@@ -75,7 +75,7 @@ class Profile extends StatelessWidget {
                       RoutesNames.editProfileRoute,
                       rootNavigator: true,
                       transition: TransitionType.inFromLeft,
-                      transitionDuration: const Duration(milliseconds: 500),
+                      transitionDuration: const Duration(milliseconds: 200),
                     );
                   },
                   child: ListTile(
@@ -92,7 +92,7 @@ class Profile extends StatelessWidget {
                       RoutesNames.changePasswordRoute,
                       rootNavigator: true,
                       transition: TransitionType.inFromLeft,
-                      transitionDuration: const Duration(milliseconds: 500),
+                      transitionDuration: const Duration(milliseconds: 200),
                     );
                   },
                   child: ListTile(

@@ -61,12 +61,15 @@ class _LoginPageState extends State<LoginPage> {
                     showLoadingDialog(context);
                   },
                   create: (user) {
-                    Navigator.of(context, rootNavigator: true).pop();
-                    debugPrint('Loaded with user: ${user.email}');
-                    AppRouter.router.navigateTo(context, RoutesNames.mainRoute,
-                        clearStack: true,
-                        transitionDuration: const Duration(milliseconds: 500),
-                        transition: TransitionType.inFromBottom);
+                    if (user.role != null) {
+                      Navigator.of(context, rootNavigator: true).pop();
+                      debugPrint('Loaded with user: ${user.email}');
+                      AppRouter.router.navigateTo(
+                          context, RoutesNames.mainRoute,
+                          clearStack: true,
+                          transitionDuration: const Duration(milliseconds: 200),
+                          transition: TransitionType.inFromBottom);
+                    }
                   },
                   orElse: () {
                     debugPrint('Something else');
@@ -126,7 +129,7 @@ class _LoginPageState extends State<LoginPage> {
                         ),
                         TextButton(
                             onPressed: () {},
-                            child: Text('Forget Password?',
+                            child: Text(lang.forgotYourPassword,
                                 style: theme.textTheme.bodyMedium?.copyWith(
                                   color: theme.primaryColor,
                                 ))),
@@ -159,9 +162,10 @@ class _LoginPageState extends State<LoginPage> {
                         onPressed: () {
                           AppRouter.router.navigateTo(
                               context, RoutesNames.registerRoute,
+                              clearStack: true,
                               transition: TransitionType.inFromLeft,
                               transitionDuration:
-                                  const Duration(milliseconds: 800));
+                                  const Duration(milliseconds: 200));
                         },
                         child: Text(
                           lang.signin,

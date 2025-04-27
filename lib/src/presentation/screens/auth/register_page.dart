@@ -92,13 +92,16 @@ class _RegisterPageState extends State<RegisterPage> {
                       showLoadingDialog(context);
                     },
                     create: (user) {
-                      Navigator.of(context, rootNavigator: true).pop();
-                      debugPrint('Loaded with user: ${user.email}');
-                      AppRouter.router.navigateTo(
-                          context, RoutesNames.mainRoute,
-                          clearStack: true,
-                          transitionDuration: const Duration(milliseconds: 500),
-                          transition: TransitionType.inFromBottom);
+                      if (user.role != null) {
+                        Navigator.of(context, rootNavigator: true).pop();
+                        debugPrint('Loaded with user: ${user.email}');
+                        AppRouter.router.navigateTo(
+                            context, RoutesNames.mainRoute,
+                            clearStack: true,
+                            transitionDuration:
+                                const Duration(milliseconds: 200),
+                            transition: TransitionType.inFromBottom);
+                      }
                     },
                     orElse: () {
                       debugPrint('Something else');
@@ -106,7 +109,7 @@ class _RegisterPageState extends State<RegisterPage> {
                   );
                 },
                 child: Text(
-                 lang.signUp,
+                  lang.signUp,
                   style: theme.textTheme.headlineLarge?.copyWith(
                     color: theme.primaryColor,
                     fontWeight: FontWeight.w600,
@@ -359,16 +362,14 @@ class _RegisterPageState extends State<RegisterPage> {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                       Text(lang.alreadyAMember
-                        
-                      ),
+                      Text(lang.alreadyAMember),
                       TextButton(
                         onPressed: () {
                           AppRouter.router.navigateTo(
                               context, RoutesNames.loginRoute,
                               transition: TransitionType.inFromRight,
                               transitionDuration:
-                                  const Duration(milliseconds: 800));
+                                  const Duration(milliseconds: 200));
                         },
                         child: Text(
                           lang.login,

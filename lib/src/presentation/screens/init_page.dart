@@ -33,13 +33,13 @@ class _InitPageState extends State<InitPage> {
       initial: () {
         AppRouter.router.navigateTo(context, RoutesNames.loginRoute,
             clearStack: true,
-            transitionDuration: const Duration(milliseconds: 500),
+            transitionDuration: const Duration(milliseconds: 200),
             transition: TransitionType.inFromBottom);
       },
       error: (message) {
         AppRouter.router.navigateTo(context, RoutesNames.loginRoute,
             clearStack: true,
-            transitionDuration: const Duration(milliseconds: 500),
+            transitionDuration: const Duration(milliseconds: 200),
             transition: TransitionType.inFromBottom);
       },
       create: (user) {
@@ -48,18 +48,18 @@ class _InitPageState extends State<InitPage> {
           debugPrint('Loaded with user: ${user.email}');
           AppRouter.router.navigateTo(context, RoutesNames.mainRoute,
               clearStack: true,
-              transitionDuration: const Duration(milliseconds: 500),
+              transitionDuration: const Duration(milliseconds: 200),
               transition: TransitionType.inFromBottom);
         } else if (user.role == "Admin") {
           AppRouter.router.navigateTo(context, RoutesNames.adminMainRoute,
               clearStack: true,
-              transitionDuration: const Duration(milliseconds: 500),
+              transitionDuration: const Duration(milliseconds: 200),
               transition: TransitionType.inFromLeft);
         } else {
           // Toast().error(context, 'Something went wrong!');
           AppRouter.router.navigateTo(context, RoutesNames.loginRoute,
               clearStack: true,
-              transitionDuration: const Duration(milliseconds: 500),
+              transitionDuration: const Duration(milliseconds: 200),
               transition: TransitionType.inFromBottom);
         }
       },
@@ -67,7 +67,7 @@ class _InitPageState extends State<InitPage> {
         debugPrint('Something else');
         AppRouter.router.navigateTo(context, RoutesNames.loginRoute,
             clearStack: true,
-            transitionDuration: const Duration(milliseconds: 500),
+            transitionDuration: const Duration(milliseconds: 200),
             transition: TransitionType.inFromBottom);
       },
     );
