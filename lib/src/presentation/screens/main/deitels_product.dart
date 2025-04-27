@@ -42,12 +42,14 @@ class ProductDetailsPage extends StatelessWidget {
                   fit: BoxFit.cover,
                 ),
                 Positioned(
-                  top: 10,
+                  top: 45,
                   left: 10,
                   child: CircleAvatar(
+                    radius: 25,
                     backgroundColor: Colors.white,
                     child: IconButton(
                       icon: const Icon(
+                        
                         Icons.arrow_back,
                         color: Color(0xFF70b9be),
                       ),
@@ -58,7 +60,7 @@ class ProductDetailsPage extends StatelessWidget {
                   ),
                 ),
                 Positioned(
-                  top: 10,
+                  top: 45,
                   right: 10,
                   child: SvgPicture.asset(
                     'assets/images/Group940.svg',
