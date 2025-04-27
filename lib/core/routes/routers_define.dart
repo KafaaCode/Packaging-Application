@@ -86,14 +86,7 @@ void configureRoutes(FluroRouter router) {
       },
     ),
   );
-  router.define(
-    RoutesNames.cart,
-    handler: Handler(
-      handlerFunc: (context, parameters) {
-        return CartDetailsPage();
-      },
-    ),
-  );
+ 
   // admin routes
 
   router.define(

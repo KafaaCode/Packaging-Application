@@ -27,7 +27,7 @@ class FilterPage extends StatelessWidget {
         color: Colors.white,
         child: Padding(
           padding: const EdgeInsets.only(
-            top: 40,
+            top: 45,
             right: 16,
             left: 16,
             bottom: 16,

@@ -64,7 +64,7 @@ class MyOrdersPage extends StatelessWidget {
           children: [
             Padding(
                 padding: const EdgeInsets.only(
-            top: 40,
+            top: 45,
             right: 16,
             left: 16,
             bottom: 16,

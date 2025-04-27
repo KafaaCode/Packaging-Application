@@ -179,7 +179,39 @@ class ProductDetailsPage extends StatelessWidget {
                       const SizedBox(height: 10),
                        Row(
                         children: [
+                        
+                  
                           Expanded(
+                            flex: 1,
+                            child: ElevatedButton(
+                              style: ElevatedButton.styleFrom(
+                                backgroundColor: const Color(0xFF70b9be),
+                                padding: const EdgeInsets.symmetric(vertical: 13),
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(15),
+                                ),
+                              ),
+                              onPressed: () {
+                              context.read<MainPageBloc>().add(const MainPageEvent.navigateToTab(2));
+                              AppRouter.router.navigateTo(
+                                          context, RoutesNames.mainRoute,
+                                          transition:
+                                              TransitionType.inFromRight,
+                                          routeSettings: RouteSettings(
+                                            ),
+                                          transitionDuration: const Duration(
+                                              milliseconds: 400));
+                              },
+                              child: const Icon(
+                                 size: 31.0,
+                                
+                                Icons.shopping_cart_outlined,
+                                color: Colors.white,
+                              ),
+                            ),
+                          ),
+        const SizedBox(width: 10),
+                            Expanded(
                             flex: 3,
                             child: ElevatedButton(
                               style: ElevatedButton.styleFrom(
@@ -195,33 +227,6 @@ class ProductDetailsPage extends StatelessWidget {
                               child: Text(
                                 lang.addToCartButton,
                                 style: const TextStyle(fontSize: 18, color: Colors.white),
-                              ),
-                            ),
-                          ),
-                          const SizedBox(width: 10),
-                          Expanded(
-                            flex: 1,
-                            child: ElevatedButton(
-                              style: ElevatedButton.styleFrom(
-                                backgroundColor: const Color(0xFF70b9be),
-                                padding: const EdgeInsets.symmetric(vertical: 16),
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(15),
-                                ),
-                              ),
-                              onPressed: () {
-                              context.read<MainPageBloc>().add(const MainPageEvent.navigateToTab(2));
-                                  Navigator.pushReplacement(
-      context,
-      MaterialPageRoute(
-        builder: (context) => const MainPage(),  
-      ),
-    );
-                              },
-                              child: const Icon(
-                                
-                                Icons.shopping_cart_outlined,
-                                color: Colors.white,
                               ),
                             ),
                           ),
