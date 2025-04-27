@@ -43,7 +43,8 @@ class ProductDetailsPage extends StatelessWidget {
                 ),
                 Positioned(
                   top: 45,
-                  left: 10,
+                        left: Directionality.of(context) == TextDirection.ltr ? 10 : null,
+  right: Directionality.of(context) == TextDirection.rtl ? 10 : null,
                   child: CircleAvatar(
                     radius: 25,
                     backgroundColor: Colors.white,
@@ -61,7 +62,8 @@ class ProductDetailsPage extends StatelessWidget {
                 ),
                 Positioned(
                   top: 45,
-                  right: 10,
+                                      left: Directionality.of(context) == TextDirection.rtl ? 10 : null,
+  right: Directionality.of(context) == TextDirection.ltr ? 10 : null,
                   child: SvgPicture.asset(
                     'assets/images/Group940.svg',
                     height: 50,
