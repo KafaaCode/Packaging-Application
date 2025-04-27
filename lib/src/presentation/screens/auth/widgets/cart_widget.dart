@@ -70,7 +70,7 @@ class CartWidget extends StatelessWidget {
                                         context.read<CartBloc>().add(
                                               CartEvent.updateQuantity(
                                                   product: cartItem.product,
-                                                  quantity: state.count - 1),
+                                                  quantity: state.count-state.min),
                                             );
                                       }
                                     : null,
@@ -88,7 +88,7 @@ class CartWidget extends StatelessWidget {
                                   context.read<CartBloc>().add(
                                         CartEvent.updateQuantity(
                                             product: cartItem.product,
-                                            quantity: state.count + 1),
+                                            quantity: state.count + state.min),
                                       );
                                 },
                                 icon: SvgPicture.asset(
