@@ -1,10 +1,15 @@
+import 'package:fluro/fluro.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:frip_trading/core/localization/generated/l10n.dart';
+import 'package:frip_trading/core/routes/router_screens.dart';
+import 'package:frip_trading/core/routes/routes_name.dart';
 import 'package:frip_trading/src/data/models/models.dart';
 import 'package:frip_trading/src/presentation/controllers/cart/cart_bloc.dart';
 import 'package:frip_trading/src/presentation/controllers/counter/counter_bloc.dart';
+import 'package:frip_trading/src/presentation/controllers/main_bage/main_page_bloc.dart';
+import 'package:frip_trading/src/presentation/screens/main/main_page.dart';
 import 'package:readmore/readmore.dart';
 
 class ProductDetailsPage extends StatelessWidget {
@@ -172,24 +177,55 @@ class ProductDetailsPage extends StatelessWidget {
                         },
                       ),
                       const SizedBox(height: 10),
-                      SizedBox(
-                        width: double.infinity,
-                        child: ElevatedButton(
-                          style: ElevatedButton.styleFrom(
-                            backgroundColor: const Color(0xFF70b9be),
-                            padding: const EdgeInsets.symmetric(vertical: 16),
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(15),
+                       Row(
+                        children: [
+                          Expanded(
+                            flex: 3,
+                            child: ElevatedButton(
+                              style: ElevatedButton.styleFrom(
+                                backgroundColor: const Color(0xFF70b9be),
+                                padding: const EdgeInsets.symmetric(vertical: 16),
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(15),
+                                ),
+                              ),
+                              onPressed: () {
+                                AddToCard(context, lang);
+                              },
+                              child: Text(
+                                lang.addToCartButton,
+                                style: const TextStyle(fontSize: 18, color: Colors.white),
+                              ),
                             ),
                           ),
-                          onPressed: () {
-                            AddToCard(context,lang);
-                          },
-                          child: Text(
-                           lang.addToCartButton,
-                            style: TextStyle(fontSize: 18, color: Colors.white),
+                          const SizedBox(width: 10),
+                          Expanded(
+                            flex: 1,
+                            child: ElevatedButton(
+                              style: ElevatedButton.styleFrom(
+                                backgroundColor: const Color(0xFF70b9be),
+                                padding: const EdgeInsets.symmetric(vertical: 16),
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(15),
+                                ),
+                              ),
+                              onPressed: () {
+                              context.read<MainPageBloc>().add(const MainPageEvent.navigateToTab(2));
+                                  Navigator.pushReplacement(
+      context,
+      MaterialPageRoute(
+        builder: (context) => const MainPage(),  
+      ),
+    );
+                              },
+                              child: const Icon(
+                                
+                                Icons.shopping_cart_outlined,
+                                color: Colors.white,
+                              ),
+                            ),
                           ),
-                        ),
+                        ],
                       ),
                     ],
                   ),

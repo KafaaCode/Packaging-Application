@@ -63,7 +63,12 @@ class MyOrdersPage extends StatelessWidget {
         body: Column(
           children: [
             Padding(
-              padding: const EdgeInsets.all(16.0),
+                padding: const EdgeInsets.only(
+            top: 40,
+            right: 16,
+            left: 16,
+            bottom: 16,
+          ),
               child: Column(
                 children: [
                   Row(

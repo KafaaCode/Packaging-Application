@@ -26,7 +26,12 @@ class FilterPage extends StatelessWidget {
       child: Container(
         color: Colors.white,
         child: Padding(
-          padding: const EdgeInsets.all(16),
+          padding: const EdgeInsets.only(
+            top: 40,
+            right: 16,
+            left: 16,
+            bottom: 16,
+          ),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [

@@ -11,4 +11,5 @@ class RoutesNames {
   static const String products = '/products';
   static const String notFoundRoute = '/404';
   static const String details = '/details';
+    static const String cart= '/cart';
 }
