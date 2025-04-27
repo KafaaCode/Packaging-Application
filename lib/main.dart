@@ -15,6 +15,7 @@ import 'package:frip_trading/core/theme/theme_cubit.dart';
 import 'package:frip_trading/src/features/inital/presentation/inital/inital_bloc.dart';
 import 'package:frip_trading/src/presentation/controllers/auth/auth_bloc.dart';
 import 'package:frip_trading/src/presentation/controllers/cart/cart_bloc.dart';
+import 'package:frip_trading/src/presentation/controllers/main_bage/main_page_bloc.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -49,6 +50,11 @@ class MainApp extends StatelessWidget {
       builder: (context, child) {
         return MultiBlocProvider(
           providers: [
+                BlocProvider(
+                create: (_) => MainPageBloc(),
+              lazy: false,
+            ),
+    
             BlocProvider(
               create: (_) => CartBloc(),
               lazy: false,

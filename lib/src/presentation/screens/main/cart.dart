@@ -18,7 +18,7 @@ class CartDetailsPage extends StatelessWidget {
         children: [
           Padding(
             padding: const EdgeInsets.only(
-              top: 30,
+              top:45,
               right: 16,
               left: 16,
             ),

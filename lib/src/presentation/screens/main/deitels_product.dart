@@ -1,10 +1,15 @@
+import 'package:fluro/fluro.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:frip_trading/core/localization/generated/l10n.dart';
+import 'package:frip_trading/core/routes/router_screens.dart';
+import 'package:frip_trading/core/routes/routes_name.dart';
 import 'package:frip_trading/src/data/models/models.dart';
 import 'package:frip_trading/src/presentation/controllers/cart/cart_bloc.dart';
 import 'package:frip_trading/src/presentation/controllers/counter/counter_bloc.dart';
+import 'package:frip_trading/src/presentation/controllers/main_bage/main_page_bloc.dart';
+import 'package:frip_trading/src/presentation/screens/main/main_page.dart';
 import 'package:readmore/readmore.dart';
 
 class ProductDetailsPage extends StatelessWidget {
@@ -37,12 +42,15 @@ class ProductDetailsPage extends StatelessWidget {
                   fit: BoxFit.cover,
                 ),
                 Positioned(
-                  top: 10,
-                  left: 10,
+                  top: 45,
+                        left: Directionality.of(context) == TextDirection.ltr ? 10 : null,
+  right: Directionality.of(context) == TextDirection.rtl ? 10 : null,
                   child: CircleAvatar(
+                    radius: 25,
                     backgroundColor: Colors.white,
                     child: IconButton(
                       icon: const Icon(
+                        
                         Icons.arrow_back,
                         color: Color(0xFF70b9be),
                       ),
@@ -53,8 +61,9 @@ class ProductDetailsPage extends StatelessWidget {
                   ),
                 ),
                 Positioned(
-                  top: 10,
-                  right: 10,
+                  top: 45,
+                                      left: Directionality.of(context) == TextDirection.rtl ? 10 : null,
+  right: Directionality.of(context) == TextDirection.ltr ? 10 : null,
                   child: SvgPicture.asset(
                     'assets/images/Group940.svg',
                     height: 50,
@@ -172,24 +181,60 @@ class ProductDetailsPage extends StatelessWidget {
                         },
                       ),
                       const SizedBox(height: 10),
-                      SizedBox(
-                        width: double.infinity,
-                        child: ElevatedButton(
-                          style: ElevatedButton.styleFrom(
-                            backgroundColor: const Color(0xFF70b9be),
-                            padding: const EdgeInsets.symmetric(vertical: 16),
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(15),
+                       Row(
+                        children: [
+                        
+                  
+                          Expanded(
+                            flex: 1,
+                            child: ElevatedButton(
+                              style: ElevatedButton.styleFrom(
+                                backgroundColor: const Color(0xFF70b9be),
+                                padding: const EdgeInsets.symmetric(vertical: 13),
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(15),
+                                ),
+                              ),
+                              onPressed: () {
+                              context.read<MainPageBloc>().add(const MainPageEvent.navigateToTab(2));
+                              AppRouter.router.navigateTo(
+                                          context, RoutesNames.mainRoute,
+                                          transition:
+                                              TransitionType.inFromRight,
+                                          routeSettings: RouteSettings(
+                                            ),
+                                          transitionDuration: const Duration(
+                                              milliseconds: 400));
+                              },
+                              child: const Icon(
+                                 size: 31.0,
+                                
+                                Icons.shopping_cart_outlined,
+                                color: Colors.white,
+                              ),
                             ),
                           ),
-                          onPressed: () {
-                            AddToCard(context,lang);
-                          },
-                          child: Text(
-                           lang.addToCartButton,
-                            style: TextStyle(fontSize: 18, color: Colors.white),
+        const SizedBox(width: 10),
+                            Expanded(
+                            flex: 3,
+                            child: ElevatedButton(
+                              style: ElevatedButton.styleFrom(
+                                backgroundColor: const Color(0xFF70b9be),
+                                padding: const EdgeInsets.symmetric(vertical: 16),
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(15),
+                                ),
+                              ),
+                              onPressed: () {
+                                AddToCard(context, lang);
+                              },
+                              child: Text(
+                                lang.addToCartButton,
+                                style: const TextStyle(fontSize: 18, color: Colors.white),
+                              ),
+                            ),
                           ),
-                        ),
+                        ],
                       ),
                     ],
                   ),

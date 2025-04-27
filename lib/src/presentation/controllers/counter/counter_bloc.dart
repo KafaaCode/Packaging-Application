@@ -9,12 +9,12 @@ class CounterBloc extends Bloc<CounterEvent, CounterState> {
   CounterBloc({required int min, required int initial})
       : super(CounterState(count: initial, min: min)) {
     on<Increment>((event, emit) {
-      emit(state.copyWith(count: state.count + 1));
+      emit(state.copyWith(count: state.count + state.min));
     });
 
     on<Decrement>((event, emit) {
       if (state.count > state.min) {
-        emit(state.copyWith(count: state.count - 1));
+        emit(state.copyWith(count: state.count - state.min));
       }
     });
   }

@@ -27,7 +27,12 @@ class Products extends StatelessWidget {
         body: Container(
           color: Colors.white,
           child: Padding(
-            padding: const EdgeInsets.all(16),
+              padding: const EdgeInsets.only(
+            top: 45,
+            right: 16,
+            left: 16,
+            bottom: 16,
+          ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [

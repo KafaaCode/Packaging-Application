@@ -4,6 +4,7 @@ import 'package:frip_trading/core/routes/routes_name.dart';
 import 'package:frip_trading/src/presentation/screens/auth/login_page.dart';
 import 'package:frip_trading/src/presentation/screens/auth/register_page.dart';
 import 'package:frip_trading/src/presentation/screens/init_page.dart';
+import 'package:frip_trading/src/presentation/screens/main/cart.dart';
 import 'package:frip_trading/src/presentation/screens/main/main_page.dart';
 import 'package:frip_trading/src/presentation/screens/settings/change_password.dart';
 import 'package:frip_trading/src/presentation/screens/settings/edit_profile.dart';
@@ -85,7 +86,7 @@ void configureRoutes(FluroRouter router) {
       },
     ),
   );
-
+ 
   // admin routes
 
   router.define(

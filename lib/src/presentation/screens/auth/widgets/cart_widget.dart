@@ -70,7 +70,7 @@ class CartWidget extends StatelessWidget {
                                         context.read<CartBloc>().add(
                                               CartEvent.updateQuantity(
                                                   product: cartItem.product,
-                                                  quantity: state.count - 1),
+                                                  quantity: state.count-state.min),
                                             );
                                       }
                                     : null,
@@ -88,7 +88,7 @@ class CartWidget extends StatelessWidget {
                                   context.read<CartBloc>().add(
                                         CartEvent.updateQuantity(
                                             product: cartItem.product,
-                                            quantity: state.count + 1),
+                                            quantity: state.count + state.min),
                                       );
                                 },
                                 icon: SvgPicture.asset(
@@ -109,7 +109,8 @@ class CartWidget extends StatelessWidget {
           ),
           Positioned(
             top: 4,
-            right: 4,
+             left: Directionality.of(context) == TextDirection.rtl ? 4 : null,
+  right: Directionality.of(context) == TextDirection.ltr ? 4 : null,
             child: IconButton(
               onPressed: () {
                 // Remove item from cart logic here
