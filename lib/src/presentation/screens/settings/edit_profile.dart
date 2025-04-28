@@ -11,7 +11,7 @@ import 'package:frip_trading/src/features/inital/presentation/inital/inital_bloc
 import 'package:frip_trading/src/presentation/controllers/auth/auth_bloc.dart';
 import 'package:frip_trading/src/presentation/screens/auth/widgets/dropdown_custom.dart';
 import 'package:frip_trading/src/presentation/screens/settings/widgets/customAppbar.dart';
-import 'package:frip_trading/src/presentation/screens/settings/widgets/custom_text_feild.dart';
+import 'package:frip_trading/src/presentation/widgets/custom_text_feild.dart';
 
 class EditProfile extends StatelessWidget {
   EditProfile({super.key});

@@ -58,7 +58,7 @@ class FilterPage extends StatelessWidget {
                     },
                     child: InkWell(
                       onTap: () {
-                        context.read<AuthBloc>().add(const AuthEvent.logout());
+                        // context.read<AuthBloc>().add(const AuthEvent.logout());
                       },
                       child: SvgPicture.asset(
                         'assets/images/Group940.svg',
@@ -74,8 +74,8 @@ class FilterPage extends StatelessWidget {
               const SizedBox(height: 10),
               Center(
                 child: Text(
-                 lang.welcomeMessage,
-                  style: TextStyle(
+                  lang.welcomeMessage,
+                  style: const TextStyle(
                     color: Color(0xFF70b9be),
                     fontSize: 18,
                   ),
@@ -96,11 +96,12 @@ class FilterPage extends StatelessWidget {
                 ],
               ),
               const SizedBox(height: 16),
-               Align(
+              Align(
                 alignment: Alignment.centerLeft,
                 child: Text(
                   lang.productCategoriesTitle,
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+                  style: const TextStyle(
+                      fontWeight: FontWeight.bold, fontSize: 16),
                 ),
               ),
               const SizedBox(height: 8),
@@ -108,7 +109,7 @@ class FilterPage extends StatelessWidget {
                 child: BlocBuilder<CategoriesBloc, CategoriesState>(
                   builder: (context, state) {
                     if (state.loading) {
-                      return Center(
+                      return const Center(
                         child: CircularProgressIndicator(
                           backgroundColor: Colors.white,
                           valueColor:

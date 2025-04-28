@@ -1,9 +1,13 @@
-
 import 'package:frip_trading/core/utils/typedef.dart';
 import 'package:frip_trading/src/data/models/models.dart';
 
 abstract class BaseMainRepository {
   ResultFuture<List<Category>> getCategoies();
- ResultFuture<List<Product>> getProducts({required int categoryId});
- ResultFuture<List<MyOrder>> getmyOrders();
+  ResultFuture<List<Product>> getProducts({required int categoryId});
+  ResultFuture<List<MyOrder>> getmyOrders();
+  ResultFuture<void> sendSupport(
+      {required String title,
+      required String message,
+      required String senderName,
+      required String senderEmail});
 }

@@ -1,4 +1,3 @@
-import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
@@ -12,49 +11,47 @@ import 'package:frip_trading/src/presentation/screens/auth/widgets/search.dart';
 import '../../../../core/services/services_locator.dart';
 
 class MyOrdersPage extends StatelessWidget {
- final List<MyOrder> orders = [
-  MyOrder(
-    id: 1,
-    status: 'pending',
-    serial_number: 'SN12345',
-    delivery_time: '10:00 AM',
-    created_at: DateTime.now(),
-  ),
-  MyOrder(
-    id: 2,
-    status: 'delivery',
-    serial_number: 'SN67890',
-    delivery_time: '12:30 PM',
-    created_at: DateTime.now().subtract(Duration(days: 1)),
-  ),
+  final List<MyOrder> orders = [
     MyOrder(
-    id: 3,
-    status: 'completed',
-    serial_number: 'SN67890',
-    delivery_time: '12:30 PM',
-    created_at: DateTime.now().subtract(Duration(days: 1)),
-  ),
+      id: 1,
+      status: 'pending',
+      serial_number: 'SN12345',
+      delivery_time: '10:00 AM',
+      created_at: DateTime.now(),
+    ),
     MyOrder(
-    id: 3,
-    status: 'canceled',
-    serial_number: 'SN67890',
-    delivery_time: '12:30 PM',
-    created_at: DateTime.now().subtract(Duration(days: 1)),
-  ),
+      id: 2,
+      status: 'delivery',
+      serial_number: 'SN67890',
+      delivery_time: '12:30 PM',
+      created_at: DateTime.now().subtract(const Duration(days: 1)),
+    ),
     MyOrder(
-    id: 3,
-    status: 'partial delivery',
-    serial_number: 'SN67890',
-    delivery_time: '12:30 PM',
-    created_at: DateTime.now().subtract(Duration(days: 1)),
-  ),
-  
-
-];
+      id: 3,
+      status: 'completed',
+      serial_number: 'SN67890',
+      delivery_time: '12:30 PM',
+      created_at: DateTime.now().subtract(const Duration(days: 1)),
+    ),
+    MyOrder(
+      id: 3,
+      status: 'canceled',
+      serial_number: 'SN67890',
+      delivery_time: '12:30 PM',
+      created_at: DateTime.now().subtract(const Duration(days: 1)),
+    ),
+    MyOrder(
+      id: 3,
+      status: 'partial delivery',
+      serial_number: 'SN67890',
+      delivery_time: '12:30 PM',
+      created_at: DateTime.now().subtract(const Duration(days: 1)),
+    ),
+  ];
 
   @override
   Widget build(BuildContext context) {
-     Lang lang = Lang.of(context);
+    Lang lang = Lang.of(context);
     return BlocProvider(
       create: (context) =>
           MyOrdersBloc(sl())..add(const MyOrdersEvent.getMyOrders()),
@@ -63,20 +60,20 @@ class MyOrdersPage extends StatelessWidget {
         body: Column(
           children: [
             Padding(
-                padding: const EdgeInsets.only(
-            top: 45,
-            right: 16,
-            left: 16,
-            bottom: 16,
-          ),
+              padding: const EdgeInsets.only(
+                top: 45,
+                right: 16,
+                left: 16,
+                bottom: 16,
+              ),
               child: Column(
                 children: [
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                       Text(
-                       lang.myOrdersTitle,
-                        style: TextStyle(
+                      Text(
+                        lang.myOrdersTitle,
+                        style: const TextStyle(
                             color: Color(0xFF70b9be),
                             fontWeight: FontWeight.bold,
                             fontSize: 24),
@@ -91,12 +88,14 @@ class MyOrdersPage extends StatelessWidget {
                   Row(
                     children: [
                       Expanded(
-                        child:Search(),
+                        child: Search(),
                       ),
                       const SizedBox(width: 8),
-                     OptionFilter(onTap:(){
-                      print(1);
-                     } ,),
+                      OptionFilter(
+                        onTap: () {
+                          print(1);
+                        },
+                      ),
                     ],
                   ),
                 ],
@@ -104,36 +103,39 @@ class MyOrdersPage extends StatelessWidget {
             ),
             BlocBuilder<MyOrdersBloc, MyOrdersState>(
               builder: (context, state) {
-                    if(state.loading){
-
-                        return Center(
-  child: CircularProgressIndicator(
-    backgroundColor: Colors.white,
-    valueColor: AlwaysStoppedAnimation<Color>(Color(0xFF70b9be)),
-  ),
-);
-
-                         
-                      }
-                      else if(state.error){
-                        return Expanded(
-                          child: Center(
-                            child: Text(
-                             lang.ordersNotFoundMessage,
-                              style: const TextStyle(color:  Color(0xFF70b9be),fontWeight: FontWeight.bold,fontSize: 15),
-                            ),
-                          ),
-                        );
-                      }
+                if (state.loading) {
+                  return const Center(
+                    child: CircularProgressIndicator(
+                      backgroundColor: Colors.white,
+                      valueColor:
+                          AlwaysStoppedAnimation<Color>(Color(0xFF70b9be)),
+                    ),
+                  );
+                } else if (state.error) {
+                  return Expanded(
+                    child: Center(
+                      child: Text(
+                        lang.ordersNotFoundMessage,
+                        style: const TextStyle(
+                            color: Color(0xFF70b9be),
+                            fontWeight: FontWeight.bold,
+                            fontSize: 15),
+                      ),
+                    ),
+                  );
+                }
                 return Expanded(
                   child: Container(
                     color: Colors.white,
                     child: ListView.builder(
-                      itemCount:state.myorders.length /* orders.length */,
+                      itemCount: state.myorders.length /* orders.length */,
                       itemBuilder: (context, index) {
-                        
-                       return OrderCard(length:state.myorders.length,index:index,order:state.myorders[index],lang:lang); 
-         /*                return OrderCard(length:orders.length,index:index,order:orders[index]); */
+                        return OrderCard(
+                            length: state.myorders.length,
+                            index: index,
+                            order: state.myorders[index],
+                            lang: lang);
+                        /*                return OrderCard(length:orders.length,index:index,order:orders[index]); */
                       },
                     ),
                   ),

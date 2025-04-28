@@ -11,10 +11,9 @@ class MainRepository extends BaseMainRepository {
 
   MainRepository({required this.mainRemoteDataSource});
 
- 
   @override
   ResultFuture<List<Category>> getCategoies() async {
-      try {
+    try {
       final response = await mainRemoteDataSource.getCategories();
       return Right(response);
     } on AuthException catch (failure) {
@@ -22,7 +21,7 @@ class MainRepository extends BaseMainRepository {
           ServerFailure.fromResponse(statusCode: failure.statusCode ?? 404));
     }
   }
-  
+
   @override
   ResultFuture<List<Product>> getProducts({required int categoryId}) async {
     try {
@@ -34,21 +33,35 @@ class MainRepository extends BaseMainRepository {
           ServerFailure.fromResponse(statusCode: failure.statusCode ?? 404));
     }
   }
-  
-  @override
-  ResultFuture<List<MyOrder>>getmyOrders()
-  async{
 
- try {
+  @override
+  ResultFuture<List<MyOrder>> getmyOrders() async {
+    try {
       final response = await mainRemoteDataSource.getmyOrders();
       return Right(response);
     } on AuthException catch (failure) {
       return Left(
           ServerFailure.fromResponse(statusCode: failure.statusCode ?? 404));
     }
-
   }
-  
-  
 
+  @override
+  ResultFuture<void> sendSupport(
+      {required String title,
+      required String message,
+      required String senderName,
+      required String senderEmail}) async {
+    try {
+      final response = await mainRemoteDataSource.sendSupport(
+        title: title,
+        message: message,
+        senderName: senderName,
+        senderEmail: senderEmail,
+      );
+      return const Right(unit);
+    } on AuthException catch (failure) {
+      return Left(
+          ServerFailure.fromResponse(statusCode: failure.statusCode ?? 404));
+    }
+  }
 }

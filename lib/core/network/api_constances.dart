@@ -28,6 +28,7 @@ class ApiConstances {
   static const String refreshTokenUrl = "$_baseUrl/refreshToken";
   static const String updatePasswordUrl = "$_baseUrl/change-password";
   static const String updateUrl = "$_baseUrl/profile";
+  static const String sendSupportUrl = "$_baseUrl/supports";
   static const String sspecializationsAndCountryUrl =
       "$_baseUrl/specialization-and-country";
   // Main
