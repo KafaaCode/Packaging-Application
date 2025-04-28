@@ -16,44 +16,49 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$MainPageEvent {
-  int get index => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(int index) navigateToTab,
+    required TResult Function(
+            String title, String message, String senderName, String senderEmail)
+        sendSupport,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(int index)? navigateToTab,
+    TResult? Function(String title, String message, String senderName,
+            String senderEmail)?
+        sendSupport,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(int index)? navigateToTab,
+    TResult Function(String title, String message, String senderName,
+            String senderEmail)?
+        sendSupport,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(NavigateToTab value) navigateToTab,
+    required TResult Function(_SendSupport value) sendSupport,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(NavigateToTab value)? navigateToTab,
+    TResult? Function(_SendSupport value)? sendSupport,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(NavigateToTab value)? navigateToTab,
+    TResult Function(_SendSupport value)? sendSupport,
     required TResult orElse(),
   }) =>
-      throw _privateConstructorUsedError;
-
-  /// Create a copy of MainPageEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  $MainPageEventCopyWith<MainPageEvent> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -62,8 +67,6 @@ abstract class $MainPageEventCopyWith<$Res> {
   factory $MainPageEventCopyWith(
           MainPageEvent value, $Res Function(MainPageEvent) then) =
       _$MainPageEventCopyWithImpl<$Res, MainPageEvent>;
-  @useResult
-  $Res call({int index});
 }
 
 /// @nodoc
@@ -78,27 +81,13 @@ class _$MainPageEventCopyWithImpl<$Res, $Val extends MainPageEvent>
 
   /// Create a copy of MainPageEvent
   /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? index = null,
-  }) {
-    return _then(_value.copyWith(
-      index: null == index
-          ? _value.index
-          : index // ignore: cast_nullable_to_non_nullable
-              as int,
-    ) as $Val);
-  }
 }
 
 /// @nodoc
-abstract class _$$NavigateToTabImplCopyWith<$Res>
-    implements $MainPageEventCopyWith<$Res> {
+abstract class _$$NavigateToTabImplCopyWith<$Res> {
   factory _$$NavigateToTabImplCopyWith(
           _$NavigateToTabImpl value, $Res Function(_$NavigateToTabImpl) then) =
       __$$NavigateToTabImplCopyWithImpl<$Res>;
-  @override
   @useResult
   $Res call({int index});
 }
@@ -163,6 +152,9 @@ class _$NavigateToTabImpl implements NavigateToTab {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(int index) navigateToTab,
+    required TResult Function(
+            String title, String message, String senderName, String senderEmail)
+        sendSupport,
   }) {
     return navigateToTab(index);
   }
@@ -171,6 +163,9 @@ class _$NavigateToTabImpl implements NavigateToTab {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(int index)? navigateToTab,
+    TResult? Function(String title, String message, String senderName,
+            String senderEmail)?
+        sendSupport,
   }) {
     return navigateToTab?.call(index);
   }
@@ -179,6 +174,9 @@ class _$NavigateToTabImpl implements NavigateToTab {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(int index)? navigateToTab,
+    TResult Function(String title, String message, String senderName,
+            String senderEmail)?
+        sendSupport,
     required TResult orElse(),
   }) {
     if (navigateToTab != null) {
@@ -191,6 +189,7 @@ class _$NavigateToTabImpl implements NavigateToTab {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(NavigateToTab value) navigateToTab,
+    required TResult Function(_SendSupport value) sendSupport,
   }) {
     return navigateToTab(this);
   }
@@ -199,6 +198,7 @@ class _$NavigateToTabImpl implements NavigateToTab {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(NavigateToTab value)? navigateToTab,
+    TResult? Function(_SendSupport value)? sendSupport,
   }) {
     return navigateToTab?.call(this);
   }
@@ -207,6 +207,7 @@ class _$NavigateToTabImpl implements NavigateToTab {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(NavigateToTab value)? navigateToTab,
+    TResult Function(_SendSupport value)? sendSupport,
     required TResult orElse(),
   }) {
     if (navigateToTab != null) {
@@ -219,20 +220,206 @@ class _$NavigateToTabImpl implements NavigateToTab {
 abstract class NavigateToTab implements MainPageEvent {
   const factory NavigateToTab(final int index) = _$NavigateToTabImpl;
 
-  @override
   int get index;
 
   /// Create a copy of MainPageEvent
   /// with the given fields replaced by the non-null parameter values.
-  @override
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$NavigateToTabImplCopyWith<_$NavigateToTabImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
+abstract class _$$SendSupportImplCopyWith<$Res> {
+  factory _$$SendSupportImplCopyWith(
+          _$SendSupportImpl value, $Res Function(_$SendSupportImpl) then) =
+      __$$SendSupportImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call(
+      {String title, String message, String senderName, String senderEmail});
+}
+
+/// @nodoc
+class __$$SendSupportImplCopyWithImpl<$Res>
+    extends _$MainPageEventCopyWithImpl<$Res, _$SendSupportImpl>
+    implements _$$SendSupportImplCopyWith<$Res> {
+  __$$SendSupportImplCopyWithImpl(
+      _$SendSupportImpl _value, $Res Function(_$SendSupportImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of MainPageEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? title = null,
+    Object? message = null,
+    Object? senderName = null,
+    Object? senderEmail = null,
+  }) {
+    return _then(_$SendSupportImpl(
+      title: null == title
+          ? _value.title
+          : title // ignore: cast_nullable_to_non_nullable
+              as String,
+      message: null == message
+          ? _value.message
+          : message // ignore: cast_nullable_to_non_nullable
+              as String,
+      senderName: null == senderName
+          ? _value.senderName
+          : senderName // ignore: cast_nullable_to_non_nullable
+              as String,
+      senderEmail: null == senderEmail
+          ? _value.senderEmail
+          : senderEmail // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$SendSupportImpl implements _SendSupport {
+  const _$SendSupportImpl(
+      {required this.title,
+      required this.message,
+      required this.senderName,
+      required this.senderEmail});
+
+  @override
+  final String title;
+  @override
+  final String message;
+  @override
+  final String senderName;
+  @override
+  final String senderEmail;
+
+  @override
+  String toString() {
+    return 'MainPageEvent.sendSupport(title: $title, message: $message, senderName: $senderName, senderEmail: $senderEmail)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$SendSupportImpl &&
+            (identical(other.title, title) || other.title == title) &&
+            (identical(other.message, message) || other.message == message) &&
+            (identical(other.senderName, senderName) ||
+                other.senderName == senderName) &&
+            (identical(other.senderEmail, senderEmail) ||
+                other.senderEmail == senderEmail));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, title, message, senderName, senderEmail);
+
+  /// Create a copy of MainPageEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$SendSupportImplCopyWith<_$SendSupportImpl> get copyWith =>
+      __$$SendSupportImplCopyWithImpl<_$SendSupportImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(int index) navigateToTab,
+    required TResult Function(
+            String title, String message, String senderName, String senderEmail)
+        sendSupport,
+  }) {
+    return sendSupport(title, message, senderName, senderEmail);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(int index)? navigateToTab,
+    TResult? Function(String title, String message, String senderName,
+            String senderEmail)?
+        sendSupport,
+  }) {
+    return sendSupport?.call(title, message, senderName, senderEmail);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(int index)? navigateToTab,
+    TResult Function(String title, String message, String senderName,
+            String senderEmail)?
+        sendSupport,
+    required TResult orElse(),
+  }) {
+    if (sendSupport != null) {
+      return sendSupport(title, message, senderName, senderEmail);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(NavigateToTab value) navigateToTab,
+    required TResult Function(_SendSupport value) sendSupport,
+  }) {
+    return sendSupport(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(NavigateToTab value)? navigateToTab,
+    TResult? Function(_SendSupport value)? sendSupport,
+  }) {
+    return sendSupport?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(NavigateToTab value)? navigateToTab,
+    TResult Function(_SendSupport value)? sendSupport,
+    required TResult orElse(),
+  }) {
+    if (sendSupport != null) {
+      return sendSupport(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _SendSupport implements MainPageEvent {
+  const factory _SendSupport(
+      {required final String title,
+      required final String message,
+      required final String senderName,
+      required final String senderEmail}) = _$SendSupportImpl;
+
+  String get title;
+  String get message;
+  String get senderName;
+  String get senderEmail;
+
+  /// Create a copy of MainPageEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$SendSupportImplCopyWith<_$SendSupportImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
 mixin _$MainPageState {
   int get selectedIndex => throw _privateConstructorUsedError;
+  String? get errorMessage => throw _privateConstructorUsedError;
+  String? get successMessage => throw _privateConstructorUsedError;
+  bool get isLoading => throw _privateConstructorUsedError;
 
   /// Create a copy of MainPageState
   /// with the given fields replaced by the non-null parameter values.
@@ -247,7 +434,11 @@ abstract class $MainPageStateCopyWith<$Res> {
           MainPageState value, $Res Function(MainPageState) then) =
       _$MainPageStateCopyWithImpl<$Res, MainPageState>;
   @useResult
-  $Res call({int selectedIndex});
+  $Res call(
+      {int selectedIndex,
+      String? errorMessage,
+      String? successMessage,
+      bool isLoading});
 }
 
 /// @nodoc
@@ -266,12 +457,27 @@ class _$MainPageStateCopyWithImpl<$Res, $Val extends MainPageState>
   @override
   $Res call({
     Object? selectedIndex = null,
+    Object? errorMessage = freezed,
+    Object? successMessage = freezed,
+    Object? isLoading = null,
   }) {
     return _then(_value.copyWith(
       selectedIndex: null == selectedIndex
           ? _value.selectedIndex
           : selectedIndex // ignore: cast_nullable_to_non_nullable
               as int,
+      errorMessage: freezed == errorMessage
+          ? _value.errorMessage
+          : errorMessage // ignore: cast_nullable_to_non_nullable
+              as String?,
+      successMessage: freezed == successMessage
+          ? _value.successMessage
+          : successMessage // ignore: cast_nullable_to_non_nullable
+              as String?,
+      isLoading: null == isLoading
+          ? _value.isLoading
+          : isLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
     ) as $Val);
   }
 }
@@ -284,7 +490,11 @@ abstract class _$$MainPageStateImplCopyWith<$Res>
       __$$MainPageStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({int selectedIndex});
+  $Res call(
+      {int selectedIndex,
+      String? errorMessage,
+      String? successMessage,
+      bool isLoading});
 }
 
 /// @nodoc
@@ -301,12 +511,27 @@ class __$$MainPageStateImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? selectedIndex = null,
+    Object? errorMessage = freezed,
+    Object? successMessage = freezed,
+    Object? isLoading = null,
   }) {
     return _then(_$MainPageStateImpl(
       selectedIndex: null == selectedIndex
           ? _value.selectedIndex
           : selectedIndex // ignore: cast_nullable_to_non_nullable
               as int,
+      errorMessage: freezed == errorMessage
+          ? _value.errorMessage
+          : errorMessage // ignore: cast_nullable_to_non_nullable
+              as String?,
+      successMessage: freezed == successMessage
+          ? _value.successMessage
+          : successMessage // ignore: cast_nullable_to_non_nullable
+              as String?,
+      isLoading: null == isLoading
+          ? _value.isLoading
+          : isLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -314,14 +539,26 @@ class __$$MainPageStateImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$MainPageStateImpl implements _MainPageState {
-  const _$MainPageStateImpl({required this.selectedIndex});
+  const _$MainPageStateImpl(
+      {this.selectedIndex = 0,
+      this.errorMessage,
+      this.successMessage,
+      this.isLoading = false});
 
   @override
+  @JsonKey()
   final int selectedIndex;
+  @override
+  final String? errorMessage;
+  @override
+  final String? successMessage;
+  @override
+  @JsonKey()
+  final bool isLoading;
 
   @override
   String toString() {
-    return 'MainPageState(selectedIndex: $selectedIndex)';
+    return 'MainPageState(selectedIndex: $selectedIndex, errorMessage: $errorMessage, successMessage: $successMessage, isLoading: $isLoading)';
   }
 
   @override
@@ -330,11 +567,18 @@ class _$MainPageStateImpl implements _MainPageState {
         (other.runtimeType == runtimeType &&
             other is _$MainPageStateImpl &&
             (identical(other.selectedIndex, selectedIndex) ||
-                other.selectedIndex == selectedIndex));
+                other.selectedIndex == selectedIndex) &&
+            (identical(other.errorMessage, errorMessage) ||
+                other.errorMessage == errorMessage) &&
+            (identical(other.successMessage, successMessage) ||
+                other.successMessage == successMessage) &&
+            (identical(other.isLoading, isLoading) ||
+                other.isLoading == isLoading));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, selectedIndex);
+  int get hashCode => Object.hash(
+      runtimeType, selectedIndex, errorMessage, successMessage, isLoading);
 
   /// Create a copy of MainPageState
   /// with the given fields replaced by the non-null parameter values.
@@ -346,11 +590,20 @@ class _$MainPageStateImpl implements _MainPageState {
 }
 
 abstract class _MainPageState implements MainPageState {
-  const factory _MainPageState({required final int selectedIndex}) =
-      _$MainPageStateImpl;
+  const factory _MainPageState(
+      {final int selectedIndex,
+      final String? errorMessage,
+      final String? successMessage,
+      final bool isLoading}) = _$MainPageStateImpl;
 
   @override
   int get selectedIndex;
+  @override
+  String? get errorMessage;
+  @override
+  String? get successMessage;
+  @override
+  bool get isLoading;
 
   /// Create a copy of MainPageState
   /// with the given fields replaced by the non-null parameter values.

@@ -14,25 +14,25 @@ import 'package:frip_trading/src/presentation/screens/auth/widgets/search.dart';
 import 'package:frip_trading/src/presentation/screens/main/deitels_product.dart';
 
 class Products extends StatelessWidget {
-   final int  cartegriesId;
+  final int cartegriesId;
   const Products({super.key, required this.cartegriesId});
 
   @override
   Widget build(BuildContext context) {
-  Lang lang = Lang.of(context);
+    Lang lang = Lang.of(context);
     return BlocProvider(
       create: (context) => ProductBloc(mainRepository: sl())
-        ..add( ProductEvent.getProducts(categoryId: cartegriesId)),
+        ..add(ProductEvent.getProducts(categoryId: cartegriesId)),
       child: Scaffold(
         body: Container(
           color: Colors.white,
           child: Padding(
-              padding: const EdgeInsets.only(
-            top: 45,
-            right: 16,
-            left: 16,
-            bottom: 16,
-          ),
+            padding: const EdgeInsets.only(
+              top: 45,
+              right: 16,
+              left: 16,
+              bottom: 16,
+            ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -55,7 +55,7 @@ class Products extends StatelessWidget {
                         ),
                         Text(
                           lang.productTitle,
-                          style: TextStyle(
+                          style: const TextStyle(
                               color: Color(0xFF70b9be),
                               fontWeight: FontWeight.bold,
                               fontSize: 23),
@@ -73,8 +73,8 @@ class Products extends StatelessWidget {
                 ),
                 const SizedBox(height: 10),
                 Text(
-                 lang.productCategoryDescription,
-                  style: TextStyle(
+                  lang.productCategoryDescription,
+                  style: const TextStyle(
                     color: Color(0xFF70b9be),
                     fontSize: 15,
                   ),
@@ -92,38 +92,38 @@ class Products extends StatelessWidget {
                   ],
                 ),
                 const SizedBox(height: 16),
-                 Align(
+                Align(
                   alignment: Alignment.centerLeft,
                   child: Text(
                     lang.productTitle,
-                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+                    style: const TextStyle(
+                        fontWeight: FontWeight.bold, fontSize: 16),
                   ),
                 ),
                 const SizedBox(height: 8),
                 Expanded(
                   child: BlocBuilder<ProductBloc, ProductState>(
                     builder: (context, state) {
-                      if(state.loading){
-
-                        return Center(
-  child: CircularProgressIndicator(
-    backgroundColor: Colors.white,
-    valueColor: AlwaysStoppedAnimation<Color>(Color(0xFF70b9be)),
-  ),
-);
-
-                         
-                      }
-                      else if(state.error){
+                      if (state.loading) {
+                        return const Center(
+                          child: CircularProgressIndicator(
+                            backgroundColor: Colors.white,
+                            valueColor: AlwaysStoppedAnimation<Color>(
+                                Color(0xFF70b9be)),
+                          ),
+                        );
+                      } else if (state.error) {
                         return Center(
                           child: Text(
-                           lang.productsNotFoundMessage,
-                            style: const TextStyle(color:  Color(0xFF70b9be),fontWeight: FontWeight.bold,fontSize: 15),
+                            lang.productsNotFoundMessage,
+                            style: const TextStyle(
+                                color: Color(0xFF70b9be),
+                                fontWeight: FontWeight.bold,
+                                fontSize: 15),
                           ),
                         );
                       }
-                  
-                    
+
                       return SingleChildScrollView(
                         child: Center(
                           child: Wrap(
@@ -140,46 +140,64 @@ class Products extends StatelessWidget {
                                           : width * 0.43;
 
                               return InkWell(
-                             onTap: () {
-                              
-  Navigator.push(
-    context,
-    PageRouteBuilder(
-      pageBuilder: (context, animation, secondaryAnimation) {
-        return BlocProvider(
-create: (_) => CounterBloc(
-  min: state.products[i].request_number ?? 0,
-  initial: context.read<CartBloc>().state.items
-              .firstWhere(
-                (item) => item.product.id == state.products[i].id,
-                orElse: () => CartItem(product: state.products[i], quantity: state.products[i].request_number ?? 0),
-              )
-              .quantity,
-),
+                                onTap: () {
+                                  Navigator.push(
+                                    context,
+                                    PageRouteBuilder(
+                                      pageBuilder: (context, animation,
+                                          secondaryAnimation) {
+                                        return BlocProvider(
+                                          create: (_) => CounterBloc(
+                                            min: state.products[i]
+                                                    .request_number ??
+                                                0,
+                                            initial: context
+                                                .read<CartBloc>()
+                                                .state
+                                                .items
+                                                .firstWhere(
+                                                  (item) =>
+                                                      item.product.id ==
+                                                      state.products[i].id,
+                                                  orElse: () => CartItem(
+                                                      product:
+                                                          state.products[i],
+                                                      quantity: state
+                                                              .products[i]
+                                                              .request_number ??
+                                                          0),
+                                                )
+                                                .quantity,
+                                          ),
+                                          child: ProductDetailsPage(
+                                              product: state.products[i]),
+                                        );
+                                      },
+                                      transitionsBuilder: (context, animation,
+                                          secondaryAnimation, child) {
+                                        const begin = Offset(1.0, 0.0);
+                                        const end = Offset.zero;
+                                        const curve = Curves.easeInOut;
+                                        var tween = Tween(
+                                                begin: begin, end: end)
+                                            .chain(CurveTween(curve: curve));
+                                        var offsetAnimation =
+                                            animation.drive(tween);
 
-          child: ProductDetailsPage(product: state.products[i]),
-        );
-      },
-      transitionsBuilder: (context, animation, secondaryAnimation, child) {
-        const begin = Offset(1.0, 0.0);
-        const end = Offset.zero;
-        const curve = Curves.easeInOut;
-        var tween = Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
-        var offsetAnimation = animation.drive(tween);
-
-        return SlideTransition(position: offsetAnimation, child: child);
-      },
-    ),
-  );
-},
-
+                                        return SlideTransition(
+                                            position: offsetAnimation,
+                                            child: child);
+                                      },
+                                    ),
+                                  );
+                                },
                                 borderRadius: BorderRadius.circular(12),
                                 child: SizedBox(
                                     width: itemWidth,
                                     child: MainCard(
                                       name: state.products[i].name.toString(),
                                       imageUrl:
-                                         'assets/images/Rectangle569.png',
+                                          'assets/images/Rectangle569.png',
                                     )),
                               );
                             }),

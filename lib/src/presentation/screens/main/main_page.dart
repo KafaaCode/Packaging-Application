@@ -5,6 +5,7 @@ import 'package:frip_trading/src/presentation/controllers/main_bage/main_page_bl
 import 'package:frip_trading/src/presentation/screens/main/categories.dart';
 import 'package:frip_trading/src/presentation/screens/main/my_order.dart';
 import 'package:frip_trading/src/presentation/screens/main/cart.dart';
+import 'package:frip_trading/src/presentation/screens/main/supports_page.dart';
 import 'package:frip_trading/src/presentation/screens/settings/profile.dart';
 
 class MainPage extends StatelessWidget {
@@ -18,7 +19,9 @@ class MainPage extends StatelessWidget {
       const FilterPage(), // Home
       MyOrdersPage(), // Order
       const CartDetailsPage(), // Cart
-      const Placeholder(), // Support
+      SupportsPage(),
+
+      ///support
       const Profile(), // Profile
     ];
 
@@ -29,7 +32,9 @@ class MainPage extends StatelessWidget {
           bottomNavigationBar: BottomNavigationBar(
             currentIndex: state.selectedIndex,
             onTap: (index) {
-              context.read<MainPageBloc>().add(MainPageEvent.navigateToTab(index));
+              context
+                  .read<MainPageBloc>()
+                  .add(MainPageEvent.navigateToTab(index));
             },
             selectedItemColor: theme.primaryColor,
             unselectedItemColor: Colors.grey,
@@ -37,35 +42,45 @@ class MainPage extends StatelessWidget {
               BottomNavigationBarItem(
                 icon: SvgPicture.asset(
                   'assets/SVG/home.svg',
-                  color: state.selectedIndex == 0 ? theme.primaryColor : Colors.grey,
+                  color: state.selectedIndex == 0
+                      ? theme.primaryColor
+                      : Colors.grey,
                 ),
                 label: 'Home',
               ),
               BottomNavigationBarItem(
                 icon: SvgPicture.asset(
                   'assets/SVG/order.svg',
-                  color: state.selectedIndex == 1 ? theme.primaryColor : Colors.grey,
+                  color: state.selectedIndex == 1
+                      ? theme.primaryColor
+                      : Colors.grey,
                 ),
                 label: 'Orders',
               ),
               BottomNavigationBarItem(
                 icon: SvgPicture.asset(
                   'assets/SVG/cart.svg',
-                  color: state.selectedIndex == 2 ? theme.primaryColor : Colors.grey,
+                  color: state.selectedIndex == 2
+                      ? theme.primaryColor
+                      : Colors.grey,
                 ),
                 label: 'Cart',
               ),
               BottomNavigationBarItem(
                 icon: SvgPicture.asset(
                   'assets/SVG/support.svg',
-                  color: state.selectedIndex == 3 ? theme.primaryColor : Colors.grey,
+                  color: state.selectedIndex == 3
+                      ? theme.primaryColor
+                      : Colors.grey,
                 ),
                 label: 'Support',
               ),
               BottomNavigationBarItem(
                 icon: SvgPicture.asset(
                   'assets/SVG/profile.svg',
-                  color: state.selectedIndex == 4 ? theme.primaryColor : Colors.grey,
+                  color: state.selectedIndex == 4
+                      ? theme.primaryColor
+                      : Colors.grey,
                 ),
                 label: 'Profile',
               ),

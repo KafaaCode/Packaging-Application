@@ -16,7 +16,6 @@ class ProductDetailsPage extends StatelessWidget {
   final Product product;
   final int minQuantity = 10;
 
-
   final String fullDescription =
       "The Nike Throwback Pullover Hoodie is made from premium French terry fabric. "
       "It’s designed for performance and comfort. Stylish and warm for everyday use. "
@@ -27,7 +26,7 @@ class ProductDetailsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Lang lang = Lang.of(context);
-    
+
     return Scaffold(
       body: Column(
         children: [
@@ -43,14 +42,17 @@ class ProductDetailsPage extends StatelessWidget {
                 ),
                 Positioned(
                   top: 45,
-                        left: Directionality.of(context) == TextDirection.ltr ? 10 : null,
-  right: Directionality.of(context) == TextDirection.rtl ? 10 : null,
+                  left: Directionality.of(context) == TextDirection.ltr
+                      ? 10
+                      : null,
+                  right: Directionality.of(context) == TextDirection.rtl
+                      ? 10
+                      : null,
                   child: CircleAvatar(
                     radius: 25,
                     backgroundColor: Colors.white,
                     child: IconButton(
                       icon: const Icon(
-                        
                         Icons.arrow_back,
                         color: Color(0xFF70b9be),
                       ),
@@ -62,8 +64,12 @@ class ProductDetailsPage extends StatelessWidget {
                 ),
                 Positioned(
                   top: 45,
-                                      left: Directionality.of(context) == TextDirection.rtl ? 10 : null,
-  right: Directionality.of(context) == TextDirection.ltr ? 10 : null,
+                  left: Directionality.of(context) == TextDirection.rtl
+                      ? 10
+                      : null,
+                  right: Directionality.of(context) == TextDirection.ltr
+                      ? 10
+                      : null,
                   child: SvgPicture.asset(
                     'assets/images/Group940.svg',
                     height: 50,
@@ -81,22 +87,25 @@ class ProductDetailsPage extends StatelessWidget {
                 children: [
                   Text(
                     product.category?.name ?? '',
-                    style: TextStyle(color: Colors.grey),
+                    style: const TextStyle(color: Colors.grey),
                   ),
                   const SizedBox(height: 8),
                   Text(
                     product.name,
-                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                    style: const TextStyle(
+                        fontSize: 20, fontWeight: FontWeight.bold),
                   ),
                   const SizedBox(height: 8),
-                   Text(lang.priceLabel, style: TextStyle(color: Colors.grey)),
+                  Text(lang.priceLabel,
+                      style: const TextStyle(color: Colors.grey)),
                   Text("\$${product.price}",
-                      style:
-                          TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+                      style: const TextStyle(
+                          fontSize: 18, fontWeight: FontWeight.bold)),
                   const SizedBox(height: 12),
-                Text(
-                  lang.descriptionLabel,
-                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                  Text(
+                    lang.descriptionLabel,
+                    style: const TextStyle(
+                        fontSize: 16, fontWeight: FontWeight.bold),
                   ),
                   const SizedBox(height: 4),
                   Expanded(
@@ -134,9 +143,9 @@ class ProductDetailsPage extends StatelessWidget {
                               Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                   Text(
-                                  lang.minimumOrderText,
-                                    style: TextStyle(
+                                  Text(
+                                    lang.minimumOrderText,
+                                    style: const TextStyle(
                                         fontWeight: FontWeight.bold,
                                         fontSize: 14),
                                   ),
@@ -181,46 +190,45 @@ class ProductDetailsPage extends StatelessWidget {
                         },
                       ),
                       const SizedBox(height: 10),
-                       Row(
+                      Row(
                         children: [
-                        
-                  
                           Expanded(
                             flex: 1,
                             child: ElevatedButton(
                               style: ElevatedButton.styleFrom(
                                 backgroundColor: const Color(0xFF70b9be),
-                                padding: const EdgeInsets.symmetric(vertical: 13),
+                                padding:
+                                    const EdgeInsets.symmetric(vertical: 13),
                                 shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(15),
                                 ),
                               ),
                               onPressed: () {
-                              context.read<MainPageBloc>().add(const MainPageEvent.navigateToTab(2));
-                              AppRouter.router.navigateTo(
-                                          context, RoutesNames.mainRoute,
-                                          transition:
-                                              TransitionType.inFromRight,
-                                          routeSettings: RouteSettings(
-                                            ),
-                                          transitionDuration: const Duration(
-                                              milliseconds: 400));
+                                context
+                                    .read<MainPageBloc>()
+                                    .add(const MainPageEvent.navigateToTab(2));
+                                AppRouter.router.navigateTo(
+                                    context, RoutesNames.mainRoute,
+                                    transition: TransitionType.inFromRight,
+                                    routeSettings: const RouteSettings(),
+                                    transitionDuration:
+                                        const Duration(milliseconds: 400));
                               },
                               child: const Icon(
-                                 size: 31.0,
-                                
+                                size: 31.0,
                                 Icons.shopping_cart_outlined,
                                 color: Colors.white,
                               ),
                             ),
                           ),
-        const SizedBox(width: 10),
-                            Expanded(
+                          const SizedBox(width: 10),
+                          Expanded(
                             flex: 3,
                             child: ElevatedButton(
                               style: ElevatedButton.styleFrom(
                                 backgroundColor: const Color(0xFF70b9be),
-                                padding: const EdgeInsets.symmetric(vertical: 16),
+                                padding:
+                                    const EdgeInsets.symmetric(vertical: 16),
                                 shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(15),
                                 ),
@@ -230,7 +238,8 @@ class ProductDetailsPage extends StatelessWidget {
                               },
                               child: Text(
                                 lang.addToCartButton,
-                                style: const TextStyle(fontSize: 18, color: Colors.white),
+                                style: const TextStyle(
+                                    fontSize: 18, color: Colors.white),
                               ),
                             ),
                           ),
@@ -247,7 +256,7 @@ class ProductDetailsPage extends StatelessWidget {
     );
   }
 
-  void AddToCard(BuildContext context,Lang lang) {
+  void AddToCard(BuildContext context, Lang lang) {
     final cartBloc = context.read<CartBloc>();
     final counterBloc = context.read<CounterBloc>();
     final quantity = counterBloc.state.count;
@@ -259,11 +268,10 @@ class ProductDetailsPage extends StatelessWidget {
 
     if (existingItem.quantity == quantity) {
       ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-            content: Text(
-                lang.productAlreadyExistsMessage,
-                style: TextStyle(color: Color(0xFF70b9be))),
-            backgroundColor: Color.fromARGB(255, 239, 244, 245)),
+        SnackBar(
+            content: Text(lang.productAlreadyExistsMessage,
+                style: const TextStyle(color: Color(0xFF70b9be))),
+            backgroundColor: const Color.fromARGB(255, 239, 244, 245)),
       );
     } else {
       final newCartItem = CartItem(product: product, quantity: quantity);
@@ -271,10 +279,10 @@ class ProductDetailsPage extends StatelessWidget {
       cartBloc.add(CartEvent.addProduct(newCartItem));
 
       ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
+        SnackBar(
             content: Text(lang.productAddedToCartMessage,
-                style: TextStyle(color: Color(0xFF70b9be))),
-            backgroundColor: Color.fromARGB(255, 239, 244, 245)),
+                style: const TextStyle(color: Color(0xFF70b9be))),
+            backgroundColor: const Color.fromARGB(255, 239, 244, 245)),
       );
     }
   }

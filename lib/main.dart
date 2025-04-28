@@ -50,11 +50,10 @@ class MainApp extends StatelessWidget {
       builder: (context, child) {
         return MultiBlocProvider(
           providers: [
-                BlocProvider(
-                create: (_) => MainPageBloc(),
+            BlocProvider(
+              create: (_) => MainPageBloc(sl()),
               lazy: false,
             ),
-    
             BlocProvider(
               create: (_) => CartBloc(),
               lazy: false,

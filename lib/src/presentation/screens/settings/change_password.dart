@@ -7,7 +7,7 @@ import 'package:frip_trading/core/routes/routes_name.dart';
 import 'package:frip_trading/core/utils/loading_dialog.dart';
 import 'package:frip_trading/src/presentation/controllers/auth/auth_bloc.dart';
 import 'package:frip_trading/src/presentation/screens/settings/widgets/customAppbar.dart';
-import 'package:frip_trading/src/presentation/screens/settings/widgets/custom_text_feild.dart';
+import 'package:frip_trading/src/presentation/widgets/custom_text_feild.dart';
 
 class ChangePassword extends StatelessWidget {
   ChangePassword({super.key});

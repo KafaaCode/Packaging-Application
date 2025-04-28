@@ -26,7 +26,7 @@ class ButtonCostum extends StatelessWidget {
         text,
         style: theme.textTheme.bodySmall?.copyWith(
           color: Colors.white,
-          fontWeight: FontWeight.w400,
+          fontWeight: FontWeight.w600,
           fontSize: 20,
         ),
       ),
