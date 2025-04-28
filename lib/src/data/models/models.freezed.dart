@@ -1756,6 +1756,7 @@ mixin _$Product {
   int? get request_number => throw _privateConstructorUsedError;
   String get price => throw _privateConstructorUsedError;
   int get active => throw _privateConstructorUsedError;
+  int? get quantity => throw _privateConstructorUsedError;
 
   /// Serializes this Product to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -1780,7 +1781,8 @@ abstract class $ProductCopyWith<$Res> {
       Category? category,
       int? request_number,
       String price,
-      int active});
+      int active,
+      int? quantity});
 
   $CategoryCopyWith<$Res>? get category;
 }
@@ -1809,6 +1811,7 @@ class _$ProductCopyWithImpl<$Res, $Val extends Product>
     Object? request_number = freezed,
     Object? price = null,
     Object? active = null,
+    Object? quantity = freezed,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -1847,6 +1850,10 @@ class _$ProductCopyWithImpl<$Res, $Val extends Product>
           ? _value.active
           : active // ignore: cast_nullable_to_non_nullable
               as int,
+      quantity: freezed == quantity
+          ? _value.quantity
+          : quantity // ignore: cast_nullable_to_non_nullable
+              as int?,
     ) as $Val);
   }
 
@@ -1881,7 +1888,8 @@ abstract class _$$ProductImplCopyWith<$Res> implements $ProductCopyWith<$Res> {
       Category? category,
       int? request_number,
       String price,
-      int active});
+      int active,
+      int? quantity});
 
   @override
   $CategoryCopyWith<$Res>? get category;
@@ -1909,6 +1917,7 @@ class __$$ProductImplCopyWithImpl<$Res>
     Object? request_number = freezed,
     Object? price = null,
     Object? active = null,
+    Object? quantity = freezed,
   }) {
     return _then(_$ProductImpl(
       id: null == id
@@ -1947,6 +1956,10 @@ class __$$ProductImplCopyWithImpl<$Res>
           ? _value.active
           : active // ignore: cast_nullable_to_non_nullable
               as int,
+      quantity: freezed == quantity
+          ? _value.quantity
+          : quantity // ignore: cast_nullable_to_non_nullable
+              as int?,
     ));
   }
 }
@@ -1963,7 +1976,8 @@ class _$ProductImpl implements _Product {
       this.category,
       this.request_number,
       required this.price,
-      required this.active});
+      required this.active,
+      this.quantity});
 
   factory _$ProductImpl.fromJson(Map<String, dynamic> json) =>
       _$$ProductImplFromJson(json);
@@ -1986,10 +2000,12 @@ class _$ProductImpl implements _Product {
   final String price;
   @override
   final int active;
+  @override
+  final int? quantity;
 
   @override
   String toString() {
-    return 'Product(id: $id, name: $name, image: $image, serial_numbe: $serial_numbe, description: $description, category: $category, request_number: $request_number, price: $price, active: $active)';
+    return 'Product(id: $id, name: $name, image: $image, serial_numbe: $serial_numbe, description: $description, category: $category, request_number: $request_number, price: $price, active: $active, quantity: $quantity)';
   }
 
   @override
@@ -2009,13 +2025,15 @@ class _$ProductImpl implements _Product {
             (identical(other.request_number, request_number) ||
                 other.request_number == request_number) &&
             (identical(other.price, price) || other.price == price) &&
-            (identical(other.active, active) || other.active == active));
+            (identical(other.active, active) || other.active == active) &&
+            (identical(other.quantity, quantity) ||
+                other.quantity == quantity));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, id, name, image, serial_numbe,
-      description, category, request_number, price, active);
+      description, category, request_number, price, active, quantity);
 
   /// Create a copy of Product
   /// with the given fields replaced by the non-null parameter values.
@@ -2043,7 +2061,8 @@ abstract class _Product implements Product {
       final Category? category,
       final int? request_number,
       required final String price,
-      required final int active}) = _$ProductImpl;
+      required final int active,
+      final int? quantity}) = _$ProductImpl;
 
   factory _Product.fromJson(Map<String, dynamic> json) = _$ProductImpl.fromJson;
 
@@ -2065,6 +2084,8 @@ abstract class _Product implements Product {
   String get price;
   @override
   int get active;
+  @override
+  int? get quantity;
 
   /// Create a copy of Product
   /// with the given fields replaced by the non-null parameter values.
@@ -2081,9 +2102,11 @@ MyOrder _$MyOrderFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$MyOrder {
   int get id => throw _privateConstructorUsedError;
-  String get status => throw _privateConstructorUsedError;
-  String get serial_number => throw _privateConstructorUsedError;
-  String get delivery_time => throw _privateConstructorUsedError;
+  String? get status => throw _privateConstructorUsedError;
+  String? get serial_number => throw _privateConstructorUsedError;
+  String? get delivery_time =>
+      throw _privateConstructorUsedError; /* double ? total_price,
+    Product? product, */
   DateTime? get created_at => throw _privateConstructorUsedError;
 
   /// Serializes this MyOrder to a JSON map.
@@ -2102,9 +2125,9 @@ abstract class $MyOrderCopyWith<$Res> {
   @useResult
   $Res call(
       {int id,
-      String status,
-      String serial_number,
-      String delivery_time,
+      String? status,
+      String? serial_number,
+      String? delivery_time,
       DateTime? created_at});
 }
 
@@ -2124,9 +2147,9 @@ class _$MyOrderCopyWithImpl<$Res, $Val extends MyOrder>
   @override
   $Res call({
     Object? id = null,
-    Object? status = null,
-    Object? serial_number = null,
-    Object? delivery_time = null,
+    Object? status = freezed,
+    Object? serial_number = freezed,
+    Object? delivery_time = freezed,
     Object? created_at = freezed,
   }) {
     return _then(_value.copyWith(
@@ -2134,18 +2157,18 @@ class _$MyOrderCopyWithImpl<$Res, $Val extends MyOrder>
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int,
-      status: null == status
+      status: freezed == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
-              as String,
-      serial_number: null == serial_number
+              as String?,
+      serial_number: freezed == serial_number
           ? _value.serial_number
           : serial_number // ignore: cast_nullable_to_non_nullable
-              as String,
-      delivery_time: null == delivery_time
+              as String?,
+      delivery_time: freezed == delivery_time
           ? _value.delivery_time
           : delivery_time // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       created_at: freezed == created_at
           ? _value.created_at
           : created_at // ignore: cast_nullable_to_non_nullable
@@ -2163,9 +2186,9 @@ abstract class _$$MyOrderImplCopyWith<$Res> implements $MyOrderCopyWith<$Res> {
   @useResult
   $Res call(
       {int id,
-      String status,
-      String serial_number,
-      String delivery_time,
+      String? status,
+      String? serial_number,
+      String? delivery_time,
       DateTime? created_at});
 }
 
@@ -2183,9 +2206,9 @@ class __$$MyOrderImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? id = null,
-    Object? status = null,
-    Object? serial_number = null,
-    Object? delivery_time = null,
+    Object? status = freezed,
+    Object? serial_number = freezed,
+    Object? delivery_time = freezed,
     Object? created_at = freezed,
   }) {
     return _then(_$MyOrderImpl(
@@ -2193,18 +2216,18 @@ class __$$MyOrderImplCopyWithImpl<$Res>
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int,
-      status: null == status
+      status: freezed == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
-              as String,
-      serial_number: null == serial_number
+              as String?,
+      serial_number: freezed == serial_number
           ? _value.serial_number
           : serial_number // ignore: cast_nullable_to_non_nullable
-              as String,
-      delivery_time: null == delivery_time
+              as String?,
+      delivery_time: freezed == delivery_time
           ? _value.delivery_time
           : delivery_time // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       created_at: freezed == created_at
           ? _value.created_at
           : created_at // ignore: cast_nullable_to_non_nullable
@@ -2218,9 +2241,9 @@ class __$$MyOrderImplCopyWithImpl<$Res>
 class _$MyOrderImpl implements _MyOrder {
   const _$MyOrderImpl(
       {required this.id,
-      required this.status,
-      required this.serial_number,
-      required this.delivery_time,
+      this.status,
+      this.serial_number,
+      this.delivery_time,
       this.created_at});
 
   factory _$MyOrderImpl.fromJson(Map<String, dynamic> json) =>
@@ -2229,11 +2252,13 @@ class _$MyOrderImpl implements _MyOrder {
   @override
   final int id;
   @override
-  final String status;
+  final String? status;
   @override
-  final String serial_number;
+  final String? serial_number;
   @override
-  final String delivery_time;
+  final String? delivery_time;
+/* double ? total_price,
+    Product? product, */
   @override
   final DateTime? created_at;
 
@@ -2281,9 +2306,9 @@ class _$MyOrderImpl implements _MyOrder {
 abstract class _MyOrder implements MyOrder {
   const factory _MyOrder(
       {required final int id,
-      required final String status,
-      required final String serial_number,
-      required final String delivery_time,
+      final String? status,
+      final String? serial_number,
+      final String? delivery_time,
       final DateTime? created_at}) = _$MyOrderImpl;
 
   factory _MyOrder.fromJson(Map<String, dynamic> json) = _$MyOrderImpl.fromJson;
@@ -2291,11 +2316,12 @@ abstract class _MyOrder implements MyOrder {
   @override
   int get id;
   @override
-  String get status;
+  String? get status;
   @override
-  String get serial_number;
+  String? get serial_number;
   @override
-  String get delivery_time;
+  String? get delivery_time; /* double ? total_price,
+    Product? product, */
   @override
   DateTime? get created_at;
 

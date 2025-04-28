@@ -140,6 +140,7 @@ class Product with _$Product {
     int? request_number,
     required String price,
     required int active,
+    int?quantity,
   }) = _Product;
 
   factory Product.fromJson(Map<String, dynamic> json) =>
@@ -150,9 +151,11 @@ class Product with _$Product {
 class MyOrder with _$MyOrder {
   const factory MyOrder({
     required int id,
-    required String status,
-    required String serial_number,
-    required String delivery_time,
+     String? status,
+     String? serial_number,
+     String? delivery_time,
+     /* double ? total_price,
+    Product? product, */
     DateTime? created_at,
   }) = _MyOrder;
 

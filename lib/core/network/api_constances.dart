@@ -34,7 +34,7 @@ class ApiConstances {
   // Main
 
   static const String getcategoriesUrl = "$_baseUrl/categories";
-  static const String getordersUrl = "$_baseUrl/orders";
+  static const String getordersUrl = "https://cash4plus.online/api/my-orders";
 
   static String getproductsUrl({required int categoryId}) =>
       "$_baseUrl/products/categories/$categoryId";

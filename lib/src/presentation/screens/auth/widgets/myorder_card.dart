@@ -85,14 +85,14 @@ class OrderCard extends StatelessWidget {
                       padding: const EdgeInsets.symmetric(
                           horizontal: 15, vertical: 3),
                       decoration: BoxDecoration(
-                        color: getStatusColor(order.status),
+                        color: getStatusColor(order.status ?? 'unknown'),
                         borderRadius: BorderRadius.circular(20),
                       ),
                       child: Text(
-                        order.status,
+                        order.status??'unknown',
                         style: TextStyle(
                             fontSize: 12,
-                            color: getStatusTextColor(order.status),
+                            color: getStatusTextColor(order.status??'unknown'),
                             fontWeight: FontWeight.bold),
                       ),
                     ),
