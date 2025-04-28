@@ -729,6 +729,26 @@ class Lang {
       args: [],
     );
   }
+
+  /// `Total Price`
+  String get TotalPrice {
+    return Intl.message(
+      'Total Price',
+      name: 'TotalPrice',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Quantity`
+  String get Quantityis {
+    return Intl.message(
+      'Quantity',
+      name: 'Quantityis',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<Lang> {

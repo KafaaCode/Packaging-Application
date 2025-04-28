@@ -63,7 +63,7 @@
   "productIsText": "product is",
   "addToCartButton": "Add To Cart",
 
-   ""
+
   "cartDetailsTitle": "Cart Details",
   "productAlreadyExistsMessage": "The product already exists in the same quantity in cart",
   "productAddedToCartMessage": "Product added to cart",
@@ -71,7 +71,10 @@
   "ordersNotFoundMessage": "Orders not found",
   "orderDetailsTitle": "Order Details",
   "continueToConfirmOrderButton": "Continue to confirm the order",
-  "payButton": "Pay"
+  "payButton": "Pay",
+  "TotalPrice":"Total Price",
+  "Quantityis":"Quantity"
+
 }
 
 

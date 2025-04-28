@@ -67,5 +67,7 @@
   "ordersNotFoundMessage": "Commandes non trouvées",
   "orderDetailsTitle": "Détails de la commande",
   "continueToConfirmOrderButton": "Continuer pour confirmer la commande",
-  "payButton": "Payer"
+  "payButton": "Payer",
+   "TotalPrice":"Prix total",
+  "Quantityis":"Quantité"
 }

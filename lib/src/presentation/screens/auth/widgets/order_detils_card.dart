@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:frip_trading/core/localization/generated/l10n.dart';
 import 'package:frip_trading/src/data/models/models.dart';
 
 
 class OrderDetilsCard extends StatelessWidget {
   final Product product;
-
-  const OrderDetilsCard({super.key, required this.product}); 
+ final Lang lang;
+  const OrderDetilsCard({super.key, required this.product, required this.lang}); 
 
   @override
   Widget build(BuildContext context) {
@@ -51,9 +52,18 @@ class OrderDetilsCard extends StatelessWidget {
                       Text(
                         maxLines: 1,
                         overflow: TextOverflow.ellipsis,
-                        'category Name',
+                        
+                       "${lang.priceLabel}: ${product.price.toString()}"??'0',
                         style: const TextStyle(
-                            color: Color(0xFF70b9be), fontSize: 12),
+                            color: Color(0xFF70b9be), fontSize: 15),
+                      ),
+                       Text(
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                        
+                       "${lang.Quantityis}: ${product.quantity.toString()}"??'0',
+                        style: const TextStyle(
+                            color: Color(0xFF70b9be), fontSize: 15),
                       ),
                     
                     ],
