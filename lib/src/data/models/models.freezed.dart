@@ -2104,9 +2104,9 @@ mixin _$MyOrder {
   int get id => throw _privateConstructorUsedError;
   String? get status => throw _privateConstructorUsedError;
   String? get serial_number => throw _privateConstructorUsedError;
-  String? get delivery_time =>
-      throw _privateConstructorUsedError; /* double ? total_price,
-    Product? product, */
+  String? get delivery_time => throw _privateConstructorUsedError;
+  String? get total_price => throw _privateConstructorUsedError;
+  List<Product>? get products => throw _privateConstructorUsedError;
   DateTime? get created_at => throw _privateConstructorUsedError;
 
   /// Serializes this MyOrder to a JSON map.
@@ -2128,6 +2128,8 @@ abstract class $MyOrderCopyWith<$Res> {
       String? status,
       String? serial_number,
       String? delivery_time,
+      String? total_price,
+      List<Product>? products,
       DateTime? created_at});
 }
 
@@ -2150,6 +2152,8 @@ class _$MyOrderCopyWithImpl<$Res, $Val extends MyOrder>
     Object? status = freezed,
     Object? serial_number = freezed,
     Object? delivery_time = freezed,
+    Object? total_price = freezed,
+    Object? products = freezed,
     Object? created_at = freezed,
   }) {
     return _then(_value.copyWith(
@@ -2169,6 +2173,14 @@ class _$MyOrderCopyWithImpl<$Res, $Val extends MyOrder>
           ? _value.delivery_time
           : delivery_time // ignore: cast_nullable_to_non_nullable
               as String?,
+      total_price: freezed == total_price
+          ? _value.total_price
+          : total_price // ignore: cast_nullable_to_non_nullable
+              as String?,
+      products: freezed == products
+          ? _value.products
+          : products // ignore: cast_nullable_to_non_nullable
+              as List<Product>?,
       created_at: freezed == created_at
           ? _value.created_at
           : created_at // ignore: cast_nullable_to_non_nullable
@@ -2189,6 +2201,8 @@ abstract class _$$MyOrderImplCopyWith<$Res> implements $MyOrderCopyWith<$Res> {
       String? status,
       String? serial_number,
       String? delivery_time,
+      String? total_price,
+      List<Product>? products,
       DateTime? created_at});
 }
 
@@ -2209,6 +2223,8 @@ class __$$MyOrderImplCopyWithImpl<$Res>
     Object? status = freezed,
     Object? serial_number = freezed,
     Object? delivery_time = freezed,
+    Object? total_price = freezed,
+    Object? products = freezed,
     Object? created_at = freezed,
   }) {
     return _then(_$MyOrderImpl(
@@ -2228,6 +2244,14 @@ class __$$MyOrderImplCopyWithImpl<$Res>
           ? _value.delivery_time
           : delivery_time // ignore: cast_nullable_to_non_nullable
               as String?,
+      total_price: freezed == total_price
+          ? _value.total_price
+          : total_price // ignore: cast_nullable_to_non_nullable
+              as String?,
+      products: freezed == products
+          ? _value._products
+          : products // ignore: cast_nullable_to_non_nullable
+              as List<Product>?,
       created_at: freezed == created_at
           ? _value.created_at
           : created_at // ignore: cast_nullable_to_non_nullable
@@ -2244,7 +2268,10 @@ class _$MyOrderImpl implements _MyOrder {
       this.status,
       this.serial_number,
       this.delivery_time,
-      this.created_at});
+      this.total_price,
+      final List<Product>? products,
+      this.created_at})
+      : _products = products;
 
   factory _$MyOrderImpl.fromJson(Map<String, dynamic> json) =>
       _$$MyOrderImplFromJson(json);
@@ -2257,14 +2284,24 @@ class _$MyOrderImpl implements _MyOrder {
   final String? serial_number;
   @override
   final String? delivery_time;
-/* double ? total_price,
-    Product? product, */
+  @override
+  final String? total_price;
+  final List<Product>? _products;
+  @override
+  List<Product>? get products {
+    final value = _products;
+    if (value == null) return null;
+    if (_products is EqualUnmodifiableListView) return _products;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
+
   @override
   final DateTime? created_at;
 
   @override
   String toString() {
-    return 'MyOrder(id: $id, status: $status, serial_number: $serial_number, delivery_time: $delivery_time, created_at: $created_at)';
+    return 'MyOrder(id: $id, status: $status, serial_number: $serial_number, delivery_time: $delivery_time, total_price: $total_price, products: $products, created_at: $created_at)';
   }
 
   @override
@@ -2278,6 +2315,9 @@ class _$MyOrderImpl implements _MyOrder {
                 other.serial_number == serial_number) &&
             (identical(other.delivery_time, delivery_time) ||
                 other.delivery_time == delivery_time) &&
+            (identical(other.total_price, total_price) ||
+                other.total_price == total_price) &&
+            const DeepCollectionEquality().equals(other._products, _products) &&
             (identical(other.created_at, created_at) ||
                 other.created_at == created_at));
   }
@@ -2285,7 +2325,14 @@ class _$MyOrderImpl implements _MyOrder {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
-      runtimeType, id, status, serial_number, delivery_time, created_at);
+      runtimeType,
+      id,
+      status,
+      serial_number,
+      delivery_time,
+      total_price,
+      const DeepCollectionEquality().hash(_products),
+      created_at);
 
   /// Create a copy of MyOrder
   /// with the given fields replaced by the non-null parameter values.
@@ -2309,6 +2356,8 @@ abstract class _MyOrder implements MyOrder {
       final String? status,
       final String? serial_number,
       final String? delivery_time,
+      final String? total_price,
+      final List<Product>? products,
       final DateTime? created_at}) = _$MyOrderImpl;
 
   factory _MyOrder.fromJson(Map<String, dynamic> json) = _$MyOrderImpl.fromJson;
@@ -2320,8 +2369,11 @@ abstract class _MyOrder implements MyOrder {
   @override
   String? get serial_number;
   @override
-  String? get delivery_time; /* double ? total_price,
-    Product? product, */
+  String? get delivery_time;
+  @override
+  String? get total_price;
+  @override
+  List<Product>? get products;
   @override
   DateTime? get created_at;
 

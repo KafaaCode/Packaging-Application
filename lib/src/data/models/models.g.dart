@@ -182,6 +182,10 @@ _$MyOrderImpl _$$MyOrderImplFromJson(Map<String, dynamic> json) =>
       status: json['status'] as String?,
       serial_number: json['serial_number'] as String?,
       delivery_time: json['delivery_time'] as String?,
+      total_price: json['total_price'] as String?,
+      products: (json['products'] as List<dynamic>?)
+          ?.map((e) => Product.fromJson(e as Map<String, dynamic>))
+          .toList(),
       created_at: json['created_at'] == null
           ? null
           : DateTime.parse(json['created_at'] as String),
@@ -193,6 +197,8 @@ Map<String, dynamic> _$$MyOrderImplToJson(_$MyOrderImpl instance) =>
       'status': instance.status,
       'serial_number': instance.serial_number,
       'delivery_time': instance.delivery_time,
+      'total_price': instance.total_price,
+      'products': instance.products,
       'created_at': instance.created_at?.toIso8601String(),
     };
 

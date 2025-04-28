@@ -75,7 +75,7 @@ class MainRemoteDataSource extends BaseMainRemoteDataSource {
             options: Options(
               headers: ApiConstances.headers(
                 isToken: true,
-                token: "2|1P7AjTz8TWjUxy5gZD7MDixWObpzjWHrDU8tJRK4c3cf598c",
+                token: ApiConstances.getToken(),
               ),
             ),
           ),
@@ -85,11 +85,8 @@ class MainRemoteDataSource extends BaseMainRemoteDataSource {
                 .map((myorder) =>
                     MyOrder.fromJson(myorder as Map<String, dynamic>))
                 .toList();
-              
           },
-          
         );
-         
   }
 
   @override

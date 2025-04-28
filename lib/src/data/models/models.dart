@@ -154,8 +154,8 @@ class MyOrder with _$MyOrder {
      String? status,
      String? serial_number,
      String? delivery_time,
-     /* double ? total_price,
-    Product? product, */
+     String? total_price, 
+    List<Product>? products, 
     DateTime? created_at,
   }) = _MyOrder;
 
