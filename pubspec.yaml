@@ -50,6 +50,28 @@ dev_dependencies:
     sdk: flutter
   flutter_lints: ^4.0.0
 
+flutter_launcher_icons:
+  android: "launcher_icon"
+  ios: true
+  image_path: "assets/images/init_page.png"
+  min_sdk_android: 21 # android min sdk min:16, default 21
+  
+  web:
+    generate: true
+    image_path: "assets/images/init_page.png"
+    background_color: "#hexcode"
+    theme_color: "#hexcode"
+
+  windows:
+    generate: true
+    image_path: "assets/images/init_page.png"
+    icon_size: 48 # min:48, max:256, default: 48
+
+  macos:
+    generate: true
+    image_path: "assets/images/init_page.png"
+
+
 flutter:
   uses-material-design: true
   generate: true
@@ -58,24 +80,24 @@ flutter:
     - assets/images/
     - assets/fonts/
     - assets/SVG/
-  # fonts:
-  #   - family: Bahij_TheSansArabic
-  #     fonts:
-  #       - asset: assets/fonts/Bahij_TheSansArabic-Bold.ttf
-  #         weight: 500
-  #   - family: Cairo
-  #     fonts:
-  #       - asset: assets/fonts/Cairo-Regular.ttf
-  #       - asset: assets/fonts/Cairo-Bold.ttf
-  #         weight: 700
-  #       - asset: assets/fonts/Cairo-Light.ttf
-  #         weight: 300
-  #       - asset: assets/fonts/Cairo-Black.ttf
-  #         weight: 900
-  #       - asset: assets/fonts/Cairo-ExtraBold.ttf
-  #       - asset: assets/fonts/Cairo-ExtraLight.ttf
-  #       - asset: assets/fonts/Cairo-Medium.ttf
-  #       - asset: assets/fonts/Cairo-SemiBold.ttf
+  fonts:
+    - family: Bahij_TheSansArabic
+      fonts:
+        - asset: assets/fonts/Bahij_TheSansArabic-Bold.ttf
+          weight: 500
+    - family: Cairo
+      fonts:
+        - asset: assets/fonts/Cairo-Regular.ttf
+        - asset: assets/fonts/Cairo-Bold.ttf
+          weight: 700
+        - asset: assets/fonts/Cairo-Light.ttf
+          weight: 300
+        - asset: assets/fonts/Cairo-Black.ttf
+          weight: 900
+        - asset: assets/fonts/Cairo-ExtraBold.ttf
+        - asset: assets/fonts/Cairo-ExtraLight.ttf
+        - asset: assets/fonts/Cairo-Medium.ttf
+        - asset: assets/fonts/Cairo-SemiBold.ttf
 
 flutter_intl:
   enabled: true
