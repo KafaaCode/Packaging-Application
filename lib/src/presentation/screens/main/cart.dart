@@ -23,8 +23,10 @@ class CartDetailsPage extends StatelessWidget {
               left: 16,
             ),
             child: Row(
+              
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
+                Text(context.read<CartBloc>().state.total_price.toString()),
                  Text(
                   lang.cartDetailsTitle,
                   style: TextStyle(
