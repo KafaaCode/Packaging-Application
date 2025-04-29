@@ -78,10 +78,11 @@ class CartDetailsPage extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-                'total price',
+                'Total price'/* lang.TotalPrice */,
                 style: const TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.w500,
+                  color: Color.fromARGB(255, 110, 106, 106),
+                  fontSize: 17,
+                  fontWeight: FontWeight.w700,
                 ),
               ),
               Text(
