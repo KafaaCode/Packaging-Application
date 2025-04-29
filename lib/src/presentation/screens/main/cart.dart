@@ -85,7 +85,7 @@ class CartDetailsPage extends StatelessWidget {
                 ),
               ),
               Text(
-                "${state.total_price.toStringAsFixed(2)} ${'dolar'}", // تأكد أن عندك currency بالترجمة
+                "${state.total_price.toStringAsFixed(2)} \$", // تأكد أن عندك currency بالترجمة
                 style: const TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.bold,
