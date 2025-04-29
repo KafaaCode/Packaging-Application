@@ -11,23 +11,22 @@ class CartDetailsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-     Lang lang = Lang.of(context);
+    Lang lang = Lang.of(context);
     return Scaffold(
       backgroundColor: Colors.white,
       body: Column(
         children: [
           Padding(
             padding: const EdgeInsets.only(
-              top:45,
+              top: 45,
               right: 16,
               left: 16,
             ),
             child: Row(
-              
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(context.read<CartBloc>().state.total_price.toString()),
-                 Text(
+          
+                Text(
                   lang.cartDetailsTitle,
                   style: TextStyle(
                       color: Color(0xFF70b9be),
@@ -47,64 +46,93 @@ class CartDetailsPage extends StatelessWidget {
               return Expanded(
                 child: ListView.builder(
                   itemCount: state.items.length,
-                       itemBuilder: (context, index) {
-      final cartItem = state.items[index];
-      return    BlocProvider(
-        create: (context) => CounterBloc(
-    min: cartItem.product.request_number ?? 1,initial:cartItem.quantity??0 
-        ),
-        child: CartWidget(cartItem: cartItem),
-      );
-    },
+                  itemBuilder: (context, index) {
+                    final cartItem = state.items[index];
+                    return BlocProvider(
+                      create: (context) => CounterBloc(
+                          min: cartItem.product.request_number ?? 1,
+                          initial: cartItem.quantity ?? 0),
+                      child: CartWidget(cartItem: cartItem),
+                    );
+                  },
                 ),
               );
             },
           ),
           Container(
-            padding: const EdgeInsets.all(16),
-            decoration: const BoxDecoration(
-              color: Colors.white,
-              boxShadow: [
-                BoxShadow(color: Colors.black12, blurRadius: 10),
-              ],
-              borderRadius: BorderRadius.vertical(top: Radius.circular(24)),
-            ),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-               Text(
-                  lang.continueToConfirmOrderButton,
-                  style: TextStyle(
-                    color: Color(0xFF70b9be),
-                    fontSize: 16,
-                  ),
+  padding: const EdgeInsets.all(16),
+  decoration: const BoxDecoration(
+    color: Colors.white,
+    boxShadow: [
+      BoxShadow(color: Colors.black12, blurRadius: 10),
+    ],
+    borderRadius: BorderRadius.vertical(top: Radius.circular(24)),
+  ),
+  child: Column(
+    mainAxisSize: MainAxisSize.min,
+    children: [
+      // ✅ السعر الكلي المعروض
+      BlocBuilder<CartBloc, CartState>(
+        builder: (context, state) {
+          return Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                'total price',
+                style: const TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.w500,
                 ),
-                const SizedBox(height: 10),
-                SizedBox(
-                  width: double.infinity,
-                  height: 48,
-                  child: ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Color(0xFF70b9be),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(12),
-                      ),
-                    ),
-                    onPressed: () {},
-                    child:  Text(lang.payButton,
-                        style: TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.white,
-                        )),
-                  ),
+              ),
+              Text(
+                "${state.total_price.toStringAsFixed(2)} ${'dolar'}", // تأكد أن عندك currency بالترجمة
+                style: const TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                  color: Color(0xFF70b9be),
                 ),
-              ],
+              ),
+            ],
+          );
+        },
+      ),
+      const SizedBox(height: 12),
+
+      Text(
+        lang.continueToConfirmOrderButton,
+        style: const TextStyle(
+          color: Color(0xFF70b9be),
+          fontSize: 16,
+        ),
+      ),
+      const SizedBox(height: 10),
+      SizedBox(
+        width: double.infinity,
+        height: 48,
+        child: ElevatedButton(
+          style: ElevatedButton.styleFrom(
+            backgroundColor: Color(0xFF70b9be),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(12),
             ),
           ),
+          onPressed: () {},
+          child: Text(
+            lang.payButton,
+            style: const TextStyle(
+              fontSize: 16,
+              fontWeight: FontWeight.bold,
+              color: Colors.white,
+            ),
+          ),
+        ),
+      ),
+    ],
+  ),
+),
+
         ],
       ),
     );
   }
 }
-
