@@ -64,4 +64,15 @@ class MainRepository extends BaseMainRepository {
           ServerFailure.fromResponse(statusCode: failure.statusCode ?? 404));
     }
   }
+  
+  @override
+  ResultFuture<void> addOrder({required Map<String, dynamic> orderData})async {
+    try {
+      final response = await mainRemoteDataSource.sendOrder(orderData);
+      return const Right(unit);
+    } on AuthException catch (failure) {
+      return Left(
+          ServerFailure.fromResponse(statusCode: failure.statusCode ?? 404));
+    }
+  }
 }

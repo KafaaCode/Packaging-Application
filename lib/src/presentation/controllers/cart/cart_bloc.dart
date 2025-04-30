@@ -14,11 +14,14 @@ class CartBloc extends HydratedBloc<CartEvent, CartState> {
     on< _ClearCart>(_onClearCart);
     on< _GetCartItems>(_onGetCartItems);
       on<_UpdateQuantity>(_onUpdateQuantity);
+          
   }
+   
 
   void _onAddProduct(_AddProduct event, Emitter<CartState> emit) {
     final updatedItems = List<CartItem>.from(state.items)..add(event.item);
-    emit(CartState(items: updatedItems));
+    emit(CartState(items: updatedItems));  
+    print(updatedItems);
   }
 
   void _onRemoveProduct(_RemoveProduct event, Emitter<CartState> emit) {

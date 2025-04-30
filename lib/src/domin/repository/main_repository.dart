@@ -10,4 +10,8 @@ abstract class BaseMainRepository {
       required String message,
       required String senderName,
       required String senderEmail});
+        ResultFuture<void> addOrder(
+      {
+      required Map<String, dynamic> orderData,
+      });
 }

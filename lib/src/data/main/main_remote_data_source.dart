@@ -10,6 +10,7 @@ abstract class BaseMainRemoteDataSource {
   Future<List<Category>> getCategories();
   Future<List<MyOrder>> getmyOrders();
   Future<List<Product>> getProducts({required int categoryId});
+  Future<void> sendOrder(Map<String, dynamic> orderData);
   Future<void> sendSupport(
       {required String title,
       required String message,
@@ -104,6 +105,25 @@ class MainRemoteDataSource extends BaseMainRemoteDataSource {
               'sender_name': senderName,
               'sender_email': senderEmail,
             },
+            options: Options(
+              headers: ApiConstances.headers(
+                isToken: true,
+                token: ApiConstances.getToken(),
+              ),
+            ),
+          ),
+          responseHandler: (response) {
+            return;
+          },
+        );
+  }
+  
+  @override
+  Future<void> sendOrder(Map<String, dynamic> orderData) {
+   return sl.get<ApiCallHandler>().handler(
+          apiCall: () => _dio.post(
+            ApiConstances.addOrdertUrl,
+            data: orderData,
             options: Options(
               headers: ApiConstances.headers(
                 isToken: true,

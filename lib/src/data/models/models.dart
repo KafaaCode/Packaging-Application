@@ -165,6 +165,8 @@ class MyOrder with _$MyOrder {
 
 @freezed
 class CartItem with _$CartItem {
+  const CartItem._(); // ضروري لإضافة getter
+
   const factory CartItem({
     required Product product,
     required int quantity,
@@ -172,5 +174,8 @@ class CartItem with _$CartItem {
 
   factory CartItem.fromJson(Map<String, dynamic> json) =>
       _$CartItemFromJson(json);
+
+  double get total_price => double.parse(product.price) * quantity;
 }
+
 

@@ -31,10 +31,13 @@ class ApiConstances {
   static const String sendSupportUrl = "$_baseUrl/supports";
   static const String sspecializationsAndCountryUrl =
       "$_baseUrl/specialization-and-country";
+
   // Main
 
   static const String getcategoriesUrl = "$_baseUrl/categories";
-  static const String getordersUrl = "https://cash4plus.online/api/my-orders";
+
+  static const String getordersUrl = "$_baseUrl/orders";
+  static const String addOrdertUrl = "$_baseUrl/orders";
 
   static String getproductsUrl({required int categoryId}) =>
       "$_baseUrl/products/categories/$categoryId";
