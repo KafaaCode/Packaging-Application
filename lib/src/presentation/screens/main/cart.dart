@@ -27,7 +27,7 @@ class CartDetailsPage extends StatelessWidget {
               children: [
                  Text(
                   lang.cartDetailsTitle,
-                  style: TextStyle(
+                  style: const TextStyle(
                       color: Color(0xFF70b9be),
                       fontWeight: FontWeight.bold,
                       fontSize: 24),
@@ -72,7 +72,7 @@ class CartDetailsPage extends StatelessWidget {
               children: [
                Text(
                   lang.continueToConfirmOrderButton,
-                  style: TextStyle(
+                  style: const TextStyle(
                     color: Color(0xFF70b9be),
                     fontSize: 16,
                   ),
@@ -83,14 +83,14 @@ class CartDetailsPage extends StatelessWidget {
                   height: 48,
                   child: ElevatedButton(
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: Color(0xFF70b9be),
+                      backgroundColor: const Color(0xFF70b9be),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(12),
                       ),
                     ),
                     onPressed: () {},
                     child:  Text(lang.payButton,
-                        style: TextStyle(
+                        style: const TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.bold,
                           color: Colors.white,

@@ -1,7 +1,7 @@
 import 'package:hydrated_bloc/hydrated_bloc.dart';
 
 class ApiConstances {
-  static const String _baseUrl = "https://cash4plus.online/api";
+  static const String _baseUrl = "https://friptrading.com/api";
 
   static Map<String, dynamic> headers(
       {bool? isToken = true, String? token, bool? isMulti = false}) {

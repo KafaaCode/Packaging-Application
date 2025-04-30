@@ -1,4 +1,3 @@
-
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:frip_trading/src/data/models/models.dart';
 import 'package:frip_trading/src/domin/repository/main_repository.dart';
@@ -12,8 +11,8 @@ class CategoriesBloc extends Bloc<CategoriesEvent, CategoriesState> {
 
   CategoriesBloc(this.baseMainRepository) : super(const CategoriesState()) {
     on<CategoriesEvent>((event, emit) async {
-      await event.map(
-       getCategories: (value) async {
+      await event.mapOrNull(
+        getCategories: (value) async {
           emit(state.copyWith(
               error: false, isAuth: false, isEmpty: false, loading: true));
 
@@ -38,14 +37,23 @@ class CategoriesBloc extends Bloc<CategoriesEvent, CategoriesState> {
             },
           );
         },
-   
       );
     });
-
- 
+    on<_Search>(_searchEvent);
   }
 
-
-
- 
+  void _searchEvent(event, emit) {
+    print(event.value);
+    if (event.value != null || event.value != '') {
+      final query = event.value?.toLowerCase().trim() ?? '';
+      List<Category> category = state.categories.where((e) {
+        final name = e.name?.toLowerCase() ?? '';
+        return name.contains(query);
+      }).toList();
+      print(category);
+      emit(state.copyWith(searchCategories: category));
+    } else {
+      emit(state.copyWith(searchCategories: null));
+    }
+  }
 }

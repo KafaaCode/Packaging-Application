@@ -29,7 +29,6 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Paramètres du compte"),
         "addToCartButton":
             MessageLookupByLibrary.simpleMessage("Ajouter au panier"),
-        "ali": MessageLookupByLibrary.simpleMessage("Ali"),
         "alreadyAMember": MessageLookupByLibrary.simpleMessage("Déjà membre ?"),
         "alreadyHaveAnAccount":
             MessageLookupByLibrary.simpleMessage("Vous avez déjà un compte ?"),

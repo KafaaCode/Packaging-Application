@@ -11,5 +11,6 @@ class CategoriesState with _$CategoriesState {
     @Default(false) bool isAuth,
     @Default(false) bool isEmpty,
     @Default([]) List<Category> categories,
+    @Default(null) List<Category>? searchCategories,
   }) = _Initial;
 }

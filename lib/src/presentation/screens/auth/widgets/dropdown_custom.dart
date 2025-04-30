@@ -10,6 +10,7 @@ class DropdownCustom<T extends HasIdAndName> extends StatefulWidget {
   final String? labelText;
   final InputDecoration? decoration;
   final String svgIcon;
+  final Widget? icon;
 
   const DropdownCustom({
     super.key,
@@ -18,6 +19,7 @@ class DropdownCustom<T extends HasIdAndName> extends StatefulWidget {
     this.defaultValue,
     this.labelText,
     required this.svgIcon,
+    this.icon,
     this.decoration,
   });
 
@@ -63,13 +65,13 @@ class _DropdownCustomState<T extends HasIdAndName>
           value: selectedValue,
           icon: Padding(
             padding: const EdgeInsets.all(15.0),
-            child: SvgPicture.asset(
-              widget.svgIcon,
-              colorFilter: ColorFilter.mode(
-                Colors.black.withOpacity(0.5),
-                BlendMode.srcIn,
-              ),
-            ),
+            child: widget.icon ?? SvgPicture.asset(
+                    widget.svgIcon,
+                    colorFilter: ColorFilter.mode(
+                      Colors.black.withOpacity(0.5),
+                      BlendMode.srcIn,
+                    ),
+                  ),
           ),
           items: widget.items.map((T value) {
             return DropdownMenuItem<T>(
