@@ -9,5 +9,6 @@ class ProductState with _$ProductState {
     @Default(false) bool isDone,
     @Default(false) bool isEmpty,
     @Default([]) List<Product> products,
+    @Default(null) List<Product>? search,
   }) = _ProductState;
 }

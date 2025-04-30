@@ -22,6 +22,7 @@ mixin _$MyOrdersState {
   bool get isAuth => throw _privateConstructorUsedError;
   bool get isEmpty => throw _privateConstructorUsedError;
   List<MyOrder> get myorders => throw _privateConstructorUsedError;
+  List<MyOrder>? get search => throw _privateConstructorUsedError;
 
   /// Create a copy of MyOrdersState
   /// with the given fields replaced by the non-null parameter values.
@@ -42,7 +43,8 @@ abstract class $MyOrdersStateCopyWith<$Res> {
       String errorMessage,
       bool isAuth,
       bool isEmpty,
-      List<MyOrder> myorders});
+      List<MyOrder> myorders,
+      List<MyOrder>? search});
 }
 
 /// @nodoc
@@ -66,6 +68,7 @@ class _$MyOrdersStateCopyWithImpl<$Res, $Val extends MyOrdersState>
     Object? isAuth = null,
     Object? isEmpty = null,
     Object? myorders = null,
+    Object? search = freezed,
   }) {
     return _then(_value.copyWith(
       loading: null == loading
@@ -92,6 +95,10 @@ class _$MyOrdersStateCopyWithImpl<$Res, $Val extends MyOrdersState>
           ? _value.myorders
           : myorders // ignore: cast_nullable_to_non_nullable
               as List<MyOrder>,
+      search: freezed == search
+          ? _value.search
+          : search // ignore: cast_nullable_to_non_nullable
+              as List<MyOrder>?,
     ) as $Val);
   }
 }
@@ -110,7 +117,8 @@ abstract class _$$InitialImplCopyWith<$Res>
       String errorMessage,
       bool isAuth,
       bool isEmpty,
-      List<MyOrder> myorders});
+      List<MyOrder> myorders,
+      List<MyOrder>? search});
 }
 
 /// @nodoc
@@ -132,6 +140,7 @@ class __$$InitialImplCopyWithImpl<$Res>
     Object? isAuth = null,
     Object? isEmpty = null,
     Object? myorders = null,
+    Object? search = freezed,
   }) {
     return _then(_$InitialImpl(
       loading: null == loading
@@ -158,6 +167,10 @@ class __$$InitialImplCopyWithImpl<$Res>
           ? _value._myorders
           : myorders // ignore: cast_nullable_to_non_nullable
               as List<MyOrder>,
+      search: freezed == search
+          ? _value._search
+          : search // ignore: cast_nullable_to_non_nullable
+              as List<MyOrder>?,
     ));
   }
 }
@@ -171,8 +184,10 @@ class _$InitialImpl implements _Initial {
       this.errorMessage = '',
       this.isAuth = false,
       this.isEmpty = false,
-      final List<MyOrder> myorders = const []})
-      : _myorders = myorders;
+      final List<MyOrder> myorders = const [],
+      final List<MyOrder>? search = null})
+      : _myorders = myorders,
+        _search = search;
 
   @override
   @JsonKey()
@@ -198,9 +213,20 @@ class _$InitialImpl implements _Initial {
     return EqualUnmodifiableListView(_myorders);
   }
 
+  final List<MyOrder>? _search;
+  @override
+  @JsonKey()
+  List<MyOrder>? get search {
+    final value = _search;
+    if (value == null) return null;
+    if (_search is EqualUnmodifiableListView) return _search;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
+
   @override
   String toString() {
-    return 'MyOrdersState(loading: $loading, error: $error, errorMessage: $errorMessage, isAuth: $isAuth, isEmpty: $isEmpty, myorders: $myorders)';
+    return 'MyOrdersState(loading: $loading, error: $error, errorMessage: $errorMessage, isAuth: $isAuth, isEmpty: $isEmpty, myorders: $myorders, search: $search)';
   }
 
   @override
@@ -214,12 +240,20 @@ class _$InitialImpl implements _Initial {
                 other.errorMessage == errorMessage) &&
             (identical(other.isAuth, isAuth) || other.isAuth == isAuth) &&
             (identical(other.isEmpty, isEmpty) || other.isEmpty == isEmpty) &&
-            const DeepCollectionEquality().equals(other._myorders, _myorders));
+            const DeepCollectionEquality().equals(other._myorders, _myorders) &&
+            const DeepCollectionEquality().equals(other._search, _search));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, loading, error, errorMessage,
-      isAuth, isEmpty, const DeepCollectionEquality().hash(_myorders));
+  int get hashCode => Object.hash(
+      runtimeType,
+      loading,
+      error,
+      errorMessage,
+      isAuth,
+      isEmpty,
+      const DeepCollectionEquality().hash(_myorders),
+      const DeepCollectionEquality().hash(_search));
 
   /// Create a copy of MyOrdersState
   /// with the given fields replaced by the non-null parameter values.
@@ -237,7 +271,8 @@ abstract class _Initial implements MyOrdersState {
       final String errorMessage,
       final bool isAuth,
       final bool isEmpty,
-      final List<MyOrder> myorders}) = _$InitialImpl;
+      final List<MyOrder> myorders,
+      final List<MyOrder>? search}) = _$InitialImpl;
 
   @override
   bool get loading;
@@ -251,6 +286,8 @@ abstract class _Initial implements MyOrdersState {
   bool get isEmpty;
   @override
   List<MyOrder> get myorders;
+  @override
+  List<MyOrder>? get search;
 
   /// Create a copy of MyOrdersState
   /// with the given fields replaced by the non-null parameter values.
@@ -265,32 +302,38 @@ mixin _$MyOrdersEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() getMyOrders,
+    required TResult Function(String value) search,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? getMyOrders,
+    TResult? Function(String value)? search,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? getMyOrders,
+    TResult Function(String value)? search,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_GetMyOrders value) getMyOrders,
+    required TResult Function(_Search value) search,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_GetMyOrders value)? getMyOrders,
+    TResult? Function(_Search value)? search,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_GetMyOrders value)? getMyOrders,
+    TResult Function(_Search value)? search,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -359,6 +402,7 @@ class _$GetMyOrdersImpl implements _GetMyOrders {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() getMyOrders,
+    required TResult Function(String value) search,
   }) {
     return getMyOrders();
   }
@@ -367,6 +411,7 @@ class _$GetMyOrdersImpl implements _GetMyOrders {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? getMyOrders,
+    TResult? Function(String value)? search,
   }) {
     return getMyOrders?.call();
   }
@@ -375,6 +420,7 @@ class _$GetMyOrdersImpl implements _GetMyOrders {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? getMyOrders,
+    TResult Function(String value)? search,
     required TResult orElse(),
   }) {
     if (getMyOrders != null) {
@@ -387,6 +433,7 @@ class _$GetMyOrdersImpl implements _GetMyOrders {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_GetMyOrders value) getMyOrders,
+    required TResult Function(_Search value) search,
   }) {
     return getMyOrders(this);
   }
@@ -395,6 +442,7 @@ class _$GetMyOrdersImpl implements _GetMyOrders {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_GetMyOrders value)? getMyOrders,
+    TResult? Function(_Search value)? search,
   }) {
     return getMyOrders?.call(this);
   }
@@ -403,6 +451,7 @@ class _$GetMyOrdersImpl implements _GetMyOrders {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_GetMyOrders value)? getMyOrders,
+    TResult Function(_Search value)? search,
     required TResult orElse(),
   }) {
     if (getMyOrders != null) {
@@ -414,4 +463,144 @@ class _$GetMyOrdersImpl implements _GetMyOrders {
 
 abstract class _GetMyOrders implements MyOrdersEvent {
   const factory _GetMyOrders() = _$GetMyOrdersImpl;
+}
+
+/// @nodoc
+abstract class _$$SearchImplCopyWith<$Res> {
+  factory _$$SearchImplCopyWith(
+          _$SearchImpl value, $Res Function(_$SearchImpl) then) =
+      __$$SearchImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String value});
+}
+
+/// @nodoc
+class __$$SearchImplCopyWithImpl<$Res>
+    extends _$MyOrdersEventCopyWithImpl<$Res, _$SearchImpl>
+    implements _$$SearchImplCopyWith<$Res> {
+  __$$SearchImplCopyWithImpl(
+      _$SearchImpl _value, $Res Function(_$SearchImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of MyOrdersEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? value = null,
+  }) {
+    return _then(_$SearchImpl(
+      value: null == value
+          ? _value.value
+          : value // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$SearchImpl implements _Search {
+  const _$SearchImpl({required this.value});
+
+  @override
+  final String value;
+
+  @override
+  String toString() {
+    return 'MyOrdersEvent.search(value: $value)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$SearchImpl &&
+            (identical(other.value, value) || other.value == value));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, value);
+
+  /// Create a copy of MyOrdersEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$SearchImplCopyWith<_$SearchImpl> get copyWith =>
+      __$$SearchImplCopyWithImpl<_$SearchImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() getMyOrders,
+    required TResult Function(String value) search,
+  }) {
+    return search(value);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? getMyOrders,
+    TResult? Function(String value)? search,
+  }) {
+    return search?.call(value);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? getMyOrders,
+    TResult Function(String value)? search,
+    required TResult orElse(),
+  }) {
+    if (search != null) {
+      return search(value);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_GetMyOrders value) getMyOrders,
+    required TResult Function(_Search value) search,
+  }) {
+    return search(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_GetMyOrders value)? getMyOrders,
+    TResult? Function(_Search value)? search,
+  }) {
+    return search?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_GetMyOrders value)? getMyOrders,
+    TResult Function(_Search value)? search,
+    required TResult orElse(),
+  }) {
+    if (search != null) {
+      return search(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _Search implements MyOrdersEvent {
+  const factory _Search({required final String value}) = _$SearchImpl;
+
+  String get value;
+
+  /// Create a copy of MyOrdersEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$SearchImplCopyWith<_$SearchImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }

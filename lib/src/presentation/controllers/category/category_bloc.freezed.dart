@@ -22,6 +22,7 @@ mixin _$CategoriesState {
   bool get isAuth => throw _privateConstructorUsedError;
   bool get isEmpty => throw _privateConstructorUsedError;
   List<Category> get categories => throw _privateConstructorUsedError;
+  List<Category>? get searchCategories => throw _privateConstructorUsedError;
 
   /// Create a copy of CategoriesState
   /// with the given fields replaced by the non-null parameter values.
@@ -42,7 +43,8 @@ abstract class $CategoriesStateCopyWith<$Res> {
       String errorMessage,
       bool isAuth,
       bool isEmpty,
-      List<Category> categories});
+      List<Category> categories,
+      List<Category>? searchCategories});
 }
 
 /// @nodoc
@@ -66,6 +68,7 @@ class _$CategoriesStateCopyWithImpl<$Res, $Val extends CategoriesState>
     Object? isAuth = null,
     Object? isEmpty = null,
     Object? categories = null,
+    Object? searchCategories = freezed,
   }) {
     return _then(_value.copyWith(
       loading: null == loading
@@ -92,6 +95,10 @@ class _$CategoriesStateCopyWithImpl<$Res, $Val extends CategoriesState>
           ? _value.categories
           : categories // ignore: cast_nullable_to_non_nullable
               as List<Category>,
+      searchCategories: freezed == searchCategories
+          ? _value.searchCategories
+          : searchCategories // ignore: cast_nullable_to_non_nullable
+              as List<Category>?,
     ) as $Val);
   }
 }
@@ -110,7 +117,8 @@ abstract class _$$InitialImplCopyWith<$Res>
       String errorMessage,
       bool isAuth,
       bool isEmpty,
-      List<Category> categories});
+      List<Category> categories,
+      List<Category>? searchCategories});
 }
 
 /// @nodoc
@@ -132,6 +140,7 @@ class __$$InitialImplCopyWithImpl<$Res>
     Object? isAuth = null,
     Object? isEmpty = null,
     Object? categories = null,
+    Object? searchCategories = freezed,
   }) {
     return _then(_$InitialImpl(
       loading: null == loading
@@ -158,6 +167,10 @@ class __$$InitialImplCopyWithImpl<$Res>
           ? _value._categories
           : categories // ignore: cast_nullable_to_non_nullable
               as List<Category>,
+      searchCategories: freezed == searchCategories
+          ? _value._searchCategories
+          : searchCategories // ignore: cast_nullable_to_non_nullable
+              as List<Category>?,
     ));
   }
 }
@@ -171,8 +184,10 @@ class _$InitialImpl implements _Initial {
       this.errorMessage = '',
       this.isAuth = false,
       this.isEmpty = false,
-      final List<Category> categories = const []})
-      : _categories = categories;
+      final List<Category> categories = const [],
+      final List<Category>? searchCategories = null})
+      : _categories = categories,
+        _searchCategories = searchCategories;
 
   @override
   @JsonKey()
@@ -198,9 +213,21 @@ class _$InitialImpl implements _Initial {
     return EqualUnmodifiableListView(_categories);
   }
 
+  final List<Category>? _searchCategories;
+  @override
+  @JsonKey()
+  List<Category>? get searchCategories {
+    final value = _searchCategories;
+    if (value == null) return null;
+    if (_searchCategories is EqualUnmodifiableListView)
+      return _searchCategories;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
+
   @override
   String toString() {
-    return 'CategoriesState(loading: $loading, error: $error, errorMessage: $errorMessage, isAuth: $isAuth, isEmpty: $isEmpty, categories: $categories)';
+    return 'CategoriesState(loading: $loading, error: $error, errorMessage: $errorMessage, isAuth: $isAuth, isEmpty: $isEmpty, categories: $categories, searchCategories: $searchCategories)';
   }
 
   @override
@@ -215,12 +242,21 @@ class _$InitialImpl implements _Initial {
             (identical(other.isAuth, isAuth) || other.isAuth == isAuth) &&
             (identical(other.isEmpty, isEmpty) || other.isEmpty == isEmpty) &&
             const DeepCollectionEquality()
-                .equals(other._categories, _categories));
+                .equals(other._categories, _categories) &&
+            const DeepCollectionEquality()
+                .equals(other._searchCategories, _searchCategories));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, loading, error, errorMessage,
-      isAuth, isEmpty, const DeepCollectionEquality().hash(_categories));
+  int get hashCode => Object.hash(
+      runtimeType,
+      loading,
+      error,
+      errorMessage,
+      isAuth,
+      isEmpty,
+      const DeepCollectionEquality().hash(_categories),
+      const DeepCollectionEquality().hash(_searchCategories));
 
   /// Create a copy of CategoriesState
   /// with the given fields replaced by the non-null parameter values.
@@ -238,7 +274,8 @@ abstract class _Initial implements CategoriesState {
       final String errorMessage,
       final bool isAuth,
       final bool isEmpty,
-      final List<Category> categories}) = _$InitialImpl;
+      final List<Category> categories,
+      final List<Category>? searchCategories}) = _$InitialImpl;
 
   @override
   bool get loading;
@@ -252,6 +289,8 @@ abstract class _Initial implements CategoriesState {
   bool get isEmpty;
   @override
   List<Category> get categories;
+  @override
+  List<Category>? get searchCategories;
 
   /// Create a copy of CategoriesState
   /// with the given fields replaced by the non-null parameter values.
@@ -266,32 +305,38 @@ mixin _$CategoriesEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() getCategories,
+    required TResult Function(String value) search,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? getCategories,
+    TResult? Function(String value)? search,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? getCategories,
+    TResult Function(String value)? search,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_GetCategories value) getCategories,
+    required TResult Function(_Search value) search,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_GetCategories value)? getCategories,
+    TResult? Function(_Search value)? search,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_GetCategories value)? getCategories,
+    TResult Function(_Search value)? search,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -360,6 +405,7 @@ class _$GetCategoriesImpl implements _GetCategories {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() getCategories,
+    required TResult Function(String value) search,
   }) {
     return getCategories();
   }
@@ -368,6 +414,7 @@ class _$GetCategoriesImpl implements _GetCategories {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? getCategories,
+    TResult? Function(String value)? search,
   }) {
     return getCategories?.call();
   }
@@ -376,6 +423,7 @@ class _$GetCategoriesImpl implements _GetCategories {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? getCategories,
+    TResult Function(String value)? search,
     required TResult orElse(),
   }) {
     if (getCategories != null) {
@@ -388,6 +436,7 @@ class _$GetCategoriesImpl implements _GetCategories {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_GetCategories value) getCategories,
+    required TResult Function(_Search value) search,
   }) {
     return getCategories(this);
   }
@@ -396,6 +445,7 @@ class _$GetCategoriesImpl implements _GetCategories {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_GetCategories value)? getCategories,
+    TResult? Function(_Search value)? search,
   }) {
     return getCategories?.call(this);
   }
@@ -404,6 +454,7 @@ class _$GetCategoriesImpl implements _GetCategories {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_GetCategories value)? getCategories,
+    TResult Function(_Search value)? search,
     required TResult orElse(),
   }) {
     if (getCategories != null) {
@@ -415,4 +466,144 @@ class _$GetCategoriesImpl implements _GetCategories {
 
 abstract class _GetCategories implements CategoriesEvent {
   const factory _GetCategories() = _$GetCategoriesImpl;
+}
+
+/// @nodoc
+abstract class _$$SearchImplCopyWith<$Res> {
+  factory _$$SearchImplCopyWith(
+          _$SearchImpl value, $Res Function(_$SearchImpl) then) =
+      __$$SearchImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String value});
+}
+
+/// @nodoc
+class __$$SearchImplCopyWithImpl<$Res>
+    extends _$CategoriesEventCopyWithImpl<$Res, _$SearchImpl>
+    implements _$$SearchImplCopyWith<$Res> {
+  __$$SearchImplCopyWithImpl(
+      _$SearchImpl _value, $Res Function(_$SearchImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of CategoriesEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? value = null,
+  }) {
+    return _then(_$SearchImpl(
+      value: null == value
+          ? _value.value
+          : value // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$SearchImpl implements _Search {
+  const _$SearchImpl({required this.value});
+
+  @override
+  final String value;
+
+  @override
+  String toString() {
+    return 'CategoriesEvent.search(value: $value)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$SearchImpl &&
+            (identical(other.value, value) || other.value == value));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, value);
+
+  /// Create a copy of CategoriesEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$SearchImplCopyWith<_$SearchImpl> get copyWith =>
+      __$$SearchImplCopyWithImpl<_$SearchImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() getCategories,
+    required TResult Function(String value) search,
+  }) {
+    return search(value);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? getCategories,
+    TResult? Function(String value)? search,
+  }) {
+    return search?.call(value);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? getCategories,
+    TResult Function(String value)? search,
+    required TResult orElse(),
+  }) {
+    if (search != null) {
+      return search(value);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_GetCategories value) getCategories,
+    required TResult Function(_Search value) search,
+  }) {
+    return search(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_GetCategories value)? getCategories,
+    TResult? Function(_Search value)? search,
+  }) {
+    return search?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_GetCategories value)? getCategories,
+    TResult Function(_Search value)? search,
+    required TResult orElse(),
+  }) {
+    if (search != null) {
+      return search(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _Search implements CategoriesEvent {
+  const factory _Search({required final String value}) = _$SearchImpl;
+
+  String get value;
+
+  /// Create a copy of CategoriesEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$SearchImplCopyWith<_$SearchImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }

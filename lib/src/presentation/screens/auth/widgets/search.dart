@@ -1,10 +1,15 @@
 import 'package:flutter/material.dart';
 
 class Search extends StatelessWidget {
+  final void Function(String value)? onChanged;
+
+  const Search({super.key, this.onChanged});
+
   @override
   Widget build(BuildContext context) {
     return TextField(
       style: const TextStyle(fontSize: 14),
+      onChanged: onChanged,
       textAlignVertical: TextAlignVertical.center,
       decoration: InputDecoration(
         hintText: 'Search...',

@@ -22,6 +22,7 @@ mixin _$ProductState {
   bool get isDone => throw _privateConstructorUsedError;
   bool get isEmpty => throw _privateConstructorUsedError;
   List<Product> get products => throw _privateConstructorUsedError;
+  List<Product>? get search => throw _privateConstructorUsedError;
 
   /// Create a copy of ProductState
   /// with the given fields replaced by the non-null parameter values.
@@ -42,7 +43,8 @@ abstract class $ProductStateCopyWith<$Res> {
       String errorMessage,
       bool isDone,
       bool isEmpty,
-      List<Product> products});
+      List<Product> products,
+      List<Product>? search});
 }
 
 /// @nodoc
@@ -66,6 +68,7 @@ class _$ProductStateCopyWithImpl<$Res, $Val extends ProductState>
     Object? isDone = null,
     Object? isEmpty = null,
     Object? products = null,
+    Object? search = freezed,
   }) {
     return _then(_value.copyWith(
       loading: null == loading
@@ -92,6 +95,10 @@ class _$ProductStateCopyWithImpl<$Res, $Val extends ProductState>
           ? _value.products
           : products // ignore: cast_nullable_to_non_nullable
               as List<Product>,
+      search: freezed == search
+          ? _value.search
+          : search // ignore: cast_nullable_to_non_nullable
+              as List<Product>?,
     ) as $Val);
   }
 }
@@ -110,7 +117,8 @@ abstract class _$$ProductStateImplCopyWith<$Res>
       String errorMessage,
       bool isDone,
       bool isEmpty,
-      List<Product> products});
+      List<Product> products,
+      List<Product>? search});
 }
 
 /// @nodoc
@@ -132,6 +140,7 @@ class __$$ProductStateImplCopyWithImpl<$Res>
     Object? isDone = null,
     Object? isEmpty = null,
     Object? products = null,
+    Object? search = freezed,
   }) {
     return _then(_$ProductStateImpl(
       loading: null == loading
@@ -158,6 +167,10 @@ class __$$ProductStateImplCopyWithImpl<$Res>
           ? _value._products
           : products // ignore: cast_nullable_to_non_nullable
               as List<Product>,
+      search: freezed == search
+          ? _value._search
+          : search // ignore: cast_nullable_to_non_nullable
+              as List<Product>?,
     ));
   }
 }
@@ -171,8 +184,10 @@ class _$ProductStateImpl with DiagnosticableTreeMixin implements _ProductState {
       this.errorMessage = '',
       this.isDone = false,
       this.isEmpty = false,
-      final List<Product> products = const []})
-      : _products = products;
+      final List<Product> products = const [],
+      final List<Product>? search = null})
+      : _products = products,
+        _search = search;
 
   @override
   @JsonKey()
@@ -198,9 +213,20 @@ class _$ProductStateImpl with DiagnosticableTreeMixin implements _ProductState {
     return EqualUnmodifiableListView(_products);
   }
 
+  final List<Product>? _search;
+  @override
+  @JsonKey()
+  List<Product>? get search {
+    final value = _search;
+    if (value == null) return null;
+    if (_search is EqualUnmodifiableListView) return _search;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
+
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'ProductState(loading: $loading, error: $error, errorMessage: $errorMessage, isDone: $isDone, isEmpty: $isEmpty, products: $products)';
+    return 'ProductState(loading: $loading, error: $error, errorMessage: $errorMessage, isDone: $isDone, isEmpty: $isEmpty, products: $products, search: $search)';
   }
 
   @override
@@ -213,7 +239,8 @@ class _$ProductStateImpl with DiagnosticableTreeMixin implements _ProductState {
       ..add(DiagnosticsProperty('errorMessage', errorMessage))
       ..add(DiagnosticsProperty('isDone', isDone))
       ..add(DiagnosticsProperty('isEmpty', isEmpty))
-      ..add(DiagnosticsProperty('products', products));
+      ..add(DiagnosticsProperty('products', products))
+      ..add(DiagnosticsProperty('search', search));
   }
 
   @override
@@ -227,12 +254,20 @@ class _$ProductStateImpl with DiagnosticableTreeMixin implements _ProductState {
                 other.errorMessage == errorMessage) &&
             (identical(other.isDone, isDone) || other.isDone == isDone) &&
             (identical(other.isEmpty, isEmpty) || other.isEmpty == isEmpty) &&
-            const DeepCollectionEquality().equals(other._products, _products));
+            const DeepCollectionEquality().equals(other._products, _products) &&
+            const DeepCollectionEquality().equals(other._search, _search));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, loading, error, errorMessage,
-      isDone, isEmpty, const DeepCollectionEquality().hash(_products));
+  int get hashCode => Object.hash(
+      runtimeType,
+      loading,
+      error,
+      errorMessage,
+      isDone,
+      isEmpty,
+      const DeepCollectionEquality().hash(_products),
+      const DeepCollectionEquality().hash(_search));
 
   /// Create a copy of ProductState
   /// with the given fields replaced by the non-null parameter values.
@@ -250,7 +285,8 @@ abstract class _ProductState implements ProductState {
       final String errorMessage,
       final bool isDone,
       final bool isEmpty,
-      final List<Product> products}) = _$ProductStateImpl;
+      final List<Product> products,
+      final List<Product>? search}) = _$ProductStateImpl;
 
   @override
   bool get loading;
@@ -264,6 +300,8 @@ abstract class _ProductState implements ProductState {
   bool get isEmpty;
   @override
   List<Product> get products;
+  @override
+  List<Product>? get search;
 
   /// Create a copy of ProductState
   /// with the given fields replaced by the non-null parameter values.
@@ -275,44 +313,43 @@ abstract class _ProductState implements ProductState {
 
 /// @nodoc
 mixin _$ProductEvent {
-  int get categoryId => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(int categoryId) getProducts,
+    required TResult Function(String value) search,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(int categoryId)? getProducts,
+    TResult? Function(String value)? search,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(int categoryId)? getProducts,
+    TResult Function(String value)? search,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_GetProducts value) getProducts,
+    required TResult Function(_Search value) search,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_GetProducts value)? getProducts,
+    TResult? Function(_Search value)? search,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_GetProducts value)? getProducts,
+    TResult Function(_Search value)? search,
     required TResult orElse(),
   }) =>
-      throw _privateConstructorUsedError;
-
-  /// Create a copy of ProductEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  $ProductEventCopyWith<ProductEvent> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -321,8 +358,6 @@ abstract class $ProductEventCopyWith<$Res> {
   factory $ProductEventCopyWith(
           ProductEvent value, $Res Function(ProductEvent) then) =
       _$ProductEventCopyWithImpl<$Res, ProductEvent>;
-  @useResult
-  $Res call({int categoryId});
 }
 
 /// @nodoc
@@ -337,27 +372,13 @@ class _$ProductEventCopyWithImpl<$Res, $Val extends ProductEvent>
 
   /// Create a copy of ProductEvent
   /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? categoryId = null,
-  }) {
-    return _then(_value.copyWith(
-      categoryId: null == categoryId
-          ? _value.categoryId
-          : categoryId // ignore: cast_nullable_to_non_nullable
-              as int,
-    ) as $Val);
-  }
 }
 
 /// @nodoc
-abstract class _$$GetProductsImplCopyWith<$Res>
-    implements $ProductEventCopyWith<$Res> {
+abstract class _$$GetProductsImplCopyWith<$Res> {
   factory _$$GetProductsImplCopyWith(
           _$GetProductsImpl value, $Res Function(_$GetProductsImpl) then) =
       __$$GetProductsImplCopyWithImpl<$Res>;
-  @override
   @useResult
   $Res call({int categoryId});
 }
@@ -431,6 +452,7 @@ class _$GetProductsImpl with DiagnosticableTreeMixin implements _GetProducts {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(int categoryId) getProducts,
+    required TResult Function(String value) search,
   }) {
     return getProducts(categoryId);
   }
@@ -439,6 +461,7 @@ class _$GetProductsImpl with DiagnosticableTreeMixin implements _GetProducts {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(int categoryId)? getProducts,
+    TResult? Function(String value)? search,
   }) {
     return getProducts?.call(categoryId);
   }
@@ -447,6 +470,7 @@ class _$GetProductsImpl with DiagnosticableTreeMixin implements _GetProducts {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(int categoryId)? getProducts,
+    TResult Function(String value)? search,
     required TResult orElse(),
   }) {
     if (getProducts != null) {
@@ -459,6 +483,7 @@ class _$GetProductsImpl with DiagnosticableTreeMixin implements _GetProducts {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_GetProducts value) getProducts,
+    required TResult Function(_Search value) search,
   }) {
     return getProducts(this);
   }
@@ -467,6 +492,7 @@ class _$GetProductsImpl with DiagnosticableTreeMixin implements _GetProducts {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_GetProducts value)? getProducts,
+    TResult? Function(_Search value)? search,
   }) {
     return getProducts?.call(this);
   }
@@ -475,6 +501,7 @@ class _$GetProductsImpl with DiagnosticableTreeMixin implements _GetProducts {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_GetProducts value)? getProducts,
+    TResult Function(_Search value)? search,
     required TResult orElse(),
   }) {
     if (getProducts != null) {
@@ -488,13 +515,159 @@ abstract class _GetProducts implements ProductEvent {
   const factory _GetProducts({required final int categoryId}) =
       _$GetProductsImpl;
 
-  @override
   int get categoryId;
 
   /// Create a copy of ProductEvent
   /// with the given fields replaced by the non-null parameter values.
-  @override
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetProductsImplCopyWith<_$GetProductsImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$SearchImplCopyWith<$Res> {
+  factory _$$SearchImplCopyWith(
+          _$SearchImpl value, $Res Function(_$SearchImpl) then) =
+      __$$SearchImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String value});
+}
+
+/// @nodoc
+class __$$SearchImplCopyWithImpl<$Res>
+    extends _$ProductEventCopyWithImpl<$Res, _$SearchImpl>
+    implements _$$SearchImplCopyWith<$Res> {
+  __$$SearchImplCopyWithImpl(
+      _$SearchImpl _value, $Res Function(_$SearchImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of ProductEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? value = null,
+  }) {
+    return _then(_$SearchImpl(
+      value: null == value
+          ? _value.value
+          : value // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$SearchImpl with DiagnosticableTreeMixin implements _Search {
+  const _$SearchImpl({required this.value});
+
+  @override
+  final String value;
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'ProductEvent.search(value: $value)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'ProductEvent.search'))
+      ..add(DiagnosticsProperty('value', value));
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$SearchImpl &&
+            (identical(other.value, value) || other.value == value));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, value);
+
+  /// Create a copy of ProductEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$SearchImplCopyWith<_$SearchImpl> get copyWith =>
+      __$$SearchImplCopyWithImpl<_$SearchImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(int categoryId) getProducts,
+    required TResult Function(String value) search,
+  }) {
+    return search(value);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(int categoryId)? getProducts,
+    TResult? Function(String value)? search,
+  }) {
+    return search?.call(value);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(int categoryId)? getProducts,
+    TResult Function(String value)? search,
+    required TResult orElse(),
+  }) {
+    if (search != null) {
+      return search(value);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_GetProducts value) getProducts,
+    required TResult Function(_Search value) search,
+  }) {
+    return search(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_GetProducts value)? getProducts,
+    TResult? Function(_Search value)? search,
+  }) {
+    return search?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_GetProducts value)? getProducts,
+    TResult Function(_Search value)? search,
+    required TResult orElse(),
+  }) {
+    if (search != null) {
+      return search(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _Search implements ProductEvent {
+  const factory _Search({required final String value}) = _$SearchImpl;
+
+  String get value;
+
+  /// Create a copy of ProductEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$SearchImplCopyWith<_$SearchImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
