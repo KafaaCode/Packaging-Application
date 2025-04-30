@@ -47,8 +47,6 @@
     "close":"Close",
     "termsAndConditions":"Terms and conditions",
 
-
-    "ali":"ali",
    "welcomeMessage": "Welcome to Frip Trading",
   "productCategoriesTitle": "Product categories",
   "productTitle": "Product",
@@ -62,8 +60,6 @@
   "minimumOrderText": "The minimum order for this",
   "productIsText": "product is",
   "addToCartButton": "Add To Cart",
-
-   ""
   "cartDetailsTitle": "Cart Details",
   "productAlreadyExistsMessage": "The product already exists in the same quantity in cart",
   "productAddedToCartMessage": "Product added to cart",
