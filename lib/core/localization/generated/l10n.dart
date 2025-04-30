@@ -510,16 +510,6 @@ class Lang {
     );
   }
 
-  /// `ali`
-  String get ali {
-    return Intl.message(
-      'ali',
-      name: 'ali',
-      desc: '',
-      args: [],
-    );
-  }
-
   /// `Welcome to Frip Trading`
   String get welcomeMessage {
     return Intl.message(
@@ -729,6 +719,26 @@ class Lang {
       args: [],
     );
   }
+
+  /// `Total Price`
+  String get TotalPrice {
+    return Intl.message(
+      'Total Price',
+      name: 'TotalPrice',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Quantity`
+  String get Quantityis {
+    return Intl.message(
+      'Quantity',
+      name: 'Quantityis',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<Lang> {
@@ -739,6 +749,8 @@ class AppLocalizationDelegate extends LocalizationsDelegate<Lang> {
       Locale.fromSubtags(languageCode: 'en', countryCode: 'US'),
       Locale.fromSubtags(languageCode: 'ar', countryCode: 'SY'),
       Locale.fromSubtags(languageCode: 'fr', countryCode: 'FR'),
+      Locale.fromSubtags(languageCode: 'nl', countryCode: 'NL'),
+      Locale.fromSubtags(languageCode: 'tr', countryCode: 'TR'),
     ];
   }
 

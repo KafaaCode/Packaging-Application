@@ -8,7 +8,6 @@ import 'package:frip_trading/src/presentation/screens/auth/widgets/myorder_card.
 import 'package:frip_trading/src/presentation/screens/auth/widgets/option_filter.dart';
 import 'package:frip_trading/src/presentation/screens/auth/widgets/search.dart';
 
-import '../../../../core/services/services_locator.dart';
 
 class MyOrdersPage extends StatelessWidget {
   final List<MyOrder> orders = [
@@ -52,98 +51,103 @@ class MyOrdersPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Lang lang = Lang.of(context);
-    return BlocProvider(
-      create: (context) =>
-          MyOrdersBloc(sl())..add(const MyOrdersEvent.getMyOrders()),
-      child: Scaffold(
-        backgroundColor: Colors.white,
-        body: Column(
-          children: [
-            Padding(
-              padding: const EdgeInsets.only(
-                top: 45,
-                right: 16,
-                left: 16,
-                bottom: 16,
-              ),
-              child: Column(
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        lang.myOrdersTitle,
-                        style: const TextStyle(
-                            color: Color(0xFF70b9be),
-                            fontWeight: FontWeight.bold,
-                            fontSize: 24),
-                      ),
-                      SvgPicture.asset(
-                        'assets/images/Group940.svg',
-                        height: 40,
-                      ),
-                    ],
-                  ),
-                  const SizedBox(height: 30),
-                  Row(
-                    children: [
-                      Expanded(
-                        child: Search(),
-                      ),
-                      const SizedBox(width: 8),
-                      OptionFilter(
-                        onTap: () {
-                          print(1);
-                        },
-                      ),
-                    ],
-                  ),
-                ],
-              ),
+    return Scaffold(
+      backgroundColor: Colors.white,
+      body: Column(
+        children: [
+          Padding(
+            padding: const EdgeInsets.only(
+              top: 45,
+              right: 16,
+              left: 16,
+              bottom: 16,
             ),
-            BlocBuilder<MyOrdersBloc, MyOrdersState>(
-              builder: (context, state) {
-                if (state.loading) {
-                  return const Center(
-                    child: CircularProgressIndicator(
-                      backgroundColor: Colors.white,
-                      valueColor:
-                          AlwaysStoppedAnimation<Color>(Color(0xFF70b9be)),
+            child: Column(
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      lang.myOrdersTitle,
+                      style: const TextStyle(
+                          color: Color(0xFF70b9be),
+                          fontWeight: FontWeight.bold,
+                          fontSize: 24),
                     ),
-                  );
-                } else if (state.error) {
-                  return Expanded(
-                    child: Center(
-                      child: Text(
-                        lang.ordersNotFoundMessage,
-                        style: const TextStyle(
-                            color: Color(0xFF70b9be),
-                            fontWeight: FontWeight.bold,
-                            fontSize: 15),
-                      ),
+                    SvgPicture.asset(
+                      'assets/images/Group940.svg',
+                      height: 40,
                     ),
-                  );
-                }
-                return Expanded(
-                  child: Container(
-                    color: Colors.white,
-                    child: ListView.builder(
-                      itemCount: state.myorders.length /* orders.length */,
-                      itemBuilder: (context, index) {
-                        return OrderCard(
-                            length: state.myorders.length,
-                            index: index,
-                            order: state.myorders[index],
-                            lang: lang);
-                        /*                return OrderCard(length:orders.length,index:index,order:orders[index]); */
+                  ],
+                ),
+                const SizedBox(height: 30),
+                Row(
+                  children: [
+                    Expanded(
+                      child: Search(
+                          onChanged: (value) => context.read<MyOrdersBloc>()
+                            ..add(MyOrdersEvent.search(value: value))),
+                    ),
+                    const SizedBox(width: 8),
+                    OptionFilter(
+                      onTap: () {
+                        print(1);
                       },
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ),
+          BlocBuilder<MyOrdersBloc, MyOrdersState>(
+            builder: (context, state) {
+              if (state.loading) {
+                return const Center(
+                  child: CircularProgressIndicator(
+                    backgroundColor: Colors.white,
+                    valueColor:
+                        AlwaysStoppedAnimation<Color>(Color(0xFF70b9be)),
+                  ),
+                );
+              } else if (state.error) {
+                return Expanded(
+                  child: Center(
+                    child: Text(
+                      lang.ordersNotFoundMessage,
+                      style: const TextStyle(
+                          color: Color(0xFF70b9be),
+                          fontWeight: FontWeight.bold,
+                          fontSize: 15),
                     ),
                   ),
                 );
-              },
-            )
-          ],
-        ),
+              }
+              return Expanded(
+                child: Container(
+                  color: Colors.white,
+                  child: ListView.builder(
+                    itemCount: state.search == null
+                        ? state.myorders.length
+                        : state.search!.length /* orders.length */,
+                    itemBuilder: (context, index) {
+                      MyOrder myOrder = state.search != null
+                          ? state.myorders[index]
+                          : state.search![index];
+                      return OrderCard(
+                          length: state.search == null
+                              ? state.myorders.length
+                              : state.search!.length,
+                          index: index,
+                          order: myOrder,
+                          lang: lang);
+                      /*                return OrderCard(length:orders.length,index:index,order:orders[index]); */
+                    },
+                  ),
+                ),
+              );
+            },
+          )
+        ],
       ),
     );
   }

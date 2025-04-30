@@ -103,7 +103,7 @@ class Profile extends StatelessWidget {
                 ListTile(
                   title: Text(lang.selectLanguage),
                   trailing: SizedBox(
-                    width: 110,
+                    width: 130,
                     child: BlocBuilder<LanguageCubit, LanguageState>(
                       builder: (context, state) {
                         List<SupportedLanguage> langs =
@@ -137,6 +137,7 @@ class Profile extends StatelessWidget {
                           ),
                           // context.read<LanguageCubit>().supportedLanguages[0],
                           svgIcon: 'assets/SVG/Vector_down.svg',
+                          icon: const Icon(Icons.keyboard_arrow_down_rounded),
                         );
                       },
                     ),

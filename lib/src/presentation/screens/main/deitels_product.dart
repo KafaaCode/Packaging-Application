@@ -9,6 +9,7 @@ import 'package:frip_trading/src/data/models/models.dart';
 import 'package:frip_trading/src/presentation/controllers/cart/cart_bloc.dart';
 import 'package:frip_trading/src/presentation/controllers/counter/counter_bloc.dart';
 import 'package:frip_trading/src/presentation/controllers/main_bage/main_page_bloc.dart';
+
 import 'package:readmore/readmore.dart';
 
 class ProductDetailsPage extends StatelessWidget {

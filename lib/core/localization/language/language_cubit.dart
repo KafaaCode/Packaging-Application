@@ -30,6 +30,16 @@ class LanguageCubit extends HydratedCubit<LanguageState> {
         langCode: 'ar',
         countryCode: 'SY',
       ),
+      SupportedLanguage(
+        langName: 'Türkçe',
+        langCode: 'tr',
+        countryCode: 'TR',
+      ),
+      SupportedLanguage(
+        langName: 'Nederlands',
+        langCode: 'nl',
+        countryCode: 'NL',
+      ),
     ];
   }
 

@@ -1,7 +1,7 @@
 import 'package:hydrated_bloc/hydrated_bloc.dart';
 
 class ApiConstances {
-  static const String _baseUrl = "https://cash4plus.online/api";
+  static const String _baseUrl = "https://friptrading.com/api";
 
   static Map<String, dynamic> headers(
       {bool? isToken = true, String? token, bool? isMulti = false}) {
@@ -35,8 +35,10 @@ class ApiConstances {
   // Main
 
   static const String getcategoriesUrl = "$_baseUrl/categories";
+
   static const String getordersUrl = "$_baseUrl/orders";
   static const String addOrdertUrl = "$_baseUrl/orders";
+
   static String getproductsUrl({required int categoryId}) =>
       "$_baseUrl/products/categories/$categoryId";
   // Tools

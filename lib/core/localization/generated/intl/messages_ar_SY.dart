@@ -22,12 +22,13 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "Quantityis": MessageLookupByLibrary.simpleMessage("الكمية"),
+        "TotalPrice": MessageLookupByLibrary.simpleMessage("السعر الأجمالي"),
         "aboutUs": MessageLookupByLibrary.simpleMessage("معلومات عنا"),
         "accountSettings":
             MessageLookupByLibrary.simpleMessage("إعدادات الحساب"),
         "addToCartButton":
             MessageLookupByLibrary.simpleMessage("أضف إلى السلة"),
-        "ali": MessageLookupByLibrary.simpleMessage("علي"),
         "alreadyAMember":
             MessageLookupByLibrary.simpleMessage("هل أنت عضو بالفعل؟"),
         "alreadyHaveAnAccount":
