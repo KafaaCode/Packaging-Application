@@ -40,11 +40,11 @@ class ServicesLocator {
         () => MainRepository(mainRemoteDataSource: sl()));
     sl.registerLazySingleton<BaseMainRemoteDataSource>(
         () => MainRemoteDataSource());
-    sl.registerLazySingleton(() => ProductBloc(mainRepository: sl()));
+    sl.registerFactory(() => ProductBloc(mainRepository: sl()));
     sl.registerLazySingleton(() => CategoriesBloc(sl()));
 
     sl.registerLazySingleton(() => MyOrdersBloc(sl()));
-        sl.registerLazySingleton(() => CartBloc());
+    sl.registerLazySingleton(() => CartBloc());
   }
 
   void _initalSL() {

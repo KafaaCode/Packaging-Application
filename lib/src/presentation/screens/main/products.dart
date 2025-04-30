@@ -21,7 +21,7 @@ class Products extends StatelessWidget {
   Widget build(BuildContext context) {
     Lang lang = Lang.of(context);
     return BlocProvider(
-      create: (context) => ProductBloc(mainRepository: sl())
+      create: (context) => sl<ProductBloc>()
         ..add(ProductEvent.getProducts(categoryId: cartegriesId)),
       child: Scaffold(
         body: Container(
@@ -83,7 +83,14 @@ class Products extends StatelessWidget {
                 Row(
                   children: [
                     Expanded(
-                      child: Search(),
+                      child: BlocBuilder<ProductBloc, ProductState>(
+                        builder: (context, state) {
+                          return Search(
+                            onChanged: (value) => context.read<ProductBloc>()
+                              ..add(ProductEvent.search(value: value)),
+                          );
+                        },
+                      ),
                     ),
                     const SizedBox(width: 8),
                     OptionFilter(onTap: () {
@@ -129,7 +136,13 @@ class Products extends StatelessWidget {
                           child: Wrap(
                             spacing: 10,
                             runSpacing: 5,
-                            children: List.generate(state.products.length, (i) {
+                            children: List.generate(
+                                state.search == null
+                                    ? state.products.length
+                                    : state.search!.length, (i) {
+                              Product product = state.search == null
+                                  ? state.products[i]
+                                  : state.search![i];
                               final width = MediaQuery.of(context).size.width;
                               final itemWidth = width > 971
                                   ? width * 0.31
@@ -148,9 +161,7 @@ class Products extends StatelessWidget {
                                           secondaryAnimation) {
                                         return BlocProvider(
                                           create: (_) => CounterBloc(
-                                            min: state.products[i]
-                                                    .request_number ??
-                                                0,
+                                            min: product.request_number ?? 0,
                                             initial: context
                                                 .read<CartBloc>()
                                                 .state
@@ -158,10 +169,9 @@ class Products extends StatelessWidget {
                                                 .firstWhere(
                                                   (item) =>
                                                       item.product.id ==
-                                                      state.products[i].id,
+                                                      product.id,
                                                   orElse: () => CartItem(
-                                                      product:
-                                                          state.products[i],
+                                                      product: product,
                                                       quantity: state
                                                               .products[i]
                                                               .request_number ??
@@ -170,7 +180,7 @@ class Products extends StatelessWidget {
                                                 .quantity,
                                           ),
                                           child: ProductDetailsPage(
-                                              product: state.products[i]),
+                                              product: product),
                                         );
                                       },
                                       transitionsBuilder: (context, animation,
@@ -195,7 +205,7 @@ class Products extends StatelessWidget {
                                 child: SizedBox(
                                     width: itemWidth,
                                     child: MainCard(
-                                      name: state.products[i].name.toString(),
+                                      name: product.name.toString(),
                                       imageUrl:
                                           'assets/images/Rectangle569.png',
                                     )),

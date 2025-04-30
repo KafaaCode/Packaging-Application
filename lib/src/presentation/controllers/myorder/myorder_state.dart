@@ -12,5 +12,6 @@ class MyOrdersState with _$MyOrdersState {
     @Default(false) bool isAuth,
     @Default(false) bool isEmpty,
     @Default([]) List<MyOrder> myorders,
+    @Default(null) List<MyOrder>? search,
   }) = _Initial;
 }
