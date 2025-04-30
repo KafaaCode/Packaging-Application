@@ -48,7 +48,7 @@ class MyOrdersBloc extends Bloc<MyOrdersEvent, MyOrdersState> {
       final query = event.value?.trim() ?? '';
       List<MyOrder> myOrders = state.myorders.where((e) {
         final name = e.serial_number;
-        return name.contains(query);
+        return name?.contains(query) ?? false;
       }).toList();
       print(myOrders);
       emit(state.copyWith(search: myOrders));

@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_svg/svg.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:frip_trading/core/localization/generated/l10n.dart';
 import 'package:frip_trading/src/data/models/models.dart';
 import 'package:frip_trading/src/presentation/controllers/myorder/myorder_bloc.dart';
 import 'package:frip_trading/src/presentation/screens/auth/widgets/myorder_card.dart';
 import 'package:frip_trading/src/presentation/screens/auth/widgets/option_filter.dart';
 import 'package:frip_trading/src/presentation/screens/auth/widgets/search.dart';
-
 
 class MyOrdersPage extends StatelessWidget {
   final List<MyOrder> orders = [
@@ -122,25 +121,22 @@ class MyOrdersPage extends StatelessWidget {
                   ),
                 );
               }
+
+              // التأكد من أن state.search ليس null وإذا كان null استخدم state.myorders
+              final ordersToDisplay = state.search ?? state.myorders;
+
               return Expanded(
                 child: Container(
                   color: Colors.white,
                   child: ListView.builder(
-                    itemCount: state.search == null
-                        ? state.myorders.length
-                        : state.search!.length /* orders.length */,
+                    itemCount: ordersToDisplay.length,
                     itemBuilder: (context, index) {
-                      MyOrder myOrder = state.search != null
-                          ? state.myorders[index]
-                          : state.search![index];
+                      MyOrder myOrder = ordersToDisplay[index];
                       return OrderCard(
-                          length: state.search == null
-                              ? state.myorders.length
-                              : state.search!.length,
+                          length: ordersToDisplay.length,
                           index: index,
                           order: myOrder,
                           lang: lang);
-                      /*                return OrderCard(length:orders.length,index:index,order:orders[index]); */
                     },
                   ),
                 ),
