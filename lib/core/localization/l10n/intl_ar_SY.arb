@@ -68,5 +68,8 @@
   "ordersNotFoundMessage": "لم يتم العثور على طلبات",
   "orderDetailsTitle": "تفاصيل الطلب",
   "continueToConfirmOrderButton": "المتابعة لتأكيد الطلب",
-  "payButton": "الدفع"
+  "payButton": "الدفع",
+    "TotalPrice":"السعر الأجمالي",
+  "Quantityis":"الكمية"
+  
 }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:frip_trading/core/localization/generated/l10n.dart';
+import 'package:frip_trading/src/presentation/screens/main/detils_order.dart';
 import 'package:intl/intl.dart';
 
 import '../../../../data/models/models.dart';
@@ -85,14 +86,14 @@ class OrderCard extends StatelessWidget {
                       padding: const EdgeInsets.symmetric(
                           horizontal: 15, vertical: 3),
                       decoration: BoxDecoration(
-                        color: getStatusColor(order.status),
+                        color: getStatusColor(order.status ?? 'unknown'),
                         borderRadius: BorderRadius.circular(20),
                       ),
                       child: Text(
-                        order.status,
+                        order.status??'unknown',
                         style: TextStyle(
                             fontSize: 12,
-                            color: getStatusTextColor(order.status),
+                            color: getStatusTextColor(order.status??'unknown'),
                             fontWeight: FontWeight.bold),
                       ),
                     ),
@@ -100,7 +101,33 @@ class OrderCard extends StatelessWidget {
                 ),
                 const SizedBox(height: 10),
                 InkWell(
-                  onTap: () {},
+                  onTap: () {
+                      Navigator.push(
+                                    context,
+                                    PageRouteBuilder(
+                                      pageBuilder: (context, animation,
+                                          secondaryAnimation) {
+                                        return  OrderDetailsPage(order:order);
+                                                      
+                                      },
+                                      transitionsBuilder: (context, animation,
+                                          secondaryAnimation, child) {
+                                        const begin = Offset(1.0, 0.0);
+                                        const end = Offset.zero;
+                                        const curve = Curves.easeInOut;
+                                        var tween = Tween(
+                                                begin: begin, end: end)
+                                            .chain(CurveTween(curve: curve));
+                                        var offsetAnimation =
+                                            animation.drive(tween);
+
+                                        return SlideTransition(
+                                            position: offsetAnimation,
+                                            child: child);
+                                      },
+                                    ),
+                                  );
+                  },
                   child: Container(
                     padding:
                         const EdgeInsets.symmetric(horizontal: 15, vertical: 4),
