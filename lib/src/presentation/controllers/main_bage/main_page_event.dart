@@ -8,4 +8,5 @@ class MainPageEvent with _$MainPageEvent {
       required String message,
       required String senderName,
       required String senderEmail}) = _SendSupport;
+        const factory MainPageEvent.addOrder({required Map<String, dynamic> orderData}) =_AddOrder;
 }

@@ -22,6 +22,7 @@ mixin _$MainPageEvent {
     required TResult Function(
             String title, String message, String senderName, String senderEmail)
         sendSupport,
+    required TResult Function(Map<String, dynamic> orderData) addOrder,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -30,6 +31,7 @@ mixin _$MainPageEvent {
     TResult? Function(String title, String message, String senderName,
             String senderEmail)?
         sendSupport,
+    TResult? Function(Map<String, dynamic> orderData)? addOrder,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -38,6 +40,7 @@ mixin _$MainPageEvent {
     TResult Function(String title, String message, String senderName,
             String senderEmail)?
         sendSupport,
+    TResult Function(Map<String, dynamic> orderData)? addOrder,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -45,18 +48,21 @@ mixin _$MainPageEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(NavigateToTab value) navigateToTab,
     required TResult Function(_SendSupport value) sendSupport,
+    required TResult Function(_AddOrder value) addOrder,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(NavigateToTab value)? navigateToTab,
     TResult? Function(_SendSupport value)? sendSupport,
+    TResult? Function(_AddOrder value)? addOrder,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(NavigateToTab value)? navigateToTab,
     TResult Function(_SendSupport value)? sendSupport,
+    TResult Function(_AddOrder value)? addOrder,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -155,6 +161,7 @@ class _$NavigateToTabImpl implements NavigateToTab {
     required TResult Function(
             String title, String message, String senderName, String senderEmail)
         sendSupport,
+    required TResult Function(Map<String, dynamic> orderData) addOrder,
   }) {
     return navigateToTab(index);
   }
@@ -166,6 +173,7 @@ class _$NavigateToTabImpl implements NavigateToTab {
     TResult? Function(String title, String message, String senderName,
             String senderEmail)?
         sendSupport,
+    TResult? Function(Map<String, dynamic> orderData)? addOrder,
   }) {
     return navigateToTab?.call(index);
   }
@@ -177,6 +185,7 @@ class _$NavigateToTabImpl implements NavigateToTab {
     TResult Function(String title, String message, String senderName,
             String senderEmail)?
         sendSupport,
+    TResult Function(Map<String, dynamic> orderData)? addOrder,
     required TResult orElse(),
   }) {
     if (navigateToTab != null) {
@@ -190,6 +199,7 @@ class _$NavigateToTabImpl implements NavigateToTab {
   TResult map<TResult extends Object?>({
     required TResult Function(NavigateToTab value) navigateToTab,
     required TResult Function(_SendSupport value) sendSupport,
+    required TResult Function(_AddOrder value) addOrder,
   }) {
     return navigateToTab(this);
   }
@@ -199,6 +209,7 @@ class _$NavigateToTabImpl implements NavigateToTab {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(NavigateToTab value)? navigateToTab,
     TResult? Function(_SendSupport value)? sendSupport,
+    TResult? Function(_AddOrder value)? addOrder,
   }) {
     return navigateToTab?.call(this);
   }
@@ -208,6 +219,7 @@ class _$NavigateToTabImpl implements NavigateToTab {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(NavigateToTab value)? navigateToTab,
     TResult Function(_SendSupport value)? sendSupport,
+    TResult Function(_AddOrder value)? addOrder,
     required TResult orElse(),
   }) {
     if (navigateToTab != null) {
@@ -333,6 +345,7 @@ class _$SendSupportImpl implements _SendSupport {
     required TResult Function(
             String title, String message, String senderName, String senderEmail)
         sendSupport,
+    required TResult Function(Map<String, dynamic> orderData) addOrder,
   }) {
     return sendSupport(title, message, senderName, senderEmail);
   }
@@ -344,6 +357,7 @@ class _$SendSupportImpl implements _SendSupport {
     TResult? Function(String title, String message, String senderName,
             String senderEmail)?
         sendSupport,
+    TResult? Function(Map<String, dynamic> orderData)? addOrder,
   }) {
     return sendSupport?.call(title, message, senderName, senderEmail);
   }
@@ -355,6 +369,7 @@ class _$SendSupportImpl implements _SendSupport {
     TResult Function(String title, String message, String senderName,
             String senderEmail)?
         sendSupport,
+    TResult Function(Map<String, dynamic> orderData)? addOrder,
     required TResult orElse(),
   }) {
     if (sendSupport != null) {
@@ -368,6 +383,7 @@ class _$SendSupportImpl implements _SendSupport {
   TResult map<TResult extends Object?>({
     required TResult Function(NavigateToTab value) navigateToTab,
     required TResult Function(_SendSupport value) sendSupport,
+    required TResult Function(_AddOrder value) addOrder,
   }) {
     return sendSupport(this);
   }
@@ -377,6 +393,7 @@ class _$SendSupportImpl implements _SendSupport {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(NavigateToTab value)? navigateToTab,
     TResult? Function(_SendSupport value)? sendSupport,
+    TResult? Function(_AddOrder value)? addOrder,
   }) {
     return sendSupport?.call(this);
   }
@@ -386,6 +403,7 @@ class _$SendSupportImpl implements _SendSupport {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(NavigateToTab value)? navigateToTab,
     TResult Function(_SendSupport value)? sendSupport,
+    TResult Function(_AddOrder value)? addOrder,
     required TResult orElse(),
   }) {
     if (sendSupport != null) {
@@ -411,6 +429,167 @@ abstract class _SendSupport implements MainPageEvent {
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$SendSupportImplCopyWith<_$SendSupportImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$AddOrderImplCopyWith<$Res> {
+  factory _$$AddOrderImplCopyWith(
+          _$AddOrderImpl value, $Res Function(_$AddOrderImpl) then) =
+      __$$AddOrderImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({Map<String, dynamic> orderData});
+}
+
+/// @nodoc
+class __$$AddOrderImplCopyWithImpl<$Res>
+    extends _$MainPageEventCopyWithImpl<$Res, _$AddOrderImpl>
+    implements _$$AddOrderImplCopyWith<$Res> {
+  __$$AddOrderImplCopyWithImpl(
+      _$AddOrderImpl _value, $Res Function(_$AddOrderImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of MainPageEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? orderData = null,
+  }) {
+    return _then(_$AddOrderImpl(
+      orderData: null == orderData
+          ? _value._orderData
+          : orderData // ignore: cast_nullable_to_non_nullable
+              as Map<String, dynamic>,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$AddOrderImpl implements _AddOrder {
+  const _$AddOrderImpl({required final Map<String, dynamic> orderData})
+      : _orderData = orderData;
+
+  final Map<String, dynamic> _orderData;
+  @override
+  Map<String, dynamic> get orderData {
+    if (_orderData is EqualUnmodifiableMapView) return _orderData;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableMapView(_orderData);
+  }
+
+  @override
+  String toString() {
+    return 'MainPageEvent.addOrder(orderData: $orderData)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$AddOrderImpl &&
+            const DeepCollectionEquality()
+                .equals(other._orderData, _orderData));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_orderData));
+
+  /// Create a copy of MainPageEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$AddOrderImplCopyWith<_$AddOrderImpl> get copyWith =>
+      __$$AddOrderImplCopyWithImpl<_$AddOrderImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(int index) navigateToTab,
+    required TResult Function(
+            String title, String message, String senderName, String senderEmail)
+        sendSupport,
+    required TResult Function(Map<String, dynamic> orderData) addOrder,
+  }) {
+    return addOrder(orderData);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(int index)? navigateToTab,
+    TResult? Function(String title, String message, String senderName,
+            String senderEmail)?
+        sendSupport,
+    TResult? Function(Map<String, dynamic> orderData)? addOrder,
+  }) {
+    return addOrder?.call(orderData);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(int index)? navigateToTab,
+    TResult Function(String title, String message, String senderName,
+            String senderEmail)?
+        sendSupport,
+    TResult Function(Map<String, dynamic> orderData)? addOrder,
+    required TResult orElse(),
+  }) {
+    if (addOrder != null) {
+      return addOrder(orderData);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(NavigateToTab value) navigateToTab,
+    required TResult Function(_SendSupport value) sendSupport,
+    required TResult Function(_AddOrder value) addOrder,
+  }) {
+    return addOrder(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(NavigateToTab value)? navigateToTab,
+    TResult? Function(_SendSupport value)? sendSupport,
+    TResult? Function(_AddOrder value)? addOrder,
+  }) {
+    return addOrder?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(NavigateToTab value)? navigateToTab,
+    TResult Function(_SendSupport value)? sendSupport,
+    TResult Function(_AddOrder value)? addOrder,
+    required TResult orElse(),
+  }) {
+    if (addOrder != null) {
+      return addOrder(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _AddOrder implements MainPageEvent {
+  const factory _AddOrder({required final Map<String, dynamic> orderData}) =
+      _$AddOrderImpl;
+
+  Map<String, dynamic> get orderData;
+
+  /// Create a copy of MainPageEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$AddOrderImplCopyWith<_$AddOrderImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 

@@ -14,7 +14,22 @@ class MainPageBloc extends Bloc<MainPageEvent, MainPageState> {
       emit(state.copyWith(selectedIndex: event.index));
     });
     on<_SendSupport>(_sentSupportEvent);
+      on<_AddOrder>(_addOrderEvent);
   }
+void _addOrderEvent(event, emit) async {
+  emit(state.copyWith(isLoading: true, errorMessage: '', successMessage: ''));
+  final result = await _mainRepository.addOrder(
+    orderData: event.orderData,  
+  );
+  result.fold(
+    (failure) =>
+        emit(state.copyWith(isLoading: false, errorMessage: failure.message)),
+    (success) => emit(state.copyWith(
+  
+        isLoading: false,
+        successMessage: 'Order sent successfully')),
+  );
+}
 
   void _sentSupportEvent(event, emit) async {
     emit(state.copyWith(isLoading: true, errorMessage: '', successMessage: ''));
