@@ -135,7 +135,7 @@ class FilterPage extends StatelessWidget {
                       child: Center(
                           child: Wrap(
                               spacing: 10,
-                              runSpacing: 5,
+                              runSpacing: 10,
                               children: List.generate(
                                   state.searchCategories == null
                                       ? state.categories.length
@@ -151,8 +151,8 @@ class FilterPage extends StatelessWidget {
                                     : width > 800
                                         ? width * 0.47
                                         : width > 621
-                                            ? width * 0.30
-                                            : width * 0.43;
+                                            ? width * 0.43
+                                            : width * 0.90;
     
                                 return InkWell(
                                   onTap: () {
