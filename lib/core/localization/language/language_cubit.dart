@@ -1,35 +1,64 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:frip_trading/core/utils/abstracts.dart';
+import 'package:hydrated_bloc/hydrated_bloc.dart';
 
 import 'language_state.dart';
 
-class LanguageCubit extends Cubit<LanguageState> {
-  LanguageCubit() : super(LanguageState()){
-    emit(state.copyWith(supportedLanguages: _supportedLanguages));
+class LanguageCubit extends HydratedCubit<LanguageState> {
+  LanguageCubit() : super(LanguageState()) {
+    emit(state.copyWith(supportedLanguages: supportedLanguages));
   }
 
-
-  void changeLanguageTo(String code)  {
+  void changeLanguageTo(String code) {
     emit(state.copyWith(locale: Locale(code)));
   }
 
-  List<SupportedLanguage> get _supportedLanguages {
+  static List<SupportedLanguage> get supportedLanguages {
     return [
+      SupportedLanguage(
+        langName: 'English',
+        langCode: 'en',
+        countryCode: 'US',
+      ),
+      SupportedLanguage(
+        langName: 'French',
+        langCode: 'fr',
+        countryCode: 'FR',
+      ),
       SupportedLanguage(
         langName: 'العربية',
         langCode: 'ar',
         countryCode: 'SY',
       ),
       SupportedLanguage(
-        langName: 'English',
-        langCode: 'en',
-        countryCode: 'US',
-      )
+        langName: 'Türkçe',
+        langCode: 'tr',
+        countryCode: 'TR',
+      ),
+      SupportedLanguage(
+        langName: 'Nederlands',
+        langCode: 'nl',
+        countryCode: 'NL',
+      ),
     ];
+  }
+
+  @override
+  LanguageState? fromJson(Map<String, dynamic> json) {
+    return LanguageState(
+      locale: Locale(json['langCode']),
+    );
+  }
+
+  @override
+  Map<String, dynamic>? toJson(LanguageState state) {
+    return {
+      'langCode': state.locale.languageCode,
+    };
   }
 }
 
-class SupportedLanguage {
+class SupportedLanguage extends HasIdAndName {
   final String langName;
   final String langCode;
   final String countryCode;
@@ -39,4 +68,13 @@ class SupportedLanguage {
     required this.langCode,
     required this.countryCode,
   });
+
+  @override
+  Object get id => langCode;
+
+  @override
+  String get name => langName;
+  
+  @override
+  List<Object?> get props => [langName, langCode, countryCode];
 }

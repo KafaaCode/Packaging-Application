@@ -18,8 +18,9 @@ class AuthRepository extends BaseAuthRepository {
           email: email, password: password);
       return Right(response);
     } on AuthException catch (failure) {
-      return Left(
-          ServerFailure.fromResponse(statusCode: failure.statusCode ?? 404));
+      return Left(Failure(
+          statusCode: failure.statusCode ?? 404,
+          message: failure.authMessage ?? 'error'));
     }
   }
 
@@ -29,8 +30,9 @@ class AuthRepository extends BaseAuthRepository {
       final response = await baseAuthRemoteDataSource.logout();
       return Right(response);
     } on AuthException catch (failure) {
-      return Left(
-          ServerFailure.fromResponse(statusCode: failure.statusCode ?? 404));
+      return Left(Failure(
+          statusCode: failure.statusCode ?? 404,
+          message: failure.authMessage ?? 'error'));
     }
   }
 
@@ -46,8 +48,9 @@ class AuthRepository extends BaseAuthRepository {
       final response = await baseAuthRemoteDataSource.register(user: user);
       return Right(response);
     } on AuthException catch (failure) {
-      return Left(
-          ServerFailure.fromResponse(statusCode: failure.statusCode ?? 404));
+      return Left(Failure(
+          statusCode: failure.statusCode ?? 404,
+          message: failure.authMessage ?? 'error'));
     }
   }
 
@@ -57,8 +60,9 @@ class AuthRepository extends BaseAuthRepository {
       final response = await baseAuthRemoteDataSource.update(user: user);
       return Right(response);
     } on AuthException catch (failure) {
-      return Left(
-          ServerFailure.fromResponse(statusCode: failure.statusCode ?? 404));
+      return Left(Failure(
+          statusCode: failure.statusCode ?? 404,
+          message: failure.authMessage ?? 'error'));
     }
   }
 
@@ -68,8 +72,26 @@ class AuthRepository extends BaseAuthRepository {
       final response = await baseAuthRemoteDataSource.updateProfile(path: path);
       return Right(response);
     } on AuthException catch (failure) {
-      return Left(
-          ServerFailure.fromResponse(statusCode: failure.statusCode ?? 404));
+      return Left(Failure(
+          statusCode: failure.statusCode ?? 404,
+          message: failure.authMessage ?? 'error'));
+    }
+  }
+  
+  @override
+  ResultFuture<String> updatePassword({required String oldPassword, required String newPassword, required String confirmPassword}) async {
+    
+    try {
+      final response = await baseAuthRemoteDataSource.updatePassword(
+        oldPassword: oldPassword,
+        newPassword: newPassword,
+        confirmPassword: confirmPassword,
+      );
+      return Right(response);
+    } on AuthException catch (failure) {
+      return Left(Failure(
+          statusCode: failure.statusCode ?? 404,
+          message: failure.authMessage ?? 'error'));
     }
   }
 }

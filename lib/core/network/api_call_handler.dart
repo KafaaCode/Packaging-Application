@@ -31,7 +31,7 @@ class ApiCallHandler {
 
       if (response.statusCode == 401) {
         final refreshToken = await authDataSource.refreshToken();
-        // await HydratedBloc.storage.write('token', refreshToken.token);
+        await HydratedBloc.storage.write('token', refreshToken.token);
         return handler(
           apiCall: apiCall,
           responseHandler: responseHandler,
@@ -42,7 +42,7 @@ class ApiCallHandler {
     } on DioException catch (e) {
       if (e.response?.statusCode == 401) {
         final refreshToken = await authDataSource.refreshToken();
-        // await HydratedBloc.storage.write('token', refreshToken.token);
+        await HydratedBloc.storage.write('token', refreshToken.token);
         return handler(
           apiCall: apiCall,
           responseHandler: responseHandler,

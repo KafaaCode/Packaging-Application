@@ -111,7 +111,7 @@ class __$$LanguageStateImplCopyWithImpl<$Res>
 
 class _$LanguageStateImpl implements _LanguageState {
   _$LanguageStateImpl(
-      {this.locale = const Locale('ar', 'SY'),
+      {this.locale = const Locale('en', 'US'),
       final List<SupportedLanguage>? supportedLanguages})
       : _supportedLanguages = supportedLanguages;
 

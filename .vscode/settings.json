@@ -1,0 +1,6 @@
+{
+    "github.copilot.advanced": {
+        "model": "gpt-4.1"
+    },
+    "cmake.sourceDirectory": "C:/Users/omaar/Documents/GitHub/Packaging-Application/windows/flutter"
+}
