@@ -5,6 +5,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:frip_trading/core/localization/generated/l10n.dart';
 import 'package:frip_trading/core/routes/router_screens.dart';
 import 'package:frip_trading/core/routes/routes_name.dart';
+import 'package:frip_trading/core/services/services_locator.dart';
 import 'package:frip_trading/src/data/models/models.dart';
 import 'package:frip_trading/src/presentation/controllers/auth/auth_bloc.dart';
 import 'package:frip_trading/src/presentation/controllers/category/category_bloc.dart';
@@ -33,8 +34,10 @@ class FilterPage extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                const Text(
-                  'User Name',
+                 Text(
+                sl<AuthBloc>().state.mapOrNull(
+                  create: (state) => state.user.name,
+                )?? 'User Name',
                   style: TextStyle(
                       color: Color(0xFF70b9be),
                       fontWeight: FontWeight.bold,

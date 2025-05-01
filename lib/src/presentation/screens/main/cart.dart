@@ -111,8 +111,8 @@ class CartDetailsPage extends StatelessWidget {
                       return Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          const Text(
-                            'Total price',
+                          Text(
+                            lang.TotalPrice,
                             style: TextStyle(
                               color: Color.fromARGB(255, 110, 106, 106),
                               fontSize: 17,
