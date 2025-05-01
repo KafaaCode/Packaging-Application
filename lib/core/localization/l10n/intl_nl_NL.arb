@@ -65,7 +65,9 @@
     "ordersNotFoundMessage": "Geen bestellingen gevonden",
     "orderDetailsTitle": "Bestelgegevens",
     "continueToConfirmOrderButton": "Doorgaan om bestelling te bevestigen",
-    "payButton": "Betalen"
+    "payButton": "Betalen",
+    "Addingorder": "Bestelling wordt toegevoegd...",
+"Ordersentsuccessfully": "Bestelling succesvol verzonden"
 }
 
 

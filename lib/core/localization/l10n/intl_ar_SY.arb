@@ -70,6 +70,8 @@
   "continueToConfirmOrderButton": "المتابعة لتأكيد الطلب",
   "payButton": "الدفع",
     "TotalPrice":"السعر الأجمالي",
-  "Quantityis":"الكمية"
+  "Quantityis":"الكمية",
+  "Addingorder": "جاري إضافة الطلب...",
+"Ordersentsuccessfully": "تم إرسال الطلب بنجاح"
   
 }

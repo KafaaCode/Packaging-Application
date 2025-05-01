@@ -69,5 +69,8 @@
   "continueToConfirmOrderButton": "Continuer pour confirmer la commande",
   "payButton": "Payer",
    "TotalPrice":"Prix total",
-  "Quantityis":"Quantité"
+  "Quantityis":"Quantité",
+  "Addingorder": "Ajout de la commande en cours...",
+
+"Ordersentsuccessfully": "Commande envoyée avec succès"
 }

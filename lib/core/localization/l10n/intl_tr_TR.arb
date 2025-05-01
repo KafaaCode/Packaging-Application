@@ -65,7 +65,9 @@
     "ordersNotFoundMessage": "Sipariş bulunamadı",
     "orderDetailsTitle": "Sipariş Detayları",
     "continueToConfirmOrderButton": "Siparişi onaylamaya devam et",
-    "payButton": "Öde"
+    "payButton": "Öde",
+    "Addingorder": "Sipariş ekleniyor...",
+     "Ordersentsuccessfully": "Sipariş başarıyla gönderildi"
 }
 
 

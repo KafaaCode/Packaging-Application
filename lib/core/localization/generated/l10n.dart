@@ -739,6 +739,26 @@ class Lang {
       args: [],
     );
   }
+
+  /// `Adding order...`
+  String get Addingorder {
+    return Intl.message(
+      'Adding order...',
+      name: 'Addingorder',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Order sent successfully`
+  String get Ordersentsuccessfully {
+    return Intl.message(
+      'Order sent successfully',
+      name: 'Ordersentsuccessfully',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<Lang> {

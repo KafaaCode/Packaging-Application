@@ -22,6 +22,10 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "Addingorder":
+            MessageLookupByLibrary.simpleMessage("Sipariş ekleniyor..."),
+        "Ordersentsuccessfully": MessageLookupByLibrary.simpleMessage(
+            "Sipariş başarıyla gönderildi"),
         "aboutUs": MessageLookupByLibrary.simpleMessage("Hakkımızda"),
         "accountSettings":
             MessageLookupByLibrary.simpleMessage("Hesap Ayarları"),

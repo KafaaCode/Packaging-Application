@@ -20,30 +20,36 @@ class CartDetailsPage extends StatelessWidget {
         if (state.isLoading) {
           // عند تحميل البيانات
           ScaffoldMessenger.of(context).showSnackBar(
-            const SnackBar(
-              content: Text('جاري إضافة الطلب...'),
+           SnackBar(
+              content: Text(lang.Addingorder),
               backgroundColor: Colors.orange,
-              duration: Duration(seconds: 2),
+              duration: Duration(seconds: 1),
             ),
           );
-        } else if (state.successMessage != null) {
+        } else if (state.successMessage != '') {
           // في حالة النجاح
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
               content: Text(state.successMessage!),
               backgroundColor: Colors.green,
-              duration: Duration(seconds: 2),
+              duration: Duration(seconds: 1),
             ),
           );
-        } else if (state.errorMessage != null) {
+               context.read<MainPageBloc>().emit(
+        state.copyWith(successMessage: ''),
+      );
+        } else if (state.errorMessage != '') {
           // في حالة حدوث خطأ
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
               content: Text(state.errorMessage!),
               backgroundColor: Colors.red,
-              duration: Duration(seconds: 2),
+              duration: Duration(seconds: 1),
             ),
           );
+               context.read<MainPageBloc>().emit(
+        state.copyWith(errorMessage: ''),
+      );
         }
       },
       child: Scaffold(
