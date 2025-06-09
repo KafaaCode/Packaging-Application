@@ -40,17 +40,6 @@ class _LoginPageState extends State<LoginPage> {
                   loadInProgress: () {
                     showLoadingDialog(context);
                   },
-                  loaded: (user) {
-                    Navigator.of(context, rootNavigator: true).pop(); // close loading
-                    debugPrint('Loaded with user: ${user.email}');
-                    AppRouter.router.navigateTo(
-                      context,
-                      RoutesNames.mainRoute,
-                      clearStack: true,
-                      transitionDuration: const Duration(milliseconds: 500),
-                      transition: TransitionType.inFromBottom,
-                    );
-                  },
                   error: (message) {
                     Navigator.of(context, rootNavigator: true).pop(); // close loading
                     debugPrint('Login Error: $message');
@@ -90,7 +79,7 @@ class _LoginPageState extends State<LoginPage> {
                         style: theme.textTheme.headlineMedium,
                       ),
                       Text(
-                        lang.plsEnterDataToContiubue,
+                        Lang().plsEnterDataToContiubue,
                         style: theme.textTheme.bodyMedium?.copyWith(
                           color: Colors.grey[600],
                         ),
@@ -103,10 +92,10 @@ class _LoginPageState extends State<LoginPage> {
                     child: Column(
                       children: [
                         TextFieldAuth(
-                          labelText: lang.enterYourEamilLabel,
+                          labelText: Lang().enterYourEamilLabel,
                           svgIcon: 'assets/SVG/mail.svg',
                           controller: emailController,
-                          hintText: lang.enterYourEamilHint,
+                          hintText: Lang().enterYourEamilHint,
                         ),
                         const SizedBox(height: 20),
                         TextFieldAuth(
@@ -144,12 +133,12 @@ class _LoginPageState extends State<LoginPage> {
                         ),
                       );
                     },
-                    text: lang.login,
+                    text: Lang().login,
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Text(lang.alreadyHaveAnAccount,
+                      Text(Lang().alreadyHaveAnAccount,
                           style: const TextStyle(color: Colors.grey)),
                       TextButton(
                         onPressed: () {
@@ -161,7 +150,7 @@ class _LoginPageState extends State<LoginPage> {
                           );
                         },
                         child: Text(
-                          lang.signin,
+                          Lang().signin,
                           style: theme.textTheme.bodyMedium?.copyWith(
                             color: theme.primaryColor,
                           ),
