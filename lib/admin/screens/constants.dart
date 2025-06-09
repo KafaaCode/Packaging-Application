@@ -1,4 +1,4 @@
 // constants.dart
 
-const String apiBaseUrl = 'https://cash4plus.online';
-const String authToken = '1|dy93ItHblJA8kCIV28EXIkKzrjzUfUPZ8h8CL0zh883e6ee3';
+const String apiBaseUrl = 'http://10.0.2.2:8000';
+const String authToken = '1|hqTQtuRNh5mgbohZU2lmygMozFzJY64W7JfnCdAv0e000989';

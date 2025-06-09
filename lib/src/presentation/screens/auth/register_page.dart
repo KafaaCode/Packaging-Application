@@ -123,8 +123,8 @@ class _RegisterPageState extends State<RegisterPage> {
                                 svgIcon: 'assets/SVG/Vector_down.svg',
                                 labelText: 'Select Specialization',
                                 items: const [
-                                  'Company',
-                                  'Individual',
+                                  '1',
+                                  '2',
                                 ],
                                 defaultValue: state.maybeWhen(
                                   create: (user) =>
@@ -158,9 +158,9 @@ class _RegisterPageState extends State<RegisterPage> {
                                   orElse: () => null,
                                 ),
                                 items: const [
-                                  'Company Name 1',
-                                  'Company Name 2',
-                                  'Company Name 3',
+                                  '1',
+                                  '2',
+                                  '3',
                                 ],
                                 onChanged: (value) {
                                   context.read<AuthBloc>().add(
