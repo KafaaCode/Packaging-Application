@@ -1,7 +1,9 @@
 import 'package:hydrated_bloc/hydrated_bloc.dart';
 
 class ApiConstances {
-  static const String _baseUrl = "https://friptrading.com/api";
+  // static const String _baseUrl = "https://friptrading.com/api";
+  static const String _baseUrl = "http://10.0.2.2:8000/api";
+  // static const String _baseUrl = "https://cash4plus.online/api";
 
   static Map<String, dynamic> headers(
       {bool? isToken = true, String? token, bool? isMulti = false}) {
@@ -24,6 +26,7 @@ class ApiConstances {
   // Authentication
   static const String registerUrl = "$_baseUrl/register";
   static const String loginUrl = "$_baseUrl/login";
+  static const String ordersUrl = "$_baseUrl/orders";
   static const String logoutUrl = "$_baseUrl/logout";
   static const String refreshTokenUrl = "$_baseUrl/refreshToken";
   static const String updatePasswordUrl = "$_baseUrl/change-password";

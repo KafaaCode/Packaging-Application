@@ -18,13 +18,13 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-  TextEditingController emailController = TextEditingController();
-  TextEditingController passwordController = TextEditingController();
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+
   @override
   Widget build(BuildContext context) {
     ThemeData theme = Theme.of(context);
-    Lang lang = Lang.of(context);
     return Scaffold(
       body: SingleChildScrollView(
         child: Form(
@@ -36,54 +36,45 @@ class _LoginPageState extends State<LoginPage> {
             color: theme.canvasColor,
             child: BlocListener<AuthBloc, AuthState>(
               listener: (context, state) {
-                state.maybeWhen(
-                  error: (message) {
-                    Navigator.of(context, rootNavigator: true).pop();
-                    debugPrint('Error: $message');
-
-                    showDialog(
-                      context: context,
-                      builder: (context) => AlertDialog(
-                        title: const Text('Error'),
-                        content: Text(message),
-                        actions: [
-                          TextButton(
-                            onPressed: () {
-                              Navigator.of(context).pop();
-                            },
-                            child: const Text('OK'),
-                          ),
-                        ],
-                      ),
-                    );
-                  },
+                state.whenOrNull(
                   loadInProgress: () {
                     showLoadingDialog(context);
                   },
-                  create: (user) {
-                    if (user.role != null) {
-                      Navigator.of(context, rootNavigator: true).pop();
-                      debugPrint('Loaded with user: ${user.email}');
-                      AppRouter.router.navigateTo(
-                          context, RoutesNames.mainRoute,
-                          clearStack: true,
-                          transitionDuration: const Duration(milliseconds: 200),
-                          transition: TransitionType.inFromBottom);
-                    }
+                  loaded: (user) {
+                    Navigator.of(context, rootNavigator: true).pop(); // close loading
+                    debugPrint('Loaded with user: ${user.email}');
+                    AppRouter.router.navigateTo(
+                      context,
+                      RoutesNames.mainRoute,
+                      clearStack: true,
+                      transitionDuration: const Duration(milliseconds: 500),
+                      transition: TransitionType.inFromBottom,
+                    );
                   },
-                  orElse: () {
-                    debugPrint('Something else');
+                  error: (message) {
+                    Navigator.of(context, rootNavigator: true).pop(); // close loading
+                    debugPrint('Login Error: $message');
+
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(
+                        content: Text(message),
+                        backgroundColor: Colors.red,
+                      ),
+                    );
                   },
                 );
               },
               child: Column(
                 children: [
                   Center(
-                    child: Text(lang.letsGetStarted,
-                        style: theme.textTheme.displayMedium?.copyWith(
-                            color: theme.primaryColor,
-                            fontWeight: FontWeight.w600,
-                            fontSize: 28)),
+                    child: Text(
+                      'Let’s Get Started',
+                      style: theme.textTheme.displayMedium?.copyWith(
+                        color: theme.primaryColor,
+                        fontWeight: FontWeight.w600,
+                        fontSize: 28,
+                      ),
+                    ),
                   ),
                   const SizedBox(height: 20),
                   Image.asset(
@@ -110,8 +101,6 @@ class _LoginPageState extends State<LoginPage> {
                   Padding(
                     padding: const EdgeInsets.all(10.0),
                     child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisAlignment: MainAxisAlignment.start,
                       children: [
                         TextFieldAuth(
                           labelText: lang.enterYourEamilLabel,
@@ -121,18 +110,23 @@ class _LoginPageState extends State<LoginPage> {
                         ),
                         const SizedBox(height: 20),
                         TextFieldAuth(
+                          labelText: 'Password',
+                          hintText: 'Password',
                           svgIcon: 'assets/SVG/lock.svg',
-                          isPassword: true,
-                          labelText: lang.passwordLabel,
-                          hintText: lang.passwordHint,
                           controller: passwordController,
+                          isPassword: true,
                         ),
                         TextButton(
-                            onPressed: () {},
-                            child: Text(lang.forgotYourPassword,
-                                style: theme.textTheme.bodyMedium?.copyWith(
-                                  color: theme.primaryColor,
-                                ))),
+                          onPressed: () {
+                            // TODO: Add forget password navigation
+                          },
+                          child: Text(
+                            'Forget Password?',
+                            style: theme.textTheme.bodyMedium?.copyWith(
+                              color: theme.primaryColor,
+                            ),
+                          ),
+                        ),
                       ],
                     ),
                   ),
@@ -140,20 +134,19 @@ class _LoginPageState extends State<LoginPage> {
                   ButtonCostum(
                     onPressed: () {
                       context.read<AuthBloc>().add(
-                            AuthEvent.login(
-                              user: User(
-                                id: 0,
-                                name: 'User',
-                                email: emailController.text,
-                                password: passwordController.text,
-                              ),
-                            ),
-                          );
+                        AuthEvent.login(
+                          user: User(
+                            id: 0,
+                            name: 'User',
+                            email: emailController.text.trim(),
+                            password: passwordController.text,
+                          ),
+                        ),
+                      );
                     },
                     text: lang.login,
                   ),
                   Row(
-                    crossAxisAlignment: CrossAxisAlignment.center,
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(lang.alreadyHaveAnAccount,
@@ -161,11 +154,11 @@ class _LoginPageState extends State<LoginPage> {
                       TextButton(
                         onPressed: () {
                           AppRouter.router.navigateTo(
-                              context, RoutesNames.registerRoute,
-                              clearStack: true,
-                              transition: TransitionType.inFromLeft,
-                              transitionDuration:
-                                  const Duration(milliseconds: 200));
+                            context,
+                            RoutesNames.registerRoute,
+                            transition: TransitionType.inFromLeft,
+                            transitionDuration: const Duration(milliseconds: 800),
+                          );
                         },
                         child: Text(
                           lang.signin,
