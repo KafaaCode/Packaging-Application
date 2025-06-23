@@ -41,9 +41,7 @@ class _LoginPageState extends State<LoginPage> {
                     showLoadingDialog(context);
                   },
                   error: (message) {
-                    Navigator.of(context, rootNavigator: true).pop(); // close loading
-                    debugPrint('Login Error: $message');
-
+                    Navigator.of(context, rootNavigator: true).pop(); // Close loading dialog
                     ScaffoldMessenger.of(context).showSnackBar(
                       SnackBar(
                         content: Text(message),
@@ -51,6 +49,29 @@ class _LoginPageState extends State<LoginPage> {
                       ),
                     );
                   },
+                    create: (user) {
+                      Navigator.of(context, rootNavigator: true).pop();
+                      if (user.role == 'Admin') {
+                        AppRouter.router.navigateTo(
+                          context,
+                          RoutesNames.adminMainRoute,
+                          clearStack: true,
+                        );
+                      } else if (user.role == 'User') {
+                        AppRouter.router.navigateTo(
+                          context,
+                          RoutesNames.mainRoute,
+                          clearStack: true,
+                        );
+                      } else {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          const SnackBar(
+                            content: Text('⚠️ لا تملك الصلاحية للدخول'),
+                            backgroundColor: Colors.red,
+                          ),
+                        );
+                      }
+                    }
                 );
               },
               child: Column(
@@ -122,16 +143,18 @@ class _LoginPageState extends State<LoginPage> {
                   const SizedBox(height: 20),
                   ButtonCostum(
                     onPressed: () {
-                      context.read<AuthBloc>().add(
-                        AuthEvent.login(
-                          user: User(
-                            id: 0,
-                            name: 'User',
-                            email: emailController.text.trim(),
-                            password: passwordController.text,
+                      if (_formKey.currentState!.validate()) {
+                        context.read<AuthBloc>().add(
+                          AuthEvent.login(
+                            user: User(
+                              id: 0,
+                              name: 'User',
+                              email: emailController.text.trim(),
+                              password: passwordController.text,
+                            ),
                           ),
-                        ),
-                      );
+                        );
+                      }
                     },
                     text: Lang().login,
                   ),

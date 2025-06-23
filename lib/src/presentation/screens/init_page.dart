@@ -44,13 +44,15 @@ class _InitPageState extends State<InitPage> {
       },
       create: (user) {
         Navigator.of(context, rootNavigator: true).pop();
+        print(user.role);
         if (user.role == "User") {
           debugPrint('Loaded with user: ${user.email}');
-          AppRouter.router.navigateTo(context, RoutesNames.adminMainRoute,
+          AppRouter.router.navigateTo(context, RoutesNames.mainRoute,
               clearStack: true,
               transitionDuration: const Duration(milliseconds: 200),
               transition: TransitionType.inFromBottom);
         } else if (user.role == "Admin") {
+          debugPrint('Loaded with user: ${user.email}');
           AppRouter.router.navigateTo(context, RoutesNames.adminMainRoute,
               clearStack: true,
               transitionDuration: const Duration(milliseconds: 200),

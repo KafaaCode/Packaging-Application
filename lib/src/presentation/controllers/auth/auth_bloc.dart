@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:frip_trading/src/data/models/models.dart';
 import 'package:frip_trading/src/domin/repository/auth_repository.dart';
@@ -109,9 +110,9 @@ class AuthBloc extends HydratedBloc<AuthEvent, AuthState> {
   }
 
   void _loginEvent(
-    _Login event,
-    Emitter<AuthState> emit,
-  ) async {
+      _Login event,
+      Emitter<AuthState> emit,
+      ) async {
     emit(const AuthState.loadInProgress());
     try {
       final response = await repository.login(
@@ -119,16 +120,14 @@ class AuthBloc extends HydratedBloc<AuthEvent, AuthState> {
         password: event.user.password!,
       );
       await response.fold((error) async {
-        print('Error: ${error.message}');
+        debugPrint('Login Error: ${error.message}');
         if (!emit.isDone) emit(AuthState.error(message: error.message));
       }, (r) async {
         await HydratedBloc.storage.write('token', r.token);
 
+        // تم تغيير هذا الجزء لاستخدام الحالة الصحيحة
         if (!emit.isDone) {
-          emit(state.maybeMap(
-            orElse: () => AuthState.create(user: r.user),
-            create: (create) => create.copyWith(user: r.user),
-          ));
+          emit(AuthState.create(user: r.user)); // تم إصلاح هذه السطر
         }
       });
     } catch (e) {

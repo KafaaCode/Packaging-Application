@@ -1,29 +1,13 @@
 import 'package:flutter/material.dart';
-
-void main() => runApp(const MyApp());
-
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Settings',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-        scaffoldBackgroundColor: Colors.white,
-      ),
-      home: const SettingsPage(),
-      debugShowCheckedModeBanner: false,
-    );
-  }
-}
+import 'package:frip_trading/src/data/data_source/auth_remote_data_source.dart';
 
 class SettingsPage extends StatelessWidget {
   const SettingsPage({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final AuthRemoteDataSource authRemoteDataSource = AuthRemoteDataSource();
+
     return Scaffold(
       backgroundColor: Colors.white,
       body: Column(
@@ -94,14 +78,13 @@ class SettingsPage extends StatelessWidget {
                       ],
                     ),
                   ),
-
                   const SizedBox(height: 24),
                 ],
               ),
             ),
           ),
 
-          // Settings list with white background
+          // Settings list with white background - التعديل الرئيسي هنا
           Expanded(
             child: ListView(
               padding: const EdgeInsets.only(top: 24, bottom: 24),
@@ -142,19 +125,68 @@ class SettingsPage extends StatelessWidget {
                     ],
                   ),
                 ),
-                // Footer
-                const SizedBox(height: 40),
-                const Center(
-                  child: Text(
-                    'FRIP',
-                    style: TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.w500,
-                      color: Color(0xFF999999),
+
+                // إضافة مساحة فارغة لتوسيع القائمة
+                const SizedBox(height: 16),
+
+                // Logout button - تم تعديل موقعه
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 24),
+                  child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: const Color(0xFF70B9BE),
+                      minimumSize: const Size.fromHeight(50),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                    ),
+                    onPressed: () async {
+                      final confirm = await showDialog<bool>(
+                        context: context,
+                        builder: (context) => AlertDialog(
+                          title: const Text('تأكيد تسجيل الخروج'),
+                          content: const Text('هل أنت متأكد أنك تريد تسجيل الخروج؟'),
+                          actions: [
+                            TextButton(
+                              onPressed: () => Navigator.of(context).pop(false),
+                              child: const Text('إلغاء'),
+                            ),
+                            TextButton(
+                              onPressed: () => Navigator.of(context).pop(true),
+                              child: const Text('تأكيد'),
+                            ),
+                          ],
+                        ),
+                      );
+
+                      if (confirm == true) {
+                        try {
+                          final success = await authRemoteDataSource.logout();
+                          if (success) {
+                            Navigator.of(context).pushReplacementNamed('/login');
+                          } else {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              const SnackBar(content: Text('فشل في تسجيل الخروج')),
+                            );
+                          }
+                        } catch (e) {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(content: Text('خطأ: $e')),
+                          );
+                        }
+                      }
+                    },
+                    child: const Text(
+                      'تسجيل الخروج',
+                      style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white,
+                      ),
                     ),
                   ),
                 ),
-                const SizedBox(height: 16),
+                const SizedBox(height: 24),
               ],
             ),
           ),

@@ -2,6 +2,7 @@
 
 import 'dart:convert';
 import 'package:frip_trading/admin/screens/SpecializationsCountries/simple_item_model.dart';
+import 'package:frip_trading/core/network/api_constances.dart';
 import 'package:http/http.dart' as http;
 import '../constants.dart';
 
@@ -11,9 +12,10 @@ class SimpleItemController {
   SimpleItemController({required this.endpoint});
 
   Future<List<SimpleItemModel>> fetchItems() async {
+    final token = ApiConstances.getToken();
     final response = await http.get(
-      Uri.parse('$apiBaseUrl/api/$endpoint'),
-      headers: {'Authorization': 'Bearer $authToken'},
+      Uri.parse('$apiBaseUrl/$endpoint'),
+      headers: {'Authorization': 'Bearer $token'},
     );
 
     if (response.statusCode == 200) {
@@ -25,10 +27,11 @@ class SimpleItemController {
   }
 
   Future<void> addItem(String name) async {
+    final token = ApiConstances.getToken();
     await http.post(
-      Uri.parse('$apiBaseUrl/api/$endpoint'),
+      Uri.parse('$apiBaseUrl/$endpoint'),
       headers: {
-        'Authorization': 'Bearer $authToken',
+        'Authorization': 'Bearer $token',
         'Content-Type': 'application/json',
       },
       body: jsonEncode({'name': name}),
@@ -36,10 +39,11 @@ class SimpleItemController {
   }
 
   Future<void> updateItem(int id, String name) async {
+    final token = ApiConstances.getToken();
     await http.put(
-      Uri.parse('$apiBaseUrl/api/$endpoint/$id'),
+      Uri.parse('$apiBaseUrl/$endpoint/$id'),
       headers: {
-        'Authorization': 'Bearer $authToken',
+        'Authorization': 'Bearer $token',
         'Content-Type': 'application/json',
       },
       body: jsonEncode({'name': name}),
@@ -47,11 +51,12 @@ class SimpleItemController {
   }
 
   Future<void> deleteItem(int id) async {
-    final url = Uri.parse('$apiBaseUrl/api/$endpoint/$id');
+    final token = ApiConstances.getToken();
+    final url = Uri.parse('$apiBaseUrl/$endpoint/$id');
     final response = await http.delete(
       url,
       headers: {
-        'Authorization': 'Bearer $authToken',
+        'Authorization': 'Bearer $token',
       },
     );
 

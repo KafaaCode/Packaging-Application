@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:frip_trading/admin/screens/HomePage.dart';
 import 'package:frip_trading/admin/screens/Settings/settings_page.dart';
+import 'package:frip_trading/admin/screens/Supports/SupportsPage.dart';
+import 'package:frip_trading/admin/screens/Users/UsersPage.dart';
 
 class AdminPage extends StatefulWidget {
   const AdminPage({super.key});
@@ -15,10 +17,9 @@ class _AdminPageState extends State<AdminPage> {
 
   final List<Widget> _pages = [
     const HomePage(), // Dashboard
-    const Placeholder(), // Manage Users
-    const Placeholder(), // Orders
-    const Placeholder(), // Support
-    const SettingsPage(), // استبدل Placeholder ب SettingsPage هنا
+    UsersPage(), // Manage Users
+    SupportsPage(), // Support
+    SettingsPage(), // استبدل Placeholder ب SettingsPage هنا
   ];
 
   void _onItemTapped(int index) {
@@ -51,13 +52,6 @@ class _AdminPageState extends State<AdminPage> {
               color: _selectedIndex == 1 ? theme.primaryColor : Colors.grey,
             ),
             label: 'Users',
-          ),
-          BottomNavigationBarItem(
-            icon: SvgPicture.asset(
-              'assets/SVG/order.svg',
-              color: _selectedIndex == 2 ? theme.primaryColor : Colors.grey,
-            ),
-            label: 'Orders',
           ),
           BottomNavigationBarItem(
             icon: SvgPicture.asset(

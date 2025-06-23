@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:frip_trading/admin/screens/constants.dart';
+import 'package:frip_trading/core/network/api_constances.dart';
 import 'package:http/http.dart' as http;
 import 'package:image_picker/image_picker.dart';
 
@@ -29,7 +30,7 @@ class _AddCategoryScreenState extends State<AddCategoryScreen> {
   Future<void> _loadDropdownData() async {
     try {
       final response = await http.get(
-          Uri.parse('$apiBaseUrl/api/specialization-and-country'));
+          Uri.parse('$apiBaseUrl/specialization-and-country'));
 
       if (response.statusCode == 200) {
         final data = json.decode(response.body)['data'];
@@ -79,11 +80,10 @@ class _AddCategoryScreenState extends State<AddCategoryScreen> {
 
     var request = http.MultipartRequest(
       'POST',
-      Uri.parse('$apiBaseUrl/api/categories'),
+      Uri.parse('$apiBaseUrl/categories'),
     );
-
-    request.headers['Authorization'] = 'Bearer $authToken';
-
+    final token = ApiConstances.getToken();
+    request.headers['Authorization'] = 'Bearer $token';
     request.fields['name'] = _nameController.text;
     request.fields['country_id'] = _selectedCountryId.toString();
     request.fields['specialization_id'] = _selectedSpecializationId.toString();

@@ -1,14 +1,17 @@
 import 'dart:convert';
 import 'package:frip_trading/admin/screens/constants.dart';
+import 'package:frip_trading/core/network/api_constances.dart';
 import 'package:http/http.dart' as http;
 import 'category_model.dart';
 
 class CategoryController {
 
   Future<List<CategoryModel>> fetchCategories() async {
-    final url = Uri.parse('$apiBaseUrl/api/admin/categories');
+    final url = Uri.parse('$apiBaseUrl/admin/categories');
+    final token = ApiConstances.getToken();
+    print(url);
     final response = await http.get(url, headers: {
-      'Authorization': 'Bearer $authToken',
+      'Authorization': 'Bearer $token',
       'Accept': 'application/json',
     });
 

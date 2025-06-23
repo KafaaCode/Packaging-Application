@@ -99,8 +99,14 @@ class _ProductsByCategoryScreenState extends State<ProductsByCategoryScreen> {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return const Center(child: CircularProgressIndicator());
           } else if (snapshot.hasError) {
-            return Center(child: Text('حدث خطأ: ${snapshot.error}'));
-          } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
+            final errorMessage = snapshot.error.toString();
+            if (errorMessage.contains('لا يوجد منتجات')) {
+              return const Center(child: Text('لا توجد منتجات في هذه الفئة'));
+            } else {
+              return Center(child: Text('حدث خطأ: $errorMessage'));
+            }
+          }
+          else if (!snapshot.hasData || snapshot.data!.isEmpty) {
             return const Center(child: Text('لا توجد منتجات في هذه الفئة'));
           }
 
@@ -110,6 +116,7 @@ class _ProductsByCategoryScreenState extends State<ProductsByCategoryScreen> {
             padding: const EdgeInsets.all(16),
             itemCount: products.length,
             itemBuilder: (context, index) {
+              // final imageUrl = product['image'] ?? '';
               final product = products[index];
               return Card(
                 margin: const EdgeInsets.symmetric(vertical: 8),
@@ -121,11 +128,26 @@ class _ProductsByCategoryScreenState extends State<ProductsByCategoryScreen> {
                   contentPadding: const EdgeInsets.all(12),
                   leading: ClipRRect(
                     borderRadius: BorderRadius.circular(8),
-                    child: Container(
-                      width: 60,
-                      height: 60,
-                      color: Colors.grey[300],
-                      child: const Icon(Icons.image),
+                    child: product.image.isNotEmpty
+                        ? Image.network(
+                      product.image,
+                      width: 50,
+                      height: 50,
+                      fit: BoxFit.cover,
+                      errorBuilder: (context, error, stackTrace) {
+                        return Image.asset(
+                          'assets/images/logo.png',
+                          width: 50,
+                          height: 50,
+                          fit: BoxFit.cover,
+                        );
+                      },
+                    )
+                        : Image.asset(
+                      'assets/images/logo.png',
+                      width: 50,
+                      height: 50,
+                      fit: BoxFit.cover,
                     ),
                   ),
                   title: Text(product.name),

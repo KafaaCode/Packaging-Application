@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:frip_trading/admin/screens/constants.dart';
+import 'package:frip_trading/core/network/api_constances.dart';
 import 'package:http/http.dart' as http;
 import 'package:image_picker/image_picker.dart';
 
@@ -56,10 +57,10 @@ class _AddProductScreenState extends State<AddProductScreen> {
       return;
     }
 
-    final uri = Uri.parse('$apiBaseUrl/api/products');
-
+    final uri = Uri.parse('$apiBaseUrl/products');
+    final token = ApiConstances.getToken();
     final request = http.MultipartRequest('POST', uri)
-      ..headers['Authorization'] = 'Bearer $authToken'
+      ..headers['Authorization'] = 'Bearer $token'
       ..fields['name'] = _nameController.text
       ..fields['serial_number'] = _serialNumberController.text
       ..fields['description'] = _descriptionController.text

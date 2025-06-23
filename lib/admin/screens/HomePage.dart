@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:frip_trading/admin/screens/OrderDetails/OrderDetailsPage.dart';
 import 'package:frip_trading/admin/screens/OrderModel.dart';
 import 'package:frip_trading/admin/screens/SpecializationsCountries/specializations_countries_screen.dart';
 import 'package:frip_trading/admin/screens/categories/categories_page.dart';
-import 'package:frip_trading/src/presentation/screens/auth/widgets/option_filter.dart';
-import 'package:frip_trading/src/presentation/screens/auth/widgets/search.dart';
 
 import '../services/order_service.dart';
 
@@ -16,16 +15,20 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   final ScrollController _scrollController = ScrollController();
+  final TextEditingController _searchController = TextEditingController();
+
   List<OrderModel> _orders = [];
   int _currentPage = 1;
   final int _limit = 10;
   bool _isLoading = false;
   bool _hasMore = true;
+  String _searchTerm = '';
 
   @override
   void initState() {
     super.initState();
     _fetchOrders();
+
     _scrollController.addListener(() {
       if (_scrollController.position.pixels >= _scrollController.position.maxScrollExtent &&
           !_isLoading &&
@@ -35,19 +38,27 @@ class _HomePageState extends State<HomePage> {
     });
   }
 
-  Future<void> _fetchOrders() async {
+  Future<void> _fetchOrders({bool refresh = false}) async {
+    if (refresh) {
+      setState(() {
+        _orders.clear();
+        _currentPage = 1;
+        _hasMore = true;
+      });
+    }
+
+    if (!_hasMore) return;
+
     setState(() {
       _isLoading = true;
     });
 
     try {
-      final newOrders = await fetchOrders(page: _currentPage, limit: _limit);
-
-      if (newOrders.isEmpty && _orders.isEmpty) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text('لا توجد طلبات')),
-        );
-      }
+      final newOrders = await fetchOrders(
+        page: _currentPage,
+        limit: _limit,
+        searchTerm: _searchTerm,
+      );
 
       setState(() {
         _currentPage++;
@@ -56,10 +67,14 @@ class _HomePageState extends State<HomePage> {
           _hasMore = false;
         }
       });
-    } catch (e, stackTrace) {
-      debugPrint('❌ حدث خطأ أثناء تحميل الطلبات: $e');
-      debugPrint('🔍 StackTrace: $stackTrace');
 
+      if (_orders.isEmpty) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text('لا توجد طلبات')),
+        );
+      }
+    } catch (e) {
+      debugPrint('❌ خطأ أثناء تحميل الطلبات: $e');
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(content: Text('حدث خطأ أثناء تحميل الطلبات: $e')),
       );
@@ -70,15 +85,20 @@ class _HomePageState extends State<HomePage> {
     }
   }
 
-
-
   @override
   void dispose() {
     _scrollController.dispose();
+    _searchController.dispose();
     super.dispose();
   }
 
-  Widget _orderCard({required String orderId, required String createdAt, required String status}) {
+  Widget _orderCard({
+    required String orderId,
+    required String createdAt,
+    required String user_name,
+    required String status,
+    required int id,
+  }) {
     return Container(
       padding: const EdgeInsets.all(12),
       decoration: BoxDecoration(
@@ -92,12 +112,18 @@ class _HomePageState extends State<HomePage> {
           Text(orderId, style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16)),
           const SizedBox(height: 4),
           Text(createdAt, style: const TextStyle(color: Colors.grey)),
+          Text(user_name, style: const TextStyle(color: Colors.grey)),
           const SizedBox(height: 8),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (_) => OrderDetailsPage(orderId: id)),
+                  );
+                },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: const Color(0xFF70b9be),
                   foregroundColor: Colors.white,
@@ -111,7 +137,7 @@ class _HomePageState extends State<HomePage> {
                   borderRadius: BorderRadius.circular(8),
                 ),
                 child: Text(status, style: const TextStyle(color: Colors.orange)),
-              )
+              ),
             ],
           )
         ],
@@ -139,9 +165,7 @@ class _HomePageState extends State<HomePage> {
           children: [
             Text(title,
                 style: const TextStyle(
-                    color: Colors.white,
-                    fontSize: 16,
-                    fontWeight: FontWeight.bold)),
+                    color: Colors.white, fontSize: 16, fontWeight: FontWeight.bold)),
             const SizedBox(height: 2),
             Text(subtitle, style: const TextStyle(color: Colors.white70)),
             const Spacer(),
@@ -149,6 +173,13 @@ class _HomePageState extends State<HomePage> {
         ),
       ),
     );
+  }
+
+  void _onSearchChanged() {
+    setState(() {
+      _searchTerm = _searchController.text.trim();
+    });
+    _fetchOrders(refresh: true);
   }
 
   @override
@@ -178,27 +209,46 @@ class _HomePageState extends State<HomePage> {
                   ],
                 ),
                 const SizedBox(height: 10),
-
                 const Center(
                   child: Text(
                     'Welcome to Frip Trading',
-                    style: TextStyle(
-                      color: Color(0xFF70b9be),
-                      fontSize: 18,
-                    ),
+                    style: TextStyle(color: Color(0xFF70b9be), fontSize: 18),
                   ),
                 ),
                 const SizedBox(height: 16),
-
+                // 🔍 حقل البحث + زر التحديث
                 Row(
                   children: [
-                    Expanded(child: Search()),
+                    Expanded(
+                      child: TextField(
+                        controller: _searchController,
+                        decoration: InputDecoration(
+                          hintText: 'ابحث برقم الشكوى أو العنوان',
+                          hintStyle: const TextStyle(fontSize: 12), // ✅ تصغير النص
+                          prefixIcon: const Icon(Icons.search),
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(12),
+                          ),
+                          contentPadding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                        ),
+                        onChanged: (_) => _onSearchChanged(),
+                      ),
+                    ),
                     const SizedBox(width: 8),
-                    OptionFilter(onTap: () {}),
+                    IconButton(
+                      onPressed: () {
+                        _searchController.clear();
+                        _searchTerm = '';
+                        _fetchOrders(refresh: true);
+                      },
+                      icon: const Icon(Icons.refresh, color: Colors.blue),
+                    ),
                   ],
                 ),
+
                 const SizedBox(height: 16),
 
+                // 📦 البطاقات العلوية
                 SizedBox(
                   height: 120,
                   child: ListView(
@@ -223,9 +273,7 @@ class _HomePageState extends State<HomePage> {
                         onTap: () {
                           Navigator.push(
                             context,
-                            MaterialPageRoute(
-                              builder: (_) => const SpecializationsCountriesScreen(),
-                            ),
+                            MaterialPageRoute(builder: (_) => const SpecializationsCountriesScreen()),
                           );
                         },
                       ),
@@ -238,8 +286,8 @@ class _HomePageState extends State<HomePage> {
                     ],
                   ),
                 ),
-                const SizedBox(height: 24),
 
+                const SizedBox(height: 24),
                 const Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -250,6 +298,7 @@ class _HomePageState extends State<HomePage> {
                 ),
                 const SizedBox(height: 12),
 
+                // 🧾 قائمة الطلبات
                 ListView.separated(
                   physics: const NeverScrollableScrollPhysics(),
                   shrinkWrap: true,
@@ -262,6 +311,8 @@ class _HomePageState extends State<HomePage> {
                         orderId: order.serialNumber,
                         createdAt: order.createdAt,
                         status: order.status,
+                        id: order.id,
+                        user_name: order.user_name,
                       );
                     } else {
                       return const Center(child: CircularProgressIndicator());
