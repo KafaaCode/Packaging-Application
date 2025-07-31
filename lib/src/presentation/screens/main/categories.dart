@@ -2,6 +2,8 @@ import 'package:fluro/fluro.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:frip_trading/admin/screens/categories/category_controller.dart';
+import 'package:frip_trading/admin/screens/categories/category_model.dart';
 import 'package:frip_trading/core/localization/generated/l10n.dart';
 import 'package:frip_trading/core/routes/router_screens.dart';
 import 'package:frip_trading/core/routes/routes_name.dart';
@@ -10,11 +12,24 @@ import 'package:frip_trading/src/data/models/models.dart';
 import 'package:frip_trading/src/presentation/controllers/auth/auth_bloc.dart';
 import 'package:frip_trading/src/presentation/controllers/category/category_bloc.dart';
 import 'package:frip_trading/src/presentation/screens/auth/widgets/cardproductandCatogry.dart';
-import 'package:frip_trading/src/presentation/screens/auth/widgets/option_filter.dart';
+
 import 'package:frip_trading/src/presentation/screens/auth/widgets/search.dart';
 
-class FilterPage extends StatelessWidget {
+class FilterPage extends StatefulWidget {
   const FilterPage({super.key});
+
+  @override
+  State<FilterPage> createState() => _FilterPageState();
+}
+
+class _FilterPageState extends State<FilterPage> {
+  final CategoryController _controller = CategoryController();
+  late Future<List<CategoryModel>> _futureCategories;
+  @override
+  void initState() {
+    super.initState();
+    _futureCategories = _controller.fetchCategories();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -34,10 +49,11 @@ class FilterPage extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                 Text(
-                sl<AuthBloc>().state.mapOrNull(
-                  create: (state) => state.user.name,
-                )?? 'User Name',
+                Text(
+                  sl<AuthBloc>().state.mapOrNull(
+                            create: (state) => state.user.name,
+                          ) ??
+                      'User Name',
                   style: TextStyle(
                       color: Color(0xFF70b9be),
                       fontWeight: FontWeight.bold,
@@ -94,11 +110,29 @@ class FilterPage extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(width: 8),
-                OptionFilter(
-                  onTap: () {
-                    print(1);
-                  },
+                InkWell(
+                  onTap: () => _futureCategories,
+                  borderRadius: BorderRadius.circular(10),
+                  child: Container(
+                    width: 50,
+                    height: 40,
+                    decoration: BoxDecoration(
+                      color: const Color(0xFF70b9be),
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    child: Center(
+                      child: Icon(
+                        Icons.search,
+                      ),
+                    ),
+                  ),
                 ),
+
+                // OptionFilter(
+                //   onTap: () {
+                //     print(1);
+                //   },
+                // ),
               ],
             ),
             const SizedBox(height: 16),
@@ -106,8 +140,8 @@ class FilterPage extends StatelessWidget {
               alignment: Alignment.centerLeft,
               child: Text(
                 lang.productCategoriesTitle,
-                style: const TextStyle(
-                    fontWeight: FontWeight.bold, fontSize: 16),
+                style:
+                    const TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
               ),
             ),
             const SizedBox(height: 8),
@@ -133,7 +167,7 @@ class FilterPage extends StatelessWidget {
                       ),
                     );
                   }
-    
+
                   return SingleChildScrollView(
                       child: Center(
                           child: Wrap(
@@ -144,11 +178,10 @@ class FilterPage extends StatelessWidget {
                                       ? state.categories.length
                                       : state.searchCategories!.length, (i) {
                                 Category category =
-                                    state.searchCategories == null
+                                    (state.searchCategories == null
                                         ? state.categories[i]
-                                        : state.searchCategories![i];
-                                final width =
-                                    MediaQuery.of(context).size.width;
+                                        : state.searchCategories![i]);
+                                final width = MediaQuery.of(context).size.width;
                                 final itemWidth = width > 971
                                     ? width * 0.31
                                     : width > 800
@@ -156,7 +189,7 @@ class FilterPage extends StatelessWidget {
                                         : width > 621
                                             ? width * 0.43
                                             : width * 0.90;
-    
+
                                 return InkWell(
                                   onTap: () {
                                     /* 
@@ -166,20 +199,18 @@ class FilterPage extends StatelessWidget {
                                           arguments: state.teachers[i])); */
                                     AppRouter.router.navigateTo(
                                         context, RoutesNames.products,
-                                        transition:
-                                            TransitionType.inFromRight,
+                                        transition: TransitionType.inFromRight,
                                         routeSettings: RouteSettings(
                                             arguments: category.id),
-                                        transitionDuration: const Duration(
-                                            milliseconds: 200));
+                                        transitionDuration:
+                                            const Duration(milliseconds: 200));
                                   },
                                   borderRadius: BorderRadius.circular(12),
                                   child: SizedBox(
                                       width: itemWidth,
                                       child: MainCard(
                                         name: category.name.toString(),
-                                        imageUrl:
-                                            'assets/images/Rectangle569.png',
+                                        imageUrl: category.image ?? '',
                                       )),
                                 );
                               }))));

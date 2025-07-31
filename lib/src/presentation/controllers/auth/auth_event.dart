@@ -17,4 +17,8 @@ class AuthEvent with _$AuthEvent {
     required String newPassword,
     required String confirmPassword,
   }) = _UpdatePassword;
+
+  const factory AuthEvent.adminRegisterUser({
+    required User user,
+  }) = _AdminRegisterUser;
 }

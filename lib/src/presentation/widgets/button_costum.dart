@@ -13,21 +13,24 @@ class ButtonCostum extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     ThemeData theme = Theme.of(context);
-    return ElevatedButton(
-      onPressed: onPressed,
-      style: ElevatedButton.styleFrom(
-          backgroundColor: theme.primaryColor,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(10),
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: ElevatedButton(
+        onPressed: onPressed,
+        style: ElevatedButton.styleFrom(
+            backgroundColor: theme.primaryColor,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(10),
+            ),
+            // padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+            fixedSize: size),
+        child: Text(
+          text,
+          style: theme.textTheme.bodySmall?.copyWith(
+            color: Colors.white,
+            fontWeight: FontWeight.w600,
+            fontSize: 20,
           ),
-          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
-          fixedSize: size),
-      child: Text(
-        text,
-        style: theme.textTheme.bodySmall?.copyWith(
-          color: Colors.white,
-          fontWeight: FontWeight.w600,
-          fontSize: 20,
         ),
       ),
     );

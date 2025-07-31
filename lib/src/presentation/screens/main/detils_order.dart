@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:frip_trading/core/localization/generated/l10n.dart';
 
 import 'package:frip_trading/src/data/models/models.dart';
@@ -13,7 +12,7 @@ class OrderDetailsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-     Lang lang = Lang.of(context);
+    Lang lang = Lang.of(context);
     return Scaffold(
       backgroundColor: Colors.white,
       body: Column(
@@ -28,38 +27,37 @@ class OrderDetailsPage extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                 lang.orderDetailsTitle,
+                  lang.orderDetailsTitle,
                   style: TextStyle(
                     color: Color(0xFF70b9be),
                     fontWeight: FontWeight.bold,
                     fontSize: 24,
                   ),
                 ),
-             CircleAvatar(
-                    radius: 25,
-                    backgroundColor: Colors.white,
-                    child: IconButton(
-                      icon: const Icon(
-                        Icons.arrow_forward,
-                        color: Color(0xFF70b9be),
-                      ),
-                      onPressed: () {
-                        Navigator.pop(context);
-                      },
+                CircleAvatar(
+                  radius: 25,
+                  backgroundColor: Colors.white,
+                  child: IconButton(
+                    icon: const Icon(
+                      Icons.arrow_forward,
+                      color: Color(0xFF70b9be),
                     ),
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
                   ),
+                ),
               ],
             ),
           ),
-          
-    
           Padding(
-            padding: const EdgeInsets.symmetric(vertical: 20.0, horizontal: 16.0),
+            padding:
+                const EdgeInsets.symmetric(vertical: 20.0, horizontal: 16.0),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  lang.TotalPrice, 
+                  lang.TotalPrice,
                   style: TextStyle(
                     color: Color(0xFF70b9be),
                     fontWeight: FontWeight.bold,
@@ -67,7 +65,7 @@ class OrderDetailsPage extends StatelessWidget {
                   ),
                 ),
                 Text(
-                  '\$${order.total_price}', 
+                  '\$${order.total_price}',
                   style: TextStyle(
                     color: Color(0xFF70b9be),
                     fontWeight: FontWeight.bold,
@@ -77,13 +75,13 @@ class OrderDetailsPage extends StatelessWidget {
               ],
             ),
           ),
-          
           const SizedBox(height: 30),
           Expanded(
             child: ListView.builder(
               itemCount: order.products?.length ?? 0,
               itemBuilder: (context, index) {
-                return OrderDetilsCard(product: order.products![index],lang:lang);
+                return OrderDetilsCard(
+                    product: order.products![index], lang: lang);
               },
             ),
           ),

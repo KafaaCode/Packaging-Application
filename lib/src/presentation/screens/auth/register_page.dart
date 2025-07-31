@@ -27,6 +27,7 @@ class _RegisterPageState extends State<RegisterPage> {
   TextEditingController passwordController = TextEditingController();
   TextEditingController companyController = TextEditingController();
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  bool _ObscurePassword = true;
 
   List<Specialization> specializations = sl<InitalBloc>().state.maybeWhen(
         loaded: (v) =>
@@ -143,9 +144,14 @@ class _RegisterPageState extends State<RegisterPage> {
                       ),
                       const SizedBox(height: 20),
                       TextFieldAuth(
+                        onTap: () {
+                          setState(() {
+                            _ObscurePassword = !_ObscurePassword;
+                          });
+                        },
                         svgIcon: 'assets/SVG/lock.svg',
                         hintText: lang.passwordHint,
-                        isPassword: true,
+                        isPassword: _ObscurePassword,
                         controller: passwordController,
                         colorIcon: const Color.fromRGBO(0, 0, 0, .7),
                       ),

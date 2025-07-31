@@ -52,98 +52,95 @@ class MyOrdersPage extends StatelessWidget {
     Lang lang = Lang.of(context);
     return Scaffold(
       backgroundColor: Colors.white,
-      body: Column(
-        children: [
-          Padding(
-            padding: const EdgeInsets.only(
-              top: 45,
-              right: 16,
-              left: 16,
-              bottom: 16,
-            ),
-            child: Column(
-              children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(
-                      lang.myOrdersTitle,
-                      style: const TextStyle(
+      body: SafeArea(
+        child: Column(
+          children: [
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 20),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        lang.myOrdersTitle,
+                        style: const TextStyle(
                           color: Color(0xFF70b9be),
                           fontWeight: FontWeight.bold,
-                          fontSize: 24),
-                    ),
-                    SvgPicture.asset(
-                      'assets/images/Group940.svg',
-                      height: 40,
-                    ),
-                  ],
-                ),
-                const SizedBox(height: 30),
-                Row(
-                  children: [
-                    Expanded(
-                      child: Search(
-                          onChanged: (value) => context.read<MyOrdersBloc>()
-                            ..add(MyOrdersEvent.search(value: value))),
-                    ),
-                    const SizedBox(width: 8),
-                    OptionFilter(
-                      onTap: () {
-                        print(1);
-                      },
-                    ),
-                  ],
-                ),
-              ],
-            ),
-          ),
-          BlocBuilder<MyOrdersBloc, MyOrdersState>(
-            builder: (context, state) {
-              if (state.loading) {
-                return const Center(
-                  child: CircularProgressIndicator(
-                    backgroundColor: Colors.white,
-                    valueColor:
-                        AlwaysStoppedAnimation<Color>(Color(0xFF70b9be)),
+                          fontSize: 24,
+                        ),
+                      ),
+                      SvgPicture.asset(
+                        'assets/images/Group940.svg',
+                        height: 36,
+                      ),
+                    ],
                   ),
-                );
-              } else if (state.error) {
-                return Expanded(
-                  child: Center(
-                    child: Text(
-                      lang.ordersNotFoundMessage,
-                      style: const TextStyle(
+                  const SizedBox(height: 20),
+                  Row(
+                    children: [
+                      Expanded(
+                        child: Search(
+                          onChanged: (value) => context
+                              .read<MyOrdersBloc>()
+                              .add(MyOrdersEvent.search(value: value)),
+                        ),
+                      ),
+                      const SizedBox(width: 8),
+                      OptionFilter(
+                        onTap: () {
+                          // يمكنك إضافة نافذة منبثقة لتصفية الحالة
+                        },
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+            const SizedBox(height: 10),
+            Expanded(
+              child: BlocBuilder<MyOrdersBloc, MyOrdersState>(
+                builder: (context, state) {
+                  if (state.loading) {
+                    return const Center(
+                      child: CircularProgressIndicator(
+                        valueColor: AlwaysStoppedAnimation(Color(0xFF70b9be)),
+                      ),
+                    );
+                  } else if (state.error) {
+                    return Center(
+                      child: Text(
+                        lang.ordersNotFoundMessage,
+                        style: const TextStyle(
                           color: Color(0xFF70b9be),
                           fontWeight: FontWeight.bold,
-                          fontSize: 15),
-                    ),
-                  ),
-                );
-              }
+                          fontSize: 15,
+                        ),
+                      ),
+                    );
+                  }
 
-              // التأكد من أن state.search ليس null وإذا كان null استخدم state.myorders
-              final ordersToDisplay = state.search ?? state.myorders;
+                  final ordersToDisplay = state.search ?? state.myorders;
 
-              return Expanded(
-                child: Container(
-                  color: Colors.white,
-                  child: ListView.builder(
+                  return ListView.separated(
+                    padding: const EdgeInsets.symmetric(horizontal: 13),
                     itemCount: ordersToDisplay.length,
+                    separatorBuilder: (_, __) => const SizedBox(height: 10),
                     itemBuilder: (context, index) {
-                      MyOrder myOrder = ordersToDisplay[index];
                       return OrderCard(
-                          length: ordersToDisplay.length,
-                          index: index,
-                          order: myOrder,
-                          lang: lang);
+                        length: ordersToDisplay.length,
+                        index: index,
+                        order: ordersToDisplay[index],
+                        lang: lang,
+                      );
                     },
-                  ),
-                ),
-              );
-            },
-          )
-        ],
+                  );
+                },
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

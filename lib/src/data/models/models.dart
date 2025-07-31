@@ -1,4 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:frip_trading/admin/screens/constants.dart';
+import 'package:frip_trading/admin/screens/products/product_model.dart';
 import 'package:frip_trading/core/utils/abstracts.dart';
 
 part 'models.freezed.dart';
@@ -59,7 +61,27 @@ class UpdateData with _$UpdateData {
   factory UpdateData.fromJson(Map<String, dynamic> json) =>
       _$UpdateDataFromJson(json);
 }
+// class Category {
+//   final int? id;
+//   final String? name;
+//   final String? image;
+//   final int active;
 
+//   Category({
+//     required this.id,
+//     required this.name,
+//     required this.image,
+//     required this.active,
+//   });
+
+//   factory Category.fromJson(Map<String, dynamic> json) {
+//     return Category(active: json['active'],
+//       id: json['id'],
+//       name: json['name'],
+//       image: json['image'] != null ? '$imageBaseUrl${json['image']}' : null,
+//     );
+//   }
+// }
 @freezed
 class Category with _$Category {
   const factory Category({
@@ -100,7 +122,7 @@ class Country extends HasIdAndName with _$Country {
 
   @override
   String get name => name;
-  
+
   @override
   // TODO: implement props
   List<Object?> get props => [id, name];
@@ -122,7 +144,7 @@ class Specialization extends HasIdAndName with _$Specialization {
 
   @override
   String get name => name;
-  
+
   @override
   // TODO: implement props
   List<Object?> get props => [id, name];
@@ -140,7 +162,7 @@ class Product with _$Product {
     int? request_number,
     required String price,
     required int active,
-    int?quantity,
+    int? quantity,
   }) = _Product;
 
   factory Product.fromJson(Map<String, dynamic> json) =>
@@ -151,11 +173,11 @@ class Product with _$Product {
 class MyOrder with _$MyOrder {
   const factory MyOrder({
     required int id,
-     String? status,
-     String? serial_number,
-     String? delivery_time,
-     String? total_price, 
-    List<Product>? products, 
+    String? status,
+    String? serial_number,
+    String? delivery_time,
+    String? total_price,
+    List<Product>? products,
     DateTime? created_at,
   }) = _MyOrder;
 
@@ -177,5 +199,3 @@ class CartItem with _$CartItem {
 
   double get total_price => double.parse(product.price) * quantity;
 }
-
-

@@ -1,4 +1,5 @@
 import 'package:dartz/dartz.dart';
+import 'package:frip_trading/admin/screens/products/product_model.dart';
 import 'package:frip_trading/core/utils/typedef.dart';
 import 'package:frip_trading/src/data/main/main_remote_data_source.dart';
 import 'package:frip_trading/src/data/models/models.dart';
@@ -64,9 +65,9 @@ class MainRepository extends BaseMainRepository {
           ServerFailure.fromResponse(statusCode: failure.statusCode ?? 404));
     }
   }
-  
+
   @override
-  ResultFuture<void> addOrder({required Map<String, dynamic> orderData})async {
+  ResultFuture<void> addOrder({required Map<String, dynamic> orderData}) async {
     try {
       final response = await mainRemoteDataSource.sendOrder(orderData);
       return const Right(unit);

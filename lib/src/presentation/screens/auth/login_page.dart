@@ -18,13 +18,14 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-  TextEditingController emailController = TextEditingController();
-  TextEditingController passwordController = TextEditingController();
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  bool _ObscurePassword = true;
+
   @override
   Widget build(BuildContext context) {
     ThemeData theme = Theme.of(context);
-    Lang lang = Lang.of(context);
     return Scaffold(
       body: SingleChildScrollView(
         child: Form(
@@ -36,54 +37,52 @@ class _LoginPageState extends State<LoginPage> {
             color: theme.canvasColor,
             child: BlocListener<AuthBloc, AuthState>(
               listener: (context, state) {
-                state.maybeWhen(
-                  error: (message) {
-                    Navigator.of(context, rootNavigator: true).pop();
-                    debugPrint('Error: $message');
-
-                    showDialog(
-                      context: context,
-                      builder: (context) => AlertDialog(
-                        title: const Text('Error'),
-                        content: Text(message),
-                        actions: [
-                          TextButton(
-                            onPressed: () {
-                              Navigator.of(context).pop();
-                            },
-                            child: const Text('OK'),
-                          ),
-                        ],
+                state.whenOrNull(loadInProgress: () {
+                  showLoadingDialog(context);
+                }, error: (message) {
+                  Navigator.of(context, rootNavigator: true)
+                      .pop(); // Close loading dialog
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(
+                      content: Text(message),
+                      backgroundColor: Colors.red,
+                    ),
+                  );
+                }, create: (user) {
+                  Navigator.of(context, rootNavigator: true).pop();
+                  if (user.role == 'Admin') {
+                    AppRouter.router.navigateTo(
+                      context,
+                      RoutesNames.adminMainRoute,
+                      clearStack: true,
+                    );
+                  } else if (user.role == 'User') {
+                    AppRouter.router.navigateTo(
+                      context,
+                      RoutesNames.mainRoute,
+                      clearStack: true,
+                    );
+                  } else {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(
+                        content: Text('⚠️ لا تملك الصلاحية للدخول'),
+                        backgroundColor: Colors.red,
                       ),
                     );
-                  },
-                  loadInProgress: () {
-                    showLoadingDialog(context);
-                  },
-                  create: (user) {
-                    if (user.role != null) {
-                      Navigator.of(context, rootNavigator: true).pop();
-                      debugPrint('Loaded with user: ${user.email}');
-                      AppRouter.router.navigateTo(
-                          context, RoutesNames.mainRoute,
-                          clearStack: true,
-                          transitionDuration: const Duration(milliseconds: 200),
-                          transition: TransitionType.inFromBottom);
-                    }
-                  },
-                  orElse: () {
-                    debugPrint('Something else');
-                  },
-                );
+                  }
+                });
               },
               child: Column(
                 children: [
                   Center(
-                    child: Text(lang.letsGetStarted,
-                        style: theme.textTheme.displayMedium?.copyWith(
-                            color: theme.primaryColor,
-                            fontWeight: FontWeight.w600,
-                            fontSize: 28)),
+                    child: Text(
+                      'Let’s Get Started',
+                      style: theme.textTheme.displayMedium?.copyWith(
+                        color: theme.primaryColor,
+                        fontWeight: FontWeight.w600,
+                        fontSize: 28,
+                      ),
+                    ),
                   ),
                   const SizedBox(height: 20),
                   Image.asset(
@@ -99,7 +98,7 @@ class _LoginPageState extends State<LoginPage> {
                         style: theme.textTheme.headlineMedium,
                       ),
                       Text(
-                        lang.plsEnterDataToContiubue,
+                        Lang().plsEnterDataToContiubue,
                         style: theme.textTheme.bodyMedium?.copyWith(
                           color: Colors.grey[600],
                         ),
@@ -110,65 +109,75 @@ class _LoginPageState extends State<LoginPage> {
                   Padding(
                     padding: const EdgeInsets.all(10.0),
                     child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisAlignment: MainAxisAlignment.start,
                       children: [
                         TextFieldAuth(
-                          labelText: lang.enterYourEamilLabel,
+                          labelText: Lang().enterYourEamilLabel,
                           svgIcon: 'assets/SVG/mail.svg',
                           controller: emailController,
-                          hintText: lang.enterYourEamilHint,
+                          hintText: Lang().enterYourEamilHint,
                         ),
                         const SizedBox(height: 20),
                         TextFieldAuth(
+                          onTap: () {
+                            setState(() {
+                              _ObscurePassword = !_ObscurePassword;
+                            });
+                          },
+                          labelText: 'Password',
+                          hintText: 'Password',
                           svgIcon: 'assets/SVG/lock.svg',
-                          isPassword: true,
-                          labelText: lang.passwordLabel,
-                          hintText: lang.passwordHint,
                           controller: passwordController,
+                          isPassword: _ObscurePassword,
                         ),
                         TextButton(
-                            onPressed: () {},
-                            child: Text(lang.forgotYourPassword,
-                                style: theme.textTheme.bodyMedium?.copyWith(
-                                  color: theme.primaryColor,
-                                ))),
+                          onPressed: () {
+                            // TODO: Add forget password navigation
+                          },
+                          child: Text(
+                            'Forget Password?',
+                            style: theme.textTheme.bodyMedium?.copyWith(
+                              color: theme.primaryColor,
+                            ),
+                          ),
+                        ),
                       ],
                     ),
                   ),
                   const SizedBox(height: 20),
                   ButtonCostum(
                     onPressed: () {
-                      context.read<AuthBloc>().add(
-                            AuthEvent.login(
-                              user: User(
-                                id: 0,
-                                name: 'User',
-                                email: emailController.text,
-                                password: passwordController.text,
+                      if (_formKey.currentState!.validate()) {
+                        context.read<AuthBloc>().add(
+                              AuthEvent.login(
+                                user: User(
+                                  id: 0,
+                                  name: 'User',
+                                  email: emailController.text.trim(),
+                                  password: passwordController.text,
+                                ),
                               ),
-                            ),
-                          );
+                            );
+                      }
                     },
-                    text: lang.login,
+                    text: Lang().login,
                   ),
                   Row(
-                    crossAxisAlignment: CrossAxisAlignment.center,
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Text(lang.alreadyHaveAnAccount,
+                      Text(Lang().alreadyHaveAnAccount,
                           style: const TextStyle(color: Colors.grey)),
                       TextButton(
                         onPressed: () {
                           AppRouter.router.navigateTo(
-                              context, RoutesNames.registerRoute,
-                              clearStack: true,
-                              transition: TransitionType.inFromLeft,
-                              transitionDuration:
-                                  const Duration(milliseconds: 200));
+                            context,
+                            RoutesNames.registerRoute,
+                            transition: TransitionType.inFromLeft,
+                            transitionDuration:
+                                const Duration(milliseconds: 800),
+                          );
                         },
                         child: Text(
-                          lang.signin,
+                          Lang().signUp,
                           style: theme.textTheme.bodyMedium?.copyWith(
                             color: theme.primaryColor,
                           ),

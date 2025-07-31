@@ -8,9 +8,13 @@ import '../../../../data/models/models.dart';
 class OrderCard extends StatelessWidget {
   final int length;
   final MyOrder order;
-   final Lang lang;
+  final Lang lang;
   final int index;
-  OrderCard({required this.length, required this.order, required this.index, required this.lang});
+  OrderCard(
+      {required this.length,
+      required this.order,
+      required this.index,
+      required this.lang});
 
   Color getStatusColor(String status) {
     switch (status) {
@@ -49,7 +53,11 @@ class OrderCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.white,
+      height: 120,
+      decoration: BoxDecoration(
+        color: const Color.fromARGB(255, 249, 248, 248),
+        borderRadius: BorderRadius.circular(20),
+      ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -84,16 +92,17 @@ class OrderCard extends StatelessWidget {
                     ),
                     Container(
                       padding: const EdgeInsets.symmetric(
-                          horizontal: 15, vertical: 3),
+                          horizontal: 15, vertical: 6),
                       decoration: BoxDecoration(
                         color: getStatusColor(order.status ?? 'unknown'),
                         borderRadius: BorderRadius.circular(20),
                       ),
                       child: Text(
-                        order.status??'unknown',
+                        order.status ?? 'unknown',
                         style: TextStyle(
-                            fontSize: 12,
-                            color: getStatusTextColor(order.status??'unknown'),
+                            fontSize: 14,
+                            color:
+                                getStatusTextColor(order.status ?? 'unknown'),
                             fontWeight: FontWeight.bold),
                       ),
                     ),
@@ -102,31 +111,26 @@ class OrderCard extends StatelessWidget {
                 const SizedBox(height: 10),
                 InkWell(
                   onTap: () {
-                      Navigator.push(
-                                    context,
-                                    PageRouteBuilder(
-                                      pageBuilder: (context, animation,
-                                          secondaryAnimation) {
-                                        return  OrderDetailsPage(order:order);
-                                                      
-                                      },
-                                      transitionsBuilder: (context, animation,
-                                          secondaryAnimation, child) {
-                                        const begin = Offset(1.0, 0.0);
-                                        const end = Offset.zero;
-                                        const curve = Curves.easeInOut;
-                                        var tween = Tween(
-                                                begin: begin, end: end)
-                                            .chain(CurveTween(curve: curve));
-                                        var offsetAnimation =
-                                            animation.drive(tween);
+                    Navigator.push(
+                      context,
+                      PageRouteBuilder(
+                        pageBuilder: (context, animation, secondaryAnimation) {
+                          return OrderDetailsPage(order: order);
+                        },
+                        transitionsBuilder:
+                            (context, animation, secondaryAnimation, child) {
+                          const begin = Offset(1.0, 0.0);
+                          const end = Offset.zero;
+                          const curve = Curves.easeInOut;
+                          var tween = Tween(begin: begin, end: end)
+                              .chain(CurveTween(curve: curve));
+                          var offsetAnimation = animation.drive(tween);
 
-                                        return SlideTransition(
-                                            position: offsetAnimation,
-                                            child: child);
-                                      },
-                                    ),
-                                  );
+                          return SlideTransition(
+                              position: offsetAnimation, child: child);
+                        },
+                      ),
+                    );
                   },
                   child: Container(
                     padding:
@@ -135,10 +139,10 @@ class OrderCard extends StatelessWidget {
                       color: const Color(0xFF70b9be),
                       borderRadius: BorderRadius.circular(30),
                     ),
-                    child:  Text(
+                    child: Text(
                       lang.orderDetailsTitle,
                       style: TextStyle(
-                          fontSize: 11,
+                          fontSize: 14,
                           color: Colors.white,
                           fontWeight: FontWeight.bold),
                     ),
@@ -147,15 +151,15 @@ class OrderCard extends StatelessWidget {
               ],
             ),
           ),
-          if (index != length - 1)
-            SizedBox(
-              height: 30,
-              width: double.infinity,
-              child: Container(
-                color: const Color(0xFFf4f4f4),
-                child: const Padding(padding: EdgeInsets.all(20)),
-              ),
-            )
+          // if (index != length - 1)
+          //   SizedBox(
+          //     height: 30,
+          //     width: double.infinity,
+          //     child: Container(
+          //       color: const Color(0xFFf4f4f4),
+          //       child: const Padding(padding: EdgeInsets.all(20)),
+          //     ),
+          //   )
         ],
       ),
     );

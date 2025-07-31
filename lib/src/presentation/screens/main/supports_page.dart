@@ -6,7 +6,7 @@ import 'package:frip_trading/core/utils/loading_dialog.dart';
 import 'package:frip_trading/src/data/models/models.dart';
 import 'package:frip_trading/src/presentation/controllers/auth/auth_bloc.dart';
 import 'package:frip_trading/src/presentation/controllers/main_bage/main_page_bloc.dart';
-import 'package:frip_trading/src/presentation/screens/auth/widgets/text_field_auth.dart';
+
 import 'package:frip_trading/src/presentation/widgets/button_costum.dart';
 
 class SupportsPage extends StatelessWidget {
@@ -14,6 +14,7 @@ class SupportsPage extends StatelessWidget {
 
   TextEditingController titleController = TextEditingController();
   TextEditingController messageController = TextEditingController();
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
@@ -65,6 +66,7 @@ class SupportsPage extends StatelessWidget {
                 ),
               ),
               Form(
+                key: _formKey,
                 child: Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 18.0),
                   child: Column(
@@ -88,9 +90,19 @@ class SupportsPage extends StatelessWidget {
                           const SizedBox(
                             height: 10,
                           ),
-                          TextFieldAuth(
+                          TextFormField(
                             controller: titleController,
-                            labelText: 'Enter Message title...',
+                            decoration: InputDecoration(
+                              labelText: 'Enter Message title..',
+                              border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(10)),
+                            ),
+                            validator: (value) {
+                              if (value == null || value.isEmpty) {
+                                return 'Please enter a message title';
+                              }
+                              return null;
+                            },
                           ),
                         ],
                       ),
@@ -110,12 +122,29 @@ class SupportsPage extends StatelessWidget {
                           const SizedBox(
                             height: 10,
                           ),
-                          TextFieldAuth(
-                            controller: messageController,
-                            labelText: 'Content of the message or complaint...',
+                          TextFormField(
                             maxLines: 10,
                             minLines: 5,
+                            controller: messageController,
+                            decoration: InputDecoration(
+                              border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(10)),
+                              labelText:
+                                  'Content of the message or complaint...',
+                            ),
+                            validator: (value) {
+                              if (value == null || value.isEmpty) {
+                                return 'Please enter the message content';
+                              }
+                              return null;
+                            },
                           ),
+                          // TextFieldAuth(
+                          //   controller: messageController,
+                          //   labelText: 'Content of the message or complaint...',
+                          //   maxLines: 10,
+                          //   minLines: 5,
+                          // ),
                         ],
                       ),
                       const SizedBox(height: 25),
@@ -155,17 +184,33 @@ class SupportsPage extends StatelessWidget {
                             return ButtonCostum(
                               text: 'Send',
                               onPressed: () {
-                                User? user = sl<AuthBloc>().state.mapOrNull(
-                                      create: (v) => v.user,
-                                    );
-                                context.read<MainPageBloc>().add(
-                                      MainPageEvent.sendSupport(
-                                        senderEmail: user?.email ?? 'none',
-                                        senderName: user?.name ?? 'none',
-                                        title: titleController.text,
-                                        message: messageController.text,
+                                if (_formKey.currentState!.validate()) {
+                                  User? user = sl<AuthBloc>().state.mapOrNull(
+                                        create: (v) => v.user,
+                                      );
+                                  context.read<MainPageBloc>().add(
+                                        MainPageEvent.sendSupport(
+                                          senderEmail: user?.email ?? 'none',
+                                          senderName: user?.name ?? 'none',
+                                          title: titleController.text,
+                                          message: messageController.text,
+                                        ),
+                                      );
+                                } else {
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                    SnackBar(
+                                      content: Text(
+                                        'Please fill both message title and content.',
+                                        style:
+                                            theme.textTheme.bodyLarge?.copyWith(
+                                          fontWeight: FontWeight.w600,
+                                          color: Colors.white,
+                                        ),
                                       ),
-                                    );
+                                      backgroundColor: Colors.red,
+                                    ),
+                                  );
+                                }
                               },
                             );
                           },
