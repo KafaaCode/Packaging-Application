@@ -1,3 +1,6 @@
+import 'dart:async' show StreamController;
+
+import 'package:flutter/cupertino.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:frip_trading/src/data/models/models.dart';
 import 'package:frip_trading/src/domin/repository/auth_repository.dart';
@@ -8,6 +11,9 @@ part 'auth_event.dart';
 part 'auth_bloc.freezed.dart';
 
 class AuthBloc extends HydratedBloc<AuthEvent, AuthState> {
+  final _userCreatedSuccessController = StreamController<String>();
+  Stream<String> get userCreatedSuccessStream =>
+      _userCreatedSuccessController.stream.asBroadcastStream();
   final BaseAuthRepository repository;
 
   AuthBloc(this.repository) : super(const AuthState.initial()) {
@@ -18,6 +24,28 @@ class AuthBloc extends HydratedBloc<AuthEvent, AuthState> {
     on<_Register>(_registerEvent);
     on<_Login>(_loginEvent);
     on<_UpdateProfile>(_updateEvent);
+    on<_AdminRegisterUser>(_adminRegisterUserEvent);
+  }
+  void _adminRegisterUserEvent(
+    _AdminRegisterUser event,
+    Emitter<AuthState> emit,
+  ) async {
+    final AuthState previousState = state; // حفظ الحالة السابقة للمسؤول
+    emit(const AuthState.loadInProgress());
+    try {
+      final response = await repository.register(user: event.user);
+      await response.fold((error) async {
+        if (!emit.isDone) emit(AuthState.error(message: error.message));
+      }, (r) async {
+        // ❌ لا يتم حفظ التوكن هنا، ولا يتم تسجيل دخول المستخدم الجديد
+        if (!emit.isDone) {
+          _userCreatedSuccessController.add('User created successfully!');
+          emit(previousState); // العودة إلى حالة المسؤول السابقة
+        }
+      });
+    } catch (e) {
+      if (!emit.isDone) emit(AuthState.error(message: e.toString()));
+    }
   }
 
   void _logoutEvent(
@@ -119,16 +147,13 @@ class AuthBloc extends HydratedBloc<AuthEvent, AuthState> {
         password: event.user.password!,
       );
       await response.fold((error) async {
-        print('Error: ${error.message}');
+        debugPrint('Login Error: ${error.message}');
         if (!emit.isDone) emit(AuthState.error(message: error.message));
       }, (r) async {
         await HydratedBloc.storage.write('token', r.token);
 
         if (!emit.isDone) {
-          emit(state.maybeMap(
-            orElse: () => AuthState.create(user: r.user),
-            create: (create) => create.copyWith(user: r.user),
-          ));
+          emit(AuthState.create(user: r.user));
         }
       });
     } catch (e) {

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class TextFieldAuth extends StatefulWidget {
+  final void Function()? onTap;
   final String? labelText;
   final String? hintText;
   final TextEditingController? controller;
@@ -15,6 +16,7 @@ class TextFieldAuth extends StatefulWidget {
   const TextFieldAuth(
       {super.key,
       this.labelText,
+      this.onTap,
       this.hintText,
       this.controller,
       this.isPassword,
@@ -58,13 +60,16 @@ class _TextFieldAuthState extends State<TextFieldAuth> {
           color: const Color.fromRGBO(0, 0, 0, 0.5),
         ),
         suffixIcon: widget.svgIcon != null
-            ? Padding(
-                padding: const EdgeInsets.all(15.0),
-                child: SvgPicture.asset(
-                  widget.svgIcon!,
-                  colorFilter: ColorFilter.mode(
-                    widget.colorIcon ?? theme.primaryColor,
-                    BlendMode.srcIn,
+            ? GestureDetector(
+                onTap: widget.onTap,
+                child: Padding(
+                  padding: const EdgeInsets.all(15.0),
+                  child: SvgPicture.asset(
+                    widget.svgIcon!,
+                    colorFilter: ColorFilter.mode(
+                      widget.colorIcon ?? theme.primaryColor,
+                      BlendMode.srcIn,
+                    ),
                   ),
                 ),
               )

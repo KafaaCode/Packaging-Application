@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:frip_trading/core/routes/router_screens.dart';
 import 'package:frip_trading/core/routes/routes_name.dart';
-import 'package:frip_trading/core/utils/loading_dialog.dart';
+
 import 'package:frip_trading/src/presentation/controllers/auth/auth_bloc.dart';
 import 'package:lottie/lottie.dart';
 
@@ -44,6 +44,7 @@ class _InitPageState extends State<InitPage> {
       },
       create: (user) {
         Navigator.of(context, rootNavigator: true).pop();
+        print(user.role);
         if (user.role == "User") {
           debugPrint('Loaded with user: ${user.email}');
           AppRouter.router.navigateTo(context, RoutesNames.mainRoute,
@@ -51,13 +52,14 @@ class _InitPageState extends State<InitPage> {
               transitionDuration: const Duration(milliseconds: 200),
               transition: TransitionType.inFromBottom);
         } else if (user.role == "Admin") {
+          debugPrint('Loaded with user: ${user.email}');
           AppRouter.router.navigateTo(context, RoutesNames.adminMainRoute,
               clearStack: true,
               transitionDuration: const Duration(milliseconds: 200),
               transition: TransitionType.inFromLeft);
         } else {
           // Toast().error(context, 'Something went wrong!');
-          AppRouter.router.navigateTo(context, RoutesNames.loginRoute,
+          AppRouter.router.navigateTo(context, RoutesNames.adminMainRoute,
               clearStack: true,
               transitionDuration: const Duration(milliseconds: 200),
               transition: TransitionType.inFromBottom);

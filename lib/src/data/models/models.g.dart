@@ -88,7 +88,7 @@ _$CategoryImpl _$$CategoryImplFromJson(Map<String, dynamic> json) =>
     _$CategoryImpl(
       id: (json['id'] as num?)?.toInt(),
       name: json['name'] as String?,
-      image: json['image'] as String?,
+      image: json['image'] != null ? '$imageBaseUrl${json['image']}' : null,
       active: (json['active'] as num).toInt(),
     );
 
@@ -150,7 +150,7 @@ _$ProductImpl _$$ProductImplFromJson(Map<String, dynamic> json) =>
     _$ProductImpl(
       id: (json['id'] as num).toInt(),
       name: json['name'] as String,
-      image: json['image'] as String?,
+      image: json['image'] != null ? '$imageBaseUrl${json['image']}' : null,
       serial_numbe: json['serial_numbe'] as String?,
       description: json['description'] as String?,
       category: json['category'] == null

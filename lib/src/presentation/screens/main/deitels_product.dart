@@ -36,8 +36,8 @@ class ProductDetailsPage extends StatelessWidget {
             child: Stack(
               fit: StackFit.expand,
               children: [
-                Image.asset(
-                  'assets/images/image5.png',
+                Image.network(
+                  product.image!,
                   fit: BoxFit.cover,
                 ),
                 Positioned(
@@ -235,7 +235,6 @@ class ProductDetailsPage extends StatelessWidget {
                               ),
                               onPressed: () {
                                 AddToCard(context, lang);
-                               
                               },
                               child: Text(
                                 lang.addToCartButton,
@@ -258,7 +257,6 @@ class ProductDetailsPage extends StatelessWidget {
   }
 
   void AddToCard(BuildContext context, Lang lang) {
-       
     final cartBloc = context.read<CartBloc>();
     final counterBloc = context.read<CounterBloc>();
     final quantity = counterBloc.state.count;
@@ -276,7 +274,10 @@ class ProductDetailsPage extends StatelessWidget {
             backgroundColor: const Color.fromARGB(255, 239, 244, 245)),
       );
     } else {
-      final newCartItem = CartItem(product: product, quantity: quantity,);
+      final newCartItem = CartItem(
+        product: product,
+        quantity: quantity,
+      );
       cartBloc.add(CartEvent.removeProduct(product));
       cartBloc.add(CartEvent.addProduct(newCartItem));
 
@@ -286,8 +287,6 @@ class ProductDetailsPage extends StatelessWidget {
                 style: const TextStyle(color: Color(0xFF70b9be))),
             backgroundColor: const Color.fromARGB(255, 239, 244, 245)),
       );
-      
     }
-
   }
 }

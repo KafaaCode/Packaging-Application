@@ -651,6 +651,7 @@ mixin _$AuthEvent {
     required TResult Function(
             String oldPassword, String newPassword, String confirmPassword)
         updatePassword,
+    required TResult Function(User user) adminRegisterUser,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -664,6 +665,7 @@ mixin _$AuthEvent {
     TResult? Function(
             String oldPassword, String newPassword, String confirmPassword)?
         updatePassword,
+    TResult? Function(User user)? adminRegisterUser,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -677,6 +679,7 @@ mixin _$AuthEvent {
     TResult Function(
             String oldPassword, String newPassword, String confirmPassword)?
         updatePassword,
+    TResult Function(User user)? adminRegisterUser,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -689,6 +692,7 @@ mixin _$AuthEvent {
     required TResult Function(_Logout value) logout,
     required TResult Function(_UpdateProfile value) updateProfile,
     required TResult Function(_UpdatePassword value) updatePassword,
+    required TResult Function(_AdminRegisterUser value) adminRegisterUser,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -700,6 +704,7 @@ mixin _$AuthEvent {
     TResult? Function(_Logout value)? logout,
     TResult? Function(_UpdateProfile value)? updateProfile,
     TResult? Function(_UpdatePassword value)? updatePassword,
+    TResult? Function(_AdminRegisterUser value)? adminRegisterUser,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -711,6 +716,7 @@ mixin _$AuthEvent {
     TResult Function(_Logout value)? logout,
     TResult Function(_UpdateProfile value)? updateProfile,
     TResult Function(_UpdatePassword value)? updatePassword,
+    TResult Function(_AdminRegisterUser value)? adminRegisterUser,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -786,6 +792,7 @@ class _$CheckAuthImpl implements _CheckAuth {
     required TResult Function(
             String oldPassword, String newPassword, String confirmPassword)
         updatePassword,
+    required TResult Function(User user) adminRegisterUser,
   }) {
     return checkAuth();
   }
@@ -802,6 +809,7 @@ class _$CheckAuthImpl implements _CheckAuth {
     TResult? Function(
             String oldPassword, String newPassword, String confirmPassword)?
         updatePassword,
+    TResult? Function(User user)? adminRegisterUser,
   }) {
     return checkAuth?.call();
   }
@@ -818,6 +826,7 @@ class _$CheckAuthImpl implements _CheckAuth {
     TResult Function(
             String oldPassword, String newPassword, String confirmPassword)?
         updatePassword,
+    TResult Function(User user)? adminRegisterUser,
     required TResult orElse(),
   }) {
     if (checkAuth != null) {
@@ -836,6 +845,7 @@ class _$CheckAuthImpl implements _CheckAuth {
     required TResult Function(_Logout value) logout,
     required TResult Function(_UpdateProfile value) updateProfile,
     required TResult Function(_UpdatePassword value) updatePassword,
+    required TResult Function(_AdminRegisterUser value) adminRegisterUser,
   }) {
     return checkAuth(this);
   }
@@ -850,6 +860,7 @@ class _$CheckAuthImpl implements _CheckAuth {
     TResult? Function(_Logout value)? logout,
     TResult? Function(_UpdateProfile value)? updateProfile,
     TResult? Function(_UpdatePassword value)? updatePassword,
+    TResult? Function(_AdminRegisterUser value)? adminRegisterUser,
   }) {
     return checkAuth?.call(this);
   }
@@ -864,6 +875,7 @@ class _$CheckAuthImpl implements _CheckAuth {
     TResult Function(_Logout value)? logout,
     TResult Function(_UpdateProfile value)? updateProfile,
     TResult Function(_UpdatePassword value)? updatePassword,
+    TResult Function(_AdminRegisterUser value)? adminRegisterUser,
     required TResult orElse(),
   }) {
     if (checkAuth != null) {
@@ -966,6 +978,7 @@ class _$CreateEventImpl implements _CreateEvent {
     required TResult Function(
             String oldPassword, String newPassword, String confirmPassword)
         updatePassword,
+    required TResult Function(User user) adminRegisterUser,
   }) {
     return createEvent(user);
   }
@@ -982,6 +995,7 @@ class _$CreateEventImpl implements _CreateEvent {
     TResult? Function(
             String oldPassword, String newPassword, String confirmPassword)?
         updatePassword,
+    TResult? Function(User user)? adminRegisterUser,
   }) {
     return createEvent?.call(user);
   }
@@ -998,6 +1012,7 @@ class _$CreateEventImpl implements _CreateEvent {
     TResult Function(
             String oldPassword, String newPassword, String confirmPassword)?
         updatePassword,
+    TResult Function(User user)? adminRegisterUser,
     required TResult orElse(),
   }) {
     if (createEvent != null) {
@@ -1016,6 +1031,7 @@ class _$CreateEventImpl implements _CreateEvent {
     required TResult Function(_Logout value) logout,
     required TResult Function(_UpdateProfile value) updateProfile,
     required TResult Function(_UpdatePassword value) updatePassword,
+    required TResult Function(_AdminRegisterUser value) adminRegisterUser,
   }) {
     return createEvent(this);
   }
@@ -1030,6 +1046,7 @@ class _$CreateEventImpl implements _CreateEvent {
     TResult? Function(_Logout value)? logout,
     TResult? Function(_UpdateProfile value)? updateProfile,
     TResult? Function(_UpdatePassword value)? updatePassword,
+    TResult? Function(_AdminRegisterUser value)? adminRegisterUser,
   }) {
     return createEvent?.call(this);
   }
@@ -1044,6 +1061,7 @@ class _$CreateEventImpl implements _CreateEvent {
     TResult Function(_Logout value)? logout,
     TResult Function(_UpdateProfile value)? updateProfile,
     TResult Function(_UpdatePassword value)? updatePassword,
+    TResult Function(_AdminRegisterUser value)? adminRegisterUser,
     required TResult orElse(),
   }) {
     if (createEvent != null) {
@@ -1154,6 +1172,7 @@ class _$LoginImpl implements _Login {
     required TResult Function(
             String oldPassword, String newPassword, String confirmPassword)
         updatePassword,
+    required TResult Function(User user) adminRegisterUser,
   }) {
     return login(user);
   }
@@ -1170,6 +1189,7 @@ class _$LoginImpl implements _Login {
     TResult? Function(
             String oldPassword, String newPassword, String confirmPassword)?
         updatePassword,
+    TResult? Function(User user)? adminRegisterUser,
   }) {
     return login?.call(user);
   }
@@ -1186,6 +1206,7 @@ class _$LoginImpl implements _Login {
     TResult Function(
             String oldPassword, String newPassword, String confirmPassword)?
         updatePassword,
+    TResult Function(User user)? adminRegisterUser,
     required TResult orElse(),
   }) {
     if (login != null) {
@@ -1204,6 +1225,7 @@ class _$LoginImpl implements _Login {
     required TResult Function(_Logout value) logout,
     required TResult Function(_UpdateProfile value) updateProfile,
     required TResult Function(_UpdatePassword value) updatePassword,
+    required TResult Function(_AdminRegisterUser value) adminRegisterUser,
   }) {
     return login(this);
   }
@@ -1218,6 +1240,7 @@ class _$LoginImpl implements _Login {
     TResult? Function(_Logout value)? logout,
     TResult? Function(_UpdateProfile value)? updateProfile,
     TResult? Function(_UpdatePassword value)? updatePassword,
+    TResult? Function(_AdminRegisterUser value)? adminRegisterUser,
   }) {
     return login?.call(this);
   }
@@ -1232,6 +1255,7 @@ class _$LoginImpl implements _Login {
     TResult Function(_Logout value)? logout,
     TResult Function(_UpdateProfile value)? updateProfile,
     TResult Function(_UpdatePassword value)? updatePassword,
+    TResult Function(_AdminRegisterUser value)? adminRegisterUser,
     required TResult orElse(),
   }) {
     if (login != null) {
@@ -1342,6 +1366,7 @@ class _$RegisterImpl implements _Register {
     required TResult Function(
             String oldPassword, String newPassword, String confirmPassword)
         updatePassword,
+    required TResult Function(User user) adminRegisterUser,
   }) {
     return register(user);
   }
@@ -1358,6 +1383,7 @@ class _$RegisterImpl implements _Register {
     TResult? Function(
             String oldPassword, String newPassword, String confirmPassword)?
         updatePassword,
+    TResult? Function(User user)? adminRegisterUser,
   }) {
     return register?.call(user);
   }
@@ -1374,6 +1400,7 @@ class _$RegisterImpl implements _Register {
     TResult Function(
             String oldPassword, String newPassword, String confirmPassword)?
         updatePassword,
+    TResult Function(User user)? adminRegisterUser,
     required TResult orElse(),
   }) {
     if (register != null) {
@@ -1392,6 +1419,7 @@ class _$RegisterImpl implements _Register {
     required TResult Function(_Logout value) logout,
     required TResult Function(_UpdateProfile value) updateProfile,
     required TResult Function(_UpdatePassword value) updatePassword,
+    required TResult Function(_AdminRegisterUser value) adminRegisterUser,
   }) {
     return register(this);
   }
@@ -1406,6 +1434,7 @@ class _$RegisterImpl implements _Register {
     TResult? Function(_Logout value)? logout,
     TResult? Function(_UpdateProfile value)? updateProfile,
     TResult? Function(_UpdatePassword value)? updatePassword,
+    TResult? Function(_AdminRegisterUser value)? adminRegisterUser,
   }) {
     return register?.call(this);
   }
@@ -1420,6 +1449,7 @@ class _$RegisterImpl implements _Register {
     TResult Function(_Logout value)? logout,
     TResult Function(_UpdateProfile value)? updateProfile,
     TResult Function(_UpdatePassword value)? updatePassword,
+    TResult Function(_AdminRegisterUser value)? adminRegisterUser,
     required TResult orElse(),
   }) {
     if (register != null) {
@@ -1491,6 +1521,7 @@ class _$LogoutImpl implements _Logout {
     required TResult Function(
             String oldPassword, String newPassword, String confirmPassword)
         updatePassword,
+    required TResult Function(User user) adminRegisterUser,
   }) {
     return logout();
   }
@@ -1507,6 +1538,7 @@ class _$LogoutImpl implements _Logout {
     TResult? Function(
             String oldPassword, String newPassword, String confirmPassword)?
         updatePassword,
+    TResult? Function(User user)? adminRegisterUser,
   }) {
     return logout?.call();
   }
@@ -1523,6 +1555,7 @@ class _$LogoutImpl implements _Logout {
     TResult Function(
             String oldPassword, String newPassword, String confirmPassword)?
         updatePassword,
+    TResult Function(User user)? adminRegisterUser,
     required TResult orElse(),
   }) {
     if (logout != null) {
@@ -1541,6 +1574,7 @@ class _$LogoutImpl implements _Logout {
     required TResult Function(_Logout value) logout,
     required TResult Function(_UpdateProfile value) updateProfile,
     required TResult Function(_UpdatePassword value) updatePassword,
+    required TResult Function(_AdminRegisterUser value) adminRegisterUser,
   }) {
     return logout(this);
   }
@@ -1555,6 +1589,7 @@ class _$LogoutImpl implements _Logout {
     TResult? Function(_Logout value)? logout,
     TResult? Function(_UpdateProfile value)? updateProfile,
     TResult? Function(_UpdatePassword value)? updatePassword,
+    TResult? Function(_AdminRegisterUser value)? adminRegisterUser,
   }) {
     return logout?.call(this);
   }
@@ -1569,6 +1604,7 @@ class _$LogoutImpl implements _Logout {
     TResult Function(_Logout value)? logout,
     TResult Function(_UpdateProfile value)? updateProfile,
     TResult Function(_UpdatePassword value)? updatePassword,
+    TResult Function(_AdminRegisterUser value)? adminRegisterUser,
     required TResult orElse(),
   }) {
     if (logout != null) {
@@ -1671,6 +1707,7 @@ class _$UpdateProfileImpl implements _UpdateProfile {
     required TResult Function(
             String oldPassword, String newPassword, String confirmPassword)
         updatePassword,
+    required TResult Function(User user) adminRegisterUser,
   }) {
     return updateProfile(user);
   }
@@ -1687,6 +1724,7 @@ class _$UpdateProfileImpl implements _UpdateProfile {
     TResult? Function(
             String oldPassword, String newPassword, String confirmPassword)?
         updatePassword,
+    TResult? Function(User user)? adminRegisterUser,
   }) {
     return updateProfile?.call(user);
   }
@@ -1703,6 +1741,7 @@ class _$UpdateProfileImpl implements _UpdateProfile {
     TResult Function(
             String oldPassword, String newPassword, String confirmPassword)?
         updatePassword,
+    TResult Function(User user)? adminRegisterUser,
     required TResult orElse(),
   }) {
     if (updateProfile != null) {
@@ -1721,6 +1760,7 @@ class _$UpdateProfileImpl implements _UpdateProfile {
     required TResult Function(_Logout value) logout,
     required TResult Function(_UpdateProfile value) updateProfile,
     required TResult Function(_UpdatePassword value) updatePassword,
+    required TResult Function(_AdminRegisterUser value) adminRegisterUser,
   }) {
     return updateProfile(this);
   }
@@ -1735,6 +1775,7 @@ class _$UpdateProfileImpl implements _UpdateProfile {
     TResult? Function(_Logout value)? logout,
     TResult? Function(_UpdateProfile value)? updateProfile,
     TResult? Function(_UpdatePassword value)? updatePassword,
+    TResult? Function(_AdminRegisterUser value)? adminRegisterUser,
   }) {
     return updateProfile?.call(this);
   }
@@ -1749,6 +1790,7 @@ class _$UpdateProfileImpl implements _UpdateProfile {
     TResult Function(_Logout value)? logout,
     TResult Function(_UpdateProfile value)? updateProfile,
     TResult Function(_UpdatePassword value)? updatePassword,
+    TResult Function(_AdminRegisterUser value)? adminRegisterUser,
     required TResult orElse(),
   }) {
     if (updateProfile != null) {
@@ -1872,6 +1914,7 @@ class _$UpdatePasswordImpl implements _UpdatePassword {
     required TResult Function(
             String oldPassword, String newPassword, String confirmPassword)
         updatePassword,
+    required TResult Function(User user) adminRegisterUser,
   }) {
     return updatePassword(oldPassword, newPassword, confirmPassword);
   }
@@ -1888,6 +1931,7 @@ class _$UpdatePasswordImpl implements _UpdatePassword {
     TResult? Function(
             String oldPassword, String newPassword, String confirmPassword)?
         updatePassword,
+    TResult? Function(User user)? adminRegisterUser,
   }) {
     return updatePassword?.call(oldPassword, newPassword, confirmPassword);
   }
@@ -1904,6 +1948,7 @@ class _$UpdatePasswordImpl implements _UpdatePassword {
     TResult Function(
             String oldPassword, String newPassword, String confirmPassword)?
         updatePassword,
+    TResult Function(User user)? adminRegisterUser,
     required TResult orElse(),
   }) {
     if (updatePassword != null) {
@@ -1922,6 +1967,7 @@ class _$UpdatePasswordImpl implements _UpdatePassword {
     required TResult Function(_Logout value) logout,
     required TResult Function(_UpdateProfile value) updateProfile,
     required TResult Function(_UpdatePassword value) updatePassword,
+    required TResult Function(_AdminRegisterUser value) adminRegisterUser,
   }) {
     return updatePassword(this);
   }
@@ -1936,6 +1982,7 @@ class _$UpdatePasswordImpl implements _UpdatePassword {
     TResult? Function(_Logout value)? logout,
     TResult? Function(_UpdateProfile value)? updateProfile,
     TResult? Function(_UpdatePassword value)? updatePassword,
+    TResult? Function(_AdminRegisterUser value)? adminRegisterUser,
   }) {
     return updatePassword?.call(this);
   }
@@ -1950,6 +1997,7 @@ class _$UpdatePasswordImpl implements _UpdatePassword {
     TResult Function(_Logout value)? logout,
     TResult Function(_UpdateProfile value)? updateProfile,
     TResult Function(_UpdatePassword value)? updatePassword,
+    TResult Function(_AdminRegisterUser value)? adminRegisterUser,
     required TResult orElse(),
   }) {
     if (updatePassword != null) {
@@ -1973,5 +2021,201 @@ abstract class _UpdatePassword implements AuthEvent {
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$UpdatePasswordImplCopyWith<_$UpdatePasswordImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$AdminRegisterUserImplCopyWith<$Res> {
+  factory _$$AdminRegisterUserImplCopyWith(_$AdminRegisterUserImpl value,
+          $Res Function(_$AdminRegisterUserImpl) then) =
+      __$$AdminRegisterUserImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({User user});
+
+  $UserCopyWith<$Res> get user;
+}
+
+/// @nodoc
+class __$$AdminRegisterUserImplCopyWithImpl<$Res>
+    extends _$AuthEventCopyWithImpl<$Res, _$AdminRegisterUserImpl>
+    implements _$$AdminRegisterUserImplCopyWith<$Res> {
+  __$$AdminRegisterUserImplCopyWithImpl(_$AdminRegisterUserImpl _value,
+      $Res Function(_$AdminRegisterUserImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of AuthEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? user = null,
+  }) {
+    return _then(_$AdminRegisterUserImpl(
+      user: null == user
+          ? _value.user
+          : user // ignore: cast_nullable_to_non_nullable
+              as User,
+    ));
+  }
+
+  /// Create a copy of AuthEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $UserCopyWith<$Res> get user {
+    return $UserCopyWith<$Res>(_value.user, (value) {
+      return _then(_value.copyWith(user: value));
+    });
+  }
+}
+
+/// @nodoc
+
+class _$AdminRegisterUserImpl implements _AdminRegisterUser {
+  const _$AdminRegisterUserImpl({required this.user});
+
+  @override
+  final User user;
+
+  @override
+  String toString() {
+    return 'AuthEvent.adminRegisterUser(user: $user)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$AdminRegisterUserImpl &&
+            (identical(other.user, user) || other.user == user));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, user);
+
+  /// Create a copy of AuthEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$AdminRegisterUserImplCopyWith<_$AdminRegisterUserImpl> get copyWith =>
+      __$$AdminRegisterUserImplCopyWithImpl<_$AdminRegisterUserImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() checkAuth,
+    required TResult Function(User user) createEvent,
+    required TResult Function(User user) login,
+    required TResult Function(User user) register,
+    required TResult Function() logout,
+    required TResult Function(User user) updateProfile,
+    required TResult Function(
+            String oldPassword, String newPassword, String confirmPassword)
+        updatePassword,
+    required TResult Function(User user) adminRegisterUser,
+  }) {
+    return adminRegisterUser(user);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? checkAuth,
+    TResult? Function(User user)? createEvent,
+    TResult? Function(User user)? login,
+    TResult? Function(User user)? register,
+    TResult? Function()? logout,
+    TResult? Function(User user)? updateProfile,
+    TResult? Function(
+            String oldPassword, String newPassword, String confirmPassword)?
+        updatePassword,
+    TResult? Function(User user)? adminRegisterUser,
+  }) {
+    return adminRegisterUser?.call(user);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? checkAuth,
+    TResult Function(User user)? createEvent,
+    TResult Function(User user)? login,
+    TResult Function(User user)? register,
+    TResult Function()? logout,
+    TResult Function(User user)? updateProfile,
+    TResult Function(
+            String oldPassword, String newPassword, String confirmPassword)?
+        updatePassword,
+    TResult Function(User user)? adminRegisterUser,
+    required TResult orElse(),
+  }) {
+    if (adminRegisterUser != null) {
+      return adminRegisterUser(user);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_CheckAuth value) checkAuth,
+    required TResult Function(_CreateEvent value) createEvent,
+    required TResult Function(_Login value) login,
+    required TResult Function(_Register value) register,
+    required TResult Function(_Logout value) logout,
+    required TResult Function(_UpdateProfile value) updateProfile,
+    required TResult Function(_UpdatePassword value) updatePassword,
+    required TResult Function(_AdminRegisterUser value) adminRegisterUser,
+  }) {
+    return adminRegisterUser(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_CheckAuth value)? checkAuth,
+    TResult? Function(_CreateEvent value)? createEvent,
+    TResult? Function(_Login value)? login,
+    TResult? Function(_Register value)? register,
+    TResult? Function(_Logout value)? logout,
+    TResult? Function(_UpdateProfile value)? updateProfile,
+    TResult? Function(_UpdatePassword value)? updatePassword,
+    TResult? Function(_AdminRegisterUser value)? adminRegisterUser,
+  }) {
+    return adminRegisterUser?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_CheckAuth value)? checkAuth,
+    TResult Function(_CreateEvent value)? createEvent,
+    TResult Function(_Login value)? login,
+    TResult Function(_Register value)? register,
+    TResult Function(_Logout value)? logout,
+    TResult Function(_UpdateProfile value)? updateProfile,
+    TResult Function(_UpdatePassword value)? updatePassword,
+    TResult Function(_AdminRegisterUser value)? adminRegisterUser,
+    required TResult orElse(),
+  }) {
+    if (adminRegisterUser != null) {
+      return adminRegisterUser(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _AdminRegisterUser implements AuthEvent {
+  const factory _AdminRegisterUser({required final User user}) =
+      _$AdminRegisterUserImpl;
+
+  User get user;
+
+  /// Create a copy of AuthEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$AdminRegisterUserImplCopyWith<_$AdminRegisterUserImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

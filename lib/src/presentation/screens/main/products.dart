@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:frip_trading/admin/screens/products/product_model.dart';
 import 'package:frip_trading/core/localization/generated/l10n.dart';
 import 'package:frip_trading/core/services/services_locator.dart';
-import 'package:frip_trading/core/utils/loading_dialog.dart';
+
 import 'package:frip_trading/src/data/models/models.dart';
 import 'package:frip_trading/src/presentation/controllers/cart/cart_bloc.dart';
 import 'package:frip_trading/src/presentation/controllers/counter/counter_bloc.dart';
@@ -206,7 +207,7 @@ class Products extends StatelessWidget {
                                     width: itemWidth,
                                     child: MainCard(
                                       name: product.name.toString(),
-                                      imageUrl:
+                                      imageUrl: product.image ??
                                           'assets/images/Rectangle569.png',
                                     )),
                               );

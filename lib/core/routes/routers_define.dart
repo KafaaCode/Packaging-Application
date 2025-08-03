@@ -92,7 +92,7 @@ void configureRoutes(FluroRouter router) {
     RoutesNames.adminMainRoute,
     handler: Handler(
       handlerFunc: (context, parameters) {
-        return const AdminPage();
+        return AdminPage();
       },
     ),
   );
