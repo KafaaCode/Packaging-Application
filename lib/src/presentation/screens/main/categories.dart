@@ -54,7 +54,7 @@ class _FilterPageState extends State<FilterPage> {
                             create: (state) => state.user.name,
                           ) ??
                       'User Name',
-                  style: TextStyle(
+                  style: const TextStyle(
                       color: Color(0xFF70b9be),
                       fontWeight: FontWeight.bold,
                       fontSize: 30),
@@ -120,7 +120,7 @@ class _FilterPageState extends State<FilterPage> {
                       color: const Color(0xFF70b9be),
                       borderRadius: BorderRadius.circular(10),
                     ),
-                    child: Center(
+                    child: const Center(
                       child: Icon(
                         Icons.search,
                       ),
@@ -177,7 +177,7 @@ class _FilterPageState extends State<FilterPage> {
                                   state.searchCategories == null
                                       ? state.categories.length
                                       : state.searchCategories!.length, (i) {
-                                Category category =
+                                CategoryModel category =
                                     (state.searchCategories == null
                                         ? state.categories[i]
                                         : state.searchCategories![i]);
@@ -199,11 +199,11 @@ class _FilterPageState extends State<FilterPage> {
                                           arguments: state.teachers[i])); */
                                     AppRouter.router.navigateTo(
                                         context, RoutesNames.products,
-                                        transition: TransitionType.inFromRight,
+                                        transition: TransitionType.fadeIn,
                                         routeSettings: RouteSettings(
                                             arguments: category.id),
                                         transitionDuration:
-                                            const Duration(milliseconds: 200));
+                                            const Duration(milliseconds: 800));
                                   },
                                   borderRadius: BorderRadius.circular(12),
                                   child: SizedBox(

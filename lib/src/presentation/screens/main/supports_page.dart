@@ -9,11 +9,18 @@ import 'package:frip_trading/src/presentation/controllers/main_bage/main_page_bl
 
 import 'package:frip_trading/src/presentation/widgets/button_costum.dart';
 
-class SupportsPage extends StatelessWidget {
-  SupportsPage({super.key});
+class SupportsPage extends StatefulWidget {
+  const SupportsPage({super.key});
 
+  @override
+  State<SupportsPage> createState() => _SupportsPageState();
+}
+
+class _SupportsPageState extends State<SupportsPage> {
   TextEditingController titleController = TextEditingController();
+
   TextEditingController messageController = TextEditingController();
+
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   @override

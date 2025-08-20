@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:frip_trading/admin/screens/categories/category_controller.dart';
 import 'package:frip_trading/core/network/api_call_handler.dart';
 import 'package:frip_trading/src/data/data_source/auth_remote_data_source.dart';
 import 'package:frip_trading/src/data/main/main_remote_data_source.dart';
@@ -45,6 +46,9 @@ class ServicesLocator {
 
     sl.registerLazySingleton(() => MyOrdersBloc(sl()));
     sl.registerLazySingleton(() => CartBloc());
+    sl.registerLazySingleton(
+      () => CategoryController(),
+    );
   }
 
   void _initalSL() {

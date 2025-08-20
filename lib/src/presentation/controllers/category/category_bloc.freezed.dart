@@ -21,8 +21,9 @@ mixin _$CategoriesState {
   String get errorMessage => throw _privateConstructorUsedError;
   bool get isAuth => throw _privateConstructorUsedError;
   bool get isEmpty => throw _privateConstructorUsedError;
-  List<Category> get categories => throw _privateConstructorUsedError;
-  List<Category>? get searchCategories => throw _privateConstructorUsedError;
+  List<CategoryModel> get categories => throw _privateConstructorUsedError;
+  List<CategoryModel>? get searchCategories =>
+      throw _privateConstructorUsedError;
 
   /// Create a copy of CategoriesState
   /// with the given fields replaced by the non-null parameter values.
@@ -43,8 +44,8 @@ abstract class $CategoriesStateCopyWith<$Res> {
       String errorMessage,
       bool isAuth,
       bool isEmpty,
-      List<Category> categories,
-      List<Category>? searchCategories});
+      List<CategoryModel> categories,
+      List<CategoryModel>? searchCategories});
 }
 
 /// @nodoc
@@ -94,11 +95,11 @@ class _$CategoriesStateCopyWithImpl<$Res, $Val extends CategoriesState>
       categories: null == categories
           ? _value.categories
           : categories // ignore: cast_nullable_to_non_nullable
-              as List<Category>,
+              as List<CategoryModel>,
       searchCategories: freezed == searchCategories
           ? _value.searchCategories
           : searchCategories // ignore: cast_nullable_to_non_nullable
-              as List<Category>?,
+              as List<CategoryModel>?,
     ) as $Val);
   }
 }
@@ -117,8 +118,8 @@ abstract class _$$InitialImplCopyWith<$Res>
       String errorMessage,
       bool isAuth,
       bool isEmpty,
-      List<Category> categories,
-      List<Category>? searchCategories});
+      List<CategoryModel> categories,
+      List<CategoryModel>? searchCategories});
 }
 
 /// @nodoc
@@ -166,11 +167,11 @@ class __$$InitialImplCopyWithImpl<$Res>
       categories: null == categories
           ? _value._categories
           : categories // ignore: cast_nullable_to_non_nullable
-              as List<Category>,
+              as List<CategoryModel>,
       searchCategories: freezed == searchCategories
           ? _value._searchCategories
           : searchCategories // ignore: cast_nullable_to_non_nullable
-              as List<Category>?,
+              as List<CategoryModel>?,
     ));
   }
 }
@@ -184,8 +185,8 @@ class _$InitialImpl implements _Initial {
       this.errorMessage = '',
       this.isAuth = false,
       this.isEmpty = false,
-      final List<Category> categories = const [],
-      final List<Category>? searchCategories = null})
+      final List<CategoryModel> categories = const [],
+      final List<CategoryModel>? searchCategories = null})
       : _categories = categories,
         _searchCategories = searchCategories;
 
@@ -204,19 +205,19 @@ class _$InitialImpl implements _Initial {
   @override
   @JsonKey()
   final bool isEmpty;
-  final List<Category> _categories;
+  final List<CategoryModel> _categories;
   @override
   @JsonKey()
-  List<Category> get categories {
+  List<CategoryModel> get categories {
     if (_categories is EqualUnmodifiableListView) return _categories;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_categories);
   }
 
-  final List<Category>? _searchCategories;
+  final List<CategoryModel>? _searchCategories;
   @override
   @JsonKey()
-  List<Category>? get searchCategories {
+  List<CategoryModel>? get searchCategories {
     final value = _searchCategories;
     if (value == null) return null;
     if (_searchCategories is EqualUnmodifiableListView)
@@ -274,8 +275,8 @@ abstract class _Initial implements CategoriesState {
       final String errorMessage,
       final bool isAuth,
       final bool isEmpty,
-      final List<Category> categories,
-      final List<Category>? searchCategories}) = _$InitialImpl;
+      final List<CategoryModel> categories,
+      final List<CategoryModel>? searchCategories}) = _$InitialImpl;
 
   @override
   bool get loading;
@@ -288,9 +289,9 @@ abstract class _Initial implements CategoriesState {
   @override
   bool get isEmpty;
   @override
-  List<Category> get categories;
+  List<CategoryModel> get categories;
   @override
-  List<Category>? get searchCategories;
+  List<CategoryModel>? get searchCategories;
 
   /// Create a copy of CategoriesState
   /// with the given fields replaced by the non-null parameter values.

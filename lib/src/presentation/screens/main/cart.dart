@@ -20,7 +20,7 @@ class CartDetailsPage extends StatelessWidget {
         if (state.isLoading) {
           // عند تحميل البيانات
           ScaffoldMessenger.of(context).showSnackBar(
-           SnackBar(
+            SnackBar(
               content: Text(lang.Addingorder),
               backgroundColor: Colors.orange,
               duration: Duration(seconds: 1),
@@ -35,9 +35,9 @@ class CartDetailsPage extends StatelessWidget {
               duration: Duration(seconds: 1),
             ),
           );
-               context.read<MainPageBloc>().emit(
-        state.copyWith(successMessage: ''),
-      );
+          context.read<MainPageBloc>().emit(
+                state.copyWith(successMessage: ''),
+              );
         } else if (state.errorMessage != '') {
           // في حالة حدوث خطأ
           ScaffoldMessenger.of(context).showSnackBar(
@@ -47,9 +47,9 @@ class CartDetailsPage extends StatelessWidget {
               duration: Duration(seconds: 1),
             ),
           );
-               context.read<MainPageBloc>().emit(
-        state.copyWith(errorMessage: ''),
-      );
+          context.read<MainPageBloc>().emit(
+                state.copyWith(errorMessage: ''),
+              );
         }
       },
       child: Scaffold(

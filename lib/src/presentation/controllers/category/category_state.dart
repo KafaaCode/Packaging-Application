@@ -1,7 +1,5 @@
 part of 'category_bloc.dart';
 
-
-
 @freezed
 class CategoriesState with _$CategoriesState {
   const factory CategoriesState({
@@ -10,7 +8,7 @@ class CategoriesState with _$CategoriesState {
     @Default('') String errorMessage,
     @Default(false) bool isAuth,
     @Default(false) bool isEmpty,
-    @Default([]) List<Category> categories,
-    @Default(null) List<Category>? searchCategories,
+    @Default([]) List<CategoryModel> categories,
+    @Default(null) List<CategoryModel>? searchCategories,
   }) = _Initial;
 }

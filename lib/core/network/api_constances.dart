@@ -47,7 +47,7 @@ class ApiConstances {
   static String updateOrderUrl({required int orderId}) =>
       '$_baseUrl/orders/$orderId';
 
-  static const String getcategoriesUrl = "$_baseUrl/categories";
+  static const String getcategoriesUrl = '$_baseUrl/admin/categories';
 
   static const String getordersUrl = "$_baseUrl/orders";
   static const String addOrdertUrl = "$_baseUrl/orders";

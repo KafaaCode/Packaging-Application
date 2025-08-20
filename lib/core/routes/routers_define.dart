@@ -85,7 +85,7 @@ void configureRoutes(FluroRouter router) {
       },
     ),
   );
- 
+
   // admin routes
 
   router.define(

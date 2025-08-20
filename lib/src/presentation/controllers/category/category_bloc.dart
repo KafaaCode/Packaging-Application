@@ -1,4 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:frip_trading/admin/screens/categories/category_model.dart';
 import 'package:frip_trading/src/data/models/models.dart';
 import 'package:frip_trading/src/domin/repository/main_repository.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
@@ -46,7 +47,7 @@ class CategoriesBloc extends Bloc<CategoriesEvent, CategoriesState> {
     print(event.value);
     if (event.value != null || event.value != '') {
       final query = event.value?.toLowerCase().trim() ?? '';
-      List<Category> category = state.categories.where((e) {
+      List<CategoryModel> category = state.categories.where((e) {
         final name = e.name?.toLowerCase() ?? '';
         return name.contains(query);
       }).toList();

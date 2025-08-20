@@ -1,4 +1,5 @@
 import 'package:dartz/dartz.dart';
+import 'package:frip_trading/admin/screens/categories/category_model.dart';
 import 'package:frip_trading/admin/screens/products/product_model.dart';
 import 'package:frip_trading/core/utils/typedef.dart';
 import 'package:frip_trading/src/data/main/main_remote_data_source.dart';
@@ -13,7 +14,7 @@ class MainRepository extends BaseMainRepository {
   MainRepository({required this.mainRemoteDataSource});
 
   @override
-  ResultFuture<List<Category>> getCategoies() async {
+  ResultFuture<List<CategoryModel>> getCategoies() async {
     try {
       final response = await mainRemoteDataSource.getCategories();
       return Right(response);

@@ -15,7 +15,9 @@ import 'package:frip_trading/core/theme/theme_cubit.dart';
 import 'package:frip_trading/src/features/inital/presentation/inital/inital_bloc.dart';
 import 'package:frip_trading/src/presentation/controllers/auth/auth_bloc.dart';
 import 'package:frip_trading/src/presentation/controllers/cart/cart_bloc.dart';
+import 'package:frip_trading/src/presentation/controllers/category/category_bloc.dart';
 import 'package:frip_trading/src/presentation/controllers/main_bage/main_page_bloc.dart';
+import 'package:frip_trading/src/presentation/controllers/myorder/myorder_bloc.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -51,9 +53,15 @@ class MainApp extends StatelessWidget {
         return MultiBlocProvider(
           providers: [
             BlocProvider(
+                create: (_) =>
+                    sl<MyOrdersBloc>()..add(const MyOrdersEvent.getMyOrders())),
+            BlocProvider(
               create: (_) => MainPageBloc(sl()),
               lazy: false,
             ),
+            BlocProvider(
+                create: (_) => sl<CategoriesBloc>()
+                  ..add(const CategoriesEvent.getCategories())),
             BlocProvider(
               create: (_) => CartBloc(),
               lazy: false,
