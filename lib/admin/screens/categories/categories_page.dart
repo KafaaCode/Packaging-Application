@@ -42,9 +42,9 @@ class _CategoryScreenState extends State<CategoryScreen> {
         break;
       case 'delete':
         _controller.deleteCategory(category.id);
-        // ScaffoldMessenger.of(context).showSnackBar(
-        //   SnackBar(content: Text('حذف الفئة: ${category.name}')),
-        // );
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('حذف الفئة: ${category.name}')),
+        );
         break;
     }
   }

@@ -26,7 +26,7 @@ class CategoryController {
 
   Future<void> deleteCategory(int categoryId) async {
     final url = Uri.parse(
-        '$apiBaseUrl/admin/categories/$categoryId'); // Construct the URL with the category ID
+        '$apiBaseUrl/categories/$categoryId'); // Construct the URL with the category ID
     final token = ApiConstances.getToken(); // Get the authorization token
 
     print('Attempting to DELETE category at URL: $url');
@@ -36,9 +36,10 @@ class CategoryController {
       final response = await http.delete(
         url,
         headers: <String, String>{
-          'Content-Type': 'application/json; charset=UTF-8',
+          'Content-Type': 'application/json',
           'Authorization': 'Bearer $token', // Use the token for authorization
-          'Accept': 'application/json', // Consistent with your fetchCategories
+          'Accept': 'application/json',
+          // Consistent with your fetchCategories
         },
       );
 
