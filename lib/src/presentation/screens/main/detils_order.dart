@@ -28,7 +28,7 @@ class OrderDetailsPage extends StatelessWidget {
               children: [
                 Text(
                   lang.orderDetailsTitle,
-                  style: TextStyle(
+                  style: const TextStyle(
                     color: Color(0xFF70b9be),
                     fontWeight: FontWeight.bold,
                     fontSize: 24,
@@ -58,7 +58,7 @@ class OrderDetailsPage extends StatelessWidget {
               children: [
                 Text(
                   lang.TotalPrice,
-                  style: TextStyle(
+                  style: const TextStyle(
                     color: Color(0xFF70b9be),
                     fontWeight: FontWeight.bold,
                     fontSize: 18,
@@ -66,7 +66,7 @@ class OrderDetailsPage extends StatelessWidget {
                 ),
                 Text(
                   '\$${order.total_price}',
-                  style: TextStyle(
+                  style: const TextStyle(
                     color: Color(0xFF70b9be),
                     fontWeight: FontWeight.bold,
                     fontSize: 20,

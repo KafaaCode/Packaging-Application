@@ -12,7 +12,6 @@ class CartWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
       decoration: const BoxDecoration(
@@ -35,7 +34,9 @@ class CartWidget extends StatelessWidget {
                   width: 90,
                   height: 90,
                   color: Colors.grey.shade300,
-                  child: const Icon(Icons.image, size: 30),
+                  child: cartItem.product.image == null
+                      ? const Icon(Icons.lock, size: 30)
+                      : Image.network(cartItem.product.image!),
                 ),
                 const SizedBox(width: 12),
                 Expanded(
@@ -70,7 +71,8 @@ class CartWidget extends StatelessWidget {
                                         context.read<CartBloc>().add(
                                               CartEvent.updateQuantity(
                                                   product: cartItem.product,
-                                                  quantity: state.count-state.min),
+                                                  quantity:
+                                                      state.count - state.min),
                                             );
                                       }
                                     : null,
@@ -109,8 +111,8 @@ class CartWidget extends StatelessWidget {
           ),
           Positioned(
             top: 4,
-             left: Directionality.of(context) == TextDirection.rtl ? 4 : null,
-  right: Directionality.of(context) == TextDirection.ltr ? 4 : null,
+            left: Directionality.of(context) == TextDirection.rtl ? 4 : null,
+            right: Directionality.of(context) == TextDirection.ltr ? 4 : null,
             child: IconButton(
               onPressed: () {
                 // Remove item from cart logic here

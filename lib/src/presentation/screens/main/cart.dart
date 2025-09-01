@@ -2,11 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:frip_trading/core/localization/generated/l10n.dart';
+import 'package:frip_trading/core/routes/router_screens.dart';
+import 'package:frip_trading/core/routes/routes_name.dart';
 import 'package:frip_trading/src/data/models/models.dart';
 import 'package:frip_trading/src/presentation/controllers/cart/cart_bloc.dart';
 import 'package:frip_trading/src/presentation/controllers/counter/counter_bloc.dart';
 import 'package:frip_trading/src/presentation/controllers/main_bage/main_page_bloc.dart';
 import 'package:frip_trading/src/presentation/screens/auth/widgets/cart_widget.dart';
+import 'package:frip_trading/src/presentation/screens/main/main_page.dart';
 
 class CartDetailsPage extends StatelessWidget {
   const CartDetailsPage({super.key});
@@ -19,14 +22,16 @@ class CartDetailsPage extends StatelessWidget {
       listener: (context, state) {
         if (state.isLoading) {
           // عند تحميل البيانات
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(
-              content: Text(lang.Addingorder),
-              backgroundColor: Colors.orange,
-              duration: Duration(seconds: 1),
-            ),
-          );
-        } else if (state.successMessage != '') {
+          // ScaffoldMessenger.of(context).showSnackBar(
+          //   SnackBar(
+          //     content: Text(lang.Addingorder),
+          //     backgroundColor: Colors.orange,
+          //     // duration: Duration(seconds: 1),
+          //   ),
+          // );
+        }
+        if (state.successMessage != null) {
+          context.read<CartBloc>().add(const CartEvent.clearCart());
           // في حالة النجاح
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
@@ -35,10 +40,14 @@ class CartDetailsPage extends StatelessWidget {
               duration: Duration(seconds: 1),
             ),
           );
-          context.read<MainPageBloc>().emit(
-                state.copyWith(successMessage: ''),
-              );
-        } else if (state.errorMessage != '') {
+          context.read<MainPageBloc>().add(const MainPageEvent.resetState());
+
+          // context.read<MainPageBloc>().add(const MainPageEvent.resetState());
+          // AppRouter.router.navigateTo(context, RoutesNames.myOrders);
+          // Navigator.pop(context);
+          // state.copyWith(errorMessage: '',isLoading: false,successMessage: '');
+        } else if (state.errorMessage != null &&
+            state.errorMessage!.isNotEmpty) {
           // في حالة حدوث خطأ
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
@@ -47,9 +56,10 @@ class CartDetailsPage extends StatelessWidget {
               duration: Duration(seconds: 1),
             ),
           );
-          context.read<MainPageBloc>().emit(
-                state.copyWith(errorMessage: ''),
-              );
+          // context.read<MainPageBloc>().emit(
+          //       state.copyWith(errorMessage: ''),
+          //     );
+          state.errorMessage == '';
         }
       },
       child: Scaffold(
@@ -153,14 +163,22 @@ class CartDetailsPage extends StatelessWidget {
                             ),
                           ),
                           onPressed: () {
-                            context.read<MainPageBloc>().add(
-                                  MainPageEvent.addOrder(
-                                    orderData: generateOrderDataFromState(
-                                      state.items,
-                                      state.total_price,
+                            if (state.total_price == 0) {
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                  SnackBar(content: Text('Cart is Empty!')));
+                              return;
+                            } else {
+                              context.read<MainPageBloc>().add(
+                                    MainPageEvent.addOrder(
+                                      orderData: generateOrderDataFromState(
+                                        state.items,
+                                        state.total_price,
+                                      ),
                                     ),
-                                  ),
-                                );
+                                  );
+                            }
+                            // AppRouter.router
+                            //     .navigateTo(context, RoutesNames.myOrders);
                           },
                           child: Text(
                             lang.payButton,

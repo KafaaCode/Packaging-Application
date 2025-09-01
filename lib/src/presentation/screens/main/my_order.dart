@@ -52,6 +52,11 @@ class _MyOrdersPageState extends State<MyOrdersPage> {
       created_at: DateTime.now().subtract(const Duration(days: 1)),
     ),
   ];
+  @override
+  void initState() {
+    context.read<MyOrdersBloc>().add(MyOrdersEvent.getMyOrders());
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {

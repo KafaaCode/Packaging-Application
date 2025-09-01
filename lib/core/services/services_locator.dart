@@ -14,6 +14,7 @@ import 'package:frip_trading/src/features/inital/presentation/inital/inital_bloc
 import 'package:frip_trading/src/presentation/controllers/auth/auth_bloc.dart';
 import 'package:frip_trading/src/presentation/controllers/cart/cart_bloc.dart';
 import 'package:frip_trading/src/presentation/controllers/category/category_bloc.dart';
+import 'package:frip_trading/src/presentation/controllers/main_bage/main_page_bloc.dart';
 import 'package:frip_trading/src/presentation/controllers/myorder/myorder_bloc.dart';
 import 'package:frip_trading/src/presentation/controllers/products/products_bloc.dart';
 import 'package:get_it/get_it.dart';
@@ -37,6 +38,9 @@ class ServicesLocator {
   }
 
   void _mainSl() {
+    sl.registerLazySingleton(
+      () => MainPageBloc(sl()),
+    );
     sl.registerLazySingleton<BaseMainRepository>(
         () => MainRepository(mainRemoteDataSource: sl()));
     sl.registerLazySingleton<BaseMainRemoteDataSource>(

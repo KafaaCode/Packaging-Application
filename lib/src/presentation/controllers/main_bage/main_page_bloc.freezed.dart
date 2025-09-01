@@ -19,6 +19,7 @@ mixin _$MainPageEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(int index) navigateToTab,
+    required TResult Function() resetState,
     required TResult Function(
             String title, String message, String senderName, String senderEmail)
         sendSupport,
@@ -28,6 +29,7 @@ mixin _$MainPageEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(int index)? navigateToTab,
+    TResult? Function()? resetState,
     TResult? Function(String title, String message, String senderName,
             String senderEmail)?
         sendSupport,
@@ -37,6 +39,7 @@ mixin _$MainPageEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(int index)? navigateToTab,
+    TResult Function()? resetState,
     TResult Function(String title, String message, String senderName,
             String senderEmail)?
         sendSupport,
@@ -47,6 +50,7 @@ mixin _$MainPageEvent {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(NavigateToTab value) navigateToTab,
+    required TResult Function(_ResetState value) resetState,
     required TResult Function(_SendSupport value) sendSupport,
     required TResult Function(_AddOrder value) addOrder,
   }) =>
@@ -54,6 +58,7 @@ mixin _$MainPageEvent {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(NavigateToTab value)? navigateToTab,
+    TResult? Function(_ResetState value)? resetState,
     TResult? Function(_SendSupport value)? sendSupport,
     TResult? Function(_AddOrder value)? addOrder,
   }) =>
@@ -61,6 +66,7 @@ mixin _$MainPageEvent {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(NavigateToTab value)? navigateToTab,
+    TResult Function(_ResetState value)? resetState,
     TResult Function(_SendSupport value)? sendSupport,
     TResult Function(_AddOrder value)? addOrder,
     required TResult orElse(),
@@ -158,6 +164,7 @@ class _$NavigateToTabImpl implements NavigateToTab {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(int index) navigateToTab,
+    required TResult Function() resetState,
     required TResult Function(
             String title, String message, String senderName, String senderEmail)
         sendSupport,
@@ -170,6 +177,7 @@ class _$NavigateToTabImpl implements NavigateToTab {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(int index)? navigateToTab,
+    TResult? Function()? resetState,
     TResult? Function(String title, String message, String senderName,
             String senderEmail)?
         sendSupport,
@@ -182,6 +190,7 @@ class _$NavigateToTabImpl implements NavigateToTab {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(int index)? navigateToTab,
+    TResult Function()? resetState,
     TResult Function(String title, String message, String senderName,
             String senderEmail)?
         sendSupport,
@@ -198,6 +207,7 @@ class _$NavigateToTabImpl implements NavigateToTab {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(NavigateToTab value) navigateToTab,
+    required TResult Function(_ResetState value) resetState,
     required TResult Function(_SendSupport value) sendSupport,
     required TResult Function(_AddOrder value) addOrder,
   }) {
@@ -208,6 +218,7 @@ class _$NavigateToTabImpl implements NavigateToTab {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(NavigateToTab value)? navigateToTab,
+    TResult? Function(_ResetState value)? resetState,
     TResult? Function(_SendSupport value)? sendSupport,
     TResult? Function(_AddOrder value)? addOrder,
   }) {
@@ -218,6 +229,7 @@ class _$NavigateToTabImpl implements NavigateToTab {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(NavigateToTab value)? navigateToTab,
+    TResult Function(_ResetState value)? resetState,
     TResult Function(_SendSupport value)? sendSupport,
     TResult Function(_AddOrder value)? addOrder,
     required TResult orElse(),
@@ -239,6 +251,129 @@ abstract class NavigateToTab implements MainPageEvent {
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$NavigateToTabImplCopyWith<_$NavigateToTabImpl> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$ResetStateImplCopyWith<$Res> {
+  factory _$$ResetStateImplCopyWith(
+          _$ResetStateImpl value, $Res Function(_$ResetStateImpl) then) =
+      __$$ResetStateImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$ResetStateImplCopyWithImpl<$Res>
+    extends _$MainPageEventCopyWithImpl<$Res, _$ResetStateImpl>
+    implements _$$ResetStateImplCopyWith<$Res> {
+  __$$ResetStateImplCopyWithImpl(
+      _$ResetStateImpl _value, $Res Function(_$ResetStateImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of MainPageEvent
+  /// with the given fields replaced by the non-null parameter values.
+}
+
+/// @nodoc
+
+class _$ResetStateImpl implements _ResetState {
+  const _$ResetStateImpl();
+
+  @override
+  String toString() {
+    return 'MainPageEvent.resetState()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$ResetStateImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(int index) navigateToTab,
+    required TResult Function() resetState,
+    required TResult Function(
+            String title, String message, String senderName, String senderEmail)
+        sendSupport,
+    required TResult Function(Map<String, dynamic> orderData) addOrder,
+  }) {
+    return resetState();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(int index)? navigateToTab,
+    TResult? Function()? resetState,
+    TResult? Function(String title, String message, String senderName,
+            String senderEmail)?
+        sendSupport,
+    TResult? Function(Map<String, dynamic> orderData)? addOrder,
+  }) {
+    return resetState?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(int index)? navigateToTab,
+    TResult Function()? resetState,
+    TResult Function(String title, String message, String senderName,
+            String senderEmail)?
+        sendSupport,
+    TResult Function(Map<String, dynamic> orderData)? addOrder,
+    required TResult orElse(),
+  }) {
+    if (resetState != null) {
+      return resetState();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(NavigateToTab value) navigateToTab,
+    required TResult Function(_ResetState value) resetState,
+    required TResult Function(_SendSupport value) sendSupport,
+    required TResult Function(_AddOrder value) addOrder,
+  }) {
+    return resetState(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(NavigateToTab value)? navigateToTab,
+    TResult? Function(_ResetState value)? resetState,
+    TResult? Function(_SendSupport value)? sendSupport,
+    TResult? Function(_AddOrder value)? addOrder,
+  }) {
+    return resetState?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(NavigateToTab value)? navigateToTab,
+    TResult Function(_ResetState value)? resetState,
+    TResult Function(_SendSupport value)? sendSupport,
+    TResult Function(_AddOrder value)? addOrder,
+    required TResult orElse(),
+  }) {
+    if (resetState != null) {
+      return resetState(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _ResetState implements MainPageEvent {
+  const factory _ResetState() = _$ResetStateImpl;
 }
 
 /// @nodoc
@@ -342,6 +477,7 @@ class _$SendSupportImpl implements _SendSupport {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(int index) navigateToTab,
+    required TResult Function() resetState,
     required TResult Function(
             String title, String message, String senderName, String senderEmail)
         sendSupport,
@@ -354,6 +490,7 @@ class _$SendSupportImpl implements _SendSupport {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(int index)? navigateToTab,
+    TResult? Function()? resetState,
     TResult? Function(String title, String message, String senderName,
             String senderEmail)?
         sendSupport,
@@ -366,6 +503,7 @@ class _$SendSupportImpl implements _SendSupport {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(int index)? navigateToTab,
+    TResult Function()? resetState,
     TResult Function(String title, String message, String senderName,
             String senderEmail)?
         sendSupport,
@@ -382,6 +520,7 @@ class _$SendSupportImpl implements _SendSupport {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(NavigateToTab value) navigateToTab,
+    required TResult Function(_ResetState value) resetState,
     required TResult Function(_SendSupport value) sendSupport,
     required TResult Function(_AddOrder value) addOrder,
   }) {
@@ -392,6 +531,7 @@ class _$SendSupportImpl implements _SendSupport {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(NavigateToTab value)? navigateToTab,
+    TResult? Function(_ResetState value)? resetState,
     TResult? Function(_SendSupport value)? sendSupport,
     TResult? Function(_AddOrder value)? addOrder,
   }) {
@@ -402,6 +542,7 @@ class _$SendSupportImpl implements _SendSupport {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(NavigateToTab value)? navigateToTab,
+    TResult Function(_ResetState value)? resetState,
     TResult Function(_SendSupport value)? sendSupport,
     TResult Function(_AddOrder value)? addOrder,
     required TResult orElse(),
@@ -509,6 +650,7 @@ class _$AddOrderImpl implements _AddOrder {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(int index) navigateToTab,
+    required TResult Function() resetState,
     required TResult Function(
             String title, String message, String senderName, String senderEmail)
         sendSupport,
@@ -521,6 +663,7 @@ class _$AddOrderImpl implements _AddOrder {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(int index)? navigateToTab,
+    TResult? Function()? resetState,
     TResult? Function(String title, String message, String senderName,
             String senderEmail)?
         sendSupport,
@@ -533,6 +676,7 @@ class _$AddOrderImpl implements _AddOrder {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(int index)? navigateToTab,
+    TResult Function()? resetState,
     TResult Function(String title, String message, String senderName,
             String senderEmail)?
         sendSupport,
@@ -549,6 +693,7 @@ class _$AddOrderImpl implements _AddOrder {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(NavigateToTab value) navigateToTab,
+    required TResult Function(_ResetState value) resetState,
     required TResult Function(_SendSupport value) sendSupport,
     required TResult Function(_AddOrder value) addOrder,
   }) {
@@ -559,6 +704,7 @@ class _$AddOrderImpl implements _AddOrder {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(NavigateToTab value)? navigateToTab,
+    TResult? Function(_ResetState value)? resetState,
     TResult? Function(_SendSupport value)? sendSupport,
     TResult? Function(_AddOrder value)? addOrder,
   }) {
@@ -569,6 +715,7 @@ class _$AddOrderImpl implements _AddOrder {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(NavigateToTab value)? navigateToTab,
+    TResult Function(_ResetState value)? resetState,
     TResult Function(_SendSupport value)? sendSupport,
     TResult Function(_AddOrder value)? addOrder,
     required TResult orElse(),

@@ -56,22 +56,22 @@ class MainApp extends StatelessWidget {
                 create: (_) =>
                     sl<MyOrdersBloc>()..add(const MyOrdersEvent.getMyOrders())),
             BlocProvider(
-              create: (_) => MainPageBloc(sl()),
-              lazy: false,
+              create: (_) => sl<MainPageBloc>(),
+              // lazy: false,
             ),
             BlocProvider(
                 create: (_) => sl<CategoriesBloc>()
                   ..add(const CategoriesEvent.getCategories())),
             BlocProvider(
-              create: (_) => CartBloc(),
-              lazy: false,
+              create: (_) => sl<CartBloc>(),
+              // lazy: false,
             ),
             BlocProvider(
               create: (context) => LanguageCubit(),
               lazy: false,
             ),
             BlocProvider(
-                lazy: false,
+                // lazy: false,
                 create: (context) =>
                     sl<InitalBloc>()..add(const InitalEvent.getInitalData())),
             BlocProvider(create: (context) => ThemesCubit()),

@@ -162,17 +162,17 @@ class _SupportsPageState extends State<SupportsPage> {
                               showLoadingDialog(context);
                             } else if (state.successMessage != null) {
                               Navigator.pop(context);
-                              ScaffoldMessenger.of(context).showSnackBar(
-                                SnackBar(
-                                  content: Text(state.successMessage!,
-                                      style:
-                                          theme.textTheme.bodyLarge?.copyWith(
-                                        fontWeight: FontWeight.w600,
-                                        color: theme.primaryColor,
-                                      )),
-                                  backgroundColor: Colors.white38,
-                                ),
-                              );
+                              // ScaffoldMessenger.of(context).showSnackBar(
+                              //   SnackBar(
+                              //     content: Text(state.successMessage!,
+                              //         style:
+                              //             theme.textTheme.bodyLarge?.copyWith(
+                              //           fontWeight: FontWeight.w600,
+                              //           color: theme.primaryColor,
+                              //         )),
+                              //     backgroundColor: Colors.white38,
+                              //   ),
+                              // );
                               titleController.clear();
                               messageController.clear();
                             } else if (state.errorMessage != null) {
