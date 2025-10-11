@@ -178,7 +178,9 @@ class EditProfile extends StatelessWidget {
 
                                   return filteredSpecializations.isNotEmpty
                                       ? filteredSpecializations.first
-                                      : specializations.first;
+                                      : specializations.isNotEmpty
+                                          ? specializations.first
+                                          : null;
                                 },
                               ),
                               onChanged: (value) {
@@ -317,7 +319,6 @@ class EditProfile extends StatelessWidget {
                                 ),
                               );
                         } else {
-                          
                           ScaffoldMessenger.of(context).showSnackBar(
                             const SnackBar(
                               content: Text('Please fill all fields'),

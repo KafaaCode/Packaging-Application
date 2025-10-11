@@ -11,6 +11,7 @@ import 'package:frip_trading/core/services/services_locator.dart';
 import 'package:frip_trading/src/data/models/models.dart';
 import 'package:frip_trading/src/presentation/controllers/auth/auth_bloc.dart';
 import 'package:frip_trading/src/presentation/controllers/category/category_bloc.dart';
+import 'package:frip_trading/src/presentation/controllers/products/products_bloc.dart';
 import 'package:frip_trading/src/presentation/screens/auth/widgets/cardproductandCatogry.dart';
 
 import 'package:frip_trading/src/presentation/screens/auth/widgets/search.dart';
@@ -23,12 +24,12 @@ class FilterPage extends StatefulWidget {
 }
 
 class _FilterPageState extends State<FilterPage> {
-  final CategoryController _controller = CategoryController();
-  late Future<List<CategoryModel>> _futureCategories;
+  // final CategoryController _controller = CategoryController();
+  // late Future<List<CategoryModel>> _futureCategories;
   @override
   void initState() {
     super.initState();
-    _futureCategories = _controller.fetchCategories();
+    // _futureCategories = _controller.fetchCategories();
   }
 
   @override
@@ -111,7 +112,10 @@ class _FilterPageState extends State<FilterPage> {
                 ),
                 const SizedBox(width: 8),
                 InkWell(
-                  onTap: () => _futureCategories,
+                  onTap: () {
+                    BlocProvider.of<CategoriesBloc>(context)
+                        .add(const CategoriesEvent.getCategories());
+                  },
                   borderRadius: BorderRadius.circular(10),
                   child: Container(
                     width: 50,
@@ -191,7 +195,7 @@ class _FilterPageState extends State<FilterPage> {
                                             : width * 0.90;
 
                                 return InkWell(
-                                  onTap: () {
+                                  onTap: () async {
                                     /* 
                                   AppRouter.router.navigateTo(context,
                                       RoutesNames.teacherDetailsRoute,
