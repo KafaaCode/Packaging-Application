@@ -124,7 +124,7 @@ class MainRemoteDataSource extends BaseMainRemoteDataSource {
   Future<List<MyOrder>> getmyOrders() async {
     return sl.get<ApiCallHandler>().handler(
           apiCall: () => _dio.get(
-            ApiConstances.getordersUrl,
+            ApiConstances.getMyOrdersUrl,
             options: Options(
               headers: ApiConstances.headers(
                 isToken: true,

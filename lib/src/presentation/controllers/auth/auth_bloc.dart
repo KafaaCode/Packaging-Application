@@ -25,7 +25,27 @@ class AuthBloc extends HydratedBloc<AuthEvent, AuthState> {
     on<_Login>(_loginEvent);
     on<_UpdateProfile>(_updateEvent);
     on<_AdminRegisterUser>(_adminRegisterUserEvent);
+    // delete account event
+    on<_DeleteEvent>(_deleteEvent);
   }
+  void _deleteEvent(
+    _DeleteEvent event,
+    Emitter<AuthState> emit,
+  ) async {
+    emit(const AuthState.loadInProgress());
+    try {
+      final response = await repository.deleteAccount();
+      response
+          .fold((failure) => emit(AuthState.error(message: failure.message)),
+              (r) async {
+        emit(const AuthState.initial());
+        await HydratedBloc.storage.clear();
+      });
+    } catch (e) {
+      emit(AuthState.error(message: e.toString()));
+    }
+  }
+
   void _adminRegisterUserEvent(
     _AdminRegisterUser event,
     Emitter<AuthState> emit,
@@ -33,7 +53,15 @@ class AuthBloc extends HydratedBloc<AuthEvent, AuthState> {
     final AuthState previousState = state; // حفظ الحالة السابقة للمسؤول
     emit(const AuthState.loadInProgress());
     try {
-      final response = await repository.register(user: event.user);
+      final response = await repository.register(
+        name: event.name,
+        email: event.email,
+        password: event.password,
+        confirmPassword: event.confirmPassword,
+        companyName: event.companyName,
+        countryId: event.countryId,
+        specId: event.specId,
+      );
       await response.fold((error) async {
         if (!emit.isDone) emit(AuthState.error(message: error.message));
       }, (r) async {
@@ -118,21 +146,27 @@ class AuthBloc extends HydratedBloc<AuthEvent, AuthState> {
   ) async {
     emit(const AuthState.loadInProgress());
     try {
-      final response = await repository.register(user: event.user);
+      final response = await repository.register(
+        name: event.name,
+        email: event.email,
+        password: event.password,
+        confirmPassword: event.confirmPassword,
+        companyName: event.companyName!,
+        countryId: event.countryId!,
+        specId: event.specId!,
+      );
       await response.fold((error) async {
-        if (!emit.isDone) emit(AuthState.error(message: error.message));
+        emit(AuthState.error(message: error.message));
       }, (r) async {
         await HydratedBloc.storage.write('token', r.token);
 
-        if (!emit.isDone) {
-          emit(state.maybeMap(
-            orElse: () => AuthState.create(user: r.user),
-            create: (create) => create.copyWith(user: r.user),
-          ));
-        }
+        emit(state.maybeMap(
+          orElse: () => AuthState.create(user: r.user),
+          create: (create) => create.copyWith(user: r.user),
+        ));
       });
     } catch (e) {
-      if (!emit.isDone) emit(AuthState.error(message: e.toString()));
+      emit(AuthState.error(message: e.toString()));
     }
   }
 
@@ -148,7 +182,8 @@ class AuthBloc extends HydratedBloc<AuthEvent, AuthState> {
       );
       await response.fold((error) async {
         debugPrint('Login Error: ${error.message}');
-        if (!emit.isDone) emit(AuthState.error(message: error.message));
+        // if (!emit.isDone) emit(AuthState.error(message: error.message));
+        emit(AuthState.error(message: error.message));
       }, (r) async {
         await HydratedBloc.storage.write('token', r.token);
 
@@ -197,7 +232,12 @@ class AuthBloc extends HydratedBloc<AuthEvent, AuthState> {
   ) async {
     emit(const AuthState.loadInProgress());
     try {
-      final response = await repository.update(user: event.user);
+      final response = await repository.updateProfile(
+          companyName: event.companyName,
+          countryId: event.countryId,
+          specializationId: event.specializationId,
+          email: event.email,
+          name: event.name);
       await response.fold((error) async {
         if (!emit.isDone) emit(AuthState.error(message: error.message));
       }, (r) async {

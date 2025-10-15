@@ -29,7 +29,7 @@ void main() async {
 /*   Hive.registerAdapter(ProductHiveModelAdapter());
 
   await Hive.openBox<ProductHiveModel>('cartBox'); */
-  WidgetsFlutterBinding.ensureInitialized();
+
   HydratedBloc.storage = await HydratedStorage.build(
     storageDirectory: kIsWeb
         ? HydratedStorageDirectory.web
@@ -54,6 +54,10 @@ class MainApp extends StatelessWidget {
         return MultiBlocProvider(
           providers: [
             BlocProvider(
+                // lazy: false,
+                create: (context) =>
+                    sl<InitalBloc>()..add(const InitalEvent.getInitalData())),
+            BlocProvider(
                 create: (_) =>
                     sl<MyOrdersBloc>()..add(const MyOrdersEvent.getMyOrders())),
             BlocProvider(
@@ -72,10 +76,6 @@ class MainApp extends StatelessWidget {
               create: (context) => LanguageCubit(),
               lazy: false,
             ),
-            BlocProvider(
-                // lazy: false,
-                create: (context) =>
-                    sl<InitalBloc>()..add(const InitalEvent.getInitalData())),
             BlocProvider(create: (context) => ThemesCubit()),
             BlocProvider(
                 create: (context) =>

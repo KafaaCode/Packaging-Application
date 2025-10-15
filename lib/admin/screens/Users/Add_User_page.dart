@@ -279,33 +279,33 @@ class _RegisterPageState extends State<AddUserPage> {
                       return ButtonCostum(
                         onPressed: () {
                           if (_formKey.currentState?.validate() ?? false) {
-                            context.read<AuthBloc>().add(
-                                  AuthEvent.register(
-                                    user: state.maybeWhen(
-                                        create: (user) => user.copyWith(
-                                              name: nameController.text,
-                                              email: emailController.text,
-                                              password: passwordController.text,
-                                              company: companyController.text,
-                                            ),
-                                        orElse: () {
-                                          return User(
-                                            id: 0,
-                                            name: nameController.text,
-                                            email: emailController.text,
-                                            password: passwordController.text,
-                                            company: companyController.text,
-                                            specializationId:
-                                                specializations.isNotEmpty
-                                                    ? specializations.first.id
-                                                    : 0,
-                                            countryId: countries.isNotEmpty
-                                                ? countries.first.id
-                                                : 0,
-                                          );
-                                        }),
-                                  ),
-                                );
+                            // context.read<AuthBloc>().add(
+                            //       AuthEvent.register(
+                            //         user: state.maybeWhen(
+                            //             create: (user) => user.copyWith(
+                            //                   name: nameController.text,
+                            //                   email: emailController.text,
+                            //                   password: passwordController.text,
+                            //                   company: companyController.text,
+                            //                 ),
+                            //             orElse: () {
+                            //               return User(
+                            //                 id: 0,
+                            //                 name: nameController.text,
+                            //                 email: emailController.text,
+                            //                 password: passwordController.text,
+                            //                 company: companyController.text,
+                            //                 specializationId:
+                            //                     specializations.isNotEmpty
+                            //                         ? specializations.first.id
+                            //                         : 0,
+                            //                 countryId: countries.isNotEmpty
+                            //                     ? countries.first.id
+                            //                     : 0,
+                            //               );
+                            //             }),
+                            //       ),
+                            //     );
                           }
                         },
                         text: 'Add User',

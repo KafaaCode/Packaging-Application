@@ -161,7 +161,7 @@ class _SupportsPageState extends State<SupportsPage> {
                             if (state.isLoading) {
                               showLoadingDialog(context);
                             } else if (state.successMessage != null) {
-                              Navigator.pop(context);
+                              // Navigator.pop(context);
                               // ScaffoldMessenger.of(context).showSnackBar(
                               //   SnackBar(
                               //     content: Text(state.successMessage!,
@@ -173,8 +173,8 @@ class _SupportsPageState extends State<SupportsPage> {
                               //     backgroundColor: Colors.white38,
                               //   ),
                               // );
-                              titleController.clear();
-                              messageController.clear();
+                              // titleController.clear();
+                              // messageController.clear();
                             } else if (state.errorMessage != null) {
                               Navigator.pop(context);
                               SnackBar(

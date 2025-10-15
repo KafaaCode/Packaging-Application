@@ -177,8 +177,6 @@ class CartDetailsPage extends StatelessWidget {
                                     ),
                                   );
                             }
-                            // AppRouter.router
-                            //     .navigateTo(context, RoutesNames.myOrders);
                           },
                           child: Text(
                             lang.payButton,

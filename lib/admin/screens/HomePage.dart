@@ -322,11 +322,11 @@ class _HomePageState extends State<HomePage> {
                     if (index < _orders.length) {
                       final order = _orders[index];
                       return _orderCard(
-                        orderId: order.serialNumber,
-                        createdAt: order.createdAt,
-                        status: order.status,
+                        orderId: order.serialNumber!,
+                        createdAt: order.createdAt!,
+                        status: order.status!,
                         id: order.id,
-                        user_name: order.user_name,
+                        user_name: order.user_name!,
                       );
                     } else {
                       return const Center(child: CircularProgressIndicator());

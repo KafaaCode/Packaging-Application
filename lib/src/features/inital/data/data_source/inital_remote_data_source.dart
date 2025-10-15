@@ -10,13 +10,12 @@ class InitalRemoteDataSource extends BaseInitalRemoteDataSource {
   @override
   Future<SpecializationAndCountry> getInitalData() async {
     final response = await Dio().get(
-        ApiConstances.sspecializationsAndCountryUrl,
-        options: Options(
-          headers: ApiConstances.headers(isToken: false),
-          validateStatus: (status) => status! < 500,
-        ),
-       
-      );
+      ApiConstances.sspecializationsAndCountryUrl,
+      options: Options(
+        headers: ApiConstances.headers(isToken: false),
+        validateStatus: (status) => status! < 500,
+      ),
+    );
     if (response.statusCode == 200 || response.statusCode == 201) {
       return SpecializationAndCountry.fromJson(response.data['data']);
     } else {
