@@ -6,7 +6,15 @@
     "enterYourEamilLabel": "Voer uw e-mailadres in",
     "enterYourEamilHint": "Voer uw e-mailadres in",
     "passwordLabel": "Wachtwoord",
+    "succefullyOrdered!": "Succesvol besteld!",
+    "logOut": "Uitloggen",
+    "cancel": "annuleren",
+    "confirm": "bevestigen",
+    "areUSureDeleteAccount": "Weet u zeker dat u het account wilt verwijderen?",
+    "confirmLogOut": "Bevestig het uitloggen",
+    "AreUSureLogOut": "Weet je zeker dat je uitlogt?",
     "passwordHint": "Wachtwoord",
+    "deleteAccount": "Account verwijderen",
     "forgetPassword": "Wachtwoord vergeten?",
     "login": "Inloggen",
     "alreadyHaveAnAccount": "Heeft u al een account?",
@@ -67,8 +75,5 @@
     "continueToConfirmOrderButton": "Doorgaan om bestelling te bevestigen",
     "payButton": "Betalen",
     "Addingorder": "Bestelling wordt toegevoegd...",
-"Ordersentsuccessfully": "Bestelling succesvol verzonden"
+    "Ordersentsuccessfully": "Bestelling succesvol verzonden"
 }
-
-
-

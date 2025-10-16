@@ -24,6 +24,8 @@ class MessageLookup extends MessageLookupByLibrary {
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "Addingorder":
             MessageLookupByLibrary.simpleMessage("Sipariş ekleniyor..."),
+        "AreUSureLogOut": MessageLookupByLibrary.simpleMessage(
+            "Çıkış yaptığınızdan emin misiniz?"),
         "Ordersentsuccessfully": MessageLookupByLibrary.simpleMessage(
             "Sipariş başarıyla gönderildi"),
         "aboutUs": MessageLookupByLibrary.simpleMessage("Hakkımızda"),
@@ -35,8 +37,11 @@ class MessageLookup extends MessageLookupByLibrary {
         "alreadyHaveAnAccount":
             MessageLookupByLibrary.simpleMessage("Zaten bir hesabınız var mı?"),
         "and": MessageLookupByLibrary.simpleMessage(" ve "),
+        "areUSureDeleteAccount": MessageLookupByLibrary.simpleMessage(
+            "Hesabı sildiğinizden emin misiniz?"),
         "byCheckingTheBoxYouAgreeToOur": MessageLookupByLibrary.simpleMessage(
             "Kutuyu işaretleyerek şunları kabul etmiş olursunuz: "),
+        "cancel": MessageLookupByLibrary.simpleMessage("annuleren"),
         "cartDetailsTitle":
             MessageLookupByLibrary.simpleMessage("Sepet Detayları"),
         "cateogriesNotFoundMessage":
@@ -47,6 +52,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "close": MessageLookupByLibrary.simpleMessage("Kapat"),
         "companyNameHint": MessageLookupByLibrary.simpleMessage("Şirket Adı"),
         "conditions": MessageLookupByLibrary.simpleMessage("Koşullar"),
+        "confirm": MessageLookupByLibrary.simpleMessage("onaylamak"),
+        "confirmLogOut":
+            MessageLookupByLibrary.simpleMessage("Oturumu kapatmayı onaylayın"),
         "confirmPassword":
             MessageLookupByLibrary.simpleMessage("Şifreyi onayla"),
         "confirmPasswordLabel":
@@ -56,6 +64,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "currentPassword": MessageLookupByLibrary.simpleMessage("Mevcut şifre"),
         "currentPasswordLabel":
             MessageLookupByLibrary.simpleMessage("Mevcut şifrenizi girin..."),
+        "deleteAccount": MessageLookupByLibrary.simpleMessage("Hesabı sil"),
         "descriptionLabel": MessageLookupByLibrary.simpleMessage("Açıklama"),
         "eamilHint": MessageLookupByLibrary.simpleMessage("Geçerli e-posta"),
         "editProfile": MessageLookupByLibrary.simpleMessage("Profili Düzenle"),
@@ -71,6 +80,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "fullNameHint": MessageLookupByLibrary.simpleMessage("Tam ad"),
         "letsGetStarted":
             MessageLookupByLibrary.simpleMessage("Haydi Başlayalım"),
+        "logOut": MessageLookupByLibrary.simpleMessage("Oturumu kapat"),
         "login": MessageLookupByLibrary.simpleMessage("Giriş Yap"),
         "minimumOrderText": MessageLookupByLibrary.simpleMessage(
             "Bu ürün için minimum sipariş"),

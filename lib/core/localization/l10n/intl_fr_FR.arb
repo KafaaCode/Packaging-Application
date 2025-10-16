@@ -3,6 +3,13 @@
   "search": "Recherche...",
   "letsGetStarted": "Commençons",
   "omar": "Omar",
+  "deleteAccount": "Supprimer le compte",
+  "logOut": "Se déconnecter",
+  "cancel": "Annuler",
+  "confirm": "confirmer",
+  "succefullyOrdered!": "Commandé avec succès !",
+  "confirmLogOut": "Confirmer la déconnexion",
+  "AreUSureLogOut": "Êtes-vous sûr de vous déconnecter ?",
   "plsEnterDataToContiubue": "Veuillez entrer vos informations pour continuer",
   "enterYourEamilLabel": "Entrez votre e-mail",
   "enterYourEamilHint": "Entrez votre e-mail",
@@ -68,9 +75,8 @@
   "orderDetailsTitle": "Détails de la commande",
   "continueToConfirmOrderButton": "Continuer pour confirmer la commande",
   "payButton": "Payer",
-   "TotalPrice":"Prix total",
-  "Quantityis":"Quantité",
+  "TotalPrice": "Prix total",
+  "Quantityis": "Quantité",
   "Addingorder": "Ajout de la commande en cours...",
-
-"Ordersentsuccessfully": "Commande envoyée avec succès"
+  "Ordersentsuccessfully": "Commande envoyée avec succès"
 }

@@ -182,18 +182,18 @@ class Profile extends StatelessWidget {
                         final confirm = await showDialog<bool>(
                           context: context,
                           builder: (context) => AlertDialog(
-                            title: const Text('تأكيد حذف الحساب'),
-                            content: const Text('هل أنت متأكد من حذف الحساب'),
+                            title: Text(lang.confirm),
+                            content: Text(lang.areUSureDeleteAccount),
                             actions: [
                               TextButton(
                                 onPressed: () =>
                                     Navigator.of(context).pop(false),
-                                child: const Text('إلغاء'),
+                                child: Text(lang.cancel),
                               ),
                               TextButton(
                                 onPressed: () =>
                                     Navigator.of(context).pop(true),
-                                child: const Text('تأكيد'),
+                                child: Text(lang.confirm),
                               ),
                             ],
                           ),
@@ -219,8 +219,8 @@ class Profile extends StatelessWidget {
                           }
                         }
                       },
-                      child: const Text(
-                        'حذف الحساب',
+                      child: Text(
+                        lang.deleteAccount,
                         style: TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.bold,
@@ -244,18 +244,18 @@ class Profile extends StatelessWidget {
                         final confirm = await showDialog<bool>(
                           context: context,
                           builder: (context) => AlertDialog(
-                            title: const Text('تأكيد تسحيل الخروج'),
-                            content: const Text('هل أنت متأكد من تسجيل الخروج'),
+                            title: Text(lang.confirmLogOut),
+                            content: Text(lang.AreUSureLogOut),
                             actions: [
                               TextButton(
                                 onPressed: () =>
                                     Navigator.of(context).pop(false),
-                                child: const Text('إلغاء'),
+                                child: Text(lang.cancel),
                               ),
                               TextButton(
                                 onPressed: () =>
                                     Navigator.of(context).pop(true),
-                                child: const Text('تأكيد'),
+                                child: Text(lang.confirm),
                               ),
                             ],
                           ),
@@ -281,8 +281,8 @@ class Profile extends StatelessWidget {
                           }
                         }
                       },
-                      child: const Text(
-                        'تسجيل الخروج',
+                      child: Text(
+                        lang.logOut,
                         style: TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.bold,

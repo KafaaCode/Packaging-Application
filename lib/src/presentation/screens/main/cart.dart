@@ -33,13 +33,13 @@ class CartDetailsPage extends StatelessWidget {
         if (state.successMessage != null) {
           context.read<CartBloc>().add(const CartEvent.clearCart());
           // في حالة النجاح
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(
-              content: Text(state.successMessage!),
-              backgroundColor: Colors.green,
-              duration: Duration(seconds: 1),
-            ),
-          );
+          // ScaffoldMessenger.of(context).showSnackBar(
+          //   SnackBar(
+          //     content: Text(state.successMessage!),
+          //     backgroundColor: Colors.green,
+          //     duration: Duration(seconds: 1),
+          //   ),
+          // );
           context.read<MainPageBloc>().add(const MainPageEvent.resetState());
 
           // context.read<MainPageBloc>().add(const MainPageEvent.resetState());
@@ -164,8 +164,11 @@ class CartDetailsPage extends StatelessWidget {
                           ),
                           onPressed: () {
                             if (state.total_price == 0) {
-                              ScaffoldMessenger.of(context).showSnackBar(
-                                  SnackBar(content: Text('Cart is Empty!')));
+                              ScaffoldMessenger.of(context)
+                                  .showSnackBar(const SnackBar(
+                                content: Text('Cart is Empty!'),
+                                backgroundColor: Colors.red,
+                              ));
                               return;
                             } else {
                               context.read<MainPageBloc>().add(
@@ -176,6 +179,11 @@ class CartDetailsPage extends StatelessWidget {
                                       ),
                                     ),
                                   );
+                              ScaffoldMessenger.of(context)
+                                  .showSnackBar(SnackBar(
+                                content: Text(lang.Ordersentsuccessfully),
+                                backgroundColor: Colors.green,
+                              ));
                             }
                           },
                           child: Text(
