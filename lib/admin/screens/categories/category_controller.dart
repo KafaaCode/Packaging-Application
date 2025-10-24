@@ -1,4 +1,6 @@
 import 'dart:convert';
+import 'dart:io';
+import 'package:dio/dio.dart';
 import 'package:frip_trading/admin/screens/constants.dart';
 import 'package:frip_trading/core/network/api_constances.dart';
 import 'package:http/http.dart' as http;
@@ -64,5 +66,58 @@ class CategoryController {
       print('An error occurred while deleting category: $e');
       throw Exception('Network error or other issue: $e');
     }
+  }
+
+  Future<void> editCategory(
+      {String? categoryName, required int categoryId, File? image}) async {
+    final url = Uri.parse('$apiBaseUrl/categories/$categoryId');
+    final token = ApiConstances.getToken();
+    final Map<String, dynamic> data = {};
+    // 2. إذا كان هناك ملف صورة، قم بإضافته كـ MultipartFile
+    if (categoryName!.isNotEmpty) data['name'] = categoryName;
+
+    if (image != null) {
+      // 💡 تحويل ملف File إلى MultipartFile
+      data['image'] = await MultipartFile.fromFile(
+        image.path,
+        filename: image.path.split('/').last,
+      );
+    }
+    data['_method'] = 'PUT';
+    final formData = FormData.fromMap(data);
+    var request = await Dio().post('$apiBaseUrl/categories/$categoryId',
+        data: formData,
+        options: Options(
+          headers: {
+            'Authorization': 'Bearer $token',
+          },
+        ));
+
+    if (request.statusCode == 200 || request.statusCode == 201) {
+      print('Category Edited Succefully');
+    } else {
+      print(request.data);
+    }
+    // try {
+    //   var request = http.MultipartRequest('PUT', url);
+    //   request.headers['Authorization'] = 'Bearer $token';
+    //   if (categoryName != null) {
+    //     request.fields['name'] = categoryName;
+    //   }
+    //   if (image != null) {
+    //     request.files
+    //         .add(await http.MultipartFile.fromPath('image', image.path));
+    //   }
+    //   var response = await request.send();
+    //   if (response.statusCode == 200 || response.statusCode == 201) {
+    //     print('Category Edited Succefully');
+    //     print(request.fields);
+    //   } else {
+    //     print(response);
+    //   }
+    // } catch (e) {
+    //   print('An error occurred while editing category: $e');
+    //   throw Exception('Network error or other issue: $e');
+    // }
   }
 }

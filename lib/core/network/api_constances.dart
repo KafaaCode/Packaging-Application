@@ -28,7 +28,7 @@ class ApiConstances {
   static const String registerUrl = "$_baseUrl/register";
   static const String baseUrl = "$_baseUrl";
   static const String loginUrl = "$_baseUrl/login";
-  static const String ordersUrl = "$_baseUrl/orders";
+  static const String ordersUrl = "$_baseUrl/admin/orders";
   static const String baseImageUrl = "https://friptrading.com/storage/";
   static const String usersUrl = "$_baseUrl/api-users";
   static const String supportsUrl = "$_baseUrl/supports";
@@ -41,6 +41,7 @@ class ApiConstances {
   static const String sendSupportUrl = "$_baseUrl/supports";
   static const String sspecializationsAndCountryUrl =
       "$_baseUrl/specialization-and-country";
+  static const String deleteAccount = "$_baseUrl/delete-account";
 
   // Main
 
@@ -48,7 +49,7 @@ class ApiConstances {
       '$_baseUrl/orders/$orderId';
 
   static const String getcategoriesUrl = '$_baseUrl/admin/categories';
-
+  static const String getMyOrdersUrl = "$_baseUrl/my-orders";
   static const String getordersUrl = "$_baseUrl/orders";
   static const String addOrdertUrl = "$_baseUrl/orders";
 

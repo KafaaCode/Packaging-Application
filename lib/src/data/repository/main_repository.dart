@@ -33,6 +33,8 @@ class MainRepository extends BaseMainRepository {
     } on AuthException catch (failure) {
       return Left(
           ServerFailure.fromResponse(statusCode: failure.statusCode ?? 404));
+    } on Exception catch (e) {
+      return left(ServerFailure(statusCode: 404, message: e.toString()));
     }
   }
 

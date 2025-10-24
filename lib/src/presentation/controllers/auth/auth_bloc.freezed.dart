@@ -645,13 +645,20 @@ mixin _$AuthEvent {
     required TResult Function() checkAuth,
     required TResult Function(User user) createEvent,
     required TResult Function(User user) login,
-    required TResult Function(User user) register,
+    required TResult Function() deleteEvent,
+    required TResult Function(String companyName, String name, String email,
+            String password, String confirmPassword, int specId, int countryId)
+        register,
     required TResult Function() logout,
-    required TResult Function(User user) updateProfile,
+    required TResult Function(String? companyName, String? name, String? email,
+            int? specializationId, int? countryId)
+        updateProfile,
     required TResult Function(
             String oldPassword, String newPassword, String confirmPassword)
         updatePassword,
-    required TResult Function(User user) adminRegisterUser,
+    required TResult Function(String companyName, String name, String email,
+            String password, String confirmPassword, int specId, int countryId)
+        adminRegisterUser,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -659,13 +666,20 @@ mixin _$AuthEvent {
     TResult? Function()? checkAuth,
     TResult? Function(User user)? createEvent,
     TResult? Function(User user)? login,
-    TResult? Function(User user)? register,
+    TResult? Function()? deleteEvent,
+    TResult? Function(String companyName, String name, String email,
+            String password, String confirmPassword, int specId, int countryId)?
+        register,
     TResult? Function()? logout,
-    TResult? Function(User user)? updateProfile,
+    TResult? Function(String? companyName, String? name, String? email,
+            int? specializationId, int? countryId)?
+        updateProfile,
     TResult? Function(
             String oldPassword, String newPassword, String confirmPassword)?
         updatePassword,
-    TResult? Function(User user)? adminRegisterUser,
+    TResult? Function(String companyName, String name, String email,
+            String password, String confirmPassword, int specId, int countryId)?
+        adminRegisterUser,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -673,13 +687,20 @@ mixin _$AuthEvent {
     TResult Function()? checkAuth,
     TResult Function(User user)? createEvent,
     TResult Function(User user)? login,
-    TResult Function(User user)? register,
+    TResult Function()? deleteEvent,
+    TResult Function(String companyName, String name, String email,
+            String password, String confirmPassword, int specId, int countryId)?
+        register,
     TResult Function()? logout,
-    TResult Function(User user)? updateProfile,
+    TResult Function(String? companyName, String? name, String? email,
+            int? specializationId, int? countryId)?
+        updateProfile,
     TResult Function(
             String oldPassword, String newPassword, String confirmPassword)?
         updatePassword,
-    TResult Function(User user)? adminRegisterUser,
+    TResult Function(String companyName, String name, String email,
+            String password, String confirmPassword, int specId, int countryId)?
+        adminRegisterUser,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -688,6 +709,7 @@ mixin _$AuthEvent {
     required TResult Function(_CheckAuth value) checkAuth,
     required TResult Function(_CreateEvent value) createEvent,
     required TResult Function(_Login value) login,
+    required TResult Function(_DeleteEvent value) deleteEvent,
     required TResult Function(_Register value) register,
     required TResult Function(_Logout value) logout,
     required TResult Function(_UpdateProfile value) updateProfile,
@@ -700,6 +722,7 @@ mixin _$AuthEvent {
     TResult? Function(_CheckAuth value)? checkAuth,
     TResult? Function(_CreateEvent value)? createEvent,
     TResult? Function(_Login value)? login,
+    TResult? Function(_DeleteEvent value)? deleteEvent,
     TResult? Function(_Register value)? register,
     TResult? Function(_Logout value)? logout,
     TResult? Function(_UpdateProfile value)? updateProfile,
@@ -712,6 +735,7 @@ mixin _$AuthEvent {
     TResult Function(_CheckAuth value)? checkAuth,
     TResult Function(_CreateEvent value)? createEvent,
     TResult Function(_Login value)? login,
+    TResult Function(_DeleteEvent value)? deleteEvent,
     TResult Function(_Register value)? register,
     TResult Function(_Logout value)? logout,
     TResult Function(_UpdateProfile value)? updateProfile,
@@ -786,13 +810,20 @@ class _$CheckAuthImpl implements _CheckAuth {
     required TResult Function() checkAuth,
     required TResult Function(User user) createEvent,
     required TResult Function(User user) login,
-    required TResult Function(User user) register,
+    required TResult Function() deleteEvent,
+    required TResult Function(String companyName, String name, String email,
+            String password, String confirmPassword, int specId, int countryId)
+        register,
     required TResult Function() logout,
-    required TResult Function(User user) updateProfile,
+    required TResult Function(String? companyName, String? name, String? email,
+            int? specializationId, int? countryId)
+        updateProfile,
     required TResult Function(
             String oldPassword, String newPassword, String confirmPassword)
         updatePassword,
-    required TResult Function(User user) adminRegisterUser,
+    required TResult Function(String companyName, String name, String email,
+            String password, String confirmPassword, int specId, int countryId)
+        adminRegisterUser,
   }) {
     return checkAuth();
   }
@@ -803,13 +834,20 @@ class _$CheckAuthImpl implements _CheckAuth {
     TResult? Function()? checkAuth,
     TResult? Function(User user)? createEvent,
     TResult? Function(User user)? login,
-    TResult? Function(User user)? register,
+    TResult? Function()? deleteEvent,
+    TResult? Function(String companyName, String name, String email,
+            String password, String confirmPassword, int specId, int countryId)?
+        register,
     TResult? Function()? logout,
-    TResult? Function(User user)? updateProfile,
+    TResult? Function(String? companyName, String? name, String? email,
+            int? specializationId, int? countryId)?
+        updateProfile,
     TResult? Function(
             String oldPassword, String newPassword, String confirmPassword)?
         updatePassword,
-    TResult? Function(User user)? adminRegisterUser,
+    TResult? Function(String companyName, String name, String email,
+            String password, String confirmPassword, int specId, int countryId)?
+        adminRegisterUser,
   }) {
     return checkAuth?.call();
   }
@@ -820,13 +858,20 @@ class _$CheckAuthImpl implements _CheckAuth {
     TResult Function()? checkAuth,
     TResult Function(User user)? createEvent,
     TResult Function(User user)? login,
-    TResult Function(User user)? register,
+    TResult Function()? deleteEvent,
+    TResult Function(String companyName, String name, String email,
+            String password, String confirmPassword, int specId, int countryId)?
+        register,
     TResult Function()? logout,
-    TResult Function(User user)? updateProfile,
+    TResult Function(String? companyName, String? name, String? email,
+            int? specializationId, int? countryId)?
+        updateProfile,
     TResult Function(
             String oldPassword, String newPassword, String confirmPassword)?
         updatePassword,
-    TResult Function(User user)? adminRegisterUser,
+    TResult Function(String companyName, String name, String email,
+            String password, String confirmPassword, int specId, int countryId)?
+        adminRegisterUser,
     required TResult orElse(),
   }) {
     if (checkAuth != null) {
@@ -841,6 +886,7 @@ class _$CheckAuthImpl implements _CheckAuth {
     required TResult Function(_CheckAuth value) checkAuth,
     required TResult Function(_CreateEvent value) createEvent,
     required TResult Function(_Login value) login,
+    required TResult Function(_DeleteEvent value) deleteEvent,
     required TResult Function(_Register value) register,
     required TResult Function(_Logout value) logout,
     required TResult Function(_UpdateProfile value) updateProfile,
@@ -856,6 +902,7 @@ class _$CheckAuthImpl implements _CheckAuth {
     TResult? Function(_CheckAuth value)? checkAuth,
     TResult? Function(_CreateEvent value)? createEvent,
     TResult? Function(_Login value)? login,
+    TResult? Function(_DeleteEvent value)? deleteEvent,
     TResult? Function(_Register value)? register,
     TResult? Function(_Logout value)? logout,
     TResult? Function(_UpdateProfile value)? updateProfile,
@@ -871,6 +918,7 @@ class _$CheckAuthImpl implements _CheckAuth {
     TResult Function(_CheckAuth value)? checkAuth,
     TResult Function(_CreateEvent value)? createEvent,
     TResult Function(_Login value)? login,
+    TResult Function(_DeleteEvent value)? deleteEvent,
     TResult Function(_Register value)? register,
     TResult Function(_Logout value)? logout,
     TResult Function(_UpdateProfile value)? updateProfile,
@@ -972,13 +1020,20 @@ class _$CreateEventImpl implements _CreateEvent {
     required TResult Function() checkAuth,
     required TResult Function(User user) createEvent,
     required TResult Function(User user) login,
-    required TResult Function(User user) register,
+    required TResult Function() deleteEvent,
+    required TResult Function(String companyName, String name, String email,
+            String password, String confirmPassword, int specId, int countryId)
+        register,
     required TResult Function() logout,
-    required TResult Function(User user) updateProfile,
+    required TResult Function(String? companyName, String? name, String? email,
+            int? specializationId, int? countryId)
+        updateProfile,
     required TResult Function(
             String oldPassword, String newPassword, String confirmPassword)
         updatePassword,
-    required TResult Function(User user) adminRegisterUser,
+    required TResult Function(String companyName, String name, String email,
+            String password, String confirmPassword, int specId, int countryId)
+        adminRegisterUser,
   }) {
     return createEvent(user);
   }
@@ -989,13 +1044,20 @@ class _$CreateEventImpl implements _CreateEvent {
     TResult? Function()? checkAuth,
     TResult? Function(User user)? createEvent,
     TResult? Function(User user)? login,
-    TResult? Function(User user)? register,
+    TResult? Function()? deleteEvent,
+    TResult? Function(String companyName, String name, String email,
+            String password, String confirmPassword, int specId, int countryId)?
+        register,
     TResult? Function()? logout,
-    TResult? Function(User user)? updateProfile,
+    TResult? Function(String? companyName, String? name, String? email,
+            int? specializationId, int? countryId)?
+        updateProfile,
     TResult? Function(
             String oldPassword, String newPassword, String confirmPassword)?
         updatePassword,
-    TResult? Function(User user)? adminRegisterUser,
+    TResult? Function(String companyName, String name, String email,
+            String password, String confirmPassword, int specId, int countryId)?
+        adminRegisterUser,
   }) {
     return createEvent?.call(user);
   }
@@ -1006,13 +1068,20 @@ class _$CreateEventImpl implements _CreateEvent {
     TResult Function()? checkAuth,
     TResult Function(User user)? createEvent,
     TResult Function(User user)? login,
-    TResult Function(User user)? register,
+    TResult Function()? deleteEvent,
+    TResult Function(String companyName, String name, String email,
+            String password, String confirmPassword, int specId, int countryId)?
+        register,
     TResult Function()? logout,
-    TResult Function(User user)? updateProfile,
+    TResult Function(String? companyName, String? name, String? email,
+            int? specializationId, int? countryId)?
+        updateProfile,
     TResult Function(
             String oldPassword, String newPassword, String confirmPassword)?
         updatePassword,
-    TResult Function(User user)? adminRegisterUser,
+    TResult Function(String companyName, String name, String email,
+            String password, String confirmPassword, int specId, int countryId)?
+        adminRegisterUser,
     required TResult orElse(),
   }) {
     if (createEvent != null) {
@@ -1027,6 +1096,7 @@ class _$CreateEventImpl implements _CreateEvent {
     required TResult Function(_CheckAuth value) checkAuth,
     required TResult Function(_CreateEvent value) createEvent,
     required TResult Function(_Login value) login,
+    required TResult Function(_DeleteEvent value) deleteEvent,
     required TResult Function(_Register value) register,
     required TResult Function(_Logout value) logout,
     required TResult Function(_UpdateProfile value) updateProfile,
@@ -1042,6 +1112,7 @@ class _$CreateEventImpl implements _CreateEvent {
     TResult? Function(_CheckAuth value)? checkAuth,
     TResult? Function(_CreateEvent value)? createEvent,
     TResult? Function(_Login value)? login,
+    TResult? Function(_DeleteEvent value)? deleteEvent,
     TResult? Function(_Register value)? register,
     TResult? Function(_Logout value)? logout,
     TResult? Function(_UpdateProfile value)? updateProfile,
@@ -1057,6 +1128,7 @@ class _$CreateEventImpl implements _CreateEvent {
     TResult Function(_CheckAuth value)? checkAuth,
     TResult Function(_CreateEvent value)? createEvent,
     TResult Function(_Login value)? login,
+    TResult Function(_DeleteEvent value)? deleteEvent,
     TResult Function(_Register value)? register,
     TResult Function(_Logout value)? logout,
     TResult Function(_UpdateProfile value)? updateProfile,
@@ -1166,13 +1238,20 @@ class _$LoginImpl implements _Login {
     required TResult Function() checkAuth,
     required TResult Function(User user) createEvent,
     required TResult Function(User user) login,
-    required TResult Function(User user) register,
+    required TResult Function() deleteEvent,
+    required TResult Function(String companyName, String name, String email,
+            String password, String confirmPassword, int specId, int countryId)
+        register,
     required TResult Function() logout,
-    required TResult Function(User user) updateProfile,
+    required TResult Function(String? companyName, String? name, String? email,
+            int? specializationId, int? countryId)
+        updateProfile,
     required TResult Function(
             String oldPassword, String newPassword, String confirmPassword)
         updatePassword,
-    required TResult Function(User user) adminRegisterUser,
+    required TResult Function(String companyName, String name, String email,
+            String password, String confirmPassword, int specId, int countryId)
+        adminRegisterUser,
   }) {
     return login(user);
   }
@@ -1183,13 +1262,20 @@ class _$LoginImpl implements _Login {
     TResult? Function()? checkAuth,
     TResult? Function(User user)? createEvent,
     TResult? Function(User user)? login,
-    TResult? Function(User user)? register,
+    TResult? Function()? deleteEvent,
+    TResult? Function(String companyName, String name, String email,
+            String password, String confirmPassword, int specId, int countryId)?
+        register,
     TResult? Function()? logout,
-    TResult? Function(User user)? updateProfile,
+    TResult? Function(String? companyName, String? name, String? email,
+            int? specializationId, int? countryId)?
+        updateProfile,
     TResult? Function(
             String oldPassword, String newPassword, String confirmPassword)?
         updatePassword,
-    TResult? Function(User user)? adminRegisterUser,
+    TResult? Function(String companyName, String name, String email,
+            String password, String confirmPassword, int specId, int countryId)?
+        adminRegisterUser,
   }) {
     return login?.call(user);
   }
@@ -1200,13 +1286,20 @@ class _$LoginImpl implements _Login {
     TResult Function()? checkAuth,
     TResult Function(User user)? createEvent,
     TResult Function(User user)? login,
-    TResult Function(User user)? register,
+    TResult Function()? deleteEvent,
+    TResult Function(String companyName, String name, String email,
+            String password, String confirmPassword, int specId, int countryId)?
+        register,
     TResult Function()? logout,
-    TResult Function(User user)? updateProfile,
+    TResult Function(String? companyName, String? name, String? email,
+            int? specializationId, int? countryId)?
+        updateProfile,
     TResult Function(
             String oldPassword, String newPassword, String confirmPassword)?
         updatePassword,
-    TResult Function(User user)? adminRegisterUser,
+    TResult Function(String companyName, String name, String email,
+            String password, String confirmPassword, int specId, int countryId)?
+        adminRegisterUser,
     required TResult orElse(),
   }) {
     if (login != null) {
@@ -1221,6 +1314,7 @@ class _$LoginImpl implements _Login {
     required TResult Function(_CheckAuth value) checkAuth,
     required TResult Function(_CreateEvent value) createEvent,
     required TResult Function(_Login value) login,
+    required TResult Function(_DeleteEvent value) deleteEvent,
     required TResult Function(_Register value) register,
     required TResult Function(_Logout value) logout,
     required TResult Function(_UpdateProfile value) updateProfile,
@@ -1236,6 +1330,7 @@ class _$LoginImpl implements _Login {
     TResult? Function(_CheckAuth value)? checkAuth,
     TResult? Function(_CreateEvent value)? createEvent,
     TResult? Function(_Login value)? login,
+    TResult? Function(_DeleteEvent value)? deleteEvent,
     TResult? Function(_Register value)? register,
     TResult? Function(_Logout value)? logout,
     TResult? Function(_UpdateProfile value)? updateProfile,
@@ -1251,6 +1346,7 @@ class _$LoginImpl implements _Login {
     TResult Function(_CheckAuth value)? checkAuth,
     TResult Function(_CreateEvent value)? createEvent,
     TResult Function(_Login value)? login,
+    TResult Function(_DeleteEvent value)? deleteEvent,
     TResult Function(_Register value)? register,
     TResult Function(_Logout value)? logout,
     TResult Function(_UpdateProfile value)? updateProfile,
@@ -1278,14 +1374,190 @@ abstract class _Login implements AuthEvent {
 }
 
 /// @nodoc
+abstract class _$$DeleteEventImplCopyWith<$Res> {
+  factory _$$DeleteEventImplCopyWith(
+          _$DeleteEventImpl value, $Res Function(_$DeleteEventImpl) then) =
+      __$$DeleteEventImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$DeleteEventImplCopyWithImpl<$Res>
+    extends _$AuthEventCopyWithImpl<$Res, _$DeleteEventImpl>
+    implements _$$DeleteEventImplCopyWith<$Res> {
+  __$$DeleteEventImplCopyWithImpl(
+      _$DeleteEventImpl _value, $Res Function(_$DeleteEventImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of AuthEvent
+  /// with the given fields replaced by the non-null parameter values.
+}
+
+/// @nodoc
+
+class _$DeleteEventImpl implements _DeleteEvent {
+  const _$DeleteEventImpl();
+
+  @override
+  String toString() {
+    return 'AuthEvent.deleteEvent()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$DeleteEventImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() checkAuth,
+    required TResult Function(User user) createEvent,
+    required TResult Function(User user) login,
+    required TResult Function() deleteEvent,
+    required TResult Function(String companyName, String name, String email,
+            String password, String confirmPassword, int specId, int countryId)
+        register,
+    required TResult Function() logout,
+    required TResult Function(String? companyName, String? name, String? email,
+            int? specializationId, int? countryId)
+        updateProfile,
+    required TResult Function(
+            String oldPassword, String newPassword, String confirmPassword)
+        updatePassword,
+    required TResult Function(String companyName, String name, String email,
+            String password, String confirmPassword, int specId, int countryId)
+        adminRegisterUser,
+  }) {
+    return deleteEvent();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? checkAuth,
+    TResult? Function(User user)? createEvent,
+    TResult? Function(User user)? login,
+    TResult? Function()? deleteEvent,
+    TResult? Function(String companyName, String name, String email,
+            String password, String confirmPassword, int specId, int countryId)?
+        register,
+    TResult? Function()? logout,
+    TResult? Function(String? companyName, String? name, String? email,
+            int? specializationId, int? countryId)?
+        updateProfile,
+    TResult? Function(
+            String oldPassword, String newPassword, String confirmPassword)?
+        updatePassword,
+    TResult? Function(String companyName, String name, String email,
+            String password, String confirmPassword, int specId, int countryId)?
+        adminRegisterUser,
+  }) {
+    return deleteEvent?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? checkAuth,
+    TResult Function(User user)? createEvent,
+    TResult Function(User user)? login,
+    TResult Function()? deleteEvent,
+    TResult Function(String companyName, String name, String email,
+            String password, String confirmPassword, int specId, int countryId)?
+        register,
+    TResult Function()? logout,
+    TResult Function(String? companyName, String? name, String? email,
+            int? specializationId, int? countryId)?
+        updateProfile,
+    TResult Function(
+            String oldPassword, String newPassword, String confirmPassword)?
+        updatePassword,
+    TResult Function(String companyName, String name, String email,
+            String password, String confirmPassword, int specId, int countryId)?
+        adminRegisterUser,
+    required TResult orElse(),
+  }) {
+    if (deleteEvent != null) {
+      return deleteEvent();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_CheckAuth value) checkAuth,
+    required TResult Function(_CreateEvent value) createEvent,
+    required TResult Function(_Login value) login,
+    required TResult Function(_DeleteEvent value) deleteEvent,
+    required TResult Function(_Register value) register,
+    required TResult Function(_Logout value) logout,
+    required TResult Function(_UpdateProfile value) updateProfile,
+    required TResult Function(_UpdatePassword value) updatePassword,
+    required TResult Function(_AdminRegisterUser value) adminRegisterUser,
+  }) {
+    return deleteEvent(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_CheckAuth value)? checkAuth,
+    TResult? Function(_CreateEvent value)? createEvent,
+    TResult? Function(_Login value)? login,
+    TResult? Function(_DeleteEvent value)? deleteEvent,
+    TResult? Function(_Register value)? register,
+    TResult? Function(_Logout value)? logout,
+    TResult? Function(_UpdateProfile value)? updateProfile,
+    TResult? Function(_UpdatePassword value)? updatePassword,
+    TResult? Function(_AdminRegisterUser value)? adminRegisterUser,
+  }) {
+    return deleteEvent?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_CheckAuth value)? checkAuth,
+    TResult Function(_CreateEvent value)? createEvent,
+    TResult Function(_Login value)? login,
+    TResult Function(_DeleteEvent value)? deleteEvent,
+    TResult Function(_Register value)? register,
+    TResult Function(_Logout value)? logout,
+    TResult Function(_UpdateProfile value)? updateProfile,
+    TResult Function(_UpdatePassword value)? updatePassword,
+    TResult Function(_AdminRegisterUser value)? adminRegisterUser,
+    required TResult orElse(),
+  }) {
+    if (deleteEvent != null) {
+      return deleteEvent(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _DeleteEvent implements AuthEvent {
+  const factory _DeleteEvent() = _$DeleteEventImpl;
+}
+
+/// @nodoc
 abstract class _$$RegisterImplCopyWith<$Res> {
   factory _$$RegisterImplCopyWith(
           _$RegisterImpl value, $Res Function(_$RegisterImpl) then) =
       __$$RegisterImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({User user});
-
-  $UserCopyWith<$Res> get user;
+  $Res call(
+      {String companyName,
+      String name,
+      String email,
+      String password,
+      String confirmPassword,
+      int specId,
+      int countryId});
 }
 
 /// @nodoc
@@ -1301,38 +1573,77 @@ class __$$RegisterImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? user = null,
+    Object? companyName = null,
+    Object? name = null,
+    Object? email = null,
+    Object? password = null,
+    Object? confirmPassword = null,
+    Object? specId = null,
+    Object? countryId = null,
   }) {
     return _then(_$RegisterImpl(
-      user: null == user
-          ? _value.user
-          : user // ignore: cast_nullable_to_non_nullable
-              as User,
+      companyName: null == companyName
+          ? _value.companyName
+          : companyName // ignore: cast_nullable_to_non_nullable
+              as String,
+      name: null == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      email: null == email
+          ? _value.email
+          : email // ignore: cast_nullable_to_non_nullable
+              as String,
+      password: null == password
+          ? _value.password
+          : password // ignore: cast_nullable_to_non_nullable
+              as String,
+      confirmPassword: null == confirmPassword
+          ? _value.confirmPassword
+          : confirmPassword // ignore: cast_nullable_to_non_nullable
+              as String,
+      specId: null == specId
+          ? _value.specId
+          : specId // ignore: cast_nullable_to_non_nullable
+              as int,
+      countryId: null == countryId
+          ? _value.countryId
+          : countryId // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
-  }
-
-  /// Create a copy of AuthEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $UserCopyWith<$Res> get user {
-    return $UserCopyWith<$Res>(_value.user, (value) {
-      return _then(_value.copyWith(user: value));
-    });
   }
 }
 
 /// @nodoc
 
 class _$RegisterImpl implements _Register {
-  const _$RegisterImpl({required this.user});
+  const _$RegisterImpl(
+      {required this.companyName,
+      required this.name,
+      required this.email,
+      required this.password,
+      required this.confirmPassword,
+      required this.specId,
+      required this.countryId});
 
   @override
-  final User user;
+  final String companyName;
+  @override
+  final String name;
+  @override
+  final String email;
+  @override
+  final String password;
+  @override
+  final String confirmPassword;
+  @override
+  final int specId;
+  @override
+  final int countryId;
 
   @override
   String toString() {
-    return 'AuthEvent.register(user: $user)';
+    return 'AuthEvent.register(companyName: $companyName, name: $name, email: $email, password: $password, confirmPassword: $confirmPassword, specId: $specId, countryId: $countryId)';
   }
 
   @override
@@ -1340,11 +1651,22 @@ class _$RegisterImpl implements _Register {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$RegisterImpl &&
-            (identical(other.user, user) || other.user == user));
+            (identical(other.companyName, companyName) ||
+                other.companyName == companyName) &&
+            (identical(other.name, name) || other.name == name) &&
+            (identical(other.email, email) || other.email == email) &&
+            (identical(other.password, password) ||
+                other.password == password) &&
+            (identical(other.confirmPassword, confirmPassword) ||
+                other.confirmPassword == confirmPassword) &&
+            (identical(other.specId, specId) || other.specId == specId) &&
+            (identical(other.countryId, countryId) ||
+                other.countryId == countryId));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, user);
+  int get hashCode => Object.hash(runtimeType, companyName, name, email,
+      password, confirmPassword, specId, countryId);
 
   /// Create a copy of AuthEvent
   /// with the given fields replaced by the non-null parameter values.
@@ -1360,15 +1682,23 @@ class _$RegisterImpl implements _Register {
     required TResult Function() checkAuth,
     required TResult Function(User user) createEvent,
     required TResult Function(User user) login,
-    required TResult Function(User user) register,
+    required TResult Function() deleteEvent,
+    required TResult Function(String companyName, String name, String email,
+            String password, String confirmPassword, int specId, int countryId)
+        register,
     required TResult Function() logout,
-    required TResult Function(User user) updateProfile,
+    required TResult Function(String? companyName, String? name, String? email,
+            int? specializationId, int? countryId)
+        updateProfile,
     required TResult Function(
             String oldPassword, String newPassword, String confirmPassword)
         updatePassword,
-    required TResult Function(User user) adminRegisterUser,
+    required TResult Function(String companyName, String name, String email,
+            String password, String confirmPassword, int specId, int countryId)
+        adminRegisterUser,
   }) {
-    return register(user);
+    return register(
+        companyName, name, email, password, confirmPassword, specId, countryId);
   }
 
   @override
@@ -1377,15 +1707,23 @@ class _$RegisterImpl implements _Register {
     TResult? Function()? checkAuth,
     TResult? Function(User user)? createEvent,
     TResult? Function(User user)? login,
-    TResult? Function(User user)? register,
+    TResult? Function()? deleteEvent,
+    TResult? Function(String companyName, String name, String email,
+            String password, String confirmPassword, int specId, int countryId)?
+        register,
     TResult? Function()? logout,
-    TResult? Function(User user)? updateProfile,
+    TResult? Function(String? companyName, String? name, String? email,
+            int? specializationId, int? countryId)?
+        updateProfile,
     TResult? Function(
             String oldPassword, String newPassword, String confirmPassword)?
         updatePassword,
-    TResult? Function(User user)? adminRegisterUser,
+    TResult? Function(String companyName, String name, String email,
+            String password, String confirmPassword, int specId, int countryId)?
+        adminRegisterUser,
   }) {
-    return register?.call(user);
+    return register?.call(
+        companyName, name, email, password, confirmPassword, specId, countryId);
   }
 
   @override
@@ -1394,17 +1732,25 @@ class _$RegisterImpl implements _Register {
     TResult Function()? checkAuth,
     TResult Function(User user)? createEvent,
     TResult Function(User user)? login,
-    TResult Function(User user)? register,
+    TResult Function()? deleteEvent,
+    TResult Function(String companyName, String name, String email,
+            String password, String confirmPassword, int specId, int countryId)?
+        register,
     TResult Function()? logout,
-    TResult Function(User user)? updateProfile,
+    TResult Function(String? companyName, String? name, String? email,
+            int? specializationId, int? countryId)?
+        updateProfile,
     TResult Function(
             String oldPassword, String newPassword, String confirmPassword)?
         updatePassword,
-    TResult Function(User user)? adminRegisterUser,
+    TResult Function(String companyName, String name, String email,
+            String password, String confirmPassword, int specId, int countryId)?
+        adminRegisterUser,
     required TResult orElse(),
   }) {
     if (register != null) {
-      return register(user);
+      return register(companyName, name, email, password, confirmPassword,
+          specId, countryId);
     }
     return orElse();
   }
@@ -1415,6 +1761,7 @@ class _$RegisterImpl implements _Register {
     required TResult Function(_CheckAuth value) checkAuth,
     required TResult Function(_CreateEvent value) createEvent,
     required TResult Function(_Login value) login,
+    required TResult Function(_DeleteEvent value) deleteEvent,
     required TResult Function(_Register value) register,
     required TResult Function(_Logout value) logout,
     required TResult Function(_UpdateProfile value) updateProfile,
@@ -1430,6 +1777,7 @@ class _$RegisterImpl implements _Register {
     TResult? Function(_CheckAuth value)? checkAuth,
     TResult? Function(_CreateEvent value)? createEvent,
     TResult? Function(_Login value)? login,
+    TResult? Function(_DeleteEvent value)? deleteEvent,
     TResult? Function(_Register value)? register,
     TResult? Function(_Logout value)? logout,
     TResult? Function(_UpdateProfile value)? updateProfile,
@@ -1445,6 +1793,7 @@ class _$RegisterImpl implements _Register {
     TResult Function(_CheckAuth value)? checkAuth,
     TResult Function(_CreateEvent value)? createEvent,
     TResult Function(_Login value)? login,
+    TResult Function(_DeleteEvent value)? deleteEvent,
     TResult Function(_Register value)? register,
     TResult Function(_Logout value)? logout,
     TResult Function(_UpdateProfile value)? updateProfile,
@@ -1460,9 +1809,22 @@ class _$RegisterImpl implements _Register {
 }
 
 abstract class _Register implements AuthEvent {
-  const factory _Register({required final User user}) = _$RegisterImpl;
+  const factory _Register(
+      {required final String companyName,
+      required final String name,
+      required final String email,
+      required final String password,
+      required final String confirmPassword,
+      required final int specId,
+      required final int countryId}) = _$RegisterImpl;
 
-  User get user;
+  String get companyName;
+  String get name;
+  String get email;
+  String get password;
+  String get confirmPassword;
+  int get specId;
+  int get countryId;
 
   /// Create a copy of AuthEvent
   /// with the given fields replaced by the non-null parameter values.
@@ -1515,13 +1877,20 @@ class _$LogoutImpl implements _Logout {
     required TResult Function() checkAuth,
     required TResult Function(User user) createEvent,
     required TResult Function(User user) login,
-    required TResult Function(User user) register,
+    required TResult Function() deleteEvent,
+    required TResult Function(String companyName, String name, String email,
+            String password, String confirmPassword, int specId, int countryId)
+        register,
     required TResult Function() logout,
-    required TResult Function(User user) updateProfile,
+    required TResult Function(String? companyName, String? name, String? email,
+            int? specializationId, int? countryId)
+        updateProfile,
     required TResult Function(
             String oldPassword, String newPassword, String confirmPassword)
         updatePassword,
-    required TResult Function(User user) adminRegisterUser,
+    required TResult Function(String companyName, String name, String email,
+            String password, String confirmPassword, int specId, int countryId)
+        adminRegisterUser,
   }) {
     return logout();
   }
@@ -1532,13 +1901,20 @@ class _$LogoutImpl implements _Logout {
     TResult? Function()? checkAuth,
     TResult? Function(User user)? createEvent,
     TResult? Function(User user)? login,
-    TResult? Function(User user)? register,
+    TResult? Function()? deleteEvent,
+    TResult? Function(String companyName, String name, String email,
+            String password, String confirmPassword, int specId, int countryId)?
+        register,
     TResult? Function()? logout,
-    TResult? Function(User user)? updateProfile,
+    TResult? Function(String? companyName, String? name, String? email,
+            int? specializationId, int? countryId)?
+        updateProfile,
     TResult? Function(
             String oldPassword, String newPassword, String confirmPassword)?
         updatePassword,
-    TResult? Function(User user)? adminRegisterUser,
+    TResult? Function(String companyName, String name, String email,
+            String password, String confirmPassword, int specId, int countryId)?
+        adminRegisterUser,
   }) {
     return logout?.call();
   }
@@ -1549,13 +1925,20 @@ class _$LogoutImpl implements _Logout {
     TResult Function()? checkAuth,
     TResult Function(User user)? createEvent,
     TResult Function(User user)? login,
-    TResult Function(User user)? register,
+    TResult Function()? deleteEvent,
+    TResult Function(String companyName, String name, String email,
+            String password, String confirmPassword, int specId, int countryId)?
+        register,
     TResult Function()? logout,
-    TResult Function(User user)? updateProfile,
+    TResult Function(String? companyName, String? name, String? email,
+            int? specializationId, int? countryId)?
+        updateProfile,
     TResult Function(
             String oldPassword, String newPassword, String confirmPassword)?
         updatePassword,
-    TResult Function(User user)? adminRegisterUser,
+    TResult Function(String companyName, String name, String email,
+            String password, String confirmPassword, int specId, int countryId)?
+        adminRegisterUser,
     required TResult orElse(),
   }) {
     if (logout != null) {
@@ -1570,6 +1953,7 @@ class _$LogoutImpl implements _Logout {
     required TResult Function(_CheckAuth value) checkAuth,
     required TResult Function(_CreateEvent value) createEvent,
     required TResult Function(_Login value) login,
+    required TResult Function(_DeleteEvent value) deleteEvent,
     required TResult Function(_Register value) register,
     required TResult Function(_Logout value) logout,
     required TResult Function(_UpdateProfile value) updateProfile,
@@ -1585,6 +1969,7 @@ class _$LogoutImpl implements _Logout {
     TResult? Function(_CheckAuth value)? checkAuth,
     TResult? Function(_CreateEvent value)? createEvent,
     TResult? Function(_Login value)? login,
+    TResult? Function(_DeleteEvent value)? deleteEvent,
     TResult? Function(_Register value)? register,
     TResult? Function(_Logout value)? logout,
     TResult? Function(_UpdateProfile value)? updateProfile,
@@ -1600,6 +1985,7 @@ class _$LogoutImpl implements _Logout {
     TResult Function(_CheckAuth value)? checkAuth,
     TResult Function(_CreateEvent value)? createEvent,
     TResult Function(_Login value)? login,
+    TResult Function(_DeleteEvent value)? deleteEvent,
     TResult Function(_Register value)? register,
     TResult Function(_Logout value)? logout,
     TResult Function(_UpdateProfile value)? updateProfile,
@@ -1624,9 +2010,12 @@ abstract class _$$UpdateProfileImplCopyWith<$Res> {
           _$UpdateProfileImpl value, $Res Function(_$UpdateProfileImpl) then) =
       __$$UpdateProfileImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({User user});
-
-  $UserCopyWith<$Res> get user;
+  $Res call(
+      {String? companyName,
+      String? name,
+      String? email,
+      int? specializationId,
+      int? countryId});
 }
 
 /// @nodoc
@@ -1642,38 +2031,61 @@ class __$$UpdateProfileImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? user = null,
+    Object? companyName = freezed,
+    Object? name = freezed,
+    Object? email = freezed,
+    Object? specializationId = freezed,
+    Object? countryId = freezed,
   }) {
     return _then(_$UpdateProfileImpl(
-      user: null == user
-          ? _value.user
-          : user // ignore: cast_nullable_to_non_nullable
-              as User,
+      companyName: freezed == companyName
+          ? _value.companyName
+          : companyName // ignore: cast_nullable_to_non_nullable
+              as String?,
+      name: freezed == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String?,
+      email: freezed == email
+          ? _value.email
+          : email // ignore: cast_nullable_to_non_nullable
+              as String?,
+      specializationId: freezed == specializationId
+          ? _value.specializationId
+          : specializationId // ignore: cast_nullable_to_non_nullable
+              as int?,
+      countryId: freezed == countryId
+          ? _value.countryId
+          : countryId // ignore: cast_nullable_to_non_nullable
+              as int?,
     ));
-  }
-
-  /// Create a copy of AuthEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $UserCopyWith<$Res> get user {
-    return $UserCopyWith<$Res>(_value.user, (value) {
-      return _then(_value.copyWith(user: value));
-    });
   }
 }
 
 /// @nodoc
 
 class _$UpdateProfileImpl implements _UpdateProfile {
-  const _$UpdateProfileImpl({required this.user});
+  const _$UpdateProfileImpl(
+      {this.companyName,
+      this.name,
+      this.email,
+      this.specializationId,
+      this.countryId});
 
   @override
-  final User user;
+  final String? companyName;
+  @override
+  final String? name;
+  @override
+  final String? email;
+  @override
+  final int? specializationId;
+  @override
+  final int? countryId;
 
   @override
   String toString() {
-    return 'AuthEvent.updateProfile(user: $user)';
+    return 'AuthEvent.updateProfile(companyName: $companyName, name: $name, email: $email, specializationId: $specializationId, countryId: $countryId)';
   }
 
   @override
@@ -1681,11 +2093,19 @@ class _$UpdateProfileImpl implements _UpdateProfile {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$UpdateProfileImpl &&
-            (identical(other.user, user) || other.user == user));
+            (identical(other.companyName, companyName) ||
+                other.companyName == companyName) &&
+            (identical(other.name, name) || other.name == name) &&
+            (identical(other.email, email) || other.email == email) &&
+            (identical(other.specializationId, specializationId) ||
+                other.specializationId == specializationId) &&
+            (identical(other.countryId, countryId) ||
+                other.countryId == countryId));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, user);
+  int get hashCode => Object.hash(
+      runtimeType, companyName, name, email, specializationId, countryId);
 
   /// Create a copy of AuthEvent
   /// with the given fields replaced by the non-null parameter values.
@@ -1701,15 +2121,22 @@ class _$UpdateProfileImpl implements _UpdateProfile {
     required TResult Function() checkAuth,
     required TResult Function(User user) createEvent,
     required TResult Function(User user) login,
-    required TResult Function(User user) register,
+    required TResult Function() deleteEvent,
+    required TResult Function(String companyName, String name, String email,
+            String password, String confirmPassword, int specId, int countryId)
+        register,
     required TResult Function() logout,
-    required TResult Function(User user) updateProfile,
+    required TResult Function(String? companyName, String? name, String? email,
+            int? specializationId, int? countryId)
+        updateProfile,
     required TResult Function(
             String oldPassword, String newPassword, String confirmPassword)
         updatePassword,
-    required TResult Function(User user) adminRegisterUser,
+    required TResult Function(String companyName, String name, String email,
+            String password, String confirmPassword, int specId, int countryId)
+        adminRegisterUser,
   }) {
-    return updateProfile(user);
+    return updateProfile(companyName, name, email, specializationId, countryId);
   }
 
   @override
@@ -1718,15 +2145,23 @@ class _$UpdateProfileImpl implements _UpdateProfile {
     TResult? Function()? checkAuth,
     TResult? Function(User user)? createEvent,
     TResult? Function(User user)? login,
-    TResult? Function(User user)? register,
+    TResult? Function()? deleteEvent,
+    TResult? Function(String companyName, String name, String email,
+            String password, String confirmPassword, int specId, int countryId)?
+        register,
     TResult? Function()? logout,
-    TResult? Function(User user)? updateProfile,
+    TResult? Function(String? companyName, String? name, String? email,
+            int? specializationId, int? countryId)?
+        updateProfile,
     TResult? Function(
             String oldPassword, String newPassword, String confirmPassword)?
         updatePassword,
-    TResult? Function(User user)? adminRegisterUser,
+    TResult? Function(String companyName, String name, String email,
+            String password, String confirmPassword, int specId, int countryId)?
+        adminRegisterUser,
   }) {
-    return updateProfile?.call(user);
+    return updateProfile?.call(
+        companyName, name, email, specializationId, countryId);
   }
 
   @override
@@ -1735,17 +2170,25 @@ class _$UpdateProfileImpl implements _UpdateProfile {
     TResult Function()? checkAuth,
     TResult Function(User user)? createEvent,
     TResult Function(User user)? login,
-    TResult Function(User user)? register,
+    TResult Function()? deleteEvent,
+    TResult Function(String companyName, String name, String email,
+            String password, String confirmPassword, int specId, int countryId)?
+        register,
     TResult Function()? logout,
-    TResult Function(User user)? updateProfile,
+    TResult Function(String? companyName, String? name, String? email,
+            int? specializationId, int? countryId)?
+        updateProfile,
     TResult Function(
             String oldPassword, String newPassword, String confirmPassword)?
         updatePassword,
-    TResult Function(User user)? adminRegisterUser,
+    TResult Function(String companyName, String name, String email,
+            String password, String confirmPassword, int specId, int countryId)?
+        adminRegisterUser,
     required TResult orElse(),
   }) {
     if (updateProfile != null) {
-      return updateProfile(user);
+      return updateProfile(
+          companyName, name, email, specializationId, countryId);
     }
     return orElse();
   }
@@ -1756,6 +2199,7 @@ class _$UpdateProfileImpl implements _UpdateProfile {
     required TResult Function(_CheckAuth value) checkAuth,
     required TResult Function(_CreateEvent value) createEvent,
     required TResult Function(_Login value) login,
+    required TResult Function(_DeleteEvent value) deleteEvent,
     required TResult Function(_Register value) register,
     required TResult Function(_Logout value) logout,
     required TResult Function(_UpdateProfile value) updateProfile,
@@ -1771,6 +2215,7 @@ class _$UpdateProfileImpl implements _UpdateProfile {
     TResult? Function(_CheckAuth value)? checkAuth,
     TResult? Function(_CreateEvent value)? createEvent,
     TResult? Function(_Login value)? login,
+    TResult? Function(_DeleteEvent value)? deleteEvent,
     TResult? Function(_Register value)? register,
     TResult? Function(_Logout value)? logout,
     TResult? Function(_UpdateProfile value)? updateProfile,
@@ -1786,6 +2231,7 @@ class _$UpdateProfileImpl implements _UpdateProfile {
     TResult Function(_CheckAuth value)? checkAuth,
     TResult Function(_CreateEvent value)? createEvent,
     TResult Function(_Login value)? login,
+    TResult Function(_DeleteEvent value)? deleteEvent,
     TResult Function(_Register value)? register,
     TResult Function(_Logout value)? logout,
     TResult Function(_UpdateProfile value)? updateProfile,
@@ -1801,10 +2247,18 @@ class _$UpdateProfileImpl implements _UpdateProfile {
 }
 
 abstract class _UpdateProfile implements AuthEvent {
-  const factory _UpdateProfile({required final User user}) =
-      _$UpdateProfileImpl;
+  const factory _UpdateProfile(
+      {final String? companyName,
+      final String? name,
+      final String? email,
+      final int? specializationId,
+      final int? countryId}) = _$UpdateProfileImpl;
 
-  User get user;
+  String? get companyName;
+  String? get name;
+  String? get email;
+  int? get specializationId;
+  int? get countryId;
 
   /// Create a copy of AuthEvent
   /// with the given fields replaced by the non-null parameter values.
@@ -1908,13 +2362,20 @@ class _$UpdatePasswordImpl implements _UpdatePassword {
     required TResult Function() checkAuth,
     required TResult Function(User user) createEvent,
     required TResult Function(User user) login,
-    required TResult Function(User user) register,
+    required TResult Function() deleteEvent,
+    required TResult Function(String companyName, String name, String email,
+            String password, String confirmPassword, int specId, int countryId)
+        register,
     required TResult Function() logout,
-    required TResult Function(User user) updateProfile,
+    required TResult Function(String? companyName, String? name, String? email,
+            int? specializationId, int? countryId)
+        updateProfile,
     required TResult Function(
             String oldPassword, String newPassword, String confirmPassword)
         updatePassword,
-    required TResult Function(User user) adminRegisterUser,
+    required TResult Function(String companyName, String name, String email,
+            String password, String confirmPassword, int specId, int countryId)
+        adminRegisterUser,
   }) {
     return updatePassword(oldPassword, newPassword, confirmPassword);
   }
@@ -1925,13 +2386,20 @@ class _$UpdatePasswordImpl implements _UpdatePassword {
     TResult? Function()? checkAuth,
     TResult? Function(User user)? createEvent,
     TResult? Function(User user)? login,
-    TResult? Function(User user)? register,
+    TResult? Function()? deleteEvent,
+    TResult? Function(String companyName, String name, String email,
+            String password, String confirmPassword, int specId, int countryId)?
+        register,
     TResult? Function()? logout,
-    TResult? Function(User user)? updateProfile,
+    TResult? Function(String? companyName, String? name, String? email,
+            int? specializationId, int? countryId)?
+        updateProfile,
     TResult? Function(
             String oldPassword, String newPassword, String confirmPassword)?
         updatePassword,
-    TResult? Function(User user)? adminRegisterUser,
+    TResult? Function(String companyName, String name, String email,
+            String password, String confirmPassword, int specId, int countryId)?
+        adminRegisterUser,
   }) {
     return updatePassword?.call(oldPassword, newPassword, confirmPassword);
   }
@@ -1942,13 +2410,20 @@ class _$UpdatePasswordImpl implements _UpdatePassword {
     TResult Function()? checkAuth,
     TResult Function(User user)? createEvent,
     TResult Function(User user)? login,
-    TResult Function(User user)? register,
+    TResult Function()? deleteEvent,
+    TResult Function(String companyName, String name, String email,
+            String password, String confirmPassword, int specId, int countryId)?
+        register,
     TResult Function()? logout,
-    TResult Function(User user)? updateProfile,
+    TResult Function(String? companyName, String? name, String? email,
+            int? specializationId, int? countryId)?
+        updateProfile,
     TResult Function(
             String oldPassword, String newPassword, String confirmPassword)?
         updatePassword,
-    TResult Function(User user)? adminRegisterUser,
+    TResult Function(String companyName, String name, String email,
+            String password, String confirmPassword, int specId, int countryId)?
+        adminRegisterUser,
     required TResult orElse(),
   }) {
     if (updatePassword != null) {
@@ -1963,6 +2438,7 @@ class _$UpdatePasswordImpl implements _UpdatePassword {
     required TResult Function(_CheckAuth value) checkAuth,
     required TResult Function(_CreateEvent value) createEvent,
     required TResult Function(_Login value) login,
+    required TResult Function(_DeleteEvent value) deleteEvent,
     required TResult Function(_Register value) register,
     required TResult Function(_Logout value) logout,
     required TResult Function(_UpdateProfile value) updateProfile,
@@ -1978,6 +2454,7 @@ class _$UpdatePasswordImpl implements _UpdatePassword {
     TResult? Function(_CheckAuth value)? checkAuth,
     TResult? Function(_CreateEvent value)? createEvent,
     TResult? Function(_Login value)? login,
+    TResult? Function(_DeleteEvent value)? deleteEvent,
     TResult? Function(_Register value)? register,
     TResult? Function(_Logout value)? logout,
     TResult? Function(_UpdateProfile value)? updateProfile,
@@ -1993,6 +2470,7 @@ class _$UpdatePasswordImpl implements _UpdatePassword {
     TResult Function(_CheckAuth value)? checkAuth,
     TResult Function(_CreateEvent value)? createEvent,
     TResult Function(_Login value)? login,
+    TResult Function(_DeleteEvent value)? deleteEvent,
     TResult Function(_Register value)? register,
     TResult Function(_Logout value)? logout,
     TResult Function(_UpdateProfile value)? updateProfile,
@@ -2030,9 +2508,14 @@ abstract class _$$AdminRegisterUserImplCopyWith<$Res> {
           $Res Function(_$AdminRegisterUserImpl) then) =
       __$$AdminRegisterUserImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({User user});
-
-  $UserCopyWith<$Res> get user;
+  $Res call(
+      {String companyName,
+      String name,
+      String email,
+      String password,
+      String confirmPassword,
+      int specId,
+      int countryId});
 }
 
 /// @nodoc
@@ -2048,38 +2531,77 @@ class __$$AdminRegisterUserImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? user = null,
+    Object? companyName = null,
+    Object? name = null,
+    Object? email = null,
+    Object? password = null,
+    Object? confirmPassword = null,
+    Object? specId = null,
+    Object? countryId = null,
   }) {
     return _then(_$AdminRegisterUserImpl(
-      user: null == user
-          ? _value.user
-          : user // ignore: cast_nullable_to_non_nullable
-              as User,
+      companyName: null == companyName
+          ? _value.companyName
+          : companyName // ignore: cast_nullable_to_non_nullable
+              as String,
+      name: null == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      email: null == email
+          ? _value.email
+          : email // ignore: cast_nullable_to_non_nullable
+              as String,
+      password: null == password
+          ? _value.password
+          : password // ignore: cast_nullable_to_non_nullable
+              as String,
+      confirmPassword: null == confirmPassword
+          ? _value.confirmPassword
+          : confirmPassword // ignore: cast_nullable_to_non_nullable
+              as String,
+      specId: null == specId
+          ? _value.specId
+          : specId // ignore: cast_nullable_to_non_nullable
+              as int,
+      countryId: null == countryId
+          ? _value.countryId
+          : countryId // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
-  }
-
-  /// Create a copy of AuthEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $UserCopyWith<$Res> get user {
-    return $UserCopyWith<$Res>(_value.user, (value) {
-      return _then(_value.copyWith(user: value));
-    });
   }
 }
 
 /// @nodoc
 
 class _$AdminRegisterUserImpl implements _AdminRegisterUser {
-  const _$AdminRegisterUserImpl({required this.user});
+  const _$AdminRegisterUserImpl(
+      {required this.companyName,
+      required this.name,
+      required this.email,
+      required this.password,
+      required this.confirmPassword,
+      required this.specId,
+      required this.countryId});
 
   @override
-  final User user;
+  final String companyName;
+  @override
+  final String name;
+  @override
+  final String email;
+  @override
+  final String password;
+  @override
+  final String confirmPassword;
+  @override
+  final int specId;
+  @override
+  final int countryId;
 
   @override
   String toString() {
-    return 'AuthEvent.adminRegisterUser(user: $user)';
+    return 'AuthEvent.adminRegisterUser(companyName: $companyName, name: $name, email: $email, password: $password, confirmPassword: $confirmPassword, specId: $specId, countryId: $countryId)';
   }
 
   @override
@@ -2087,11 +2609,22 @@ class _$AdminRegisterUserImpl implements _AdminRegisterUser {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$AdminRegisterUserImpl &&
-            (identical(other.user, user) || other.user == user));
+            (identical(other.companyName, companyName) ||
+                other.companyName == companyName) &&
+            (identical(other.name, name) || other.name == name) &&
+            (identical(other.email, email) || other.email == email) &&
+            (identical(other.password, password) ||
+                other.password == password) &&
+            (identical(other.confirmPassword, confirmPassword) ||
+                other.confirmPassword == confirmPassword) &&
+            (identical(other.specId, specId) || other.specId == specId) &&
+            (identical(other.countryId, countryId) ||
+                other.countryId == countryId));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, user);
+  int get hashCode => Object.hash(runtimeType, companyName, name, email,
+      password, confirmPassword, specId, countryId);
 
   /// Create a copy of AuthEvent
   /// with the given fields replaced by the non-null parameter values.
@@ -2108,15 +2641,23 @@ class _$AdminRegisterUserImpl implements _AdminRegisterUser {
     required TResult Function() checkAuth,
     required TResult Function(User user) createEvent,
     required TResult Function(User user) login,
-    required TResult Function(User user) register,
+    required TResult Function() deleteEvent,
+    required TResult Function(String companyName, String name, String email,
+            String password, String confirmPassword, int specId, int countryId)
+        register,
     required TResult Function() logout,
-    required TResult Function(User user) updateProfile,
+    required TResult Function(String? companyName, String? name, String? email,
+            int? specializationId, int? countryId)
+        updateProfile,
     required TResult Function(
             String oldPassword, String newPassword, String confirmPassword)
         updatePassword,
-    required TResult Function(User user) adminRegisterUser,
+    required TResult Function(String companyName, String name, String email,
+            String password, String confirmPassword, int specId, int countryId)
+        adminRegisterUser,
   }) {
-    return adminRegisterUser(user);
+    return adminRegisterUser(
+        companyName, name, email, password, confirmPassword, specId, countryId);
   }
 
   @override
@@ -2125,15 +2666,23 @@ class _$AdminRegisterUserImpl implements _AdminRegisterUser {
     TResult? Function()? checkAuth,
     TResult? Function(User user)? createEvent,
     TResult? Function(User user)? login,
-    TResult? Function(User user)? register,
+    TResult? Function()? deleteEvent,
+    TResult? Function(String companyName, String name, String email,
+            String password, String confirmPassword, int specId, int countryId)?
+        register,
     TResult? Function()? logout,
-    TResult? Function(User user)? updateProfile,
+    TResult? Function(String? companyName, String? name, String? email,
+            int? specializationId, int? countryId)?
+        updateProfile,
     TResult? Function(
             String oldPassword, String newPassword, String confirmPassword)?
         updatePassword,
-    TResult? Function(User user)? adminRegisterUser,
+    TResult? Function(String companyName, String name, String email,
+            String password, String confirmPassword, int specId, int countryId)?
+        adminRegisterUser,
   }) {
-    return adminRegisterUser?.call(user);
+    return adminRegisterUser?.call(
+        companyName, name, email, password, confirmPassword, specId, countryId);
   }
 
   @override
@@ -2142,17 +2691,25 @@ class _$AdminRegisterUserImpl implements _AdminRegisterUser {
     TResult Function()? checkAuth,
     TResult Function(User user)? createEvent,
     TResult Function(User user)? login,
-    TResult Function(User user)? register,
+    TResult Function()? deleteEvent,
+    TResult Function(String companyName, String name, String email,
+            String password, String confirmPassword, int specId, int countryId)?
+        register,
     TResult Function()? logout,
-    TResult Function(User user)? updateProfile,
+    TResult Function(String? companyName, String? name, String? email,
+            int? specializationId, int? countryId)?
+        updateProfile,
     TResult Function(
             String oldPassword, String newPassword, String confirmPassword)?
         updatePassword,
-    TResult Function(User user)? adminRegisterUser,
+    TResult Function(String companyName, String name, String email,
+            String password, String confirmPassword, int specId, int countryId)?
+        adminRegisterUser,
     required TResult orElse(),
   }) {
     if (adminRegisterUser != null) {
-      return adminRegisterUser(user);
+      return adminRegisterUser(companyName, name, email, password,
+          confirmPassword, specId, countryId);
     }
     return orElse();
   }
@@ -2163,6 +2720,7 @@ class _$AdminRegisterUserImpl implements _AdminRegisterUser {
     required TResult Function(_CheckAuth value) checkAuth,
     required TResult Function(_CreateEvent value) createEvent,
     required TResult Function(_Login value) login,
+    required TResult Function(_DeleteEvent value) deleteEvent,
     required TResult Function(_Register value) register,
     required TResult Function(_Logout value) logout,
     required TResult Function(_UpdateProfile value) updateProfile,
@@ -2178,6 +2736,7 @@ class _$AdminRegisterUserImpl implements _AdminRegisterUser {
     TResult? Function(_CheckAuth value)? checkAuth,
     TResult? Function(_CreateEvent value)? createEvent,
     TResult? Function(_Login value)? login,
+    TResult? Function(_DeleteEvent value)? deleteEvent,
     TResult? Function(_Register value)? register,
     TResult? Function(_Logout value)? logout,
     TResult? Function(_UpdateProfile value)? updateProfile,
@@ -2193,6 +2752,7 @@ class _$AdminRegisterUserImpl implements _AdminRegisterUser {
     TResult Function(_CheckAuth value)? checkAuth,
     TResult Function(_CreateEvent value)? createEvent,
     TResult Function(_Login value)? login,
+    TResult Function(_DeleteEvent value)? deleteEvent,
     TResult Function(_Register value)? register,
     TResult Function(_Logout value)? logout,
     TResult Function(_UpdateProfile value)? updateProfile,
@@ -2208,10 +2768,22 @@ class _$AdminRegisterUserImpl implements _AdminRegisterUser {
 }
 
 abstract class _AdminRegisterUser implements AuthEvent {
-  const factory _AdminRegisterUser({required final User user}) =
-      _$AdminRegisterUserImpl;
+  const factory _AdminRegisterUser(
+      {required final String companyName,
+      required final String name,
+      required final String email,
+      required final String password,
+      required final String confirmPassword,
+      required final int specId,
+      required final int countryId}) = _$AdminRegisterUserImpl;
 
-  User get user;
+  String get companyName;
+  String get name;
+  String get email;
+  String get password;
+  String get confirmPassword;
+  int get specId;
+  int get countryId;
 
   /// Create a copy of AuthEvent
   /// with the given fields replaced by the non-null parameter values.

@@ -80,6 +80,78 @@ class Lang {
     );
   }
 
+  /// `Log Out`
+  String get logOut {
+    return Intl.message(
+      'Log Out',
+      name: 'logOut',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Cancel`
+  String get cancel {
+    return Intl.message(
+      'Cancel',
+      name: 'cancel',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Confirm`
+  String get confirm {
+    return Intl.message(
+      'Confirm',
+      name: 'confirm',
+      desc: '',
+      args: [],
+    );
+  }
+
+  // skipped getter for the 'succefullyOrdered!' key
+
+  /// `Are you sure to delete the account?`
+  String get areUSureDeleteAccount {
+    return Intl.message(
+      'Are you sure to delete the account?',
+      name: 'areUSureDeleteAccount',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Delete Account`
+  String get deleteAccount {
+    return Intl.message(
+      'Delete Account',
+      name: 'deleteAccount',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Confirm logout`
+  String get confirmLogOut {
+    return Intl.message(
+      'Confirm logout',
+      name: 'confirmLogOut',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Are you sure to log out?`
+  String get AreUSureLogOut {
+    return Intl.message(
+      'Are you sure to log out?',
+      name: 'AreUSureLogOut',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Please enter your data to continue`
   String get plsEnterDataToContiubue {
     return Intl.message(

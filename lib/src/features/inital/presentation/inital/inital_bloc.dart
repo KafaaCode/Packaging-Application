@@ -11,6 +11,7 @@ class InitalBloc extends Bloc<InitalEvent, InitalState> {
   final BaseInitalRepository initalRepository;
   InitalBloc({required this.initalRepository})
       : super(const InitalState.initial()) {
+    print('✅ InitalBloc CONSTRUCTOR IS RUNNING');
     on<_GetInitalData>(_getInitalData);
   }
   Future<void> _getInitalData(

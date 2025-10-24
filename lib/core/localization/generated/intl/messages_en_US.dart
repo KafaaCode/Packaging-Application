@@ -23,6 +23,8 @@ class MessageLookup extends MessageLookupByLibrary {
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "Addingorder": MessageLookupByLibrary.simpleMessage("Adding order..."),
+        "AreUSureLogOut":
+            MessageLookupByLibrary.simpleMessage("Are you sure to log out?"),
         "Ordersentsuccessfully":
             MessageLookupByLibrary.simpleMessage("Order sent successfully"),
         "Quantityis": MessageLookupByLibrary.simpleMessage("Quantity"),
@@ -36,8 +38,11 @@ class MessageLookup extends MessageLookupByLibrary {
         "alreadyHaveAnAccount":
             MessageLookupByLibrary.simpleMessage("Already have an account?"),
         "and": MessageLookupByLibrary.simpleMessage(" and "),
+        "areUSureDeleteAccount": MessageLookupByLibrary.simpleMessage(
+            "Are you sure to delete the account?"),
         "byCheckingTheBoxYouAgreeToOur": MessageLookupByLibrary.simpleMessage(
             "By checking the box you agree to our "),
+        "cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
         "cartDetailsTitle":
             MessageLookupByLibrary.simpleMessage("Cart Details"),
         "cateogriesNotFoundMessage":
@@ -48,6 +53,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "close": MessageLookupByLibrary.simpleMessage("Close"),
         "companyNameHint": MessageLookupByLibrary.simpleMessage("Company Name"),
         "conditions": MessageLookupByLibrary.simpleMessage("Conditions"),
+        "confirm": MessageLookupByLibrary.simpleMessage("Confirm"),
+        "confirmLogOut": MessageLookupByLibrary.simpleMessage("Confirm logout"),
         "confirmPassword":
             MessageLookupByLibrary.simpleMessage("Confirm password"),
         "confirmPasswordLabel":
@@ -58,6 +65,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Current password"),
         "currentPasswordLabel":
             MessageLookupByLibrary.simpleMessage("Current password..."),
+        "deleteAccount": MessageLookupByLibrary.simpleMessage("Delete Account"),
         "descriptionLabel": MessageLookupByLibrary.simpleMessage("Description"),
         "eamilHint": MessageLookupByLibrary.simpleMessage("Valid email"),
         "editProfile": MessageLookupByLibrary.simpleMessage("Edit profile"),
@@ -73,6 +81,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "fullNameHint": MessageLookupByLibrary.simpleMessage("Full name"),
         "letsGetStarted":
             MessageLookupByLibrary.simpleMessage("Let’s Get Started"),
+        "logOut": MessageLookupByLibrary.simpleMessage("Log Out"),
         "login": MessageLookupByLibrary.simpleMessage("Login"),
         "minimumOrderText":
             MessageLookupByLibrary.simpleMessage("The minimum order for this"),

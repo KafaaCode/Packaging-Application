@@ -22,7 +22,7 @@ import 'package:get_it/get_it.dart';
 final sl = GetIt.instance;
 
 class ServicesLocator {
-  void init() {
+  Future<void> init() async {
     _initalSL();
     _authSl();
     _mainSl();

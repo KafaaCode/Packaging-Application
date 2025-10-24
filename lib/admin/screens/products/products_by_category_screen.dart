@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:frip_trading/admin/screens/products/add_product_screen.dart';
+import 'package:frip_trading/admin/screens/products/edit_product_scren.dart';
 import 'product_controller.dart';
 import 'product_model.dart';
 
@@ -52,9 +53,10 @@ class _ProductsByCategoryScreenState extends State<ProductsByCategoryScreen> {
   }
 
   void _deleteProduct(int productId) async {
+    await _controller.deleteProduct(produtId: productId);
     // هنا تضيف منطق الحذف الحقيقي إذا رغبت
     ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(content: Text('🚮 تم حذف المنتج رقم $productId (وهميًا)')),
+      SnackBar(content: Text('🚮 تم حذف المنتج رقم $productId ')),
     );
 
     // إعادة تحميل المنتجات بعد الحذف
@@ -105,8 +107,7 @@ class _ProductsByCategoryScreenState extends State<ProductsByCategoryScreen> {
             } else {
               return Center(child: Text('حدث خطأ: $errorMessage'));
             }
-          }
-          else if (!snapshot.hasData || snapshot.data!.isEmpty) {
+          } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
             return const Center(child: Text('لا توجد منتجات في هذه الفئة'));
           }
 
@@ -130,35 +131,37 @@ class _ProductsByCategoryScreenState extends State<ProductsByCategoryScreen> {
                     borderRadius: BorderRadius.circular(8),
                     child: product.image.isNotEmpty
                         ? Image.network(
-                      product.image,
-                      width: 50,
-                      height: 50,
-                      fit: BoxFit.cover,
-                      errorBuilder: (context, error, stackTrace) {
-                        return Image.asset(
-                          'assets/images/logo.png',
-                          width: 50,
-                          height: 50,
-                          fit: BoxFit.cover,
-                        );
-                      },
-                    )
+                            product.image,
+                            width: 50,
+                            height: 50,
+                            fit: BoxFit.cover,
+                            errorBuilder: (context, error, stackTrace) {
+                              return Image.asset(
+                                'assets/images/logo.png',
+                                width: 50,
+                                height: 50,
+                                fit: BoxFit.cover,
+                              );
+                            },
+                          )
                         : Image.asset(
-                      'assets/images/logo.png',
-                      width: 50,
-                      height: 50,
-                      fit: BoxFit.cover,
-                    ),
+                            'assets/images/logo.png',
+                            width: 50,
+                            height: 50,
+                            fit: BoxFit.cover,
+                          ),
                   ),
                   title: Text(product.name),
-                  subtitle:
-                      Text('السعر: ${product.price.toStringAsFixed(2)} '),
+                  subtitle: Text('السعر: ${product.price.toStringAsFixed(2)} '),
                   trailing: PopupMenuButton<String>(
                     onSelected: (value) {
                       if (value == 'edit') {
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          const SnackBar(content: Text('فتح صفحة تعديل المنتج')),
-                        );
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) =>
+                                  EditProductScren(product: product),
+                            ));
                         // هنا يمكن إضافة التنقل إلى صفحة تعديل المنتج لاحقًا
                       } else if (value == 'delete') {
                         _confirmDelete(product.id);

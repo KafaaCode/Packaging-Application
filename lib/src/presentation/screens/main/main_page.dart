@@ -22,7 +22,7 @@ class MainPage extends StatelessWidget {
       const FilterPage(), // Home
       MyOrdersPage(), // Order
       const CartDetailsPage(), // Cart
-      SupportsPage(),
+      const SupportsPage(),
 
       ///support
       const Profile(), // Profile

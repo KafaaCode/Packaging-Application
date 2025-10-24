@@ -1,9 +1,16 @@
-
 {
   "@@locale": "ar_SY",
   "search": "بحث...",
   "letsGetStarted": "لنبدأ",
   "omar": "عمر",
+  "cancel": "الغاء",
+  "confirm": "تأكيد",
+  "logOut": "تسجيل الخروج",
+  "succefullyOrdered!": "تم الطلب بنجاح!",
+  "areUSureDeleteAccount": "هل أنت متأكد من حذف الحساب",
+  "confirmLogOut": "تأكيد تسجيل الخروج",
+  "areUSureLogOut": "هل أنت متأكد من تسجيل الخروج ؟",
+  "deleteAccount": "حذف الحساب",
   "plsEnterDataToContiubue": "يرجى إدخال بياناتك للمتابعة",
   "enterYourEamilLabel": "أدخل بريدك الإلكتروني",
   "enterYourEamilHint": "أدخل بريدك الإلكتروني",
@@ -69,9 +76,8 @@
   "orderDetailsTitle": "تفاصيل الطلب",
   "continueToConfirmOrderButton": "المتابعة لتأكيد الطلب",
   "payButton": "الدفع",
-    "TotalPrice":"السعر الأجمالي",
-  "Quantityis":"الكمية",
+  "TotalPrice": "السعر الأجمالي",
+  "Quantityis": "الكمية",
   "Addingorder": "جاري إضافة الطلب...",
-"Ordersentsuccessfully": "تم إرسال الطلب بنجاح"
-  
+  "Ordersentsuccessfully": "تم إرسال الطلب بنجاح"
 }

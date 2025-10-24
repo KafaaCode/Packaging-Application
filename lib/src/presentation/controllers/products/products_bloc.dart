@@ -17,19 +17,28 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
     on<_Search>(_searchEvent);
   }
   void _getProductsEvent(event, emit) async {
-    emit(state.copyWith(loading: true));
+    emit(state.copyWith(loading: true, error: false, isEmpty: false));
 
     final result =
         await mainRepository.getProducts(categoryId: event.categoryId);
 
     result.fold(
-      (l) => emit(state.copyWith(
-          loading: false,
-          error: true,
-          errorMessage: l.message,
-          products: state.products)),
-      (r) => emit(state.copyWith(loading: false, isDone: true, products: r)),
-    );
+        (l) => emit(state.copyWith(
+            loading: false,
+            error: true,
+            errorMessage: l.message,
+            products: state.products)), (r) {
+      if (r.isEmpty) {
+        emit(state.copyWith(
+            error: true,
+            loading: false,
+            errorMessage: 'No Products Found',
+            isEmpty: true,
+            products: []));
+      } else {
+        emit(state.copyWith(loading: false, isDone: true, products: r));
+      }
+    });
   }
 
   void _searchEvent(event, emit) {

@@ -54,7 +54,8 @@ class _MyOrdersPageState extends State<MyOrdersPage> {
   ];
   @override
   void initState() {
-    context.read<MyOrdersBloc>().add(MyOrdersEvent.getMyOrders());
+    // context.read<MyOrdersBloc>().add(MyOrdersEvent.getMyOrders());
+    BlocProvider.of<MyOrdersBloc>(context).add(MyOrdersEvent.getMyOrders());
     super.initState();
   }
 

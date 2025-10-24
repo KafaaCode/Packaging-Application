@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:flutter/foundation.dart';
 import 'package:frip_trading/core/error/exceptions.dart';
 import 'package:frip_trading/core/network/api_call_handler.dart';
 import 'package:frip_trading/core/network/api_constances.dart';
@@ -6,9 +7,21 @@ import 'package:frip_trading/src/data/models/models.dart';
 import '../../../../core/services/services_locator.dart';
 
 abstract class BaseAuthRemoteDataSource {
-  Future<Auth> register({required User user});
+  Future<Auth> register(
+      {required String companyName,
+      required String name,
+      required String email,
+      required String password,
+      required String confirmPassword,
+      required int specId,
+      required int countryId});
   Future<UpdateData> update({required User user});
-  Future<UpdateData> updateProfile({required String path});
+  Future<UpdateData> updateProfile(
+      {String? companyName,
+      String? name,
+      String? email,
+      int? specializationId,
+      int? countryId});
   Future<Auth> login({required String email, required String password});
   Future<String> updatePassword({
     required String oldPassword,
@@ -17,6 +30,7 @@ abstract class BaseAuthRemoteDataSource {
   });
   Future<RefreshToken> refreshToken();
   Future<bool> logout();
+  Future<bool> deleteAccount();
 }
 
 class AuthRemoteDataSource extends BaseAuthRemoteDataSource {
@@ -134,16 +148,23 @@ class AuthRemoteDataSource extends BaseAuthRemoteDataSource {
   }
 
   @override
-  Future<Auth> register({required User user}) async {
+  Future<Auth> register(
+      {required String companyName,
+      required String name,
+      required String email,
+      required String password,
+      required String confirmPassword,
+      required int specId,
+      required int countryId}) async {
     try {
       final requestBody = {
-        'name': user.name,
-        'email': user.email,
-        'password': user.password,
-        'password_confirmation': user.password,
-        'companyName': user.company,
-        'specialization_id': user.specializationId,
-        'country_id': user.countryId,
+        'name': name,
+        'email': email,
+        'password': password,
+        'password_confirmation': confirmPassword,
+        'companyName': companyName,
+        'specialization_id': specId,
+        'country_id': countryId,
       };
 
       final response = await Dio().post(
@@ -154,6 +175,8 @@ class AuthRemoteDataSource extends BaseAuthRemoteDataSource {
         ),
         data: requestBody,
       );
+      print('---REQUEST BODY ---');
+      print(requestBody);
       print(response.data);
       print(response.statusCode);
       if (response.statusCode == 422) {
@@ -228,15 +251,24 @@ class AuthRemoteDataSource extends BaseAuthRemoteDataSource {
   }
 
   @override
-  Future<UpdateData> updateProfile({required String path}) async {
+  Future<UpdateData> updateProfile(
+      {String? companyName,
+      String? name,
+      String? email,
+      int? specializationId,
+      int? countryId}) async {
     try {
-      final requestBody = FormData.fromMap({
-        'image': await MultipartFile.fromFile(path),
-      });
-
+      final requestBody = {
+        'name': name,
+        'email': email,
+        'companyName': companyName,
+        'specialization_id': specializationId,
+        'country_id': countryId,
+      };
+      print(requestBody);
       return sl.get<ApiCallHandler>().handler(
-            apiCall: () async => await Dio().post(
-              '',
+            apiCall: () async => await Dio().put(
+              ApiConstances.updateUrl,
               options: Options(
                 headers: ApiConstances.headers(
                     isToken: true, token: ApiConstances.getToken()),
@@ -296,6 +328,32 @@ class AuthRemoteDataSource extends BaseAuthRemoteDataSource {
       throw AuthException(
         statusCode: 500,
         authMessage: 'Unexpected error: $e',
+      );
+    }
+  }
+
+  @override
+  Future<bool> deleteAccount() async {
+    try {
+      return sl<ApiCallHandler>().handler(
+        apiCall: () async => await Dio().delete(
+          ApiConstances.deleteAccount,
+          options: Options(
+              headers: ApiConstances.headers(
+                  isToken: true, token: ApiConstances.getToken())),
+        ),
+        responseHandler: (response) {
+          return true;
+        },
+      );
+    } on DioException catch (e) {
+      throw AuthException(
+          authMessage: e.response?.data['message'],
+          statusCode: e.response?.statusCode);
+    } catch (e) {
+      throw AuthException(
+        statusCode: 500,
+        authMessage: 'Unexpected Error: $e',
       );
     }
   }

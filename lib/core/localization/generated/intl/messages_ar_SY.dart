@@ -38,8 +38,11 @@ class MessageLookup extends MessageLookupByLibrary {
         "alreadyHaveAnAccount":
             MessageLookupByLibrary.simpleMessage("هل لديك حساب بالفعل؟"),
         "and": MessageLookupByLibrary.simpleMessage(" و "),
+        "areUSureDeleteAccount":
+            MessageLookupByLibrary.simpleMessage("هل أنت متأكد من حذف الحساب"),
         "byCheckingTheBoxYouAgreeToOur":
             MessageLookupByLibrary.simpleMessage("بتحديد المربع أنت توافق على"),
+        "cancel": MessageLookupByLibrary.simpleMessage("الغاء"),
         "cartDetailsTitle":
             MessageLookupByLibrary.simpleMessage("تفاصيل السلة"),
         "cateogriesNotFoundMessage":
@@ -50,6 +53,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "close": MessageLookupByLibrary.simpleMessage("إغلاق"),
         "companyNameHint": MessageLookupByLibrary.simpleMessage("اسم الشركة"),
         "conditions": MessageLookupByLibrary.simpleMessage("الأحكام"),
+        "confirm": MessageLookupByLibrary.simpleMessage("تأكيد"),
+        "confirmLogOut":
+            MessageLookupByLibrary.simpleMessage("تأكيد تسجيل الخروج"),
         "confirmPassword":
             MessageLookupByLibrary.simpleMessage("تأكيد كلمة المرور"),
         "confirmPasswordLabel":
@@ -60,6 +66,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("كلمة المرور الحالية"),
         "currentPasswordLabel":
             MessageLookupByLibrary.simpleMessage("كلمة المرور الحالية..."),
+        "deleteAccount": MessageLookupByLibrary.simpleMessage("حذف الحساب"),
         "descriptionLabel": MessageLookupByLibrary.simpleMessage("الوصف"),
         "eamilHint": MessageLookupByLibrary.simpleMessage("بريد إلكتروني صالح"),
         "editProfile":
@@ -75,6 +82,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("هل نسيت كلمة المرور؟"),
         "fullNameHint": MessageLookupByLibrary.simpleMessage("الاسم الكامل"),
         "letsGetStarted": MessageLookupByLibrary.simpleMessage("لنبدأ"),
+        "logOut": MessageLookupByLibrary.simpleMessage("تسجيل الخروج"),
         "login": MessageLookupByLibrary.simpleMessage("تسجيل الدخول"),
         "minimumOrderText":
             MessageLookupByLibrary.simpleMessage("الحد الأدنى للطلب لهذا"),

@@ -182,19 +182,18 @@ class Profile extends StatelessWidget {
                         final confirm = await showDialog<bool>(
                           context: context,
                           builder: (context) => AlertDialog(
-                            title: const Text('تأكيد تسجيل الخروج'),
-                            content: const Text(
-                                'هل أنت متأكد أنك تريد تسجيل الخروج؟'),
+                            title: Text(lang.confirm),
+                            content: Text(lang.areUSureDeleteAccount),
                             actions: [
                               TextButton(
                                 onPressed: () =>
                                     Navigator.of(context).pop(false),
-                                child: const Text('إلغاء'),
+                                child: Text(lang.cancel),
                               ),
                               TextButton(
                                 onPressed: () =>
                                     Navigator.of(context).pop(true),
-                                child: const Text('تأكيد'),
+                                child: Text(lang.confirm),
                               ),
                             ],
                           ),
@@ -202,16 +201,17 @@ class Profile extends StatelessWidget {
 
                         if (confirm == true) {
                           try {
-                            final success = await authRemoteDataSource.logout();
-                            if (success) {
-                              Navigator.of(context)
-                                  .pushReplacementNamed('/login');
-                            } else {
-                              ScaffoldMessenger.of(context).showSnackBar(
-                                const SnackBar(
-                                    content: Text('فشل في تسجيل الخروج')),
-                              );
-                            }
+                            final success = BlocProvider.of<AuthBloc>(context)
+                                .add(const AuthEvent.deleteEvent());
+                            // if (success) {
+                            //   Navigator.of(context)
+                            //       .pushReplacementNamed('/login');
+                            // } else {
+                            //   ScaffoldMessenger.of(context).showSnackBar(
+                            //     const SnackBar(
+                            //         content: Text('فشل في تسجيل الخروج')),
+                            //   );
+                            // }
                           } catch (e) {
                             ScaffoldMessenger.of(context).showSnackBar(
                               SnackBar(content: Text('خطأ: $e')),
@@ -219,8 +219,70 @@ class Profile extends StatelessWidget {
                           }
                         }
                       },
-                      child: const Text(
-                        'تسجيل الخروج',
+                      child: Text(
+                        lang.deleteAccount,
+                        style: TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white,
+                        ),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(height: 20),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 24),
+                    child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: const Color(0xFF70B9BE),
+                        minimumSize: const Size.fromHeight(50),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                      ),
+                      onPressed: () async {
+                        final confirm = await showDialog<bool>(
+                          context: context,
+                          builder: (context) => AlertDialog(
+                            title: Text(lang.confirmLogOut),
+                            content: Text(lang.AreUSureLogOut),
+                            actions: [
+                              TextButton(
+                                onPressed: () =>
+                                    Navigator.of(context).pop(false),
+                                child: Text(lang.cancel),
+                              ),
+                              TextButton(
+                                onPressed: () =>
+                                    Navigator.of(context).pop(true),
+                                child: Text(lang.confirm),
+                              ),
+                            ],
+                          ),
+                        );
+
+                        if (confirm == true) {
+                          try {
+                            final success = BlocProvider.of<AuthBloc>(context)
+                                .add(AuthEvent.logout());
+                            // if (success) {
+                            //   Navigator.of(context)
+                            //       .pushReplacementNamed('/login');
+                            // } else {
+                            //   ScaffoldMessenger.of(context).showSnackBar(
+                            //     const SnackBar(
+                            //         content: Text('فشل في تسجيل الخروج')),
+                            //   );
+                            // }
+                          } catch (e) {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(content: Text('خطأ: $e')),
+                            );
+                          }
+                        }
+                      },
+                      child: Text(
+                        lang.logOut,
                         style: TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.bold,

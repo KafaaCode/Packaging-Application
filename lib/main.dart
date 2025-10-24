@@ -23,6 +23,7 @@ import 'package:frip_trading/src/presentation/controllers/cart/cart_bloc.dart';
 import 'package:frip_trading/src/presentation/controllers/category/category_bloc.dart';
 import 'package:frip_trading/src/presentation/controllers/main_bage/main_page_bloc.dart';
 import 'package:frip_trading/src/presentation/controllers/myorder/myorder_bloc.dart';
+import 'package:frip_trading/src/presentation/controllers/products/products_bloc.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -31,7 +32,9 @@ void main() async {
     Hive.registerAdapter(ProductHiveModelAdapter());
 
     await Hive.openBox<ProductHiveModel>('cartBox'); 
+  await Hive.openBox<ProductHiveModel>('cartBox');
   */
+
   HydratedBloc.storage = await HydratedStorage.build(
     storageDirectory: kIsWeb
         ? HydratedStorageDirectory.web
@@ -56,12 +59,17 @@ class MainApp extends StatelessWidget {
         return MultiBlocProvider(
           providers: [
             BlocProvider(
+                // lazy: false,
+                create: (context) =>
+                    sl<InitalBloc>()..add(const InitalEvent.getInitalData())),
+            BlocProvider(
                 create: (_) =>
                     sl<MyOrdersBloc>()..add(const MyOrdersEvent.getMyOrders())),
             BlocProvider(
               create: (_) => sl<MainPageBloc>(),
               // lazy: false,
             ),
+            BlocProvider(create: (_) => sl<ProductBloc>()),
             BlocProvider(
                 create: (_) => sl<CategoriesBloc>()
                   ..add(const CategoriesEvent.getCategories())),
@@ -73,10 +81,6 @@ class MainApp extends StatelessWidget {
               create: (context) => LanguageCubit(),
               lazy: false,
             ),
-            BlocProvider(
-                // lazy: false,
-                create: (context) =>
-                    sl<InitalBloc>()..add(const InitalEvent.getInitalData())),
             BlocProvider(create: (context) => ThemesCubit()),
             BlocProvider(
                 create: (context) =>

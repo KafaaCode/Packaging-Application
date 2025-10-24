@@ -43,9 +43,23 @@ class AuthRepository extends BaseAuthRepository {
   }
 
   @override
-  ResultFuture<Auth> register({required User user}) async {
+  ResultFuture<Auth> register(
+      {required String companyName,
+      required String name,
+      required String email,
+      required String password,
+      required String confirmPassword,
+      required int specId,
+      required int countryId}) async {
     try {
-      final response = await baseAuthRemoteDataSource.register(user: user);
+      final response = await baseAuthRemoteDataSource.register(
+          confirmPassword: confirmPassword,
+          email: email,
+          name: name,
+          password: password,
+          companyName: companyName,
+          countryId: countryId,
+          specId: specId);
       return Right(response);
     } on AuthException catch (failure) {
       return Left(Failure(
@@ -67,9 +81,19 @@ class AuthRepository extends BaseAuthRepository {
   }
 
   @override
-  ResultFuture<UpdateData> updateProfile({required String path}) async {
+  ResultFuture<UpdateData> updateProfile(
+      {String? companyName,
+      String? name,
+      String? email,
+      int? specializationId,
+      int? countryId}) async {
     try {
-      final response = await baseAuthRemoteDataSource.updateProfile(path: path);
+      final response = await baseAuthRemoteDataSource.updateProfile(
+          companyName: companyName,
+          name: name,
+          email: email,
+          specializationId: specializationId,
+          countryId: countryId);
       return Right(response);
     } on AuthException catch (failure) {
       return Left(Failure(
@@ -77,10 +101,12 @@ class AuthRepository extends BaseAuthRepository {
           message: failure.authMessage ?? 'error'));
     }
   }
-  
+
   @override
-  ResultFuture<String> updatePassword({required String oldPassword, required String newPassword, required String confirmPassword}) async {
-    
+  ResultFuture<String> updatePassword(
+      {required String oldPassword,
+      required String newPassword,
+      required String confirmPassword}) async {
     try {
       final response = await baseAuthRemoteDataSource.updatePassword(
         oldPassword: oldPassword,
@@ -94,4 +120,18 @@ class AuthRepository extends BaseAuthRepository {
           message: failure.authMessage ?? 'error'));
     }
   }
+
+  @override
+  ResultFuture<bool> deleteAccount() async {
+    try {
+      final response = await baseAuthRemoteDataSource.deleteAccount();
+      return right(response);
+    } on AuthException catch (failure) {
+      return left(Failure(
+          message: failure.authMessage ?? "error",
+          statusCode: failure.statusCode ?? 404));
+    }
+  }
+
+  //update user
 }

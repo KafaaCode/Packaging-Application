@@ -6,6 +6,14 @@
     "enterYourEamilLabel": "E-posta adresinizi girin",
     "enterYourEamilHint": "E-posta adresinizi girin",
     "passwordLabel": "Şifre",
+    "succefullyOrdered!": "Başarıyla Sipariş Edildi!",
+    "confirmLogOut": "Oturumu kapatmayı onaylayın",
+    "logOut": "Oturumu kapat",
+    "cancel": "annuleren",
+    "confirm": "onaylamak",
+    "areUSureDeleteAccount": "Hesabı sildiğinizden emin misiniz?",
+    "AreUSureLogOut": "Çıkış yaptığınızdan emin misiniz?",
+    "deleteAccount": "Hesabı sil",
     "passwordHint": "Şifre",
     "forgetPassword": "Şifrenizi mi unuttunuz?",
     "login": "Giriş Yap",
@@ -67,8 +75,5 @@
     "continueToConfirmOrderButton": "Siparişi onaylamaya devam et",
     "payButton": "Öde",
     "Addingorder": "Sipariş ekleniyor...",
-     "Ordersentsuccessfully": "Sipariş başarıyla gönderildi"
+    "Ordersentsuccessfully": "Sipariş başarıyla gönderildi"
 }
-
-
-

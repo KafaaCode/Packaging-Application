@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:frip_trading/admin/screens/OrderDetails/OrderDetailsPage.dart';
 import 'package:frip_trading/admin/screens/OrderModel.dart';
 import 'package:frip_trading/admin/screens/SpecializationsCountries/specializations_countries_screen.dart';
 import 'package:frip_trading/admin/screens/categories/categories_page.dart';
+import 'package:frip_trading/src/presentation/controllers/category/category_bloc.dart';
 
 import '../services/order_service.dart';
 
@@ -264,15 +266,20 @@ class _HomePageState extends State<HomePage> {
                   child: ListView(
                     scrollDirection: Axis.horizontal,
                     children: [
-                      _dynamicCard(
-                        title: 'Categories',
-                        subtitle: '3 Category',
-                        color: const Color(0xFF70b9be),
-                        onTap: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (_) => const CategoryScreen()),
+                      BlocBuilder<CategoriesBloc, CategoriesState>(
+                        builder: (context, state) {
+                          return _dynamicCard(
+                            title: 'Categories',
+                            subtitle: state.categories.length.toString() +
+                                " Categories",
+                            color: const Color(0xFF70b9be),
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (_) => const CategoryScreen()),
+                              );
+                            },
                           );
                         },
                       ),
@@ -322,11 +329,11 @@ class _HomePageState extends State<HomePage> {
                     if (index < _orders.length) {
                       final order = _orders[index];
                       return _orderCard(
-                        orderId: order.serialNumber,
-                        createdAt: order.createdAt,
-                        status: order.status,
+                        orderId: order.serialNumber!,
+                        createdAt: order.createdAt!,
+                        status: order.status!,
                         id: order.id,
-                        user_name: order.user_name,
+                        user_name: order.user_name!,
                       );
                     } else {
                       return const Center(child: CircularProgressIndicator());

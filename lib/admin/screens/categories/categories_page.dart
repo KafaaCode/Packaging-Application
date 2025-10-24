@@ -1,5 +1,7 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:frip_trading/admin/screens/categories/add_category_screen.dart';
+import 'package:frip_trading/admin/screens/categories/edit_category_screen.dart';
 import 'package:frip_trading/admin/screens/products/products_by_category_screen.dart';
 import 'category_controller.dart';
 import 'category_model.dart';
@@ -21,7 +23,28 @@ class _CategoryScreenState extends State<CategoryScreen> {
     _futureCategories = _controller.fetchCategories();
   }
 
-  void _onMenuSelected(String choice, CategoryModel category) {
+  void _navigateToEditScreen(CategoryModel category) async {
+    // 🛑 1. نستخدم 'await' على Navigator.push() للحصول على النتيجة
+    final result = await Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => EditCategoryScreen(category: category),
+      ),
+    );
+
+    // 🛑 2. التحقق من النتيجة المُعادة
+    // (result == true) تعني أن عملية التعديل نجحت وتم إرسال 'true' من شاشة التعديل
+    if (result == true) {
+      // 3. إعادة جلب البيانات لتحديث القائمة
+      // 💡 يجب استدعاء الدالة المسؤولة عن جلب الفئات هنا مرة أخرى
+      _controller.fetchCategories();
+      if (mounted) {
+        setState(() {});
+      } // استخدم اسم دالة جلب البيانات الخاصة بك
+    }
+  }
+
+  void _onMenuSelected(String choice, CategoryModel category) async {
     switch (choice) {
       case 'view':
         Navigator.push(
@@ -36,15 +59,17 @@ class _CategoryScreenState extends State<CategoryScreen> {
         // );
         break;
       case 'edit':
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('تعديل الفئة: ${category.name}')),
-        );
+        _navigateToEditScreen(category);
         break;
       case 'delete':
-        _controller.deleteCategory(category.id);
+        await _controller.deleteCategory(category.id);
+
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(content: Text('حذف الفئة: ${category.name}')),
         );
+        setState(() {
+          _futureCategories = _controller.fetchCategories();
+        });
         break;
     }
   }

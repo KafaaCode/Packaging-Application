@@ -1,9 +1,9 @@
 class OrderModel {
-  final String serialNumber;
-  final String createdAt;
-  final String status;
+  final String? serialNumber;
+  final String? createdAt;
+  final String? status;
   final int id;
-  final String user_name;
+  final String? user_name;
 
   OrderModel({
     required this.serialNumber,
@@ -15,10 +15,10 @@ class OrderModel {
 
   factory OrderModel.fromJson(Map<String, dynamic> json) {
     return OrderModel(
-      serialNumber: json['serial_number'],
-      createdAt: json['created_at'],
-      user_name: json['user_name'],
-      status: json['status'],
+      serialNumber: json['serial_number'] ?? '',
+      createdAt: json['created_at'] ?? '',
+      user_name: json['user_name'] ?? '',
+      status: json['status'] ?? '',
       id: json['id'],
     );
   }

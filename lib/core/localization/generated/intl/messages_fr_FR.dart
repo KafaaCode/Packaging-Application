@@ -24,6 +24,8 @@ class MessageLookup extends MessageLookupByLibrary {
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "Addingorder": MessageLookupByLibrary.simpleMessage(
             "Ajout de la commande en cours..."),
+        "AreUSureLogOut": MessageLookupByLibrary.simpleMessage(
+            "Êtes-vous sûr de vous déconnecter ?"),
         "Ordersentsuccessfully": MessageLookupByLibrary.simpleMessage(
             "Commande envoyée avec succès"),
         "Quantityis": MessageLookupByLibrary.simpleMessage("Quantité"),
@@ -39,6 +41,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "and": MessageLookupByLibrary.simpleMessage(" et "),
         "byCheckingTheBoxYouAgreeToOur": MessageLookupByLibrary.simpleMessage(
             "En cochant la case, vous acceptez nos"),
+        "cancel": MessageLookupByLibrary.simpleMessage("Annuler"),
         "cartDetailsTitle":
             MessageLookupByLibrary.simpleMessage("Détails du panier"),
         "cateogriesNotFoundMessage":
@@ -50,6 +53,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "companyNameHint":
             MessageLookupByLibrary.simpleMessage("Nom de l\'entreprise"),
         "conditions": MessageLookupByLibrary.simpleMessage("Termes"),
+        "confirm": MessageLookupByLibrary.simpleMessage("confirmer"),
+        "confirmLogOut":
+            MessageLookupByLibrary.simpleMessage("Confirmer la déconnexion"),
         "confirmPassword":
             MessageLookupByLibrary.simpleMessage("Confirmer le mot de passe"),
         "confirmPasswordLabel": MessageLookupByLibrary.simpleMessage(
@@ -60,6 +66,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Mot de passe actuel"),
         "currentPasswordLabel":
             MessageLookupByLibrary.simpleMessage("Mot de passe actuel..."),
+        "deleteAccount":
+            MessageLookupByLibrary.simpleMessage("Supprimer le compte"),
         "descriptionLabel": MessageLookupByLibrary.simpleMessage("Description"),
         "eamilHint": MessageLookupByLibrary.simpleMessage("E-mail valide"),
         "editProfile":
@@ -75,6 +83,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "Vous avez oublié votre mot de passe ?"),
         "fullNameHint": MessageLookupByLibrary.simpleMessage("Nom complet"),
         "letsGetStarted": MessageLookupByLibrary.simpleMessage("Commençons"),
+        "logOut": MessageLookupByLibrary.simpleMessage("Se déconnecter"),
         "login": MessageLookupByLibrary.simpleMessage("Connexion"),
         "minimumOrderText":
             MessageLookupByLibrary.simpleMessage("La commande minimum pour ce"),

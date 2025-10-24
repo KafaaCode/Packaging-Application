@@ -24,6 +24,8 @@ class MessageLookup extends MessageLookupByLibrary {
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "Addingorder": MessageLookupByLibrary.simpleMessage(
             "Bestelling wordt toegevoegd..."),
+        "AreUSureLogOut": MessageLookupByLibrary.simpleMessage(
+            "Weet je zeker dat je uitlogt?"),
         "Ordersentsuccessfully": MessageLookupByLibrary.simpleMessage(
             "Bestelling succesvol verzonden"),
         "aboutUs": MessageLookupByLibrary.simpleMessage("Over ons"),
@@ -35,8 +37,11 @@ class MessageLookup extends MessageLookupByLibrary {
         "alreadyHaveAnAccount":
             MessageLookupByLibrary.simpleMessage("Heeft u al een account?"),
         "and": MessageLookupByLibrary.simpleMessage(" en "),
+        "areUSureDeleteAccount": MessageLookupByLibrary.simpleMessage(
+            "Weet u zeker dat u het account wilt verwijderen?"),
         "byCheckingTheBoxYouAgreeToOur": MessageLookupByLibrary.simpleMessage(
             "Door het vakje aan te vinken gaat u akkoord met onze "),
+        "cancel": MessageLookupByLibrary.simpleMessage("annuleren"),
         "cartDetailsTitle":
             MessageLookupByLibrary.simpleMessage("Winkelwagen details"),
         "cateogriesNotFoundMessage":
@@ -47,6 +52,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "close": MessageLookupByLibrary.simpleMessage("Sluiten"),
         "companyNameHint": MessageLookupByLibrary.simpleMessage("Bedrijfsnaam"),
         "conditions": MessageLookupByLibrary.simpleMessage("Bepalingen"),
+        "confirm": MessageLookupByLibrary.simpleMessage("bevestigen"),
+        "confirmLogOut":
+            MessageLookupByLibrary.simpleMessage("Bevestig het uitloggen"),
         "confirmPassword":
             MessageLookupByLibrary.simpleMessage("Bevestig wachtwoord"),
         "confirmPasswordLabel": MessageLookupByLibrary.simpleMessage(
@@ -57,6 +65,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Huidig wachtwoord"),
         "currentPasswordLabel":
             MessageLookupByLibrary.simpleMessage("Huidig wachtwoord..."),
+        "deleteAccount":
+            MessageLookupByLibrary.simpleMessage("Account verwijderen"),
         "descriptionLabel":
             MessageLookupByLibrary.simpleMessage("Beschrijving"),
         "eamilHint": MessageLookupByLibrary.simpleMessage("Geldig e-mailadres"),
@@ -73,6 +83,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "fullNameHint": MessageLookupByLibrary.simpleMessage("Volledige naam"),
         "letsGetStarted":
             MessageLookupByLibrary.simpleMessage("Laten we beginnen"),
+        "logOut": MessageLookupByLibrary.simpleMessage("Uitloggen"),
         "login": MessageLookupByLibrary.simpleMessage("Inloggen"),
         "minimumOrderText": MessageLookupByLibrary.simpleMessage(
             "De minimale bestelhoeveelheid voor dit"),

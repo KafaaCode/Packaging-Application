@@ -1,6 +1,13 @@
+// أضف هذه الحزمة في ملف pubspec.yaml
+// dependencies:
+//   collection: ^1.17.2
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+// ⚠️ يجب إضافة استيراد الـ extension من حزمة collection
+import 'package:collection/collection.dart';
+
 import 'package:frip_trading/core/localization/generated/l10n.dart';
 import 'package:frip_trading/core/routes/router_screens.dart';
 import 'package:frip_trading/core/routes/routes_name.dart';
@@ -13,25 +20,63 @@ import 'package:frip_trading/src/presentation/screens/auth/widgets/dropdown_cust
 import 'package:frip_trading/src/presentation/screens/settings/widgets/customAppbar.dart';
 import 'package:frip_trading/src/presentation/widgets/custom_text_feild.dart';
 
-class EditProfile extends StatelessWidget {
+class EditProfile extends StatefulWidget {
   EditProfile({super.key});
+
+  @override
+  State<EditProfile> createState() => _EditProfileState();
+}
+
+class _EditProfileState extends State<EditProfile> {
   TextEditingController nameController = TextEditingController();
   TextEditingController emailController = TextEditingController();
   TextEditingController companyController = TextEditingController();
+
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+
+  // 🎯 سيتم تعيين القيمة الافتراضية هنا في initState
+  Specialization? selectedSpec;
+  Country? selectedCountry;
+
+  // ⚠️ جلب البيانات خارج initState يعتمد على تحميلها مسبقاً في sl
   List<Specialization> specializations = sl<InitalBloc>().state.maybeWhen(
         loaded: (v) =>
             v.specialization?.whereType<Specialization>().toList() ?? [],
-        orElse: () {
-          return [];
-        },
+        orElse: () => [],
       );
+
   List<Country> countries = sl<InitalBloc>().state.maybeWhen(
         loaded: (v) => v.country?.whereType<Country>().toList() ?? [],
-        orElse: () {
-          return [];
-        },
+        orElse: () => [],
       );
+
+  @override
+  void initState() {
+    // ⚠️ لا يجب استدعاء هذا هنا، الـ BlocConsumer هو من سيحدد متى يتم التحميل أو متى يتم الوصول للبيانات.
+    // BlocProvider.of<InitalBloc>(context).add(const InitalEvent.getInitalData());
+
+    // 🎯 تعيين القيمة الافتراضية بناءً على الـ ID المحفوظ في AuthBloc
+    final AuthState authState = context.read<AuthBloc>().state;
+    final User? initialUser =
+        authState.mapOrNull(create: (value) => value.user);
+
+    if (initialUser != null) {
+      nameController.text = initialUser.name;
+      emailController.text = initialUser.email;
+      companyController.text = initialUser.companyName ?? '';
+
+      // ✅ البحث عن الكائن المطابق للـ ID الفعلي في القوائم المتاحة
+      selectedSpec = specializations.firstWhereOrNull(
+        (s) => s.id == initialUser.specializationId,
+      );
+      selectedCountry = countries.firstWhereOrNull(
+        (c) => c.id == initialUser.countryId,
+      );
+    }
+
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     ThemeData theme = Theme.of(context);
@@ -39,6 +84,8 @@ class EditProfile extends StatelessWidget {
     MediaQueryData mediaQuery = MediaQuery.of(context);
     double screenHeight = mediaQuery.size.height;
     double screenWidth = mediaQuery.size.width;
+
+    // ❌ تم حذف حساب specIndex و countryIndex
 
     return Scaffold(
       body: CustomAppbar(
@@ -94,19 +141,7 @@ class EditProfile extends StatelessWidget {
                 right: 20,
                 child: BlocBuilder<AuthBloc, AuthState>(
                   builder: (context, state) {
-                    if (nameController.text == '' &&
-                        emailController.text == '' &&
-                        companyController.text == '') {
-                      User? user = state.mapOrNull(
-                        create: (user) {
-                          nameController.text = user.user.name;
-                          emailController.text = user.user.email;
-                          companyController.text = user.user.companyName ?? '';
-                          return user.user;
-                        },
-                      );
-                      print('user: $user');
-                    }
+                    // ⚠️ تم نقل تعيين Controllers إلى initState
                     return Form(
                       key: _formKey,
                       child: Padding(
@@ -165,37 +200,53 @@ class EditProfile extends StatelessWidget {
                               ),
                             ),
                             const SizedBox(height: 10),
-                            DropdownCustom<Specialization>(
-                              svgIcon: 'assets/SVG/Vector_down.svg',
-                              labelText: lang.selectSpecializationLabel,
-                              decoration: _decoration(),
-                              items: specializations,
-                              defaultValue: state.mapOrNull(
-                                create: (user) {
-                                  final filteredSpecializations =
-                                      specializations.where((s) =>
-                                          s.id == user.user.specializationId);
-
-                                  return filteredSpecializations.isNotEmpty
-                                      ? filteredSpecializations.first
-                                      : specializations.first;
-                                },
-                              ),
-                              onChanged: (value) {
-                                context.read<AuthBloc>().add(
-                                      AuthEvent.createEvent(
-                                        user: state.maybeWhen(
-                                          create: (user) => user.copyWith(
-                                            specializationId: value?.id ?? 0,
-                                          ),
-                                          orElse: () => User(
-                                              id: 0,
-                                              name: '',
-                                              email: '',
-                                              specializationId: value?.id ?? 0),
-                                        ),
-                                      ),
+                            BlocConsumer<InitalBloc, InitalState>(
+                              listener: (context, state) {
+                                state.whenOrNull(
+                                  loaded: (v) {
+                                    setState(() {
+                                      specializations = v.specialization!
+                                          .whereType<Specialization>()
+                                          .toList();
+                                      // ⚠️ إذا تم تحميل البيانات بعد initState، أعد تعيين selectedSpec/Country
+                                      final initialUser = context
+                                          .read<AuthBloc>()
+                                          .state
+                                          .mapOrNull(
+                                              create: (value) => value.user);
+                                      if (initialUser != null) {
+                                        selectedSpec =
+                                            specializations.firstWhereOrNull(
+                                          (s) =>
+                                              s.id ==
+                                              initialUser.specializationId,
+                                        );
+                                      }
+                                    });
+                                  },
+                                );
+                              },
+                              builder: (context, state) {
+                                return state.maybeWhen(
+                                  orElse: () => const SizedBox.shrink(),
+                                  loadInProgress: () => const Center(
+                                    child: CircularProgressIndicator(),
+                                  ),
+                                  loaded: (specializationAndCountry) {
+                                    return DropdownCustom<Specialization>(
+                                      svgIcon: 'assets/SVG/Vector_down.svg',
+                                      labelText: lang.selectSpecializationLabel,
+                                      items: specializations,
+                                      // ✅ استخدام الكائن المُختار مباشرةً كقيمة افتراضية
+                                      defaultValue: selectedSpec,
+                                      onChanged: (value) {
+                                        setState(() {
+                                          selectedSpec = value;
+                                        });
+                                      },
                                     );
+                                  },
+                                );
                               },
                             ),
                             const SizedBox(height: 10),
@@ -208,37 +259,51 @@ class EditProfile extends StatelessWidget {
                               ),
                             ),
                             const SizedBox(height: 10),
-                            DropdownCustom<Country>(
-                              svgIcon: 'assets/SVG/Vector_down.svg',
-                              labelText: lang.selectCountryLabel,
-                              decoration: _decoration(),
-                              defaultValue: state.mapOrNull(
-                                create: (user) {
-                                  final filteredCountries = countries.where(
-                                      (c) => c.id == user.user.countryId);
-                                  return filteredCountries.isNotEmpty
-                                      ? filteredCountries.first
-                                      : countries.isNotEmpty
-                                          ? countries.first
-                                          : null;
-                                },
-                              ),
-                              items: countries,
-                              onChanged: (value) {
-                                context.read<AuthBloc>().add(
-                                      AuthEvent.createEvent(
-                                        user: state.maybeWhen(
-                                          create: (user) => user.copyWith(
-                                            countryId: value?.id ?? 0,
-                                          ),
-                                          orElse: () => User(
-                                              id: 0,
-                                              name: '',
-                                              email: '',
-                                              countryId: value?.id ?? 0),
-                                        ),
-                                      ),
+                            BlocConsumer<InitalBloc, InitalState>(
+                              listener: (context, state) {
+                                state.whenOrNull(
+                                  loaded: (v) {
+                                    setState(() {
+                                      countries = v.country!
+                                          .whereType<Country>()
+                                          .toList();
+                                      // ⚠️ إذا تم تحميل البيانات بعد initState، أعد تعيين selectedSpec/Country
+                                      final initialUser = context
+                                          .read<AuthBloc>()
+                                          .state
+                                          .mapOrNull(
+                                              create: (value) => value.user);
+                                      if (initialUser != null) {
+                                        selectedCountry =
+                                            countries.firstWhereOrNull(
+                                          (c) => c.id == initialUser.countryId,
+                                        );
+                                      }
+                                    });
+                                  },
+                                );
+                              },
+                              builder: (context, state) {
+                                return state.maybeWhen(
+                                  orElse: () => const SizedBox.shrink(),
+                                  loadInProgress: () => const Center(
+                                    child: CircularProgressIndicator(),
+                                  ),
+                                  loaded: (specializationAndCountry) {
+                                    return DropdownCustom<Country>(
+                                      svgIcon: 'assets/SVG/Vector_down.svg',
+                                      labelText: lang.selectCountryLabel,
+                                      items: countries,
+                                      // ✅ استخدام الكائن المُختار مباشرةً كقيمة افتراضية
+                                      defaultValue: selectedCountry,
+                                      onChanged: (value) {
+                                        setState(() {
+                                          selectedCountry = value;
+                                        });
+                                      },
                                     );
+                                  },
+                                );
                               },
                             ),
                           ],
@@ -249,7 +314,7 @@ class EditProfile extends StatelessWidget {
                 ),
               ),
               Positioned(
-                bottom: screenHeight / 4 - 80,
+                bottom: screenHeight / 6 - 80,
                 left: screenWidth / 2 - 90,
                 child: Image.asset(
                   'assets/images/init_page.png',
@@ -259,7 +324,7 @@ class EditProfile extends StatelessWidget {
                 ),
               ),
               Positioned(
-                bottom: screenHeight / 10 - 15,
+                bottom: screenHeight / 16 - 15,
                 left: screenWidth / 2 - 150,
                 child: BlocConsumer<AuthBloc, AuthState>(
                   listener: (context, state) {
@@ -299,25 +364,40 @@ class EditProfile extends StatelessWidget {
                     return InkWell(
                       onTap: () {
                         if (_formKey.currentState!.validate()) {
-                          context.read<AuthBloc>().add(
-                                AuthEvent.updateProfile(
-                                  user: sl<AuthBloc>().state.maybeWhen(
-                                        create: (user) => user.copyWith(
-                                          name: nameController.text,
-                                          email: emailController.text,
-                                          companyName: companyController.text,
-                                        ),
-                                        orElse: () => User(
-                                          id: 0,
-                                          name: nameController.text,
-                                          email: emailController.text,
-                                          companyName: companyController.text,
-                                        ),
-                                      ),
-                                ),
-                              );
+                          // ⚠️ يجب استخدام الـ ID الفعلي من الكائن selectedCountry/selectedSpec
+                          // إذا لم يتم اختيار قيمة جديدة، يتم استخدام الـ ID القديم المحفوظ في الـ AuthBloc
+                          final int? initialCountryId = context
+                              .read<AuthBloc>()
+                              .state
+                              .mapOrNull(
+                                  create: (value) => value.user.countryId);
+                          final int? initialSpecId = context
+                              .read<AuthBloc>()
+                              .state
+                              .mapOrNull(
+                                  create: (value) =>
+                                      value.user.specializationId);
+
+                          final int? finalCountryId =
+                              selectedCountry?.id ?? initialCountryId;
+                          final int? finalSpecId =
+                              selectedSpec?.id ?? initialSpecId;
+
+                          print('Final Country ID Sent: $finalCountryId');
+                          print('Final Spec ID Sent: $finalSpecId');
+
+                          BlocProvider.of<AuthBloc>(context).add(
+                            AuthEvent.updateProfile(
+                              companyName: companyController.text,
+                              // ✅ إرسال الـ ID الفعلي مباشرة
+                              countryId: finalCountryId,
+                              email: emailController.text,
+                              name: nameController.text,
+                              // ✅ إرسال الـ ID الفعلي مباشرة
+                              specializationId: finalSpecId,
+                            ),
+                          );
                         } else {
-                          
                           ScaffoldMessenger.of(context).showSnackBar(
                             const SnackBar(
                               content: Text('Please fill all fields'),
@@ -360,7 +440,6 @@ class EditProfile extends StatelessWidget {
 
   InputDecoration _decoration() {
     return const InputDecoration(
-      // labelText: labelText,
       labelStyle: TextStyle(
         color: Color.fromRGBO(176, 179, 199, 1),
         fontSize: 14,

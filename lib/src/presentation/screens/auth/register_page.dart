@@ -27,7 +27,10 @@ class _RegisterPageState extends State<RegisterPage> {
   TextEditingController passwordController = TextEditingController();
   TextEditingController companyController = TextEditingController();
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  Specialization? selectedSpec;
+  Country? selectedCountry;
   bool _ObscurePassword = true;
+  bool isApproved = false;
 
   List<Specialization> specializations = sl<InitalBloc>().state.maybeWhen(
         loaded: (v) =>
@@ -42,6 +45,11 @@ class _RegisterPageState extends State<RegisterPage> {
           return [];
         },
       );
+  @override
+  void initState() {
+    BlocProvider.of<InitalBloc>(context).add(const InitalEvent.getInitalData());
+    super.initState();
+  }
 
   @override
   void dispose() {
@@ -59,12 +67,12 @@ class _RegisterPageState extends State<RegisterPage> {
     ThemeData theme = Theme.of(context);
     Lang lang = Lang.of(context);
     return Scaffold(
-      body: SingleChildScrollView(
-        child: Container(
-          height: MediaQuery.of(context).size.height,
-          width: MediaQuery.of(context).size.width,
-          padding: const EdgeInsets.fromLTRB(0, 100, 0, 0),
-          color: theme.canvasColor,
+      body: Container(
+        height: MediaQuery.of(context).size.height,
+        width: MediaQuery.of(context).size.width,
+        padding: const EdgeInsets.fromLTRB(0, 100, 0, 0),
+        color: theme.canvasColor,
+        child: SingleChildScrollView(
           child: Column(
             children: [
               BlocListener<AuthBloc, AuthState>(
@@ -72,6 +80,7 @@ class _RegisterPageState extends State<RegisterPage> {
                   print('state: $state');
                   state.maybeWhen(
                     error: (message) {
+                      Navigator.of(context, rootNavigator: true).pop();
                       showDialog(
                         context: context,
                         builder: (context) => AlertDialog(
@@ -87,7 +96,7 @@ class _RegisterPageState extends State<RegisterPage> {
                           ],
                         ),
                       );
-                      Navigator.of(context, rootNavigator: true).pop();
+                      // Navigator.of(context, rootNavigator: true).pop();
                     },
                     loadInProgress: () {
                       showLoadingDialog(context);
@@ -156,86 +165,172 @@ class _RegisterPageState extends State<RegisterPage> {
                         colorIcon: const Color.fromRGBO(0, 0, 0, .7),
                       ),
                       const SizedBox(height: 20),
-                      BlocBuilder<AuthBloc, AuthState>(
+                      BlocConsumer<InitalBloc, InitalState>(
+                        listener: (context, state) {
+                          state.whenOrNull(
+                            loaded: (v) {
+                              setState(() {
+                                specializations = v.specialization!
+                                    .whereType<Specialization>()
+                                    .toList();
+                              });
+                            },
+                          );
+                        },
                         builder: (context, state) {
-                          return Column(
-                            children: [
-                              DropdownCustom<Specialization>(
-                                svgIcon: 'assets/SVG/Vector_down.svg',
-                                labelText: lang.selectSpecializationLabel,
-                                items: specializations,
-                                defaultValue: state.maybeWhen(
-                                  create: (user) {
-                                    final filteredSpecializations =
-                                        specializations.where((s) =>
-                                            s.id == user.specializationId);
-
-                                    return filteredSpecializations.isNotEmpty
-                                        ? filteredSpecializations.first
-                                        : specializations.first;
-                                  },
-                                  orElse: () => specializations.isNotEmpty
-                                      ? specializations.first
-                                      : null,
-                                ),
-                                onChanged: (value) {
-                                  context.read<AuthBloc>().add(
-                                        AuthEvent.createEvent(
-                                          user: state.maybeWhen(
-                                            create: (user) => user.copyWith(
-                                              specializationId: value?.id ?? 0,
-                                            ),
-                                            orElse: () => User(
-                                                id: 0,
-                                                name: '',
-                                                email: '',
-                                                specializationId:
-                                                    value?.id ?? 0),
-                                          ),
-                                        ),
-                                      );
+                          return state.maybeWhen(
+                            orElse: () => const SizedBox.shrink(),
+                            loadInProgress: () => Center(
+                              child: CircularProgressIndicator(),
+                            ),
+                            loaded: (specializationAndCountry) {
+                              return BlocBuilder<AuthBloc, AuthState>(
+                                builder: (context, state) {
+                                  return DropdownCustom<Specialization>(
+                                    svgIcon: 'assets/SVG/Vector_down.svg',
+                                    labelText: lang.selectSpecializationLabel,
+                                    items: specializations,
+                                    defaultValue: specializations[0],
+                                    onChanged: (value) {
+                                      setState(() {
+                                        selectedSpec = value;
+                                      });
+                                    },
+                                  );
                                 },
-                              ),
-                              const SizedBox(height: 20),
-                              DropdownCustom<Country>(
-                                svgIcon: 'assets/SVG/Vector_down.svg',
-                                labelText: lang.selectCountryLabel,
-                                defaultValue: state.maybeWhen(
-                                  create: (user) {
-                                    final filteredCountries = countries
-                                        .where((c) => c.id == user.countryId);
-                                    return filteredCountries.isNotEmpty
-                                        ? filteredCountries.first
-                                        : countries.isNotEmpty
-                                            ? countries.first
-                                            : null;
-                                  },
-                                  orElse: () => countries.isNotEmpty
-                                      ? countries.first
-                                      : null,
-                                ),
-                                items: countries,
-                                onChanged: (value) {
-                                  context.read<AuthBloc>().add(
-                                        AuthEvent.createEvent(
-                                          user: state.maybeWhen(
-                                            create: (user) => user.copyWith(
-                                              countryId: value?.id ?? 0,
-                                            ),
-                                            orElse: () => User(
-                                                id: 0,
-                                                name: '',
-                                                email: '',
-                                                countryId: value?.id ?? 0),
-                                          ),
-                                        ),
-                                      );
-                                },
-                              ),
-                            ],
+                              );
+                            },
                           );
                         },
                       ),
+                      const SizedBox(height: 20),
+                      BlocConsumer<InitalBloc, InitalState>(
+                        listener: (context, state) {
+                          state.whenOrNull(
+                            loaded: (v) {
+                              setState(() {
+                                countries =
+                                    v.country!.whereType<Country>().toList();
+                              });
+                            },
+                          );
+                        },
+                        builder: (context, state) {
+                          return state.maybeWhen(
+                            orElse: () => const SizedBox.shrink(),
+                            loadInProgress: () => Center(
+                              child: CircularProgressIndicator(),
+                            ),
+                            loaded: (specializationAndCountry) {
+                              return BlocBuilder<AuthBloc, AuthState>(
+                                builder: (context, state) {
+                                  return DropdownCustom<Country>(
+                                    svgIcon: 'assets/SVG/Vector_down.svg',
+                                    labelText: lang.selectSpecializationLabel,
+                                    items: countries,
+                                    defaultValue: countries[0],
+                                    onChanged: (value) {
+                                      setState(() {
+                                        selectedCountry = value;
+                                      });
+                                    },
+                                  );
+                                },
+                              );
+                            },
+                          );
+                        },
+                      ),
+                      const SizedBox(height: 20),
+                      // BlocBuilder<AuthBloc, AuthState>(
+                      //   builder: (context, state) {
+                      //     return Column(
+                      //       children: [
+                      //         DropdownCustom<Specialization>(
+                      //           svgIcon: 'assets/SVG/Vector_down.svg',
+                      //           labelText: lang.selectSpecializationLabel,
+                      //           items: specializations,
+                      //           defaultValue: state.maybeWhen(
+                      //             create: (user) {
+                      //               final filteredSpecializations =
+                      //                   specializations.where((s) =>
+                      //                       s.id == user.specializationId);
+
+                      //               return filteredSpecializations.isNotEmpty
+                      //                   ? filteredSpecializations.first
+                      //                   : specializations.isNotEmpty
+                      //                       ? specializations.first
+                      //                       : null;
+                      //             },
+                      //             orElse: () => specializations.isNotEmpty
+                      //                 ? specializations.first
+                      //                 : null,
+                      //           ),
+                      //           onChanged: (value) {
+                      //             context.read<AuthBloc>().add(
+                      //                   AuthEvent.createEvent(
+                      //                     user: state.maybeWhen(
+                      //                       create: (user) => user.copyWith(
+                      //                         specializationId: value?.id ?? 0,
+                      //                       ),
+                      //                       orElse: () => User(
+                      //                           id: 0,
+                      //                           name: '',
+                      //                           email: '',
+                      //                           specializationId:
+                      //                               value?.id ?? 0),
+                      //                     ),
+                      //                   ),
+                      //                 );
+                      //           },
+                      //         ),
+                      //         const SizedBox(height: 20),
+                      //         ElevatedButton(
+                      //             onPressed: () {
+                      //               BlocProvider.of<InitalBloc>(context)
+                      //                   .add(InitalEvent.getInitalData());
+                      //             },
+                      //             child: Text('helo')),
+                      //         SizedBox(height: 20),
+                      //         DropdownCustom<Country>(
+                      //           svgIcon: 'assets/SVG/Vector_down.svg',
+                      //           labelText: lang.selectCountryLabel,
+                      //           defaultValue: state.maybeWhen(
+                      //             create: (user) {
+                      //               final filteredCountries = countries
+                      //                   .where((c) => c.id == user.countryId);
+                      //               return filteredCountries.isNotEmpty
+                      //                   ? filteredCountries.first
+                      //                   : countries.isNotEmpty
+                      //                       ? countries.first
+                      //                       : null;
+                      //             },
+                      //             orElse: () => countries.isNotEmpty
+                      //                 ? countries.first
+                      //                 : null,
+                      //           ),
+                      //           items: countries,
+                      //           onChanged: (value) {
+                      //             context.read<AuthBloc>().add(
+                      //                   AuthEvent.createEvent(
+                      //                     user: state.maybeWhen(
+                      //                       create: (user) => user.copyWith(
+                      //                         countryId: value?.id ?? 0,
+                      //                       ),
+                      //                       orElse: () => User(
+                      //                           id: 0,
+                      //                           name: '',
+                      //                           email: '',
+                      //                           countryId: value?.id ?? 0),
+                      //                     ),
+                      //                   ),
+                      //                 );
+                      //           },
+                      //         ),
+                      //       ],
+                      //     );
+                      //   },
+                      // ),
                     ],
                   ),
                 ),
@@ -248,44 +343,65 @@ class _RegisterPageState extends State<RegisterPage> {
                         const EdgeInsets.symmetric(vertical: 0, horizontal: 30),
                     child: Row(
                       children: [
-                        BlocBuilder<AuthBloc, AuthState>(
-                          builder: (context, state) {
-                            return Checkbox(
-                              focusColor: theme.primaryColor,
-                              activeColor: theme.primaryColor,
-                              side: BorderSide(
-                                color: Colors.grey[400]!,
-                                width: 2,
-                              ),
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(5),
-                                side: BorderSide(
-                                    color: theme.primaryColor,
-                                    style: BorderStyle.solid),
-                              ),
-                              value: state.maybeWhen(
-                                orElse: () => false,
-                                create: (user) => user.checkIsTerms,
-                              ),
-                              onChanged: (v) {
-                                context.read<AuthBloc>().add(
-                                      AuthEvent.createEvent(
-                                        user: state.maybeWhen(
-                                          create: (user) => user.copyWith(
-                                            checkIsTerms: v,
-                                          ),
-                                          orElse: () => const User(
-                                            id: 0,
-                                            name: '',
-                                            email: '',
-                                          ),
-                                        ),
-                                      ),
-                                    );
-                              },
-                            );
+                        Checkbox(
+                          focusColor: theme.primaryColor,
+                          activeColor: theme.primaryColor,
+                          side: BorderSide(
+                            color: Colors.grey[400]!,
+                            width: 2,
+                          ),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(5),
+                            side: BorderSide(
+                                color: theme.primaryColor,
+                                style: BorderStyle.solid),
+                          ),
+                          value: isApproved,
+                          onChanged: (value) {
+                            setState(() {
+                              isApproved = !isApproved;
+                            });
                           },
                         ),
+
+                        // BlocBuilder<AuthBloc, AuthState>(
+                        //   builder: (context, state) {
+                        //     return Checkbox(
+                        //       focusColor: theme.primaryColor,
+                        //       activeColor: theme.primaryColor,
+                        //       side: BorderSide(
+                        //         color: Colors.grey[400]!,
+                        //         width: 2,
+                        //       ),
+                        //       shape: RoundedRectangleBorder(
+                        //         borderRadius: BorderRadius.circular(5),
+                        //         side: BorderSide(
+                        //             color: theme.primaryColor,
+                        //             style: BorderStyle.solid),
+                        //       ),
+                        //       value: state.maybeWhen(
+                        //         orElse: () => false,
+                        //         create: (user) => user.checkIsTerms,
+                        //       ),
+                        //       onChanged: (v) {
+                        //         context.read<AuthBloc>().add(
+                        //               AuthEvent.createEvent(
+                        //                 user: state.maybeWhen(
+                        //                   create: (user) => user.copyWith(
+                        //                     checkIsTerms: v,
+                        //                   ),
+                        //                   orElse: () => const User(
+                        //                     id: 0,
+                        //                     name: '',
+                        //                     email: '',
+                        //                   ),
+                        //                 ),
+                        //               ),
+                        //             );
+                        //       },
+                        //     );
+                        //   },
+                        // ),
                         Expanded(
                           child: RichText(
                             text: TextSpan(
@@ -335,25 +451,16 @@ class _RegisterPageState extends State<RegisterPage> {
                     builder: (context, state) {
                       return ButtonCostum(
                         onPressed: () {
-                          context.read<AuthBloc>().add(
-                                AuthEvent.register(
-                                  user: state.maybeWhen(
-                                      create: (user) => user.copyWith(
-                                            name: nameController.text,
-                                            email: emailController.text,
-                                            password: passwordController.text,
-                                            company: companyController.text,
-                                          ),
-                                      orElse: () {
-                                        print(3333);
-                                        return const User(
-                                          id: 0,
-                                          name: '',
-                                          email: '',
-                                        );
-                                      }),
-                                ),
-                              );
+                          print(companyController);
+                          BlocProvider.of<AuthBloc>(context).add(
+                              AuthEvent.register(
+                                  name: nameController.text,
+                                  email: emailController.text,
+                                  password: passwordController.text,
+                                  confirmPassword: passwordController.text,
+                                  companyName: companyController.text,
+                                  countryId: selectedCountry?.id ?? 0,
+                                  specId: selectedSpec?.id ?? 0));
                           // print(nameController.text);
                           // print(
 
