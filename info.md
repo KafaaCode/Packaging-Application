@@ -35,4 +35,8 @@ password
 
 com.friptrading.friptrading
 
-5JYPNQBXUQ (Team ID)
+Team ID
+5JYPNQBXUQ
+
+Apple ID
+6754453039
