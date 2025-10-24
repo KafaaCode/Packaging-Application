@@ -1,7 +1,12 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:hydrated_bloc/hydrated_bloc.dart';
+import 'package:path_provider/path_provider.dart';
+
 import 'package:frip_trading/core/localization/generated/l10n.dart';
 import 'package:frip_trading/core/localization/language/language_cubit.dart';
 import 'package:frip_trading/core/localization/language/language_state.dart';
@@ -18,17 +23,15 @@ import 'package:frip_trading/src/presentation/controllers/cart/cart_bloc.dart';
 import 'package:frip_trading/src/presentation/controllers/category/category_bloc.dart';
 import 'package:frip_trading/src/presentation/controllers/main_bage/main_page_bloc.dart';
 import 'package:frip_trading/src/presentation/controllers/myorder/myorder_bloc.dart';
-import 'package:hydrated_bloc/hydrated_bloc.dart';
-import 'package:path_provider/path_provider.dart';
-import 'package:flutter_localizations/flutter_localizations.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-/*   Hive.registerAdapter(ProductHiveModelAdapter());
+  /* 
+    Hive.registerAdapter(ProductHiveModelAdapter());
 
-  await Hive.openBox<ProductHiveModel>('cartBox'); */
-  WidgetsFlutterBinding.ensureInitialized();
+    await Hive.openBox<ProductHiveModel>('cartBox'); 
+  */
   HydratedBloc.storage = await HydratedStorage.build(
     storageDirectory: kIsWeb
         ? HydratedStorageDirectory.web

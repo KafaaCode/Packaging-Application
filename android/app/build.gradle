@@ -7,7 +7,8 @@ plugins {
 
 android {
     namespace = "com.example.frip_trading"
-    compileSdk = flutter.compileSdkVersion
+    // compileSdk = flutter.compileSdkVersion
+    compileSdk = 35
     ndkVersion = flutter.ndkVersion
 
     compileOptions {
