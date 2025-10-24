@@ -1,14 +1,11 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:frip_trading/admin/screens/categories/categories_page.dart';
-import 'package:frip_trading/admin/screens/constants.dart';
+
+import 'package:image_picker/image_picker.dart';
+
 import 'package:frip_trading/admin/screens/products/product_controller.dart';
 import 'package:frip_trading/admin/screens/products/product_model.dart';
-import 'package:frip_trading/core/network/api_constances.dart';
-import 'package:frip_trading/src/presentation/screens/main/products.dart';
-import 'package:image_picker/image_picker.dart';
-import 'package:http/http.dart' as http;
 
 class EditProductScren extends StatefulWidget {
   final ProductModel product;
@@ -63,7 +60,7 @@ class _EditProductScrenState extends State<EditProductScren> {
         iconTheme: const IconThemeData(color: Color(0xFF70b9be)),
       ),
       body: Padding(
-        padding: EdgeInsetsGeometry.all(16),
+        padding: const EdgeInsets.all(16),
         child: Form(
           key: _formKey,
           child: ListView(
