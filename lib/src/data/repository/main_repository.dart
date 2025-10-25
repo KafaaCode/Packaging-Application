@@ -1,6 +1,5 @@
 import 'package:dartz/dartz.dart';
 import 'package:frip_trading/admin/screens/categories/category_model.dart';
-import 'package:frip_trading/admin/screens/products/product_model.dart';
 import 'package:frip_trading/core/utils/typedef.dart';
 import 'package:frip_trading/src/data/main/main_remote_data_source.dart';
 import 'package:frip_trading/src/data/models/models.dart';
@@ -18,9 +17,9 @@ class MainRepository extends BaseMainRepository {
     try {
       final response = await mainRemoteDataSource.getCategories();
       return Right(response);
-    } on AuthException catch (failure) {
-      return Left(
-          ServerFailure.fromResponse(statusCode: failure.statusCode ?? 404));
+    } catch (failure) {
+      return Left(ServerFailure.fromResponse(
+          statusCode: 404, response: failure.toString()));
     }
   }
 
@@ -43,9 +42,9 @@ class MainRepository extends BaseMainRepository {
     try {
       final response = await mainRemoteDataSource.getmyOrders();
       return Right(response);
-    } on AuthException catch (failure) {
-      return Left(
-          ServerFailure.fromResponse(statusCode: failure.statusCode ?? 404));
+    } catch (failure) {
+      return Left(ServerFailure.fromResponse(
+          statusCode: 404, response: failure.toString()));
     }
   }
 
@@ -74,9 +73,9 @@ class MainRepository extends BaseMainRepository {
     try {
       final response = await mainRemoteDataSource.sendOrder(orderData);
       return const Right(unit);
-    } on AuthException catch (failure) {
-      return Left(
-          ServerFailure.fromResponse(statusCode: failure.statusCode ?? 404));
+    } catch (failure) {
+      return Left(ServerFailure.fromResponse(
+          statusCode: 404, response: failure.toString()));
     }
   }
 }
