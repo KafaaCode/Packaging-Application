@@ -1,10 +1,11 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:frip_trading/admin/screens/categories/categories_page.dart';
+
+import 'package:image_picker/image_picker.dart';
+
 import 'package:frip_trading/admin/screens/categories/category_controller.dart';
 import 'package:frip_trading/admin/screens/categories/category_model.dart';
-import 'package:image_picker/image_picker.dart';
 
 class EditCategoryScreen extends StatefulWidget {
   final CategoryModel category;
@@ -53,7 +54,7 @@ class _EditCategoryScreenState extends State<EditCategoryScreen> {
                       borderRadius: BorderRadius.circular(12),
                     ),
                     child: ClipRRect(
-                        borderRadius: BorderRadiusGeometry.circular(20),
+                        borderRadius: BorderRadius.circular(20),
                         child: _newImageFile != null
                             ? Image.file(_newImageFile!, fit: BoxFit.cover)
                             : widget.category.image != null

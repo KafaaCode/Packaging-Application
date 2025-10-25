@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import 'package:frip_trading/core/localization/generated/l10n.dart';
 import 'package:frip_trading/src/data/models/models.dart';
 
@@ -39,7 +40,7 @@ class OrderDetilsCard extends StatelessWidget {
                   height: 90,
                   // color: Colors.grey.shade300,
                   child: ClipRRect(
-                    borderRadius: BorderRadiusGeometry.circular(12),
+                    borderRadius: BorderRadius.circular(12),
                     child: imageVisible
                         ? Image.network(
                             product.image!,
