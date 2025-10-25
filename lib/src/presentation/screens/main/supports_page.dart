@@ -23,6 +23,31 @@ class _SupportsPageState extends State<SupportsPage> {
 
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
+  // Helper function to show SnackBar
+  void _showSnackbar(BuildContext context, String message,
+      {bool isError = false}) {
+    final theme = Theme.of(context);
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text(
+          message,
+          style: theme.textTheme.bodyLarge?.copyWith(
+            fontWeight: FontWeight.w600,
+            color: isError ? Colors.white : theme.primaryColor,
+          ),
+        ),
+        backgroundColor: isError ? Colors.red : Colors.white38,
+      ),
+    );
+  }
+
+  @override
+  void dispose() {
+    titleController.dispose();
+    messageController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     ThemeData theme = Theme.of(context);
@@ -146,45 +171,44 @@ class _SupportsPageState extends State<SupportsPage> {
                               return null;
                             },
                           ),
-                          // TextFieldAuth(
-                          //   controller: messageController,
-                          //   labelText: 'Content of the message or complaint...',
-                          //   maxLines: 10,
-                          //   minLines: 5,
-                          // ),
                         ],
                       ),
                       const SizedBox(height: 25),
                       Center(
                         child: BlocConsumer<MainPageBloc, MainPageState>(
                           listener: (context, state) {
+                            // --- DEBUGGING PRINTS ADDED HERE ---
                             if (state.isLoading) {
+                              print('Bloc Listener: State is Loading...');
                               showLoadingDialog(context);
                             } else if (state.successMessage != null) {
-                              // Navigator.pop(context);
-                              // ScaffoldMessenger.of(context).showSnackBar(
-                              //   SnackBar(
-                              //     content: Text(state.successMessage!,
-                              //         style:
-                              //             theme.textTheme.bodyLarge?.copyWith(
-                              //           fontWeight: FontWeight.w600,
-                              //           color: theme.primaryColor,
-                              //         )),
-                              //     backgroundColor: Colors.white38,
-                              //   ),
-                              // );
-                              // titleController.clear();
-                              // messageController.clear();
+                              print(
+                                  'Bloc Listener: SUCCESS - Message: ${state.successMessage}');
+
+                              // Dismiss loading dialog if it was shown
+                              if (Navigator.of(context).canPop()) {
+                                Navigator.pop(context);
+                              }
+
+                              // Show success SnackBar
+                              _showSnackbar(context, state.successMessage!);
+
+                              // Clear text fields
+                              titleController.clear();
+                              messageController.clear();
+                              print('Bloc Listener: Text controllers cleared.');
                             } else if (state.errorMessage != null) {
-                              Navigator.pop(context);
-                              SnackBar(
-                                content: Text(state.successMessage!,
-                                    style: theme.textTheme.bodyLarge?.copyWith(
-                                      fontWeight: FontWeight.w600,
-                                      color: theme.primaryColor,
-                                    )),
-                                backgroundColor: Colors.white38,
-                              );
+                              print(
+                                  'Bloc Listener: ERROR - Message: ${state.errorMessage}');
+
+                              // Dismiss loading dialog if it was shown
+                              if (Navigator.of(context).canPop()) {
+                                Navigator.pop(context);
+                              }
+
+                              // Show error SnackBar (fixed to use errorMessage!)
+                              _showSnackbar(context, state.errorMessage!,
+                                  isError: true);
                             }
                           },
                           builder: (context, state) {
@@ -192,6 +216,8 @@ class _SupportsPageState extends State<SupportsPage> {
                               text: 'Send',
                               onPressed: () {
                                 if (_formKey.currentState!.validate()) {
+                                  print(
+                                      'Button Pressed: Form is valid. Sending support request...');
                                   User? user = sl<AuthBloc>().state.mapOrNull(
                                         create: (v) => v.user,
                                       );
@@ -204,18 +230,11 @@ class _SupportsPageState extends State<SupportsPage> {
                                         ),
                                       );
                                 } else {
-                                  ScaffoldMessenger.of(context).showSnackBar(
-                                    SnackBar(
-                                      content: Text(
-                                        'Please fill both message title and content.',
-                                        style:
-                                            theme.textTheme.bodyLarge?.copyWith(
-                                          fontWeight: FontWeight.w600,
-                                          color: Colors.white,
-                                        ),
-                                      ),
-                                      backgroundColor: Colors.red,
-                                    ),
+                                  print('Button Pressed: Form is invalid.');
+                                  _showSnackbar(
+                                    context,
+                                    'Please fill both message title and content.',
+                                    isError: true,
                                   );
                                 }
                               },
@@ -231,7 +250,6 @@ class _SupportsPageState extends State<SupportsPage> {
                             ),
                       ),
                       const SizedBox(height: 10),
-                      // const SizedBox(height: 10),
                       Text(
                         'Contact us via social media',
                         style: Theme.of(context).textTheme.bodyLarge?.copyWith(

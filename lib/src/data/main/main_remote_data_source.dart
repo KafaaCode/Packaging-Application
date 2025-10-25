@@ -167,6 +167,14 @@ class MainRemoteDataSource extends BaseMainRemoteDataSource {
             ),
           ),
           responseHandler: (response) {
+            print('--- API Response for sendSupport ---');
+            print('Status Code: ${response.statusCode}');
+            if (response.data != null) {
+              print('Response Data (JSON/Map): ${response.data}');
+            } else {
+              print('Response Data: Null or Empty');
+            }
+            print('------------------------------------');
             return;
           },
         );
