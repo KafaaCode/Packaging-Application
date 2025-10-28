@@ -160,8 +160,8 @@ class Product with _$Product {
     String? description,
     Category? category,
     int? request_number,
-    required String price,
-    required int active,
+    String? price,
+    int? active,
     int? quantity,
   }) = _Product;
 
@@ -197,5 +197,5 @@ class CartItem with _$CartItem {
   factory CartItem.fromJson(Map<String, dynamic> json) =>
       _$CartItemFromJson(json);
 
-  double get total_price => double.parse(product.price) * quantity;
+  double get total_price => double.parse(product.price!) * quantity;
 }

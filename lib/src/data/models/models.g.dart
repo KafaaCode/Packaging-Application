@@ -157,8 +157,8 @@ _$ProductImpl _$$ProductImplFromJson(Map<String, dynamic> json) =>
           ? null
           : Category.fromJson(json['category'] as Map<String, dynamic>),
       request_number: (json['request_number'] as num?)?.toInt(),
-      price: json['price'] as String,
-      active: (json['active'] as num).toInt(),
+      price: json['price'] as String?,
+      active: (json['active'] as num?)?.toInt(),
       quantity: (json['quantity'] as num?)?.toInt(),
     );
 

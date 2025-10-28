@@ -20,7 +20,7 @@ class AuthRepository extends BaseAuthRepository {
     } on AuthException catch (failure) {
       return Left(Failure(
           statusCode: failure.statusCode ?? 404,
-          message: failure.authMessage ?? 'error'));
+          message: failure.authMessage ?? 'Check Internet Connection'));
     }
   }
 

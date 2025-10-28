@@ -35,6 +35,9 @@ abstract class BaseAuthRemoteDataSource {
 
 class AuthRemoteDataSource extends BaseAuthRemoteDataSource {
   @override
+  // تأكد من استيراد ملف الاستثناءات الخاص بك هنا
+// import 'package:frip_trading/core/error/exceptions.dart';
+
   Future<Auth> login({required String email, required String password}) async {
     try {
       final Map<String, dynamic> requestBody = {
@@ -49,35 +52,59 @@ class AuthRemoteDataSource extends BaseAuthRemoteDataSource {
         ),
         data: requestBody,
       );
-      if (response.statusCode == 422) {
-        final Map<String, dynamic> errors = response.data['errors'] ?? {};
-        final String errorMessage = errors.values
-            .expand((e) => e is List ? e : [e.toString()])
-            .join(', ');
-        throw AuthException(
-          statusCode: 422,
-          authMessage: errorMessage.isNotEmpty
-              ? errorMessage
-              : 'Validation error occurred',
-        );
-      }
+
       print(response.data);
+
+      // 1. حالة النجاح (200 أو 201)
       if (response.statusCode == 200 || response.statusCode == 201) {
         return Auth.fromJson(response.data['data']);
       }
 
-      throw AuthException(
-        statusCode: response.statusCode ?? 400,
-        authMessage: response.data['message'] ?? 'Unknown error occurred',
+      // 2. حالة خطأ التحقق من الصحة (Validation Error - 422)
+      if (response.statusCode == 422) {
+        // بما أنك تريد رسالة موحدة، لن نستخدم رسائل الأخطاء التفصيلية للـ422
+        // سنعتمد على رسالة AuthException الموحدة للـ 422.
+        // إذا لم تكن قد عرفت رسالة خاصة للـ 422 في AuthException، ستُستخدم الرسالة الافتراضية.
+        throw AuthException.fromStatusCode(422);
+      }
+      if (response.statusCode == 401) {
+        throw AuthException.fromStatusCode(401);
+      }
+
+      // 3. حالات الأخطاء الأخرى (400, 401, 403, 500, إلخ...)
+      // **نعتمد هنا فقط على الـ statusCode لتحديد الرسالة الموحدة.**
+      throw AuthException.fromStatusCode(
+        response.statusCode ?? 400,
+        // لا نمرر أي رسالة (authMessage) للـ factory constructor
+        // لضمان استخدام الرسالة المحددة لكل Status Code في ملف Exceptions.
       );
     } on DioException catch (e) {
       print('DioError: ${e.message}');
       print('Response data: ${e.response?.data}');
-      throw AuthException(
-          statusCode: e.response?.statusCode, authMessage: e.response?.data);
+
+      final int statusCode = e.response?.statusCode ?? 0;
+
+      // **التعامل مع DioException:** نعتمد على الـ statusCode فقط.
+      if (statusCode != 0) {
+        throw AuthException.fromStatusCode(
+          statusCode,
+          // لا نمرر أي رسالة لضمان استخدام الرسائل الموحدة.
+        );
+      } else {
+        // خطأ شبكة (Network Error) أو timeout
+        throw AuthException.fromStatusCode(
+          0,
+          authMessage:
+              'فشل في الاتصال بالخادم. يرجى التحقق من اتصالك بالإنترنت.',
+        );
+      }
     } catch (e) {
       print('Unexpected error: $e');
-      throw AuthException(statusCode: 404, authMessage: e.toString());
+      // خطأ غير متوقع بالكامل
+      throw AuthException.fromStatusCode(
+        401, // رمز غير قياسي للإشارة لخطأ غير متوقع
+        // authMessage: 'حدث خطأ غير متوقع في التطبيق. يرجى المحاولة لاحقاً.',
+      );
     }
   }
 

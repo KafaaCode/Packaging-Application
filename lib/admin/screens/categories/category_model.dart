@@ -15,7 +15,7 @@ class CategoryModel {
     return CategoryModel(
       id: json['id'],
       name: json['name'],
-      image: json['image'] != null ? '$imageBaseUrl${json['image']}' : null,
+      image: json['image'],
     );
   }
 }

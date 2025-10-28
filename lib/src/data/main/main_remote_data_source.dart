@@ -31,7 +31,7 @@ class MainRemoteDataSource extends BaseMainRemoteDataSource {
 
   @override
   Future<List<CategoryModel>> getCategories() async {
-    final url = Uri.parse('$apiBaseUrl/admin/categories');
+    final url = Uri.parse('$apiBaseUrl/categories');
     final token = ApiConstances.getToken();
     print(url);
     final response = await http.get(url, headers: {
@@ -81,13 +81,13 @@ class MainRemoteDataSource extends BaseMainRemoteDataSource {
 
     if (response.statusCode == 200) {
       final jsonBody = json.decode(response.body);
-      final List productsJson = jsonBody['data'];
+      final List productsJson = jsonBody['data']['products'];
 
       final baseImageUrl = ApiConstances.baseImageUrl;
 
       final List<Product> products = productsJson.map<Product>((json) {
         final imagePath = json['image'];
-        json['image'] = imagePath != null ? '$baseImageUrl$imagePath' : '';
+
         return Product.fromJson(json);
       }).toList();
       final List productsImages =

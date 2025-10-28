@@ -27,7 +27,8 @@ class ServerFailure extends Failure {
           statusCode: statusCode);
     } else if (statusCode == 400 || statusCode == 401 || statusCode == 403) {
       // return ServerFailure(message: response['error']['message']);
-      return ServerFailure(message: "user not found", statusCode: statusCode);
+      return ServerFailure(
+          message: "Check your Email and Password", statusCode: statusCode);
     } else {
       return ServerFailure(
           message: 'there was an error , please try again',

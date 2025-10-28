@@ -11,52 +11,38 @@ class ServerException implements Exception {
 
 class AuthException implements Exception {
   final int? statusCode;
-  final String? authMessage;
+  final String authMessage;
+
+  // دالة بناء مصنعية يمكن أن تستخدم نفس المنطق المذكور في ServerException
+  // لكنها تسمح لك بتحديد رسالة أكثر تركيزاً على التوثيق عند الحاجة.
+  factory AuthException.fromStatusCode(int statusCode, {String? authMessage}) {
+    if (statusCode == 401) {
+      return AuthException(
+        statusCode: statusCode,
+        authMessage: authMessage ??
+            'فشل في المصادقة. يرجى التأكد من اسم المستخدم وكلمة المرور.',
+      );
+    }
+    // يمكن تمرير الـ 403 أيضاً إذا كانت خاصة بالصلاحيات
+    if (statusCode == 403) {
+      return AuthException(
+        statusCode: statusCode,
+        authMessage: 'لا تملك الصلاحيات اللازمة لإجراء هذه العملية.',
+      );
+    }
+
+    return AuthException(
+      statusCode: statusCode,
+      authMessage: authMessage ?? 'حدث خطأ في عملية المصادقة ($statusCode).',
+    );
+  }
+
   AuthException({
     required this.statusCode,
     required this.authMessage,
   });
 
-  // factory AuthException.fromDioError(int statusCode, DioException error) {
-  //   switch (error.type) {
-  //     case DioExceptionType.connectionTimeout:
-  //       return AuthException(
-  //           authMessage: "connection timout with api server",
-  //           statusCode: statusCode);
-
-  //     case DioExceptionType.sendTimeout:
-  //       return AuthException(
-  //           authMessage: "send timout with api server", statusCode: statusCode);
-
-  //     case DioExceptionType.receiveTimeout:
-  //       return AuthException(
-  //           authMessage: "receive timout with api server",
-  //           statusCode: statusCode);
-
-  //     case DioExceptionType.badCertificate:
-  //       return AuthException(
-  //           authMessage: "badCertificate timout with api server",
-  //           statusCode: statusCode);
-
-  //     case DioExceptionType.badResponse:
-  //       return AuthException(
-  //           authMessage: "badResponse", statusCode: statusCode);
-  //     case DioExceptionType.cancel:
-  //       return AuthException(
-  //           authMessage: "request to Api Server was canceld",
-  //           statusCode: statusCode);
-
-  //     case DioExceptionType.connectionError:
-  //       return AuthException(
-  //           authMessage: "No Internet Connection", statusCode: statusCode);
-
-  //     case DioExceptionType.unknown:
-  //       return AuthException(
-  //           authMessage: "Something was wrong!", statusCode: statusCode);
-
-  //   }
-  // }
   @override
   String toString() =>
-      'AuthException(statusCode: $statusCode, authMessage: $authMessage)';
+      'AuthException(statusCode: $statusCode, message: $authMessage)';
 }

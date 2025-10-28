@@ -50,7 +50,7 @@ class ApiCallHandler {
       } else {
         print(e.message);
         throw AuthException(
-            statusCode: e.response?.statusCode ?? 404, authMessage: e.message);
+            statusCode: e.response?.statusCode ?? 404, authMessage: e.message!);
       }
     }
   }
