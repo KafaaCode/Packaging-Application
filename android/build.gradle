@@ -16,3 +16,9 @@ subprojects {
 tasks.register("clean", Delete) {
     delete rootProject.buildDir
 }
+
+ext {
+    compileSdkVersion = 36   // 🔥 REQUIRED
+    targetSdkVersion = 35    // recommended (I see you're using it)
+    minSdkVersion = 21       // or your Flutter minSdk
+}

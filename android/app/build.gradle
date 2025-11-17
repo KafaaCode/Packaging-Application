@@ -14,16 +14,30 @@ if (keystorePropertiesFile.exists()) {
 android {
     namespace = "com.friptrading.frip_trading"
     // compileSdk = flutter.compileSdkVersion
-    compileSdk = 35
-    ndkVersion = flutter.ndkVersion
+    // ndkVersion = flutter.ndkVersion
+    compileSdk = 36
+    ndkVersion = "28.0.12674087"
+
+    packaging {
+        jniLibs {
+            // 16KB page size
+            useLegacyPackaging = false
+        }
+    }
 
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
+        coreLibraryDesugaringEnabled true
     }
 
     kotlinOptions {
-        jvmTarget = JavaVersion.VERSION_1_8
+        jvmTarget = "17"
+    }
+
+    lintOptions {
+        checkReleaseBuilds true  // Enable for release builds
+        abortOnError false       // Don't fail on warnings
     }
 
     defaultConfig {
@@ -36,6 +50,7 @@ android {
         // targetSdk = flutter.targetSdkVersion
         versionCode = flutter.versionCode
         versionName = flutter.versionName
+        multiDexEnabled true
     }
 
     signingConfigs {
@@ -62,6 +77,15 @@ android {
             signingConfig signingConfigs.release
         }
     }
+}
+
+dependencies {
+    // implementation platform('com.google.firebase:firebase-bom:32.7.0')
+    // implementation 'com.google.firebase:firebase-crashlytics-ndk:18.4.1'
+    // implementation 'com.google.firebase:firebase-analytics:17.5.0'
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:2.1.0" 
+    implementation 'androidx.multidex:multidex:2.0.1'
+    coreLibraryDesugaring 'com.android.tools:desugar_jdk_libs:2.1.4'
 }
 
 flutter {
