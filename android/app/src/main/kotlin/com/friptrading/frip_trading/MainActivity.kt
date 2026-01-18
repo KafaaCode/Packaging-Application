@@ -1,4 +1,4 @@
-package com.example.frip_trading
+package com.friptrading.frip_trading
 
 import io.flutter.embedding.android.FlutterActivity
 
