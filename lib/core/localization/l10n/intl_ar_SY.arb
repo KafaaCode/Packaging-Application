@@ -79,5 +79,6 @@
   "TotalPrice": "السعر الأجمالي",
   "Quantityis": "الكمية",
   "Addingorder": "جاري إضافة الطلب...",
-  "Ordersentsuccessfully": "تم إرسال الطلب بنجاح"
+  "Ordersentsuccessfully": "تم إرسال الطلب بنجاح",
+  "loginFirst": "قم بتسجيل الدخول أولا"
 }

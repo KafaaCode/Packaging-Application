@@ -11,6 +11,7 @@ import 'package:frip_trading/core/services/services_locator.dart';
 import 'package:frip_trading/src/data/models/models.dart';
 import 'package:frip_trading/src/presentation/controllers/auth/auth_bloc.dart';
 import 'package:frip_trading/src/presentation/controllers/category/category_bloc.dart';
+import 'package:frip_trading/src/presentation/controllers/myorder/myorder_bloc.dart';
 import 'package:frip_trading/src/presentation/controllers/products/products_bloc.dart';
 import 'package:frip_trading/src/presentation/screens/auth/widgets/cardproductandCatogry.dart';
 
@@ -29,7 +30,12 @@ class _FilterPageState extends State<FilterPage> {
   @override
   void initState() {
     super.initState();
+    sl<CategoriesBloc>().add(const CategoriesEvent.getCategories());
+
     // _futureCategories = _controller.fetchCategories();
+    BlocProvider(
+        create: (_) =>
+            sl<MyOrdersBloc>()..add(const MyOrdersEvent.getMyOrders()));
   }
 
   @override
@@ -207,7 +213,7 @@ class _FilterPageState extends State<FilterPage> {
                                         routeSettings: RouteSettings(
                                             arguments: category.id),
                                         transitionDuration:
-                                            const Duration(milliseconds: 800));
+                                            const Duration(milliseconds: 400));
                                   },
                                   borderRadius: BorderRadius.circular(12),
                                   child: SizedBox(

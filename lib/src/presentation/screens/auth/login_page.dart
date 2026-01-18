@@ -185,6 +185,17 @@ class _LoginPageState extends State<LoginPage> {
                       ),
                     ],
                   ),
+                  const SizedBox(height: 10),
+                  ButtonCostum(
+                    onPressed: () {
+                      AppRouter.router.navigateTo(
+                        context,
+                        RoutesNames.mainRoute,
+                        clearStack: true,
+                      );
+                    },
+                    text: "Login As Guest",
+                  ),
                 ],
               ),
             ),

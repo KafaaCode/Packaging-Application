@@ -14,6 +14,7 @@ import 'package:frip_trading/src/data/models/models.dart';
 
 abstract class BaseMainRemoteDataSource {
   Future<List<CategoryModel>> getCategories();
+
   Future<List<MyOrder>> getmyOrders();
   Future<List<Product>> getProducts({required int categoryId});
   Future<void> sendOrder(Map<String, dynamic> orderData);
@@ -31,21 +32,37 @@ class MainRemoteDataSource extends BaseMainRemoteDataSource {
 
   @override
   Future<List<CategoryModel>> getCategories() async {
-    final url = Uri.parse('$apiBaseUrl/categories');
-    final token = ApiConstances.getToken();
-    print(url);
-    final response = await http.get(url, headers: {
-      'Authorization': 'Bearer $token',
-      'Accept': 'application/json',
-    });
-    print(response.body);
-
-    if (response.statusCode == 200) {
-      final jsonData = json.decode(response.body);
-      final List data = jsonData['data'];
-      return data.map((item) => CategoryModel.fromJson(item)).toList();
+    final token = ApiConstances.tokenOrGuest();
+    print('my new token is : $token');
+    if (token != 'guest') {
+      final url = Uri.parse('$apiBaseUrl/categories');
+      print(url);
+      final response = await http.get(url, headers: {
+        'Authorization': 'Bearer $token',
+        'Accept': 'application/json',
+      });
+      print(response.body);
+      if (response.statusCode == 200) {
+        final jsonData = json.decode(response.body);
+        final List data = jsonData['data'];
+        return data.map((item) => CategoryModel.fromJson(item)).toList();
+      } else {
+        throw Exception('Failed to load categories');
+      }
     } else {
-      throw Exception('Failed to load categories');
+      final url = Uri.parse('$apiBaseUrl/public/categories');
+      print(url);
+      final response = await http.get(url, headers: {
+        'Accept': 'application/json',
+      });
+      print(response.body);
+      if (response.statusCode == 200) {
+        final jsonData = json.decode(response.body);
+        final List data = jsonData['data'];
+        return data.map((item) => CategoryModel.fromJson(item)).toList();
+      } else {
+        throw Exception('Failed to load categories');
+      }
     }
 
     // return sl.get<ApiCallHandler>().handler(
@@ -70,7 +87,36 @@ class MainRemoteDataSource extends BaseMainRemoteDataSource {
 
   @override
   Future<List<Product>> getProducts({required int categoryId}) async {
-    final token = ApiConstances.getToken();
+    final token = ApiConstances.tokenOrGuest();
+    if (token == 'guest') {
+      final response = await http.get(
+        Uri.parse('$apiBaseUrl/public/products/categories/$categoryId'),
+        headers: {
+          'Accept': 'application/json',
+        },
+      );
+
+      if (response.statusCode == 200) {
+        final jsonBody = json.decode(response.body);
+        final List productsJson = jsonBody['data']['products'];
+
+        const baseImageUrl = ApiConstances.baseImageUrl;
+
+        final List<Product> products = productsJson.map<Product>((json) {
+          final imagePath = json['image'];
+
+          return Product.fromJson(json);
+        }).toList();
+        final List productsImages =
+            productsJson.map((product) => product['image']).toList();
+        print(productsImages);
+        return productsJson.map((json) => Product.fromJson(json)).toList();
+      } else if (response.statusCode == 404) {
+        throw Exception('لا يوجد منتجات لهذه الفئة');
+      } else {
+        throw Exception('فشل في تحميل المنتجات');
+      }
+    }
     final response = await http.get(
       Uri.parse('$apiBaseUrl/products/categories/$categoryId'),
       headers: {
@@ -83,7 +129,7 @@ class MainRemoteDataSource extends BaseMainRemoteDataSource {
       final jsonBody = json.decode(response.body);
       final List productsJson = jsonBody['data']['products'];
 
-      final baseImageUrl = ApiConstances.baseImageUrl;
+      const baseImageUrl = ApiConstances.baseImageUrl;
 
       final List<Product> products = productsJson.map<Product>((json) {
         final imagePath = json['image'];
@@ -128,7 +174,7 @@ class MainRemoteDataSource extends BaseMainRemoteDataSource {
             options: Options(
               headers: ApiConstances.headers(
                 isToken: true,
-                token: ApiConstances.getToken(),
+                token: ApiConstances.tokenOrGuest(),
               ),
             ),
           ),
@@ -162,7 +208,7 @@ class MainRemoteDataSource extends BaseMainRemoteDataSource {
             options: Options(
               headers: ApiConstances.headers(
                 isToken: true,
-                token: ApiConstances.getToken(),
+                token: ApiConstances.tokenOrGuest(),
               ),
             ),
           ),
@@ -189,7 +235,7 @@ class MainRemoteDataSource extends BaseMainRemoteDataSource {
             options: Options(
               headers: ApiConstances.headers(
                 isToken: true,
-                token: ApiConstances.getToken(),
+                token: ApiConstances.tokenOrGuest(),
               ),
             ),
           ),

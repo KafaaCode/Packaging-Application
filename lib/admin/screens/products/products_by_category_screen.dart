@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:frip_trading/admin/screens/products/add_product_screen.dart';
 import 'package:frip_trading/admin/screens/products/edit_product_scren.dart';
+import 'package:frip_trading/admin/screens/products/product_detail_screen.dart';
 import 'product_controller.dart';
 import 'product_model.dart';
 
@@ -119,64 +120,73 @@ class _ProductsByCategoryScreenState extends State<ProductsByCategoryScreen> {
             itemBuilder: (context, index) {
               // final imageUrl = product['image'] ?? '';
               final product = products[index];
-              return Card(
-                margin: const EdgeInsets.symmetric(vertical: 8),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(12),
-                ),
-                elevation: 2,
-                child: ListTile(
-                  contentPadding: const EdgeInsets.all(12),
-                  leading: ClipRRect(
-                    borderRadius: BorderRadius.circular(8),
-                    child: product.image.isNotEmpty
-                        ? Image.network(
-                            product.image,
-                            width: 50,
-                            height: 50,
-                            fit: BoxFit.cover,
-                            errorBuilder: (context, error, stackTrace) {
-                              return Image.asset(
-                                'assets/images/logo.png',
-                                width: 50,
-                                height: 50,
-                                fit: BoxFit.cover,
-                              );
-                            },
-                          )
-                        : Image.asset(
-                            'assets/images/logo.png',
-                            width: 50,
-                            height: 50,
-                            fit: BoxFit.cover,
-                          ),
+              return GestureDetector(
+                onTap: () => Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) =>
+                          ProductDetailScreen(product: product),
+                    )),
+                child: Card(
+                  margin: const EdgeInsets.symmetric(vertical: 8),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(12),
                   ),
-                  title: Text(product.name),
-                  subtitle: Text('السعر: ${product.price.toStringAsFixed(2)} '),
-                  trailing: PopupMenuButton<String>(
-                    onSelected: (value) {
-                      if (value == 'edit') {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) =>
-                                  EditProductScren(product: product),
-                            ));
-                        // هنا يمكن إضافة التنقل إلى صفحة تعديل المنتج لاحقًا
-                      } else if (value == 'delete') {
-                        _confirmDelete(product.id);
-                      }
-                    },
-                    itemBuilder: (context) => [
-                      const PopupMenuItem(
-                        value: 'edit',
-                        child: Text('تعديل'),
-                      ),
-                      const PopupMenuItem(
-                        value: 'delete',
-                        child: Text('حذف'),
-                      ),
-                    ],
+                  elevation: 2,
+                  child: ListTile(
+                    contentPadding: const EdgeInsets.all(12),
+                    leading: ClipRRect(
+                      borderRadius: BorderRadius.circular(8),
+                      child: product.image.isNotEmpty
+                          ? Image.network(
+                              product.image,
+                              width: 50,
+                              height: 50,
+                              fit: BoxFit.cover,
+                              errorBuilder: (context, error, stackTrace) {
+                                return Image.asset(
+                                  'assets/images/logo.png',
+                                  width: 50,
+                                  height: 50,
+                                  fit: BoxFit.cover,
+                                );
+                              },
+                            )
+                          : Image.asset(
+                              'assets/images/logo.png',
+                              width: 50,
+                              height: 50,
+                              fit: BoxFit.cover,
+                            ),
+                    ),
+                    title: Text(product.name),
+                    subtitle:
+                        Text('السعر: ${product.price.toStringAsFixed(2)} '),
+                    trailing: PopupMenuButton<String>(
+                      onSelected: (value) {
+                        if (value == 'edit') {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) =>
+                                    EditProductScren(product: product),
+                              ));
+                          // هنا يمكن إضافة التنقل إلى صفحة تعديل المنتج لاحقًا
+                        } else if (value == 'delete') {
+                          _confirmDelete(product.id);
+                        }
+                      },
+                      itemBuilder: (context) => [
+                        const PopupMenuItem(
+                          value: 'edit',
+                          child: Text('تعديل'),
+                        ),
+                        const PopupMenuItem(
+                          value: 'delete',
+                          child: Text('حذف'),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               );

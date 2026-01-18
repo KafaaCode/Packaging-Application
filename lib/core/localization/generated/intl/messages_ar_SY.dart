@@ -84,6 +84,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "letsGetStarted": MessageLookupByLibrary.simpleMessage("لنبدأ"),
         "logOut": MessageLookupByLibrary.simpleMessage("تسجيل الخروج"),
         "login": MessageLookupByLibrary.simpleMessage("تسجيل الدخول"),
+        "loginFirst":
+            MessageLookupByLibrary.simpleMessage("قم بتسجيل الدخول أولا"),
         "minimumOrderText":
             MessageLookupByLibrary.simpleMessage("الحد الأدنى للطلب لهذا"),
         "more": MessageLookupByLibrary.simpleMessage("المزيد"),

@@ -85,6 +85,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "letsGetStarted": MessageLookupByLibrary.simpleMessage("Commençons"),
         "logOut": MessageLookupByLibrary.simpleMessage("Se déconnecter"),
         "login": MessageLookupByLibrary.simpleMessage("Connexion"),
+        "loginFirst":
+            MessageLookupByLibrary.simpleMessage("Connectez-vous d\'abord"),
         "minimumOrderText":
             MessageLookupByLibrary.simpleMessage("La commande minimum pour ce"),
         "more": MessageLookupByLibrary.simpleMessage("Plus"),

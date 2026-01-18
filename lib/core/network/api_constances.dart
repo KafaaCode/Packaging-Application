@@ -26,7 +26,7 @@ class ApiConstances {
 
   // Authentication
   static const String registerUrl = "$_baseUrl/register";
-  static const String baseUrl = "$_baseUrl";
+  static const String baseUrl = _baseUrl;
   static const String loginUrl = "$_baseUrl/login";
   static const String ordersUrl = "$_baseUrl/admin/orders";
   static const String baseImageUrl = "https://friptrading.com/storage/";
@@ -56,11 +56,18 @@ class ApiConstances {
   static String getproductsUrl({required int categoryId}) =>
       "$_baseUrl/products/categories/$categoryId";
   // Tools
-  static String getToken() {
+  static String? getToken() {
     print(HydratedBloc.storage.read('token').toString());
 
+    // if (HydratedBloc.storage.read('token') == null) {
+    //   return '';
+    // }
+    return HydratedBloc.storage.read('token').toString();
+  }
+
+  static String tokenOrGuest() {
     if (HydratedBloc.storage.read('token') == null) {
-      return '';
+      return 'guest';
     }
     return HydratedBloc.storage.read('token').toString();
   }

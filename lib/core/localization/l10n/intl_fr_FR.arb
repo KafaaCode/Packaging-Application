@@ -78,5 +78,6 @@
   "TotalPrice": "Prix total",
   "Quantityis": "Quantité",
   "Addingorder": "Ajout de la commande en cours...",
-  "Ordersentsuccessfully": "Commande envoyée avec succès"
+  "Ordersentsuccessfully": "Commande envoyée avec succès",
+  "loginFirst": "Connectez-vous d'abord"
 }

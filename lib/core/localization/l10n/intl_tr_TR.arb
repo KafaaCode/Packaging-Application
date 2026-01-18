@@ -75,5 +75,6 @@
     "continueToConfirmOrderButton": "Siparişi onaylamaya devam et",
     "payButton": "Öde",
     "Addingorder": "Sipariş ekleniyor...",
-    "Ordersentsuccessfully": "Sipariş başarıyla gönderildi"
+    "Ordersentsuccessfully": "Sipariş başarıyla gönderildi",
+    "loginFirst": "Önce giriş yapın"
 }

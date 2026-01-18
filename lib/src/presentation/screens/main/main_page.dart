@@ -33,7 +33,7 @@ class MainPage extends StatelessWidget {
         return Scaffold(
           body: AnimatedSwitcher(
             duration: const Duration(
-                milliseconds: 800), // زيادة المدة لجعل الانتقال أبطأ
+                milliseconds: 400), // زيادة المدة لجعل الانتقال أبطأ
             switchInCurve: Curves.easeOut, // المنحنى الجديد يبدو ناعماً
             switchOutCurve: Curves.easeOut, // نفس المنحنى للخروج
             transitionBuilder: (Widget child, Animation<double> animation) {

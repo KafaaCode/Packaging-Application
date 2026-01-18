@@ -174,8 +174,9 @@ class AuthBloc extends HydratedBloc<AuthEvent, AuthState> {
     _Login event,
     Emitter<AuthState> emit,
   ) async {
-    emit(const AuthState.loadInProgress());
+    // emit(const AuthState.loadInProgress());
     try {
+      emit(const AuthState.loadInProgress());
       final response = await repository.login(
         email: event.user.email,
         password: event.user.password!,

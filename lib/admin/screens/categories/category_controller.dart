@@ -19,7 +19,7 @@ class CategoryController {
 
     if (response.statusCode == 200) {
       final jsonData = json.decode(response.body);
-      final List data = jsonData['data'];
+      final List data = jsonData['data']['data'];
       return data.map((item) => CategoryModel.fromJson(item)).toList();
     } else {
       throw Exception('Failed to load categories');

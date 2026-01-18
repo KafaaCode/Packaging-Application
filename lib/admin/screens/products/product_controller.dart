@@ -19,17 +19,18 @@ class ProductController {
         'Accept': 'application/json',
       },
     );
-
+    print(response.body);
     if (response.statusCode == 200) {
       final jsonBody = json.decode(response.body);
-      final List productsJson = jsonBody['data'];
+      final List productsJson = jsonBody['data']['products'];
+      print(response);
 
       final baseImageUrl = ApiConstances.baseImageUrl;
 
       final List<ProductModel> products =
           productsJson.map<ProductModel>((json) {
         final imagePath = json['image'];
-        json['image'] = imagePath != null ? '$baseImageUrl$imagePath' : '';
+        // json['image'] = imagePath != null ? '$baseImageUrl$imagePath' : '';
         return ProductModel.fromJson(json);
       }).toList();
       final List productsImages =

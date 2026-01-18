@@ -82,6 +82,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Haydi Başlayalım"),
         "logOut": MessageLookupByLibrary.simpleMessage("Oturumu kapat"),
         "login": MessageLookupByLibrary.simpleMessage("Giriş Yap"),
+        "loginFirst": MessageLookupByLibrary.simpleMessage("Önce giriş yapın"),
         "minimumOrderText": MessageLookupByLibrary.simpleMessage(
             "Bu ürün için minimum sipariş"),
         "more": MessageLookupByLibrary.simpleMessage("Daha Fazla"),

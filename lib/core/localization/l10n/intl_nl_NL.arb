@@ -75,5 +75,6 @@
     "continueToConfirmOrderButton": "Doorgaan om bestelling te bevestigen",
     "payButton": "Betalen",
     "Addingorder": "Bestelling wordt toegevoegd...",
-    "Ordersentsuccessfully": "Bestelling succesvol verzonden"
+    "Ordersentsuccessfully": "Bestelling succesvol verzonden",
+    "loginFirst": "Log eerst in"
 }

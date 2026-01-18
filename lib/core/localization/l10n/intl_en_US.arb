@@ -78,5 +78,6 @@
   "TotalPrice": "Total Price",
   "Quantityis": "Quantity",
   "Addingorder": "Adding order...",
-  "Ordersentsuccessfully": "Order sent successfully"
+  "Ordersentsuccessfully": "Order sent successfully",
+  "loginFirst": "Login First"
 }

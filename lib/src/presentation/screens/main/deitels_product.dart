@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:frip_trading/core/localization/generated/l10n.dart';
+import 'package:frip_trading/core/network/api_constances.dart';
 import 'package:frip_trading/core/routes/router_screens.dart';
 import 'package:frip_trading/core/routes/routes_name.dart';
 import 'package:frip_trading/src/data/models/models.dart';
@@ -132,121 +133,121 @@ class ProductDetailsPage extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(height: 10),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      BlocBuilder<CounterBloc, CounterState>(
-                        builder: (context, state) {
-                          return Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(
-                                    lang.minimumOrderText,
-                                    style: const TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 14),
-                                  ),
-                                  Text(
-                                    "${lang.productIsText}: ${state.min}",
-                                    style: const TextStyle(
-                                        fontWeight: FontWeight.bold),
-                                  ),
-                                ],
-                              ),
-                              Row(
-                                children: [
-                                  IconButton(
-                                    onPressed: state.count > state.min
-                                        ? () => context
-                                            .read<CounterBloc>()
-                                            .add(const CounterEvent.decrement())
-                                        : null,
-                                    icon:
-                                        const Icon(Icons.remove_circle_outline),
-                                  ),
-                                  Text(
-                                    state.count.toString(),
-                                    style: const TextStyle(fontSize: 15),
-                                  ),
-                                  IconButton(
-                                    onPressed: () {
-                                      context
-                                          .read<CounterBloc>()
-                                          .add(const CounterEvent.increment());
-                                    },
-                                    icon: SvgPicture.asset(
-                                      'assets/images/IconArtwork.svg',
-                                      height: 24,
-                                      width: 24,
+                  if (ApiConstances.tokenOrGuest() != 'guest')
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        BlocBuilder<CounterBloc, CounterState>(
+                          builder: (context, state) {
+                            return Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      lang.minimumOrderText,
+                                      style: const TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 14),
                                     ),
+                                    Text(
+                                      "${lang.productIsText}: ${state.min}",
+                                      style: const TextStyle(
+                                          fontWeight: FontWeight.bold),
+                                    ),
+                                  ],
+                                ),
+                                Row(
+                                  children: [
+                                    IconButton(
+                                      onPressed: state.count > state.min
+                                          ? () => context
+                                              .read<CounterBloc>()
+                                              .add(const CounterEvent
+                                                  .decrement())
+                                          : null,
+                                      icon: const Icon(
+                                          Icons.remove_circle_outline),
+                                    ),
+                                    Text(
+                                      state.count.toString(),
+                                      style: const TextStyle(fontSize: 15),
+                                    ),
+                                    IconButton(
+                                      onPressed: () {
+                                        context.read<CounterBloc>().add(
+                                            const CounterEvent.increment());
+                                      },
+                                      icon: SvgPicture.asset(
+                                        'assets/images/IconArtwork.svg',
+                                        height: 24,
+                                        width: 24,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            );
+                          },
+                        ),
+                        const SizedBox(height: 10),
+                        Row(
+                          children: [
+                            Expanded(
+                              flex: 1,
+                              child: ElevatedButton(
+                                style: ElevatedButton.styleFrom(
+                                  backgroundColor: const Color(0xFF70b9be),
+                                  padding:
+                                      const EdgeInsets.symmetric(vertical: 13),
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(15),
                                   ),
-                                ],
-                              ),
-                            ],
-                          );
-                        },
-                      ),
-                      const SizedBox(height: 10),
-                      Row(
-                        children: [
-                          Expanded(
-                            flex: 1,
-                            child: ElevatedButton(
-                              style: ElevatedButton.styleFrom(
-                                backgroundColor: const Color(0xFF70b9be),
-                                padding:
-                                    const EdgeInsets.symmetric(vertical: 13),
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(15),
+                                ),
+                                onPressed: () {
+                                  context.read<MainPageBloc>().add(
+                                      const MainPageEvent.navigateToTab(2));
+                                  AppRouter.router.navigateTo(
+                                      context, RoutesNames.mainRoute,
+                                      transition: TransitionType.inFromRight,
+                                      routeSettings: const RouteSettings(),
+                                      transitionDuration:
+                                          const Duration(milliseconds: 400));
+                                },
+                                child: const Icon(
+                                  size: 31.0,
+                                  Icons.shopping_cart_outlined,
+                                  color: Colors.white,
                                 ),
                               ),
-                              onPressed: () {
-                                context
-                                    .read<MainPageBloc>()
-                                    .add(const MainPageEvent.navigateToTab(2));
-                                AppRouter.router.navigateTo(
-                                    context, RoutesNames.mainRoute,
-                                    transition: TransitionType.inFromRight,
-                                    routeSettings: const RouteSettings(),
-                                    transitionDuration:
-                                        const Duration(milliseconds: 400));
-                              },
-                              child: const Icon(
-                                size: 31.0,
-                                Icons.shopping_cart_outlined,
-                                color: Colors.white,
-                              ),
                             ),
-                          ),
-                          const SizedBox(width: 10),
-                          Expanded(
-                            flex: 3,
-                            child: ElevatedButton(
-                              style: ElevatedButton.styleFrom(
-                                backgroundColor: const Color(0xFF70b9be),
-                                padding:
-                                    const EdgeInsets.symmetric(vertical: 16),
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(15),
+                            const SizedBox(width: 10),
+                            Expanded(
+                              flex: 3,
+                              child: ElevatedButton(
+                                style: ElevatedButton.styleFrom(
+                                  backgroundColor: const Color(0xFF70b9be),
+                                  padding:
+                                      const EdgeInsets.symmetric(vertical: 16),
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(15),
+                                  ),
+                                ),
+                                onPressed: () {
+                                  AddToCard(context, lang);
+                                },
+                                child: Text(
+                                  lang.addToCartButton,
+                                  style: const TextStyle(
+                                      fontSize: 18, color: Colors.white),
                                 ),
                               ),
-                              onPressed: () {
-                                AddToCard(context, lang);
-                              },
-                              child: Text(
-                                lang.addToCartButton,
-                                style: const TextStyle(
-                                    fontSize: 18, color: Colors.white),
-                              ),
                             ),
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
+                          ],
+                        ),
+                      ],
+                    ),
                 ],
               ),
             ),

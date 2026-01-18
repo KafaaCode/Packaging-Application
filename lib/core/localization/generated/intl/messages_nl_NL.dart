@@ -85,6 +85,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Laten we beginnen"),
         "logOut": MessageLookupByLibrary.simpleMessage("Uitloggen"),
         "login": MessageLookupByLibrary.simpleMessage("Inloggen"),
+        "loginFirst": MessageLookupByLibrary.simpleMessage("Log eerst in"),
         "minimumOrderText": MessageLookupByLibrary.simpleMessage(
             "De minimale bestelhoeveelheid voor dit"),
         "more": MessageLookupByLibrary.simpleMessage("Meer"),

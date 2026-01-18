@@ -4,8 +4,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:frip_trading/core/localization/generated/l10n.dart';
 import 'package:frip_trading/core/localization/language/language_cubit.dart';
 import 'package:frip_trading/core/localization/language/language_state.dart';
+import 'package:frip_trading/core/network/api_constances.dart';
 import 'package:frip_trading/core/routes/router_screens.dart';
 import 'package:frip_trading/core/routes/routes_name.dart';
+import 'package:frip_trading/core/utils/toast.dart';
 import 'package:frip_trading/src/data/data_source/auth_remote_data_source.dart';
 import 'package:frip_trading/src/data/models/models.dart';
 import 'package:frip_trading/src/presentation/controllers/auth/auth_bloc.dart';
@@ -20,7 +22,7 @@ class Profile extends StatelessWidget {
   Widget build(BuildContext context) {
     final AuthRemoteDataSource authRemoteDataSource = AuthRemoteDataSource();
     Lang lang = Lang.of(context);
-
+    String? token = ApiConstances.tokenOrGuest();
     return SafeArea(
       child: CustomAppbar(
         icon: const Icon(
@@ -74,34 +76,41 @@ class Profile extends StatelessWidget {
                       style: const TextStyle(color: Colors.grey)),
                   InkWell(
                     onTap: () {
-                      AppRouter.router.navigateTo(
-                        context,
-                        RoutesNames.editProfileRoute,
-                        rootNavigator: true,
-                        transition: TransitionType.inFromLeft,
-                        transitionDuration: const Duration(milliseconds: 900),
-                      );
+                      final token = ApiConstances.tokenOrGuest();
+                      if (token == 'guest') {
+                        Toast()
+                            .warning(context, 'Please login to edit profile');
+                      } else {
+                        AppRouter.router.navigateTo(
+                          context,
+                          RoutesNames.editProfileRoute,
+                          rootNavigator: true,
+                          transition: TransitionType.inFromLeft,
+                          transitionDuration: const Duration(milliseconds: 900),
+                        );
+                      }
                     },
                     child: ListTile(
                       title: Text(lang.editProfile),
                       trailing: const Icon(Icons.chevron_right),
                     ),
                   ),
-                  InkWell(
-                    onTap: () {
-                      AppRouter.router.navigateTo(
-                        context,
-                        RoutesNames.changePasswordRoute,
-                        rootNavigator: true,
-                        transition: TransitionType.inFromLeft,
-                        transitionDuration: const Duration(milliseconds: 900),
-                      );
-                    },
-                    child: ListTile(
-                      title: Text(lang.changePassword),
-                      trailing: const Icon(Icons.chevron_right),
+                  if (token != 'guest')
+                    InkWell(
+                      onTap: () {
+                        AppRouter.router.navigateTo(
+                          context,
+                          RoutesNames.changePasswordRoute,
+                          rootNavigator: true,
+                          transition: TransitionType.inFromLeft,
+                          transitionDuration: const Duration(milliseconds: 900),
+                        );
+                      },
+                      child: ListTile(
+                        title: Text(lang.changePassword),
+                        trailing: const Icon(Icons.chevron_right),
+                      ),
                     ),
-                  ),
                   ListTile(
                     title: Text(lang.selectLanguage),
                     trailing: SizedBox(
@@ -168,67 +177,68 @@ class Profile extends StatelessWidget {
                       SettingsDialogs.termsAndConditions(context);
                     },
                   ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 24),
-                    child: ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: const Color(0xFF70B9BE),
-                        minimumSize: const Size.fromHeight(50),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(8),
-                        ),
-                      ),
-                      onPressed: () async {
-                        final confirm = await showDialog<bool>(
-                          context: context,
-                          builder: (context) => AlertDialog(
-                            title: Text(lang.confirm),
-                            content: Text(lang.areUSureDeleteAccount),
-                            actions: [
-                              TextButton(
-                                onPressed: () =>
-                                    Navigator.of(context).pop(false),
-                                child: Text(lang.cancel),
-                              ),
-                              TextButton(
-                                onPressed: () =>
-                                    Navigator.of(context).pop(true),
-                                child: Text(lang.confirm),
-                              ),
-                            ],
+                  if (token != 'guest')
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 24),
+                      child: ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: const Color(0xFF70B9BE),
+                          minimumSize: const Size.fromHeight(50),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(8),
                           ),
-                        );
+                        ),
+                        onPressed: () async {
+                          final confirm = await showDialog<bool>(
+                            context: context,
+                            builder: (context) => AlertDialog(
+                              title: Text(lang.confirm),
+                              content: Text(lang.areUSureDeleteAccount),
+                              actions: [
+                                TextButton(
+                                  onPressed: () =>
+                                      Navigator.of(context).pop(false),
+                                  child: Text(lang.cancel),
+                                ),
+                                TextButton(
+                                  onPressed: () =>
+                                      Navigator.of(context).pop(true),
+                                  child: Text(lang.confirm),
+                                ),
+                              ],
+                            ),
+                          );
 
-                        if (confirm == true) {
-                          try {
-                            final success = BlocProvider.of<AuthBloc>(context)
-                                .add(const AuthEvent.deleteEvent());
-                            // if (success) {
-                            //   Navigator.of(context)
-                            //       .pushReplacementNamed('/login');
-                            // } else {
-                            //   ScaffoldMessenger.of(context).showSnackBar(
-                            //     const SnackBar(
-                            //         content: Text('فشل في تسجيل الخروج')),
-                            //   );
-                            // }
-                          } catch (e) {
-                            ScaffoldMessenger.of(context).showSnackBar(
-                              SnackBar(content: Text('خطأ: $e')),
-                            );
+                          if (confirm == true) {
+                            try {
+                              final success = BlocProvider.of<AuthBloc>(context)
+                                  .add(const AuthEvent.deleteEvent());
+                              // if (success) {
+                              //   Navigator.of(context)
+                              //       .pushReplacementNamed('/login');
+                              // } else {
+                              //   ScaffoldMessenger.of(context).showSnackBar(
+                              //     const SnackBar(
+                              //         content: Text('فشل في تسجيل الخروج')),
+                              //   );
+                              // }
+                            } catch (e) {
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                SnackBar(content: Text('خطأ: $e')),
+                              );
+                            }
                           }
-                        }
-                      },
-                      child: Text(
-                        lang.deleteAccount,
-                        style: TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.white,
+                        },
+                        child: Text(
+                          lang.deleteAccount,
+                          style: const TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white,
+                          ),
                         ),
                       ),
                     ),
-                  ),
                   const SizedBox(height: 20),
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 24),
@@ -263,8 +273,14 @@ class Profile extends StatelessWidget {
 
                         if (confirm == true) {
                           try {
-                            final success = BlocProvider.of<AuthBloc>(context)
-                                .add(AuthEvent.logout());
+                            final token = ApiConstances.tokenOrGuest();
+                            if (token == 'guest') {
+                              Navigator.of(context)
+                                  .pushReplacementNamed('/login');
+                            } else {
+                              final success = BlocProvider.of<AuthBloc>(context)
+                                  .add(const AuthEvent.logout());
+                            }
                             // if (success) {
                             //   Navigator.of(context)
                             //       .pushReplacementNamed('/login');
@@ -283,7 +299,7 @@ class Profile extends StatelessWidget {
                       },
                       child: Text(
                         lang.logOut,
-                        style: TextStyle(
+                        style: const TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.bold,
                           color: Colors.white,

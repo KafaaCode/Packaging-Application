@@ -831,6 +831,16 @@ class Lang {
       args: [],
     );
   }
+
+  /// `Login First`
+  String get loginFirst {
+    return Intl.message(
+      'Login First',
+      name: 'loginFirst',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<Lang> {
