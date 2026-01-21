@@ -1,7 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:frip_trading/admin/screens/products/product_model.dart';
 import 'package:frip_trading/src/data/models/models.dart';
 import 'package:frip_trading/src/domin/repository/main_repository.dart';
 

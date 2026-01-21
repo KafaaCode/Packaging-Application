@@ -8,7 +8,7 @@ import 'package:frip_trading/src/presentation/screens/auth/widgets/order_detils_
 
 class OrderDetailsPage extends StatelessWidget {
   final MyOrder order;
-  OrderDetailsPage({super.key, required this.order});
+  const OrderDetailsPage({super.key, required this.order});
 
   @override
   Widget build(BuildContext context) {

@@ -4,7 +4,6 @@ import 'package:frip_trading/src/data/data_source/auth_remote_data_source.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
-import '../../../core/services/services_locator.dart';
 
 class OrderDetailsPage extends StatefulWidget {
   final int orderId;
@@ -192,7 +191,7 @@ class _OrderDetailsPageState extends State<OrderDetailsPage> {
                                   'السعر: ${product['price']} \$ × الكمية: ${product['quantity']}'),
                             ),
                           );
-                        }).toList(),
+                        }),
                         const SizedBox(height: 30),
                         const Divider(),
                         const Text('تحديث حالة الطلب',

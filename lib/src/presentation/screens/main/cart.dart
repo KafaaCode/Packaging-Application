@@ -3,14 +3,11 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:frip_trading/core/localization/generated/l10n.dart';
 import 'package:frip_trading/core/network/api_constances.dart';
-import 'package:frip_trading/core/routes/router_screens.dart';
-import 'package:frip_trading/core/routes/routes_name.dart';
 import 'package:frip_trading/src/data/models/models.dart';
 import 'package:frip_trading/src/presentation/controllers/cart/cart_bloc.dart';
 import 'package:frip_trading/src/presentation/controllers/counter/counter_bloc.dart';
 import 'package:frip_trading/src/presentation/controllers/main_bage/main_page_bloc.dart';
 import 'package:frip_trading/src/presentation/screens/auth/widgets/cart_widget.dart';
-import 'package:frip_trading/src/presentation/screens/main/main_page.dart';
 
 class CartDetailsPage extends StatelessWidget {
   const CartDetailsPage({super.key});
@@ -55,7 +52,7 @@ class CartDetailsPage extends StatelessWidget {
             SnackBar(
               content: Text(state.errorMessage!),
               backgroundColor: Colors.red,
-              duration: Duration(seconds: 1),
+              duration: const Duration(seconds: 1),
             ),
           );
           // context.read<MainPageBloc>().emit(
@@ -140,7 +137,7 @@ class CartDetailsPage extends StatelessWidget {
                               children: [
                                 Text(
                                   lang.TotalPrice,
-                                  style: TextStyle(
+                                  style: const TextStyle(
                                     color: Color.fromARGB(255, 110, 106, 106),
                                     fontSize: 17,
                                     fontWeight: FontWeight.w700,

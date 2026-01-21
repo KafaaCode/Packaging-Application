@@ -3,7 +3,6 @@
 import 'dart:convert';
 import 'dart:io';
 import 'package:dio/dio.dart';
-import 'package:flutter/material.dart';
 import 'package:frip_trading/admin/screens/constants.dart';
 import 'package:frip_trading/core/network/api_constances.dart';
 import 'package:http/http.dart' as http;
@@ -25,7 +24,7 @@ class ProductController {
       final List productsJson = jsonBody['data']['products'];
       print(response);
 
-      final baseImageUrl = ApiConstances.baseImageUrl;
+      const baseImageUrl = ApiConstances.baseImageUrl;
 
       final List<ProductModel> products =
           productsJson.map<ProductModel>((json) {
@@ -79,8 +78,9 @@ class ProductController {
     if (serialNumber!.isNotEmpty) data['serial_number'] = serialNumber;
     if (requestNumber != null) data['request_number'] = requestNumber;
     if (price!.isNotEmpty) data['price'] = price;
-    if (imageFile != null)
+    if (imageFile != null) {
       data['image'] = await MultipartFile.fromFile(imageFile.path);
+    }
     final formData = FormData.fromMap(data);
     final response = await Dio().post(url,
         data: formData,

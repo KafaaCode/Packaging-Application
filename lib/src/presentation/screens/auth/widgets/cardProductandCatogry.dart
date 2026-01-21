@@ -5,10 +5,10 @@ class MainCard extends StatelessWidget {
   final String imageUrl;
 
   const MainCard({
-    Key? key,
+    super.key,
     required this.name,
     required this.imageUrl,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -37,7 +37,7 @@ class MainCard extends StatelessWidget {
           maxLines: 2,
           overflow: TextOverflow.ellipsis,
           name,
-          style: TextStyle(fontSize: 14),
+          style: const TextStyle(fontSize: 14),
         ),
       ],
     );

@@ -17,9 +17,9 @@ class _AdminPageState extends State<AdminPage> {
 
   final List<Widget> _pages = [
     const HomePage(), // Dashboard
-    UsersPage(), // Manage Users
-    SupportsPage(), // Support
-    SettingsPage(), // استبدل Placeholder ب SettingsPage هنا
+    const UsersPage(), // Manage Users
+    const SupportsPage(), // Support
+    const SettingsPage(), // استبدل Placeholder ب SettingsPage هنا
   ];
 
   void _onItemTapped(int index) {

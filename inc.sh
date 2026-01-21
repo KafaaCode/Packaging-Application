@@ -35,7 +35,7 @@ rm pubspec_temp.yaml
 clear
 
 # https://dart.dev/tools/dart-fix
-# fvm dart fix --apply
+fvm dart fix --apply
 
 # https://dart.dev/tools/dart-format
 # fvm dart format .

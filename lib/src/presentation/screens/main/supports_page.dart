@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
+
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+
 import 'package:frip_trading/core/network/api_constances.dart';
 import 'package:frip_trading/core/services/services_locator.dart';
 import 'package:frip_trading/core/utils/loading_dialog.dart';
-import 'package:frip_trading/core/utils/toast.dart';
 import 'package:frip_trading/src/data/models/models.dart';
 import 'package:frip_trading/src/presentation/controllers/auth/auth_bloc.dart';
 import 'package:frip_trading/src/presentation/controllers/main_bage/main_page_bloc.dart';
-
 import 'package:frip_trading/src/presentation/widgets/button_costum.dart';
 
 class SupportsPage extends StatefulWidget {
@@ -220,8 +220,14 @@ class _SupportsPageState extends State<SupportsPage> {
                                 String? token = ApiConstances.tokenOrGuest();
                                 if (_formKey.currentState!.validate()) {
                                   if (token == 'guest') {
-                                    Toast().warning(context,
-                                        'Please Login to send support');
+                                    // Toast().warning(context,
+                                    //     'Please Login to send support');
+
+                                    _showSnackbar(
+                                      context,
+                                      'Please Login to send support',
+                                      isError: false,
+                                    );
                                   } else {
                                     print(
                                         'Button Pressed: Form is valid. Sending support request...');

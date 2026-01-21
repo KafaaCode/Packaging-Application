@@ -10,8 +10,8 @@ class OrderCard extends StatelessWidget {
   final MyOrder order;
   final Lang lang;
   final int index;
-  OrderCard(
-      {required this.length,
+  const OrderCard(
+      {super.key, required this.length,
       required this.order,
       required this.index,
       required this.lang});
@@ -141,7 +141,7 @@ class OrderCard extends StatelessWidget {
                     ),
                     child: Text(
                       lang.orderDetailsTitle,
-                      style: TextStyle(
+                      style: const TextStyle(
                           fontSize: 14,
                           color: Colors.white,
                           fontWeight: FontWeight.bold),

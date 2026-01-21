@@ -1,13 +1,14 @@
-import 'package:fluro/fluro.dart';
 import 'package:flutter/material.dart';
+
+import 'package:fluro/fluro.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
 import 'package:frip_trading/core/localization/generated/l10n.dart';
 import 'package:frip_trading/core/localization/language/language_cubit.dart';
 import 'package:frip_trading/core/localization/language/language_state.dart';
 import 'package:frip_trading/core/network/api_constances.dart';
 import 'package:frip_trading/core/routes/router_screens.dart';
 import 'package:frip_trading/core/routes/routes_name.dart';
-import 'package:frip_trading/core/utils/toast.dart';
 import 'package:frip_trading/src/data/data_source/auth_remote_data_source.dart';
 import 'package:frip_trading/src/data/models/models.dart';
 import 'package:frip_trading/src/presentation/controllers/auth/auth_bloc.dart';
@@ -78,8 +79,12 @@ class Profile extends StatelessWidget {
                     onTap: () {
                       final token = ApiConstances.tokenOrGuest();
                       if (token == 'guest') {
-                        Toast()
-                            .warning(context, 'Please login to edit profile');
+                        // Toast()
+                        //     .warning(context, 'Please login to edit profile');
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          const SnackBar(
+                              content: Text('Please login to edit profile')),
+                        );
                       } else {
                         AppRouter.router.navigateTo(
                           context,

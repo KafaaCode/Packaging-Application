@@ -118,7 +118,7 @@ class _EditCategoryScreenState extends State<EditCategoryScreen> {
                       image: _newImageFile,
                     );
                     ScaffoldMessenger.of(context).showSnackBar(
-                        SnackBar(content: Text('تم تعديل بنجاح')));
+                        const SnackBar(content: Text('تم تعديل بنجاح')));
                     Navigator.pop(context, true);
                   },
                   child: const Text('حفظ'))

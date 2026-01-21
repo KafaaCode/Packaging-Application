@@ -180,7 +180,7 @@ class _RegisterPageState extends State<RegisterPage> {
                         builder: (context, state) {
                           return state.maybeWhen(
                             orElse: () => const SizedBox.shrink(),
-                            loadInProgress: () => Center(
+                            loadInProgress: () => const Center(
                               child: CircularProgressIndicator(),
                             ),
                             loaded: (specializationAndCountry) {
@@ -218,7 +218,7 @@ class _RegisterPageState extends State<RegisterPage> {
                         builder: (context, state) {
                           return state.maybeWhen(
                             orElse: () => const SizedBox.shrink(),
-                            loadInProgress: () => Center(
+                            loadInProgress: () => const Center(
                               child: CircularProgressIndicator(),
                             ),
                             loaded: (specializationAndCountry) {

@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'package:frip_trading/admin/screens/constants.dart';
 import 'package:frip_trading/core/network/api_constances.dart';
 import 'package:http/http.dart' as http;
 import 'UserModel.dart';

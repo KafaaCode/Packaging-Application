@@ -1,10 +1,8 @@
 import 'dart:convert';
 
-import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:frip_trading/admin/screens/categories/category_model.dart';
 import 'package:frip_trading/admin/screens/constants.dart';
-import 'package:frip_trading/admin/screens/products/product_model.dart';
 import 'package:http/http.dart' as http;
 
 import 'package:frip_trading/core/network/api_call_handler.dart';

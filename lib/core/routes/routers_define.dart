@@ -74,7 +74,7 @@ void configureRoutes(FluroRouter router) {
     RoutesNames.editProfileRoute,
     handler: Handler(
       handlerFunc: (context, parameters) {
-        return EditProfile();
+        return const EditProfile();
       },
     ),
   );
@@ -90,7 +90,7 @@ void configureRoutes(FluroRouter router) {
     RoutesNames.myOrders,
     handler: Handler(
       handlerFunc: (context, parameters) {
-        return MyOrdersPage();
+        return const MyOrdersPage();
       },
     ),
   );
@@ -100,7 +100,7 @@ void configureRoutes(FluroRouter router) {
     RoutesNames.adminMainRoute,
     handler: Handler(
       handlerFunc: (context, parameters) {
-        return AdminPage();
+        return const AdminPage();
       },
     ),
   );

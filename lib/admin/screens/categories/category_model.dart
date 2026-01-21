@@ -1,4 +1,3 @@
-import 'package:frip_trading/admin/screens/constants.dart';
 
 class CategoryModel {
   final int id;

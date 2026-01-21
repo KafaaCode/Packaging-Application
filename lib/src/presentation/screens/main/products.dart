@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:frip_trading/admin/screens/products/product_model.dart';
 import 'package:frip_trading/core/localization/generated/l10n.dart';
-import 'package:frip_trading/core/services/services_locator.dart';
 
 import 'package:frip_trading/src/data/models/models.dart';
 import 'package:frip_trading/src/presentation/controllers/cart/cart_bloc.dart';
@@ -12,9 +10,7 @@ import 'package:frip_trading/src/presentation/controllers/products/products_bloc
 import 'package:frip_trading/src/presentation/screens/auth/widgets/cardproductandCatogry.dart';
 import 'package:frip_trading/src/presentation/screens/auth/widgets/option_filter.dart';
 import 'package:frip_trading/src/presentation/screens/auth/widgets/search.dart';
-import 'package:frip_trading/src/presentation/screens/main/categories.dart';
 import 'package:frip_trading/src/presentation/screens/main/deitels_product.dart';
-import 'package:frip_trading/src/presentation/screens/main/main_page.dart';
 
 class Products extends StatefulWidget {
   final int cartegriesId;

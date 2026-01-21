@@ -1,6 +1,4 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:frip_trading/admin/screens/constants.dart';
-import 'package:frip_trading/admin/screens/products/product_model.dart';
 import 'package:frip_trading/core/utils/abstracts.dart';
 
 part 'models.freezed.dart';

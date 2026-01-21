@@ -19,7 +19,7 @@ class _HomePageState extends State<HomePage> {
   final ScrollController _scrollController = ScrollController();
   final TextEditingController _searchController = TextEditingController();
 
-  List<OrderModel> _orders = [];
+  final List<OrderModel> _orders = [];
   int _currentPage = 1;
   final int _limit = 10;
   bool _isLoading = false;
@@ -270,8 +270,7 @@ class _HomePageState extends State<HomePage> {
                         builder: (context, state) {
                           return _dynamicCard(
                             title: 'Categories',
-                            subtitle: state.categories.length.toString() +
-                                " Categories",
+                            subtitle: "${state.categories.length} Categories",
                             color: const Color(0xFF70b9be),
                             onTap: () {
                               Navigator.push(

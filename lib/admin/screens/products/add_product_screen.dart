@@ -35,7 +35,7 @@ class _AddProductScreenState extends State<AddProductScreen> {
 
   bool _isActive = true;
   File? _image; // الصورة الرئيسية (Key: 'image')
-  List<File> _additionalImages = []; // قائمة الصور الإضافية (Key: 'images[]')
+  final List<File> _additionalImages = []; // قائمة الصور الإضافية (Key: 'images[]')
 
   // دالة لاختيار صورة رئيسية واحدة فقط
   Future<void> _pickPrimaryImage() async {
@@ -238,7 +238,7 @@ class _AddProductScreenState extends State<AddProductScreen> {
                   ),
                   child: Text(
                     totalAdditionalImages > 0
-                        ? "✔ ${totalAdditionalImages} Additional Image(s) Selected"
+                        ? "✔ $totalAdditionalImages Additional Image(s) Selected"
                         : "Select Additional Images (Optional)",
                     style: const TextStyle(color: Colors.grey),
                   ),

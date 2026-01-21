@@ -37,10 +37,10 @@ class _UsersPageState extends State<UsersPage> {
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
           contentPadding:
               const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
-          title: Center(
+          title: const Center(
             child: Text(
               'تفاصيل المستخدم',
-              style: const TextStyle(
+              style: TextStyle(
                 color: Color(0xFF70b9be),
                 fontWeight: FontWeight.bold,
                 fontSize: 18,
@@ -88,7 +88,7 @@ class _UsersPageState extends State<UsersPage> {
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Icon(icon, color: iconColor ?? Color(0xFF70b9be), size: 20),
+        Icon(icon, color: iconColor ?? const Color(0xFF70b9be), size: 20),
         const SizedBox(width: 8),
         Expanded(
           child: RichText(

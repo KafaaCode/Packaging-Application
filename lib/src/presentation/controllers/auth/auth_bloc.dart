@@ -151,9 +151,9 @@ class AuthBloc extends HydratedBloc<AuthEvent, AuthState> {
         email: event.email,
         password: event.password,
         confirmPassword: event.confirmPassword,
-        companyName: event.companyName!,
-        countryId: event.countryId!,
-        specId: event.specId!,
+        companyName: event.companyName,
+        countryId: event.countryId,
+        specId: event.specId,
       );
       await response.fold((error) async {
         emit(AuthState.error(message: error.message));

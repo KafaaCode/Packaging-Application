@@ -21,7 +21,7 @@ import 'package:frip_trading/src/presentation/screens/settings/widgets/customApp
 import 'package:frip_trading/src/presentation/widgets/custom_text_feild.dart';
 
 class EditProfile extends StatefulWidget {
-  EditProfile({super.key});
+  const EditProfile({super.key});
 
   @override
   State<EditProfile> createState() => _EditProfileState();

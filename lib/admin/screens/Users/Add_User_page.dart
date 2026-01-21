@@ -1,10 +1,6 @@
-import 'package:fluro/fluro.dart';
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:frip_trading/core/localization/generated/l10n.dart';
-import 'package:frip_trading/core/routes/router_screens.dart';
-import 'package:frip_trading/core/routes/routes_name.dart';
 import 'package:frip_trading/core/services/services_locator.dart';
 import 'package:frip_trading/core/utils/loading_dialog.dart';
 import 'package:frip_trading/src/data/models/models.dart';

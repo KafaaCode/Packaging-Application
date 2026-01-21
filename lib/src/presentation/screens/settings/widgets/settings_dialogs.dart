@@ -34,7 +34,7 @@ class SettingsDialogs {
   }
 
   static void privacyPolicy(BuildContext context) {
-    const String _privacyPolicyContent = '''
+    const String privacyPolicyContent = '''
 This Privacy Policy governs the manner in which our application collects, uses, maintains, and discloses information collected from users (each, a "User") of the app.
 
 ---
@@ -74,10 +74,10 @@ For any questions regarding this Privacy Policy, you can reach us at: support@yo
         content: SizedBox(
           height: MediaQuery.of(context).size.height * 0.6,
           width: double.infinity,
-          child: SingleChildScrollView(
+          child: const SingleChildScrollView(
             child: Directionality(
                 textDirection: TextDirection.ltr,
-                child: Text(_privacyPolicyContent)),
+                child: Text(privacyPolicyContent)),
           ),
         ),
         actions: [

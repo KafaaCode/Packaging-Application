@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:frip_trading/core/services/services_locator.dart';
-import 'package:frip_trading/src/presentation/controllers/category/category_bloc.dart';
 import 'package:frip_trading/src/presentation/controllers/main_bage/main_page_bloc.dart'; // تأكد تستورد البلوك تبعك
-import 'package:frip_trading/src/presentation/controllers/myorder/myorder_bloc.dart';
 import 'package:frip_trading/src/presentation/screens/main/categories.dart';
 import 'package:frip_trading/src/presentation/screens/main/my_order.dart';
 import 'package:frip_trading/src/presentation/screens/main/cart.dart';
@@ -20,7 +17,7 @@ class MainPage extends StatelessWidget {
 
     final List<Widget> pages = [
       const FilterPage(), // Home
-      MyOrdersPage(), // Order
+      const MyOrdersPage(), // Order
       const CartDetailsPage(), // Cart
       const SupportsPage(),
 

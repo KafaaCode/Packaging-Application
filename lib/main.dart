@@ -29,9 +29,9 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   /* 
-    Hive.registerAdapter(ProductHiveModelAdapter());
+  Hive.registerAdapter(ProductHiveModelAdapter());
 
-    await Hive.openBox<ProductHiveModel>('cartBox'); 
+  await Hive.openBox<ProductHiveModel>('cartBox'); 
   await Hive.openBox<ProductHiveModel>('cartBox');
   */
 

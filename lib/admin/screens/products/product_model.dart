@@ -1,4 +1,3 @@
-import 'package:frip_trading/src/data/models/models.dart';
 
 class ProductModel {
   final int id;
